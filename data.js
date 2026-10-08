@@ -1,0 +1,183 @@
+// Packaged starting data. Export from Manage to update this file.
+window.SWEEPSTAKE = {
+  "title": "Celebrity Traitors UK",
+  "subtitle": "Friends & Family Sweepstake",
+  "episodeLengthMins": 60,
+  "episodes": [],
+  "celebs": [
+    {
+      "name": "Amol Rajan",
+      "role": "Broadcaster",
+      "photo": "",
+      "participant": "",
+      "multiplier": 1
+    },
+    {
+      "name": "Bella Ramsey",
+      "role": "Actor",
+      "photo": "",
+      "participant": "Reuben",
+      "multiplier": 1
+    },
+    {
+      "name": "Hannah Fry",
+      "role": "Mathematician & broadcaster",
+      "photo": "",
+      "participant": "Alex",
+      "multiplier": 1
+    },
+    {
+      "name": "James Acaster",
+      "role": "Comedian",
+      "photo": "",
+      "participant": "Julian",
+      "multiplier": 1
+    },
+    {
+      "name": "James Blunt",
+      "role": "Singer",
+      "photo": "",
+      "participant": "Alex",
+      "multiplier": 1
+    },
+    {
+      "name": "Jerry Hall",
+      "role": "Model & actress",
+      "photo": "",
+      "participant": "Talia",
+      "multiplier": 1
+    },
+    {
+      "name": "Joanne McNally",
+      "role": "Comedian",
+      "photo": "",
+      "participant": "Ava",
+      "multiplier": 1
+    },
+    {
+      "name": "Joe Lycett",
+      "role": "Comedian",
+      "photo": "",
+      "participant": "Reuben",
+      "multiplier": 1
+    },
+    {
+      "name": "Julie Hesmondhalgh",
+      "role": "Actress",
+      "photo": "",
+      "participant": "Julian",
+      "multiplier": 1
+    },
+    {
+      "name": "King Kenny",
+      "role": "Content creator",
+      "photo": "",
+      "participant": "Joe",
+      "multiplier": 1
+    },
+    {
+      "name": "Leigh-Anne Pinnock",
+      "role": "Singer",
+      "photo": "",
+      "participant": "Apala",
+      "multiplier": 1
+    },
+    {
+      "name": "Maya Jama",
+      "role": "Presenter",
+      "photo": "",
+      "participant": "Joe",
+      "multiplier": 1
+    },
+    {
+      "name": "Michael Sheen",
+      "role": "Actor",
+      "photo": "",
+      "participant": "Apala",
+      "multiplier": 1
+    },
+    {
+      "name": "Miranda Hart",
+      "role": "Actress & comedian",
+      "photo": "",
+      "participant": "Ava",
+      "multiplier": 2
+    },
+    {
+      "name": "Myha'la",
+      "role": "Actress",
+      "photo": "",
+      "participant": "Joe",
+      "multiplier": 1
+    },
+    {
+      "name": "Richard E. Grant",
+      "role": "Actor",
+      "photo": "",
+      "participant": "Talia",
+      "multiplier": 1
+    },
+    {
+      "name": "Rob Beckett",
+      "role": "Comedian",
+      "photo": "",
+      "participant": "Reuben",
+      "multiplier": 1
+    },
+    {
+      "name": "Romesh Ranganathan",
+      "role": "Comedian",
+      "photo": "",
+      "participant": "Alex",
+      "multiplier": 1
+    },
+    {
+      "name": "Ross Kemp",
+      "role": "Actor & broadcaster",
+      "photo": "",
+      "participant": "Talia",
+      "multiplier": 1
+    },
+    {
+      "name": "Sebastian Croft",
+      "role": "Actor",
+      "photo": "",
+      "multiplier": 1,
+      "participant": "Julian"
+    },
+    {
+      "name": "Sharon Rooney",
+      "role": "Actress",
+      "photo": "",
+      "participant": "Apala",
+      "multiplier": 1
+    }
+  ],
+  "originalTraitors": [
+    "Maya Jama",
+    "Richard E. Grant"
+  ],
+  "events": [
+    {
+      "ep": 2,
+      "type": "murder",
+      "victim": "Amol Rajan"
+    },
+    {
+      "ep": 2,
+      "type": "recruit",
+      "who": "James Acaster",
+      "accepted": true
+    }
+  ],
+  "participants": [
+    "Talia",
+    "Joe",
+    "Alex",
+    "Apala",
+    "Reuben",
+    "Julian",
+    "Ava"
+  ],
+  "notes": "The confirmed draw has 20 contestants plus Claudia’s special slot. Amol Rajan is the 21st contestant and is unassigned. Initial events are supplied by the project brief, not independently verified broadcast results."
+};
