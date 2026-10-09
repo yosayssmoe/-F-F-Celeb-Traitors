@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "series": "celebrity-traitors-uk-2",
+  "episode": 1,
+  "date": "2026-10-01",
+  "status": "complete",
+  "notes": "No completed elimination, recruitment or voting event. Richard E. Grant and Maya Jama are starting Traitors in the main dataset. All contestants retain their initial survival point. Possession of a Shield earns no points.",
+  "sources": [{"title": "Wikipedia episode 1 summary", "url": "https://en.wikipedia.org/wiki/The_Celebrity_Traitors_series_2"}],
+  "events": []
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "series": "celebrity-traitors-uk-2",
+  "episode": 2,
+  "date": "2026-10-02",
+  "status": "complete",
+  "notes": "Confirmed starting scoring events. The episode ends before the Round Table vote; do not create an empty Round Table or award zero-vote points. Shield possession is not a Shield save.",
+  "sources": [
+    {"title": "Wikipedia episode and elimination history", "url": "https://en.wikipedia.org/wiki/The_Celebrity_Traitors_series_2"},
+    {"title": "The Standard episode 2 recap", "url": "https://www.standard.co.uk/culture/tvfilm/celebrity-traitors-2026-james-acaster-amol-rajan-b1299378.html"}
+  ],
+  "events": [
+    {"id": "ep2-murder-1", "ep": 2, "type": "murder", "victim": "Amol Rajan"},
+    {"id": "ep2-recruit-2", "ep": 2, "type": "recruit", "who": "James Acaster", "accepted": true}
+  ]
+}

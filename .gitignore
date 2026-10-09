@@ -1,0 +1,5 @@
+node_modules/
+_site/
+automation-output/
+*.tmp
+test-results/roundtrip-data.js
