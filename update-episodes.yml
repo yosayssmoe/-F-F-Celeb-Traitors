@@ -1,0 +1,98 @@
+name: Update verified episode results
+
+on:
+  schedule:
+    - cron: '0 23 * * 4,5'
+      timezone: Europe/London
+    - cron: '0 10 * * 6'
+      timezone: Europe/London
+  workflow_dispatch:
+    inputs:
+      deploy_current:
+        description: 'Deploy current committed site without retrieval (initial setup or deployment retry)'
+        required: false
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.zip'
+      - '**/*.pptx'
+      - 'test-results/**'
+
+# Serialises retrieval, commit and deployment, including manual uploads. A newer
+# push never cancels a check between its successful Git commit and Pages deploy.
+concurrency:
+  group: friends-family-results-and-pages
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  update:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked automation dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Run scoring, parser, workflow and Git tests
+        run: npm test
+      - name: Retrieve and validate results
+        id: results
+        if: github.event_name != 'push' && inputs.deploy_current != true
+        run: node automation/update.cjs --write
+      - name: Validate generated dataset before committing
+        if: steps.results.outputs.changed == 'true'
+        run: node automation/validate-current.cjs
+      - name: Commit only verified data changes
+        id: commit
+        if: steps.results.outputs.changed == 'true'
+        run: node automation/publish.cjs
+      - name: Prepare Pages artifact
+        if: github.event_name == 'push' || steps.commit.outputs.committed == 'true' || inputs.deploy_current == true
+        run: npm run build:pages
+      - name: Configure Pages
+        if: github.event_name == 'push' || steps.commit.outputs.committed == 'true' || inputs.deploy_current == true
+        uses: actions/configure-pages@v5
+      - name: Upload Pages artifact
+        if: github.event_name == 'push' || steps.commit.outputs.committed == 'true' || inputs.deploy_current == true
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - name: Deploy the verified site
+        id: deployment
+        if: github.event_name == 'push' || steps.commit.outputs.committed == 'true' || inputs.deploy_current == true
+        uses: actions/deploy-pages@v4
+      - name: Record publication outcome
+        if: always()
+        env:
+          COMMIT_OUTCOME: ${{ steps.commit.outcome }}
+          DEPLOY_OUTCOME: ${{ steps.deployment.outcome }}
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+          JOB_STATUS: ${{ job.status }}
+        run: node automation/finalize-report.cjs
+      - name: Retain check report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: episode-check-${{ github.run_id }}-${{ github.run_attempt }}
+          path: automation-output/
+          retention-days: 30
