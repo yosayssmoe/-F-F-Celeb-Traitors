@@ -1,0 +1,15 @@
+{
+  "name": "friends-family-traitors-automation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GitHub Actions updater; the static dashboard needs no npm dependencies",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "test": "node tests.cjs && node episode-tests.cjs && node --test automation/tests/*.test.cjs",
+    "check:episodes": "node automation/update.cjs",
+    "update:episodes": "node automation/update.cjs --write",
+    "build:pages": "node automation/build-site.cjs"
+  },
+  "dependencies": {"parse5": "7.3.0"},
+  "devDependencies": {"yaml": "2.8.1"}
+}

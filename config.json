@@ -1,0 +1,14 @@
+{
+  "series": "celebrity-traitors-uk-2",
+  "repository": "yosayssmoe/-F-F-Celeb-Traitors",
+  "branch": "main",
+  "wikipediaPage": "The_Celebrity_Traitors_series_2",
+  "minimumRevisionAgeMinutes": 30,
+  "requireIndependentCorroboration": false,
+  "maxEpisode": 100,
+  "requestTimeoutMs": 25000,
+  "userAgent": "FriendsFamilyTraitors/1.0 (https://github.com/yosayssmoe/-F-F-Celeb-Traitors; personal results checker)",
+  "recapHosts": ["www.bbc.co.uk", "www.bbc.com", "www.standard.co.uk", "www.the-independent.com", "www.independent.co.uk"],
+  "maxRecapsPerRun": 4,
+  "scheduleDescription": "Thursday and Friday 23:00; Saturday 10:00 (Europe/London). Expected checking windows, not broadcast times. GitHub may delay or skip runs."
+}
