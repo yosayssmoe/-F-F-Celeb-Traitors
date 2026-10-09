@@ -678,6 +678,7 @@
 
   function refreshAll() {
     recompute();
+    window.AutomationStatus?.render(state);
     renderSeats();
     renderCoffin();
     eps = state.episodes.map(s => new Date(s)); tick(); updateStorageStatus();
@@ -766,6 +767,7 @@
   renderCoffin();
   setView(params.get("view") === "table" ? "table" : "board");
   updateStorageStatus();
+  window.AutomationStatus?.render(state);
   window.SweepstakeApp = {
     getState:()=>clone(state),
     applyEpisode: next=>{window.SweepstakeData.validate(next);state=clone(next);persist();refreshAll();},

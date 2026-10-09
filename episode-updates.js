@@ -69,7 +69,7 @@ window.EpisodeUpdates = (() => {
     const same=stable(before.map(signature))===stable(p.events.map(signature));
     const metadataSame=prior && stable({date:prior.date||'',status:prior.status,notes:prior.notes||'',sources:prior.sources||[]})===stable({date:p.date||'',status:p.status,notes:p.notes||'',sources:p.sources});
     next.episodeRecords=copy(data.episodeRecords||{});
-    next.episodeRecords[p.episode]={date:p.date||'',status:p.status,notes:p.notes||'',sources:p.sources,approvedAt:new Date().toISOString()};
+    next.episodeRecords[p.episode]={date:p.date||'',status:p.status,notes:p.notes||'',sources:p.sources,approvedAt:new Date().toISOString(),automationLocked:true};
     const changed=!same||!metadataSame;
     if(changed) {next.episodeAudit=copy(data.episodeAudit||[]);next.episodeAudit.push({episode:p.episode,approvedAt:next.episodeRecords[p.episode].approvedAt,previousEvents:copy(before),previousRecord:copy(prior||null),newEvents:copy(p.events),sources:copy(p.sources)});}
     return {data:next,package:p,before,after:p.events,warnings,changed,beforeTotals:totals(data),afterTotals:totals(next),historical:data.events.some(e=>e.ep>p.episode)};
@@ -98,7 +98,7 @@ window.EpisodeUpdates = (() => {
       if(stable(old)!==stable(now)) {
         const time=new Date().toISOString();
         next.episodeAudit.push({episode:ep,approvedAt:time,previousEvents:copy(old),previousRecord:copy(before.episodeRecords?.[ep]||null),newEvents:copy(now),sources:[],method:'Manage game log'});
-        next.episodeRecords[ep]={date:next.episodeRecords[ep]?.date||'',sources:next.episodeRecords[ep]?.sources||[],notes:'Edited in Manage. Re-review episode coverage in Update Episode.',status:'partial',approvedAt:time};
+        next.episodeRecords[ep]={date:next.episodeRecords[ep]?.date||'',sources:next.episodeRecords[ep]?.sources||[],notes:'Edited in Manage. Protected from automated replacement.',status:'partial',approvedAt:time,automationLocked:true};
       }
     });return next;
   }

@@ -595,6 +595,12 @@ body.projector .manage-btn { display: none; }
 .episode-body details { margin:12px 0; }
 .episode-body summary { cursor:pointer; color:var(--gold-hi); }
 .episode-warning { border-left:3px solid #dfad65; background:#392513; padding:10px; line-height:1.5; font-size:.85rem; }
+#automation-status { padding:12px; border:1px solid var(--line); border-radius:12px; background:#14100d; }
+#automation-status h3 { font:600 .8rem var(--font-display); color:var(--gold-hi); margin:0 0 10px; }
+#automation-status dl { margin:0 0 10px; font-size:.75rem; }
+#automation-status dl div { display:flex; justify-content:space-between; gap:12px; margin:7px 0; }
+#automation-status dt { color:var(--ink-dim); } #automation-status dd { margin:0; text-align:right; }
+#automation-status a { color:var(--gold-hi); font-size:.75rem; }
 .episode-confirm { font-size:.8rem; line-height:1.5; max-width:600px; }
 .episode-score-preview { width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; }
 .episode-score-preview td,.episode-score-preview th { padding:8px; text-align:left; border-bottom:1px solid var(--line); }
