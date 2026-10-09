@@ -1,5 +1,11 @@
 # Celebrity Traitors UK — Friends & Family Sweepstake
 
+## Automatic source-age deferral
+
+The automated checker requires Wikipedia's pinned revision to be at least 30 minutes old. A valid but younger revision now finishes successfully with `outcome: deferred`, leaves data.js and the public site unchanged, and records the revision timestamp, exact age and earliest eligible `retryAfter` time in the run report. The next scheduled check retries automatically (Thursday/Friday 23:00 or Saturday 10:00 Europe/London). A manual run with `deploy_current` unchecked can retry sooner after that time; any newer Wikipedia edit restarts the waiting period. `retryAfter` is an eligibility time, not an additional scheduled run.
+
+Missing, malformed, impossible or future timestamps still fail closed. UTC timestamp validation does not depend on BST/GMT, and source chronology, voting and scoring validation still run after the age gate. See `automation/tests/revision-age.test.cjs` for the failed-run regression and boundary/safe-deferral tests.
+
 Open **index.html** in a current Chrome, Edge, Firefox or Safari browser. No installation, server, account, API key or internet connection is needed. Unzip the entire package first, keeping its folders together.
 
 ## What is included
