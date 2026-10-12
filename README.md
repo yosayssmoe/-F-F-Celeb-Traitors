@@ -1,8 +1,26 @@
 # Celebrity Traitors UK — Friends & Family Sweepstake
 
+## Episode 4 and automatic backfills (12 October 2026)
+
+The scheduled checker previously rejected Episode 4 because its chronology expressions did not recognise the active-voice murder description or Julie's banishment after an introductory clause. The table and episode narrative agree that Bella Ramsey was murdered before Julie Hesmondhalgh was banished. Hannah Fry's recruitment belongs to Episode 3 and precedes both events. The voting record contains 17 ballots with a 9?6?1?1 tally. Sources: [Wikipedia revision 1379772773](https://en.wikipedia.org/w/index.php?oldid=1379772773), [BBC Episode 4 recap](https://www.bbc.co.uk/news/articles/cwr5y3m59027o), and [The Independent recap](https://www.the-independent.com/arts-entertainment/tv/news/celebrity-traitors-2026-live-updates-episode-4-b3064159.html).
+
+No additional murder or Shield-save points are justified by the hide-and-seek shortlist or possession of a key/Shield. The next unconfirmed result remains pending for the next episode. There are no unresolved Episode 4 votes in that revision. The regression fixtures store factual observations and the previously published Episode 1?3 dataset; they are not a full copy of an article.
+
+The automation now:
+
+- Resolves supported declarative chronology and explicit murder exclusions in the voting table. Independent recaps can resolve missing chronology; contradictory chronology is recorded as a conflict.
+- Imports a verified, safely ordered prefix even when a later event is unsupported. Unresolved role changes or eliminations still block dependent additions. Missing ballots do not block verified elimination/team points or later episodes; zero-vote bonuses require complete verified voting.
+- Stores stable pending-event records in data.js under automation.pendingEvents. Every check reparses historical episodes and backfills verified missing events/votes by stable event identity. Scores and all seven participant totals are replayed by the existing engine.
+- Preserves published assertions and manual edits. A changed published vote is a source conflict, not an automatic replacement; it remains pending until the source agrees again or an authoritative correction is applied with the existing editor. Historical corrections are audited and all later history is revalidated. Unrecognised twists remain pending rather than being guessed.
+- Reports the latest checked and fully scored episodes, partial episodes, imported events, pending events, missing voters, source conflicts, participant/celebrity point deltas, and actual Pages publication outcome. A newly saved pending record uses pending-updated; an identical recheck uses no-change.
+- Checks daily at 10:00 and Thursday/Friday at 23:00, Europe/London. This adds retries for delayed weekend and midweek sources. Pages publication is retried when its public data differs from the committed verified dataset, even if no new scoring change was found.
+
+Run npm test for scoring, parser, chronology, partial/backfill, duplicate, source-retry and Git publishing regression tests. Run node automation/update.cjs for a live dry run, or dispatch Update verified episode results with deploy_current unchecked for retrieval, validation, commit and deployment. The scoring rules, allocations, Miranda multiplier and original office site are unchanged.
+
+
 ## Automatic source-age deferral
 
-The automated checker requires Wikipedia's pinned revision to be at least 30 minutes old. A valid but younger revision now finishes successfully with `outcome: deferred`, leaves data.js and the public site unchanged, and records the revision timestamp, exact age and earliest eligible `retryAfter` time in the run report. The next scheduled check retries automatically (Thursday/Friday 23:00 or Saturday 10:00 Europe/London). A manual run with `deploy_current` unchecked can retry sooner after that time; any newer Wikipedia edit restarts the waiting period. `retryAfter` is an eligibility time, not an additional scheduled run.
+The automated checker requires Wikipedia's pinned revision to be at least 30 minutes old. A valid but younger revision now finishes successfully with `outcome: deferred`, leaves data.js and the public site unchanged, and records the revision timestamp, exact age and earliest eligible `retryAfter` time in the run report. The next scheduled check retries automatically (daily 10:00 and Thursday/Friday 23:00 Europe/London). A manual run with `deploy_current` unchecked can retry sooner after that time; any newer Wikipedia edit restarts the waiting period. `retryAfter` is an eligibility time, not an additional scheduled run.
 
 Missing, malformed, impossible or future timestamps still fail closed. UTC timestamp validation does not depend on BST/GMT, and source chronology, voting and scoring validation still run after the age gate. See `automation/tests/revision-age.test.cjs` for the failed-run regression and boundary/safe-deferral tests.
 

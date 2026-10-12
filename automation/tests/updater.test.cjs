@@ -23,18 +23,18 @@ test('Recruitment chronology and Shield save apply Miranda multiplier to all cat
 });
 test('Conflicting votes and regressing source do not overwrite history',()=>{
  const c=round(3,'Richard E. Grant',{'Miranda Hart':'Richard E. Grant'});const d=run([episode(3,[],{candidates:[c]})]).data;
- c.rounds[0].votes['Miranda Hart']='Maya Jama';const r=merge(d,parse([episode(3,[],{candidates:[c]})]),config);assert.equal(r.changed,false);assert.equal(stable(d),stable(r.data));assert(r.report.deferred.some(x=>x.status==='conflicting'));
+ c.rounds[0].votes['Miranda Hart']='Maya Jama';const r=merge(d,parse([episode(3,[],{candidates:[c]})]),config);assert.equal(r.report.scoresChanged,false);assert.equal(stable(d.events),stable(r.data.events));assert(r.data.automation.pendingEvents.some(x=>x.status==='conflicting'));assert.equal(merge(r.data,parse([episode(3,[],{candidates:[c]})]),config).changed,false);
 });
-test('Ambiguous chronology blocks episode and subsequent dependent scoring',()=>{const r=run([episode(3,[{ep:3,type:'recruit',who:'Hannah Fry',accepted:true}],{issues:[{status:'ambiguous',detail:'Recruitment timing unknown'}]}),episode(4,[{ep:4,type:'murder',victim:'Ross Kemp'}])]);assert.equal(r.changed,false);assert.equal(r.data.events.length,2);});
-test('Duplicate candidates fail validation atomically',()=>{const ev={ep:3,type:'murder',victim:'Ross Kemp'};const r=run([episode(3,[ev,ev])]);assert.equal(r.changed,false);assert.equal(r.data.events.length,2);});
+test('Ambiguous chronology blocks episode and subsequent dependent scoring',()=>{const r=run([episode(3,[{ep:3,type:'recruit',who:'Hannah Fry',accepted:true}],{issues:[{status:'ambiguous',detail:'Recruitment timing unknown'}]}),episode(4,[{ep:4,type:'murder',victim:'Ross Kemp'}])]);assert.equal(r.report.scoresChanged,false);assert.equal(r.report.accepted.length,0);assert(r.data.automation.pendingEvents.length);assert.equal(r.data.events.length,2);});
+test('Duplicate candidates fail validation atomically',()=>{const ev={ep:3,type:'murder',victim:'Ross Kemp'};const r=run([episode(3,[ev,ev])]);assert.equal(r.report.scoresChanged,false);assert.equal(r.report.accepted.length,0);assert(r.data.automation.pendingEvents.length);assert.equal(r.data.events.length,2);});
 test('Historical backfill preserves later events and recomputes roles',()=>{const d=run([episode(3,[{ep:3,type:'murder',victim:'Ross Kemp'}]),episode(4,[{ep:4,type:'murder',victim:'Jerry Hall'}])]).data;
  const p=parse([episode(3,[{ep:3,type:'murder',victim:'Ross Kemp'},{ep:3,type:'recruit',who:'Miranda Hart',accepted:true}]),episode(4,[{ep:4,type:'murder',victim:'Jerry Hall'}])]);const r=merge(d,p,config);assert(r.changed);assert.equal(r.data.events.filter(e=>e.ep===4).length,1);assert.equal(T.compute(r.data).contestants['Miranda Hart'].cols.murder,1);});
 test('Manual change and manual deletion are protected, including missing metadata on changed fields',()=>{
  const d=run([episode(3,[{ep:3,type:'murder',victim:'Ross Kemp'}])]).data;
- d.events[2].victim='Jerry Hall';let r=merge(d,parse([episode(3,[{ep:3,type:'murder',victim:'Ross Kemp'}])]),config);assert.equal(r.changed,false);assert.equal(r.data.events[2].victim,'Jerry Hall');
- d.events.pop();r=merge(d,parse([episode(3,[{ep:3,type:'murder',victim:'Ross Kemp'}])]),config);assert.equal(r.changed,false);assert.equal(r.data.events.length,2);
+ d.events[2].victim='Jerry Hall';let r=merge(d,parse([episode(3,[{ep:3,type:'murder',victim:'Ross Kemp'}])]),config);assert.equal(r.report.scoresChanged,false);assert.equal(r.data.events[2].victim,'Jerry Hall');
+ d.events.pop();r=merge(d,parse([episode(3,[{ep:3,type:'murder',victim:'Ross Kemp'}])]),config);assert.equal(r.report.scoresChanged,false);assert.equal(r.report.accepted.length,0);assert(r.data.automation.pendingEvents.length);assert.equal(r.data.events.length,2);
 });
-test('Independent corroboration can be required by configuration',()=>{const r=merge(clone(baseline),parse([episode(3,[{ep:3,type:'murder',victim:'Ross Kemp'}])]),{...config,requireIndependentCorroboration:true});assert.equal(r.changed,false);});
+test('Independent corroboration can be required by configuration',()=>{const r=merge(clone(baseline),parse([episode(3,[{ep:3,type:'murder',victim:'Ross Kemp'}])]),{...config,requireIndependentCorroboration:true});assert.equal(r.report.accepted.length,0);assert.equal(r.report.scoresChanged,false);assert(r.data.automation.pendingEvents.length);});
 test('Wrong allocation or multiplier halts automation',()=>{const d=clone(baseline);d.celebs.find(c=>c.name==='Miranda Hart').multiplier=1;assert.throws(()=>merge(d,parse([]),config));});
 test('Winner bonus remains in the existing engine, no separate scoring implementation',()=>{
  const d=clone(baseline);d.events=d.celebs.filter(c=>c.name!=='Miranda Hart').map(c=>({ep:2,type:'exit',who:c.name}));
@@ -61,7 +61,7 @@ test('Shield possession never becomes a prevented murder',()=>{const p=parseWiki
 test('Unrecognised layout fails closed',()=>assert.throws(()=>parseWikipedia({html:'<h1>No results</h1>'},baseline,config)));
 test('Workflow schedules are timezone-aware, serialised, and explicitly deploy with built-in token',()=>{
  const yaml=require('yaml'),w=yaml.parse(fs.readFileSync(path.resolve(__dirname,'../../.github/workflows/update-episodes.yml'),'utf8'));
- assert.deepEqual(w.on.schedule,[{cron:'0 23 * * 4,5',timezone:'Europe/London'},{cron:'0 10 * * 6',timezone:'Europe/London'}]);assert(w.on.workflow_dispatch);assert.equal(w.concurrency['cancel-in-progress'],false);
+ assert.deepEqual(w.on.schedule,[{cron:'0 23 * * 4,5',timezone:'Europe/London'},{cron:'0 10 * * *',timezone:'Europe/London'}]);assert(w.on.workflow_dispatch);assert.equal(w.concurrency['cancel-in-progress'],false);
  assert.equal(w.jobs.update.permissions.contents,'write');assert.equal(w.jobs.update.permissions.pages,'write');assert.equal(w.jobs.update.permissions['id-token'],'write');assert(w.jobs.update.steps.some(s=>s.uses==='actions/deploy-pages@v4'));
  // London observes the required summer/winter wall time using the declared IANA zone.
  const hour=d=>new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour:'2-digit',hourCycle:'h23'}).format(new Date(d));assert.equal(hour('2026-10-08T22:00:00Z'),'23');assert.equal(hour('2026-10-29T23:00:00Z'),'23');

@@ -1,0 +1,100 @@
+{
+  "source": {
+    "title": "Wikipedia: Celebrity Traitors UK Series 2",
+    "url": "https://en.wikipedia.org/w/index.php?oldid=1379772773",
+    "retrievedAt": "2026-10-12T10:49:21.2375200Z",
+    "revision": 1379772773,
+    "revisionTimestamp": "2026-10-11T21:35:28Z"
+  },
+  "episode": 4,
+  "date": "2026-10-09",
+  "candidates": [
+    {
+      "event": {
+        "ep": 4,
+        "type": "murder",
+        "victim": "Bella Ramsey"
+      },
+      "aliases": [
+        "Bella"
+      ],
+      "observedRole": "Faithful",
+      "kind": "decision",
+      "verified": true,
+      "key": "murder:Bella Ramsey",
+      "evidence": [
+        "Murder: Bella",
+        "Second structured section agrees"
+      ]
+    },
+    {
+      "event": {
+        "ep": 4,
+        "type": "roundtable",
+        "votes": {},
+        "revotes": [],
+        "absent": [],
+        "banished": "Julie Hesmondhalgh",
+        "votingComplete": false
+      },
+      "rounds": [
+        {
+          "votes": {
+            "Hannah Fry": "Jerry Hall",
+            "James Acaster": "Julie Hesmondhalgh",
+            "James Blunt": "Julie Hesmondhalgh",
+            "Jerry Hall": "Hannah Fry",
+            "Joanne McNally": "Julie Hesmondhalgh",
+            "Joe Lycett": "Hannah Fry",
+            "King Kenny": "Hannah Fry",
+            "Leigh-Anne Pinnock": "Hannah Fry",
+            "Maya Jama": "Julie Hesmondhalgh",
+            "Michael Sheen": "Julie Hesmondhalgh",
+            "Miranda Hart": "Julie Hesmondhalgh",
+            "Rob Beckett": "Julie Hesmondhalgh",
+            "Romesh Ranganathan": "Hannah Fry",
+            "Ross Kemp": "Julie Hesmondhalgh",
+            "Sebastian Croft": "Hannah Fry",
+            "Sharon Rooney": "Julie Hesmondhalgh",
+            "Julie Hesmondhalgh": "James Blunt"
+          },
+          "raw": {
+            "Hannah Fry": "Jerry",
+            "James Acaster": "Julie",
+            "James Blunt": "Julie",
+            "Jerry Hall": "Hannah",
+            "Joanne McNally": "Julie",
+            "Joe Lycett": "Hannah",
+            "King Kenny": "Hannah",
+            "Leigh-Anne Pinnock": "Hannah",
+            "Maya Jama": "Julie",
+            "Michael Sheen": "Julie",
+            "Miranda Hart": "Julie",
+            "Rob Beckett": "Julie",
+            "Romesh Ranganathan": "Hannah",
+            "Ross Kemp": "Julie",
+            "Sebastian Croft": "Hannah",
+            "Sharon Rooney": "Julie",
+            "Julie Hesmondhalgh": "James B.",
+            "Bella Ramsey": "Murdered (Episode 4)",
+            "Myha'la": "Banished (Episode 3)",
+            "Richard E. Grant": "Banished (Episode 3)",
+            "Amol Rajan": "Murdered (Episode 2)"
+          },
+          "tally": "9–6–1–1"
+        }
+      ],
+      "aliases": [
+        "Julie"
+      ],
+      "observedRole": "Faithful",
+      "kind": "table",
+      "verified": true,
+      "key": "roundtable:Julie Hesmondhalgh",
+      "evidence": [
+        "Banishment: Julie Hesmondhalgh",
+        "Contestant finish agrees"
+      ]
+    }
+  ]
+}

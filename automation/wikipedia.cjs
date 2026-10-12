@@ -1,7 +1,8 @@
 const H=require('./html.cjs');
+const {resolveChronology}=require('./chronology.cjs');
 const {stable}=require('./shared.cjs');
 const escape=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-const empty=s=>!s||/^(none|no vote|no murder|tbc|tbd|pending|—|–|-)$/i.test(s);
+const empty=s=>!s||/^(none|no vote|no murder|tba|tbc|tbd|pending|—|–|-)$/i.test(s);
 function parseWikipedia(snapshot,data,config){
  const doc=H.parse(snapshot.html),names=data.celebs.map(c=>c.name),resolve=H.aliases(names);
  const source={title:'Wikipedia: Celebrity Traitors UK Series 2',url:`https://en.wikipedia.org/w/index.php?oldid=${snapshot.revision}`,retrievedAt:snapshot.retrievedAt,revision:snapshot.revision,revisionTimestamp:snapshot.timestamp};
@@ -50,7 +51,7 @@ function parseWikipedia(snapshot,data,config){
     event={ep,type:'murder',shielded:who};secondary=new RegExp(escape(cell.text)+' (?:was|is) saved from murder by (?:a |their |his |her )?[Ss]hield').test(result.description);
    } else {result.issues.push({status:'unsupported',detail:`Decision ${kind} for ${who} requires manual evidence.`});continue;}
    result.candidates.push({event,key:`${event.type}:${who}`,column:col,kind:'decision',verified:secondary,evidence:[`${kind}: ${cell.text}`,secondary?'Second structured section agrees':'Second structured assertion missing']});
-   if(!secondary)result.issues.push({status:'incomplete',detail:`Decision for ${who} is not supported by a second explicit section.`});
+   if(!secondary)result.issues.push({eventKey:`${event.type}:${who}`,status:'incomplete',detail:`Decision for ${who} is not supported by a second explicit section.`});
   }
   const groups=new Map();
   for(const col of columns){const b=bRow?.[col];if(!b||empty(b.text))continue;const who=resolve(b.text);if(!who){result.issues.push({status:'ambiguous',detail:'Unrecognised banishment: '+b.text});continue;}
@@ -64,40 +65,19 @@ function parseWikipedia(snapshot,data,config){
    }
    const verified=new RegExp('^Banished\\s*\\(Episode '+ep+'\\)$','i').test(finishes.get(who)?.text);
    result.candidates.push({event:{ep,type:'roundtable',votes:{},revotes:[],absent:[],banished:who,votingComplete:false},key:'roundtable:'+who,column:cols[0],kind:'table',verified,rounds,evidence:['Banishment: '+who,verified?'Contestant finish agrees':'Contestant finish does not agree']});
-   if(!verified)result.issues.push({status:'conflicting',detail:'Banishment and contestant finish disagree for '+who});
+   if(!verified)result.issues.push({eventKey:'roundtable:'+who,status:'conflicting',detail:'Banishment and contestant finish disagree for '+who});
   }
   // Unsupported exits/winners must be visible in the report and block later scoring.
   for(const [who,finish] of finishes){if(new RegExp('\\(Episode '+ep+'\\)').test(finish.text)&&!result.candidates.some(c=>(c.event.victim||c.event.banished)===who)){
     if(/^(Left|Withdrawn|Disqualified|Winner)/i.test(finish.text))result.issues.push({status:'unsupported',detail:`${finish.text}: ${who}. No unambiguous chronological event adapter.`});
   }}
   result.candidates.sort((a,b)=>a.column-b.column||(a.kind==='decision'?-1:1));
-  if(result.candidates.length>1){
-   // Existing canonical ordering is authoritative when all observations already exist.
-   const old=data.events.filter(e=>e.ep===ep);
-   const match=c=>old.findIndex(e=>e.type===c.event.type && (e.who||e.victim||e.shielded||e.banished)===(c.event.who||c.event.victim||c.event.shielded||c.event.banished));
-   if(result.candidates.every(c=>match(c)>=0))result.candidates.sort((a,b)=>match(a)-match(b));
-   else {
-    // Distinct banishment columns order tables; interleaved decisions need explicit
-    // declarative recap chronology. No assumption that all decisions precede tables.
-    const onlyTables=result.candidates.every(c=>c.kind==='table');
-    if(!onlyTables){
-     const mentions=result.candidates.map(c=>{
-      const who=c.event.who||c.event.victim||c.event.shielded||c.event.banished;
-      const variants=[who,...voterRows.map((r,i)=>voterNames[i]===who?r.slice(0,first).find(v=>resolve(v.text)===who)?.text:null).filter(Boolean)];
-      const verb=c.event.type==='roundtable'?'banished':c.event.type==='recruit'?'recruited as a [Tt]raitor':c.event.shielded?'saved from murder by (?:a |their |his |her )?[Ss]hield':'murdered';
-      const pattern=new RegExp('(?:^|[.!?]\\s+)('+variants.map(escape).join('|')+') (?:is|was) '+verb+'(?=[ .,!])','g');
-      const hits=[...result.description.matchAll(pattern)];
-      if(c.event.type==='recruit'){
-       const accepted=new RegExp('(?:^|[.!?]\\s+)(?:Instead of murdering, )?[Tt]he Traitors (?:decide|choose) to (?:seduce|recruit) ('+variants.map(escape).join('|')+') and (?:he|she|they) accepts? their offer(?=[ ,.])','g');
-       hits.push(...result.description.matchAll(accepted));
-      }
-      return hits.length===1?hits[0].index:-1;
-     });
-     if(mentions.every(n=>n>=0)&&new Set(mentions).size===mentions.length)result.candidates=result.candidates.map((c,i)=>({...c,order:mentions[i]})).sort((a,b)=>a.order-b.order);
-     else result.issues.push({status:'ambiguous',detail:'Order of recruitment/murder and Round Tables is not explicitly established. Episode and later additions deferred.'});
-    }
-   }
+  for(const c of result.candidates){
+   const who=c.event.who||c.event.victim||c.event.shielded||c.event.banished;
+   if(c.event.victim||c.event.banished){const role=finishes.get(who)?.role;if(/^(Faithful|Traitor)$/.test(role))c.observedRole=role;}
+   c.aliases=voterRows.map((r,i)=>voterNames[i]===who?r.slice(0,first).find(v=>resolve(v.text)===who)?.text:null).filter(Boolean);
   }
+  resolveChronology(result,data.events.filter(e=>e.ep===ep));
   result.noEvents=!result.candidates.length&&!result.issues.length&&columns.every(c=>/^(None|No vote)$/i.test(bRow?.[c]?.text||''))&&!!result.description;
  }
  return {episodes:[...episodes.values()],source,recaps:recaps.filter((r,i,a)=>a.findIndex(x=>x.url===r.url)===i)};
@@ -116,7 +96,13 @@ function verifyVotes(candidate,step){
   const published=rounds[i].tally.trim();
   if(!/^\d+(?:\s*[–—-]\s*\d+)*$/.test(published)||stable(values)!==stable(published.split(/[–—-]/).map(Number).sort((a,b)=>b-a)))complete=false;
   const tied=Object.keys(counts).filter(n=>counts[n]===Math.max(...values));
-  if(i<rounds.length-1){if(tied.length<2)complete=false;const next=valid(rounds[i+1]);if(Object.values(next).some(n=>!tied.includes(n)))complete=false;expected=eligible.filter(n=>!tied.includes(n));}
+  if(i<rounds.length-1){
+   // Without a verified tie, a later slate cannot safely be treated as a re-vote.
+   if(!complete||tied.length<2){event.revotes=event.revotes.slice(0,i);complete=false;break;}
+   expected=eligible.filter(n=>!tied.includes(n));
+   const next=valid(rounds[i+1]);event.revotes[i]=Object.fromEntries(Object.entries(next).filter(([v,t])=>expected.includes(v)&&tied.includes(t)));
+   if(Object.keys(event.revotes[i]).length!==Object.keys(next).length)complete=false;
+  }
   else if(candidate.event.banished&&(!tied.includes(candidate.event.banished)||tied.length>1))complete=false;
  }
  event.votingComplete=complete;return event;

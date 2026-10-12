@@ -25,7 +25,13 @@ function merge(data,parsed,config,now=new Date().toISOString()){
   const record=next.episodeRecords?.[ep.episode];
   if(old.some(locked)||record?.automationLocked||(record?.automationPayloadHash&&record.automationPayloadHash!==hash(old.map(payload)))){defer('Manually protected episode retained. Later results will use this authoritative local history.','manual-protected');continue;}
   if(blockedAt!==null&&ep.episode>=blockedAt){if(ep.candidates.length)defer('Earlier episode '+blockedAt+' needs resolution before new role/survival scoring.');continue;}
-  if(ep.issues.some(x=>['conflicting','ambiguous','unsupported','incomplete'].includes(x.status))){ep.issues.forEach(x=>defer(x.detail,x.status));blockedAt=ep.episode;continue;}
+  const issues=ep.issues.filter(x=>['conflicting','ambiguous','unsupported','incomplete'].includes(x.status));
+  issues.forEach(x=>defer(x.detail,x.status));
+  // Unscoped issues can hide an earlier role change or elimination.
+  const globalIssue=issues.some(x=>!x.eventKey&&x.scope!=='chronology');
+  const limit=globalIssue?0:(ep.safePrefix??ep.candidates.length);
+  if(limit<ep.candidates.length||globalIssue)blockedAt=ep.episode;
+  if(globalIssue||(!limit&&ep.candidates.length))continue;
   if(!ep.candidates.length){
    if(old.length){defer('The source no longer contains this episode’s existing events; keeping the published record.','conflicting');blockedAt=ep.episode;}
    else if(ep.noEvents)report.unchanged.push({episode:ep.episode,reason:'Source explicitly records no completed scoring events.'});
@@ -33,17 +39,21 @@ function merge(data,parsed,config,now=new Date().toISOString()){
    continue;
   }
   try{
-   const candidates=ep.candidates;
-   if(candidates.some(c=>!c.verified))throw Error('A result lacks the required supporting evidence.');
-   if(config.requireIndependentCorroboration&&candidates.some(c=>!c.corroboration?.length))throw Error('Independent-source corroboration is required but unavailable.');
+   const candidates=ep.candidates.slice(0,limit);
+   if(new Set(ep.candidates.map(c=>key(c.event))).size!==ep.candidates.length)throw Error('Duplicate event candidates; episode retained for verification.');
+   if(limit<ep.candidates.length)for(const c of ep.candidates.slice(limit))report.deferred.push({episode:ep.episode,event:key(c.event),status:'chronology-pending',reason:'An earlier unresolved event may change role or survival eligibility.'});
    if(old.some(e=>!candidates.some(c=>key(c.event)===key(e))))throw Error('Source conflicts with an existing event or omits it. Existing history retained.');
    // Never reorder existing events. The source must agree with their relative order.
    if(stable(candidates.filter(c=>old.some(e=>key(e)===key(c.event))).map(c=>key(c.event)))!==stable(old.map(key)))throw Error('Source event order conflicts with the existing chronology.');
    const merged=[];
    for(let i=0;i<candidates.length;i++){
+    try{
     const c=candidates[i],existing=old.find(e=>key(e)===key(c.event));
+    if(!c.verified||issues.some(x=>x.eventKey===key(c.event)))throw Error('Event lacks consistent supporting evidence: '+key(c.event));
+    if(config.requireIndependentCorroboration&&!c.corroboration?.length)throw Error('Independent-source corroboration is required but unavailable.');
     const prefix={...next,events:[...next.events.filter(e=>e.ep<ep.episode),...merged]};
     const s=T.compute(prefix),step=s.steps[prefix.events.length];
+    if(c.observedRole&&step.roles[c.event.victim||c.event.banished]!==c.observedRole)throw Error('Source role conflicts with the validated event history: '+key(c.event));
     let event=verifyVotes(c,step);
     if(existing){
      if(existing.type==='roundtable')event=mergeRound(existing,event);
@@ -53,26 +63,70 @@ function merge(data,parsed,config,now=new Date().toISOString()){
     const sourceList=[ep.source,...(c.corroboration||[])];
     event.id=existing?.id||`ep${ep.episode}-auto-${hash(key(event)).slice(0,12)}`;
     event.automation={owner:'github-actions',verification:c.corroboration?.length?'corroborated':'structured-verified',verifiedAt:now,payloadHash:hash(payload(event)),sources:sourceList,evidence:c.evidence,locked:false};
+    D.validate({...next,events:[...next.events.filter(e=>e.ep<ep.episode),...merged,event,...old.filter(e=>!merged.some(m=>key(m)===key(e))&&key(e)!==key(event)),...next.events.filter(e=>e.ep>ep.episode)]});
     merged.push(event);accepted.push({episode:ep.episode,event:key(event),action:existing?'backfilled':'added',votingComplete:event.type==='roundtable'?event.votingComplete:undefined,verification:event.automation.verification,sources:sourceList});
+    }catch(error){
+     const c=candidates[i],existing=old.find(e=>key(e)===key(c.event));
+     if(existing?.type==='roundtable'&&c.verified&&/^A published vote|^Source regressed/.test(error.message)){
+      report.deferred.push({episode:ep.episode,event:key(existing),status:'conflicting',reason:error.message});
+      merged.push(clone(existing));continue;
+     }
+     blockedAt=ep.episode;
+     for(const c of candidates.slice(i))report.deferred.push({episode:ep.episode,event:key(c.event),status:'event-pending',reason:error.message});
+     merged.push(...old.filter(e=>!merged.some(m=>key(m)===key(e))));
+     break;
+    }
    }
-   if(!accepted.length){report.unchanged.push({episode:ep.episode,reason:'All observed events already recorded.'});continue;}
+   if(!accepted.length){report.unchanged.push({episode:ep.episode,reason:'No newly verified scoring changes.'});continue;}
    next.events=[...next.events.filter(e=>e.ep<ep.episode),...merged,...next.events.filter(e=>e.ep>ep.episode)];
    D.validate(next);assertDraw(next);
    const computed=T.compute(next);if(Object.values(computed.contestants).some(s=>!Number.isFinite(s.celebScore)||!Number.isFinite(s.contributed)))throw Error('Non-finite score detected.');
    next.episodeRecords??={};const previous=next.episodeRecords[ep.episode]||null;
    // Complete voting is not a claim that every future episode outcome is known.
-   const complete=merged.filter(e=>e.type==='roundtable').every(e=>e.votingComplete===true);
+   const complete=!report.deferred.some(x=>x.episode===ep.episode)&&merged.filter(e=>e.type==='roundtable').every(e=>e.votingComplete===true);
    next.episodeRecords[ep.episode]={...(previous||{}),date:ep.date||previous?.date||'',status:complete?'complete':'partial',notes:'Automatically verified structured events. Unsupported or unpublished information remains in the workflow report.',sources:[ep.source],approvedAt:now,automationPayloadHash:hash(merged.map(payload)),automationLocked:false};
    next.episodeAudit??=[];next.episodeAudit.push({episode:ep.episode,approvedAt:now,method:'GitHub Actions verified update',previousEvents:old,previousRecord:previous,newEvents:clone(merged),sources:[ep.source]});
    report.accepted.push(...accepted);changed=true;
   }catch(e){next=before;defer(e.message,'conflicting');blockedAt=ep.episode;}
  }
- report.afterTotals=clone(E.totals(next));report.scoresChanged=stable(report.beforeTotals)!==stable(report.afterTotals);report.dataUpdated=changed;
- if(changed){
-  const latest=Math.max(...next.events.map(e=>e.ep));const tables=next.events.filter(e=>e.type==='roundtable');
-  const voting=tables.length?(tables.every(e=>e.votingComplete===true)?'Complete':'Partial'):'Pending';
-  next.automation={...(next.automation||{}),version:1,lastVerifiedUpdate:now,latestConfirmedEpisode:latest,votingData:voting,scheduleDescription:config.scheduleDescription,verification:'structured-source validation',pendingEpisodes:[...new Set(report.deferred.map(x=>x.episode))],runUrl:process.env.GITHUB_RUN_ID?`https://github.com/${config.repository}/actions/runs/${process.env.GITHUB_RUN_ID}`:null};
+ // Pending state is canonical and durable, but stable checks must not churn commits.
+ const missingVotes=[];
+ for(let i=0;i<next.events.length;i++){
+  const event=next.events[i];if(event.type!=='roundtable'||event.votingComplete===true)continue;
+  const state=T.compute({...next,events:next.events.slice(0,i)}).steps[i];
+  const voters=state.active.filter(n=>!(event.absent||[]).includes(n));
+  missingVotes.push({episode:event.ep,event:key(event),voters:voters.filter(n=>!event.votes?.[n]),reason:'Full voting rounds, attendance and tally must be verified before zero-vote bonuses.'});
  }
+ const pending=[...report.deferred.map(x=>({...x,id:hash([x.episode,x.event||'',x.status,x.reason]).slice(0,16)})),...missingVotes.map(x=>({...x,id:hash([x.episode,x.event,'votes']).slice(0,16),status:'missing-votes'}))];
+ // Preserve unresolved records for episodes omitted altogether by a regressing source.
+ for(const item of data.automation?.pendingEvents||[])if(!ordered.some(e=>e.episode===item.episode))pending.push(item);
+ const beforePending=data.automation?.pendingEvents||[];
+ const pendingChanged=stable(beforePending)!==stable(pending);
+ let recordsChanged=false;
+ for(const ep of ordered){
+  const record=next.episodeRecords?.[ep.episode];if(!record||record.automationLocked||!record.automationPayloadHash)continue;
+  const events=next.events.filter(e=>e.ep===ep.episode);
+  if(record.automationPayloadHash!==hash(events.map(payload)))continue;
+  const complete=!pending.some(x=>x.episode===ep.episode)&&ep.candidates.length===events.length&&ep.candidates.every(c=>c.verified)&&events.filter(e=>e.type==='roundtable').every(e=>e.votingComplete===true);
+  const status=complete?'complete':'partial';if(record.status!==status){record.status=status;recordsChanged=true;}
+ }
+ const latestChecked=Math.max(0,...ordered.filter(e=>e.description||e.candidates.length||(e.date&&e.date<=now.slice(0,10))).map(e=>e.episode));
+ const partial=[...new Set([...missingVotes.map(x=>x.episode),...pending.filter(x=>next.events.some(e=>e.ep===x.episode)).map(x=>x.episode)])].sort((a,b)=>a-b);
+ const completeEpisodes=Object.keys(next.episodeRecords||{}).map(Number).filter(ep=>next.episodeRecords[ep].status==='complete'&&!partial.includes(ep));
+ const latestFullyScored=Math.max(0,...completeEpisodes);
+ report.latestEpisodeChecked=latestChecked;report.latestEpisodeFullyScored=latestFullyScored;report.partiallyScoredEpisodes=partial;
+ report.pendingEvents=pending;report.missingIndividualVotes=missingVotes;report.sourceConflicts=report.deferred.filter(x=>x.status==='conflicting'||/conflict|changed|differs/i.test(x.reason));
+ report.afterTotals=clone(E.totals(next));report.scoresChanged=stable(report.beforeTotals)!==stable(report.afterTotals);
+ report.pointsAdded=Object.fromEntries(Object.keys(report.afterTotals).map(p=>[p,report.afterTotals[p]-report.beforeTotals[p]]));
+ const beforeCelebs=T.compute(data).contestants,afterCelebs=T.compute(next).contestants;
+ report.celebrityPointsAdded=Object.fromEntries(Object.keys(afterCelebs).map(n=>[n,afterCelebs[n].celebScore-beforeCelebs[n].celebScore]));
+ if(changed||pendingChanged||recordsChanged){
+  const latest=Math.max(0,...next.events.map(e=>e.ep));const tables=next.events.filter(e=>e.type==='roundtable');
+  const voting=tables.length?(tables.every(e=>e.votingComplete===true)?'Complete':'Partial'):'Pending';
+  next.automation={...(next.automation||{}),version:2,...(changed?{lastVerifiedUpdate:now}:{}),latestConfirmedEpisode:latest,latestEpisodeChecked:latestChecked,latestEpisodeFullyScored:latestFullyScored,partiallyScoredEpisodes:partial,votingData:voting,scheduleDescription:config.scheduleDescription,verification:'structured-source validation',pendingEvents:pending,pendingEpisodes:[...new Set(pending.map(x=>x.episode))],runUrl:process.env.GITHUB_RUN_ID?'https://github.com/'+config.repository+'/actions/runs/'+process.env.GITHUB_RUN_ID:null};
+  for(const ep of partial)if(next.episodeRecords?.[ep])next.episodeRecords[ep].status='partial';
+ }
+ changed=changed||pendingChanged||recordsChanged;report.dataUpdated=changed;
  D.validate(next);return {data:next,changed,report};
 }
 module.exports={merge,assertDraw,mergeRound,locked};
