@@ -296,6 +296,80 @@ window.SWEEPSTAKE = {
         ],
         "locked": false
       }
+    },
+    {
+      "ep": 4,
+      "type": "murder",
+      "victim": "Bella Ramsey",
+      "id": "ep4-auto-2f2d798dcf55",
+      "automation": {
+        "owner": "github-actions",
+        "verification": "structured-verified",
+        "verifiedAt": "2026-10-12T11:03:26.588Z",
+        "payloadHash": "44d1811202d06445156f205e41c6f8fad77f9d858035062b4606bf0ad1fc1ed6",
+        "sources": [
+          {
+            "title": "Wikipedia: Celebrity Traitors UK Series 2",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1379772773",
+            "retrievedAt": "2026-10-12T11:03:26.327Z",
+            "revision": 1379772773,
+            "revisionTimestamp": "2026-10-11T21:35:28Z"
+          }
+        ],
+        "evidence": [
+          "Murder: Bella",
+          "Second structured section agrees"
+        ],
+        "locked": false
+      }
+    },
+    {
+      "ep": 4,
+      "type": "roundtable",
+      "votes": {
+        "Hannah Fry": "Jerry Hall",
+        "James Acaster": "Julie Hesmondhalgh",
+        "James Blunt": "Julie Hesmondhalgh",
+        "Jerry Hall": "Hannah Fry",
+        "Joanne McNally": "Julie Hesmondhalgh",
+        "Joe Lycett": "Hannah Fry",
+        "King Kenny": "Hannah Fry",
+        "Leigh-Anne Pinnock": "Hannah Fry",
+        "Maya Jama": "Julie Hesmondhalgh",
+        "Michael Sheen": "Julie Hesmondhalgh",
+        "Miranda Hart": "Julie Hesmondhalgh",
+        "Rob Beckett": "Julie Hesmondhalgh",
+        "Romesh Ranganathan": "Hannah Fry",
+        "Ross Kemp": "Julie Hesmondhalgh",
+        "Sebastian Croft": "Hannah Fry",
+        "Sharon Rooney": "Julie Hesmondhalgh",
+        "Julie Hesmondhalgh": "James Blunt"
+      },
+      "revotes": [],
+      "absent": [],
+      "banished": "Julie Hesmondhalgh",
+      "votingComplete": true,
+      "id": "ep4-auto-5312c0ee3d54",
+      "automation": {
+        "owner": "github-actions",
+        "verification": "structured-verified",
+        "verifiedAt": "2026-10-12T11:03:26.588Z",
+        "payloadHash": "abf8543cbacaf05ac0f64b68d954b5c8d0362b5a9fe4e1f9a90c8d80a03f9a35",
+        "sources": [
+          {
+            "title": "Wikipedia: Celebrity Traitors UK Series 2",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1379772773",
+            "retrievedAt": "2026-10-12T11:03:26.327Z",
+            "revision": 1379772773,
+            "revisionTimestamp": "2026-10-11T21:35:28Z"
+          }
+        ],
+        "evidence": [
+          "Banishment: Julie Hesmondhalgh",
+          "Contestant finish agrees"
+        ],
+        "locked": false
+      }
     }
   ],
   "participants": [
@@ -324,6 +398,23 @@ window.SWEEPSTAKE = {
       ],
       "approvedAt": "2026-10-09T08:08:05.864Z",
       "automationPayloadHash": "366f3d325a266efeb2e06225a966bbd6226c06f303a95f51c3325d76226dee45",
+      "automationLocked": false
+    },
+    "4": {
+      "date": "2026-10-09",
+      "status": "complete",
+      "notes": "Automatically verified structured events. Unsupported or unpublished information remains in the workflow report.",
+      "sources": [
+        {
+          "title": "Wikipedia: Celebrity Traitors UK Series 2",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1379772773",
+          "retrievedAt": "2026-10-12T11:03:26.327Z",
+          "revision": 1379772773,
+          "revisionTimestamp": "2026-10-11T21:35:28Z"
+        }
+      ],
+      "approvedAt": "2026-10-12T11:03:26.588Z",
+      "automationPayloadHash": "bc0a8afd917e86eb36a9f83de6cf25c553b423752118525a336fb19c63dca3d3",
       "automationLocked": false
     }
   },
@@ -473,18 +564,121 @@ window.SWEEPSTAKE = {
           "revisionTimestamp": "2026-10-09T02:59:28Z"
         }
       ]
+    },
+    {
+      "episode": 4,
+      "approvedAt": "2026-10-12T11:03:26.588Z",
+      "method": "GitHub Actions verified update",
+      "previousEvents": [],
+      "previousRecord": null,
+      "newEvents": [
+        {
+          "ep": 4,
+          "type": "murder",
+          "victim": "Bella Ramsey",
+          "id": "ep4-auto-2f2d798dcf55",
+          "automation": {
+            "owner": "github-actions",
+            "verification": "structured-verified",
+            "verifiedAt": "2026-10-12T11:03:26.588Z",
+            "payloadHash": "44d1811202d06445156f205e41c6f8fad77f9d858035062b4606bf0ad1fc1ed6",
+            "sources": [
+              {
+                "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379772773",
+                "retrievedAt": "2026-10-12T11:03:26.327Z",
+                "revision": 1379772773,
+                "revisionTimestamp": "2026-10-11T21:35:28Z"
+              }
+            ],
+            "evidence": [
+              "Murder: Bella",
+              "Second structured section agrees"
+            ],
+            "locked": false
+          }
+        },
+        {
+          "ep": 4,
+          "type": "roundtable",
+          "votes": {
+            "Hannah Fry": "Jerry Hall",
+            "James Acaster": "Julie Hesmondhalgh",
+            "James Blunt": "Julie Hesmondhalgh",
+            "Jerry Hall": "Hannah Fry",
+            "Joanne McNally": "Julie Hesmondhalgh",
+            "Joe Lycett": "Hannah Fry",
+            "King Kenny": "Hannah Fry",
+            "Leigh-Anne Pinnock": "Hannah Fry",
+            "Maya Jama": "Julie Hesmondhalgh",
+            "Michael Sheen": "Julie Hesmondhalgh",
+            "Miranda Hart": "Julie Hesmondhalgh",
+            "Rob Beckett": "Julie Hesmondhalgh",
+            "Romesh Ranganathan": "Hannah Fry",
+            "Ross Kemp": "Julie Hesmondhalgh",
+            "Sebastian Croft": "Hannah Fry",
+            "Sharon Rooney": "Julie Hesmondhalgh",
+            "Julie Hesmondhalgh": "James Blunt"
+          },
+          "revotes": [],
+          "absent": [],
+          "banished": "Julie Hesmondhalgh",
+          "votingComplete": true,
+          "id": "ep4-auto-5312c0ee3d54",
+          "automation": {
+            "owner": "github-actions",
+            "verification": "structured-verified",
+            "verifiedAt": "2026-10-12T11:03:26.588Z",
+            "payloadHash": "abf8543cbacaf05ac0f64b68d954b5c8d0362b5a9fe4e1f9a90c8d80a03f9a35",
+            "sources": [
+              {
+                "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379772773",
+                "retrievedAt": "2026-10-12T11:03:26.327Z",
+                "revision": 1379772773,
+                "revisionTimestamp": "2026-10-11T21:35:28Z"
+              }
+            ],
+            "evidence": [
+              "Banishment: Julie Hesmondhalgh",
+              "Contestant finish agrees"
+            ],
+            "locked": false
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Wikipedia: Celebrity Traitors UK Series 2",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1379772773",
+          "retrievedAt": "2026-10-12T11:03:26.327Z",
+          "revision": 1379772773,
+          "revisionTimestamp": "2026-10-11T21:35:28Z"
+        }
+      ]
     }
   ],
   "automation": {
-    "version": 1,
-    "lastVerifiedUpdate": "2026-10-09T08:08:05.864Z",
-    "latestConfirmedEpisode": 3,
+    "version": 2,
+    "lastVerifiedUpdate": "2026-10-12T11:03:26.588Z",
+    "latestConfirmedEpisode": 4,
     "votingData": "Complete",
-    "scheduleDescription": "Thursday and Friday 23:00; Saturday 10:00 (Europe/London). Expected checking windows, not broadcast times. GitHub may delay or skip runs.",
+    "scheduleDescription": "Daily 10:00, plus Thursday and Friday 23:00 (Europe/London). Checks revisit pending and historical results. GitHub may delay or skip runs.",
     "verification": "structured-source validation",
     "pendingEpisodes": [
-      4
+      5
     ],
-    "runUrl": null
+    "runUrl": "https://github.com/yosayssmoe/-F-F-Celeb-Traitors/actions/runs/38240109816",
+    "latestEpisodeChecked": 4,
+    "latestEpisodeFullyScored": 4,
+    "partiallyScoredEpisodes": [],
+    "pendingEvents": [
+      {
+        "episode": 5,
+        "status": "not-published",
+        "reason": "No confirmed results published.",
+        "id": "7788413284f51a06"
+      }
+    ]
   }
 };
