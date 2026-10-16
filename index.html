@@ -15,10 +15,13 @@
   </svg>
 
   <header class="brand"><span>THE CASTLE • SERIES 2</span><h1>Celebrity Traitors UK</h1><p>Friends &amp; Family Sweepstake</p></header><p id="storage-status" class="storage-status" role="status"></p><main class="layout">
-    <section class="stage" id="stage" aria-label="The round table">
-      <img class="stage-img" src="images/table.webp" alt="" />
-      <div class="stage-vignette" aria-hidden="true"></div>
-      <div class="seats" id="seats"></div>
+    <section class="stage" id="stage" aria-label="The round table" aria-describedby="table-help" tabindex="0">
+      <p class="table-help" id="table-help">Swipe across the table to read every name. Pinch to zoom.</p>
+      <div class="table-canvas">
+        <img class="stage-img" src="images/table.webp" alt="" />
+        <div class="stage-vignette" aria-hidden="true"></div>
+        <div class="seats" id="seats"></div>
+      </div>
     </section>
 
     <section class="board" id="board" hidden aria-label="Scoreboard">

@@ -67,6 +67,8 @@ body {
   background: radial-gradient(ellipse 75% 70% at 50% 55%, transparent 60%, rgba(5, 3, 2, 0.55) 100%);
 }
 .seats { position: absolute; inset: 0; }
+.table-canvas { position: relative; width: 100%; aspect-ratio: 1312 / 1199; container-type: inline-size; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+.table-help { display: none; }
 
 /* ── Place cards ──────────────────────────────────────
    Drawn in the same style as the painted cards, centred over each one and a
@@ -142,10 +144,16 @@ body {
   color: #b3a690;
   text-decoration: line-through; text-decoration-color: rgba(224, 72, 59, 0.9); text-decoration-thickness: 2px;
 }
+.seat.out .who { color: var(--ink-dim); }
 .fate { font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; font-size: calc(var(--cw) * 0.082cqw * var(--fit)); }
 .fate.banished { color: #f0c46e; }
 .fate.traitor { color: #ff6b5c; }
 .fate.murdered { color: #c6aefa; }
+
+/* Three lines (name / owner / outcome) must fit the existing desktop cards. */
+@media (min-width: 721px) {
+  .seat.out.wrap .name .l { display: inline; }
+}
 
 .seat.just-out { animation: fall 1.6s cubic-bezier(.2,.7,.2,1); }
 @keyframes fall {
@@ -507,7 +515,7 @@ body.projector .manage-btn { display: none; }
   .coffin { flex: none; width: 100%; }
 }
 
-/* Phones: cards drop below the image as a grid */
+/* Phones: preserve the artwork's coordinate system and pan at a readable size. */
 @media (max-width: 720px) {
   .board { padding: 14px 8px; }
   .lb .bd { display: none; }
@@ -518,22 +526,23 @@ body.projector .manage-btn { display: none; }
   .hist-sum { grid-template-columns: repeat(3, 1fr); }
   .hist-cats { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-flow: row; }
   .ev-field { grid-template-columns: 1fr; }
-  .stage { overflow: visible; aspect-ratio: auto; box-shadow: none; border-radius: 0; container-type: normal; }
-  .stage-img { position: relative; height: auto; border-radius: 14px; }
-  .stage-vignette { display: none; }
-  .seats {
-    position: static; margin-top: 34px;
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 36px 10px;
+  .stage {
+    max-width: 100%; aspect-ratio: auto; container-type: normal;
+    overflow-x: auto; overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
   }
-  .seat {
-    position: relative; left: auto !important; top: auto !important; width: auto !important; height: auto !important;
-    transform: none; padding: 26px 0 12px; border-radius: 6px;
-    box-shadow: inset 0 0 0 1px #7d5c1e, inset 0 0 0 3px #fbf4e3, inset 0 0 0 4.5px var(--gold), 0 8px 20px rgba(0,0,0,.5);
+  .table-canvas { width: 1440px; }
+  .table-help {
+    display: block; position: sticky; left: 0; width: 100%;
+    margin: 0; padding: 12px; color: var(--gold-hi); background: #17100b;
+    font-size: 0.8rem; line-height: 1.5; text-align: center;
   }
-  .medal { top: -20px; width: 42px; padding: 2px; }
-  .name, .seat.wrap .name { font-size: calc(0.92rem * var(--fit)); }
-  .who, .seat.wrap .who { font-size: calc(0.85rem * var(--fit)); margin-top: 3px; }
-  .fate, .seat.wrap .fate { font-size: calc(0.7rem * var(--fit)); margin-top: 4px; }
+  .seat { width: var(--mobile-card-width) !important; height: var(--mobile-card-height) !important; }
+  .name, .seat.wrap .name { font-size: calc(var(--cw) * 0.1cqw * var(--fit)); line-height: 1.12; }
+  .who, .seat.wrap .who { font-size: calc(var(--cw) * 0.088cqw * var(--fit)); }
+  .seat.wrap .name { font-size: calc(var(--cw) * 0.09cqw * var(--fit)); line-height: 1.1; }
+  .seat.wrap .who { font-size: calc(var(--cw) * 0.08cqw * var(--fit)); }
+  .fate, .seat.wrap .fate { font-size: calc(12px * var(--fit)); letter-spacing: 0.04em; white-space: normal; }
 }
 
 /* Friends & Family: local fonts, readable responsive tables. */

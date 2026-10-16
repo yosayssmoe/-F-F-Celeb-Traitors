@@ -106,6 +106,14 @@ The website needs no Node.js. Developers can run scoring tests with `node tests.
 
 Keyboard shortcuts retained from the reference: **M** opens Manage; **L** switches views. URL options `?view=table`, `?view=board`, `?rotate=30` and `?projector` are supported.
 
+### Round Table on phones
+
+The artwork and all 21 nameplates share one canvas and retain their circular positions. At widths up to 720px, swipe horizontally within the Round Table to reach each card; browser pinch zoom remains enabled. The canvas stays at a readable size instead of shrinking 21 cards into a phone-width image or detaching them into a grid. Long elimination labels wrap, and every card shows the celebrity name and sweepstake owner, including contestants who have left. Cream cards are active; dark cards retain explicit purple Murdered or gold/red Banished labels.
+
+The mobile view starts at the centre of the table. Keyboard focus brings each card fully into the scroll area; Enter or Space opens its existing points history. Text fitting skips hidden views and reruns when the table appears. Desktop artwork, seat coordinates and card dimensions retain the original design.
+
+Run `node mobile-browser-tests.cjs` with Playwright Core installed separately (`PLAYWRIGHT_MODULE` can point to its package directory). Install its Chromium and WebKit browsers, or set `CHROME_PATH` to a system Chrome executable. The standalone check covers 320, 375, 390 and 430px in both engines, every name and owner, text bounds and size, card collisions, scrolling, view switching, desktop rendering, unchanged scoring and history access. It writes screenshots and `report.json` to `test-results/mobile-round-table/`. Set `TEST_BASE_URL` to test the deployed site. These are browser-engine emulation checks, not tests on physical iPhone or Android hardware. The production dependencies and GitHub Actions workflows do not require Playwright.
+
 ## Update Episode: the recommended after-episode workflow
 
 ### Scheduled automation timeline (16 October 2026)

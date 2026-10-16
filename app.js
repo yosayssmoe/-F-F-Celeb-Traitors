@@ -86,6 +86,8 @@
       seat.style.top = ((y + h / 2 - h * 0.08) / IMG_H) * 100 + "%";
       seat.style.width = (cw / IMG_W) * 100 + "%";
       seat.style.height = (ch / IMG_H) * 100 + "%";
+      seat.style.setProperty("--mobile-card-height", (ch * 1.25 / IMG_H) * 100 + "%");
+      seat.style.setProperty("--mobile-card-width", (w * 1.05 / IMG_W) * 100 + "%");
       seat.style.setProperty("--cw", ((cw / IMG_W) * 100).toFixed(3));
 
       const out = isOut(c);
@@ -116,7 +118,9 @@
       nameEl.appendChild(el("span", "l", words.length > 1 ? words.slice(0, -1).join(" ") + " " : c.name));
       if (words.length > 1) nameEl.appendChild(el("span", "l", words[words.length - 1]));
       txt.appendChild(nameEl);
+      txt.appendChild(el("div", c.participant ? "who fit" : "who fit none", c.participant || "Unassigned"));
       const s = sc(c.name);
+      seat.classList.add(s.status);
       if (out) {
         let fate = { murdered: "Murdered", banished: "Banished", left: "Left the game" }[s.status];
         if (s.status === "banished") fate += " · " + s.roleAtExit;
@@ -125,14 +129,19 @@
       } else if (s.status === "winner") {
         seat.classList.add("won");
         txt.appendChild(el("div", "fate fit winner", "Winner · " + (c.participant || "")));
-      } else {
-        txt.appendChild(el("div", c.participant ? "who fit" : "who fit none", c.participant || "Unassigned"));
       }
       seat.appendChild(txt);
       seat.title = `${c.name} — ${s.total} pts${c.participant ? " · drawn by " + c.participant : ""} (click for points history)`;
       seat.tabIndex = 0;
+      seat.setAttribute("role", "button");
+      seat.setAttribute("aria-label", `${c.name}, ${c.participant || "Unassigned"}, ${s.status}, ${s.total} points. Show points history.`);
       seat.onclick = () => openHistory(c.name);
-      seat.onkeydown = (e) => { if (e.key === "Enter") openHistory(c.name); };
+      seat.onfocus = () => {
+        if (matchMedia("(max-width: 720px)").matches) seat.scrollIntoView({ block: "nearest", inline: "nearest" });
+      };
+      seat.onkeydown = (e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openHistory(c.name); }
+      };
       seatsEl.appendChild(seat);
     });
 
@@ -143,6 +152,8 @@
 
   // Shrink any line that's too long for its card (e.g. "Julie Hesmondhalgh").
   function fitText() {
+    // Hidden views have zero-sized cards. Refit when setView reveals the table.
+    if (!seatsEl.getClientRects().length || !seatsEl.clientWidth) return;
     seatsEl.querySelectorAll(".seat").forEach((s) => s.classList.remove("wrap"));
     seatsEl.querySelectorAll(".name").forEach((e) => {
       e.style.setProperty("--fit", 1);
@@ -153,16 +164,24 @@
     });
     seatsEl.querySelectorAll(".fit").forEach((e) => {
       e.style.setProperty("--fit", 1);
-      if (e.scrollWidth > e.clientWidth) {
-        e.style.setProperty("--fit", Math.max(0.55, (e.clientWidth / e.scrollWidth) * 0.98).toFixed(3));
+      for (let pass = 0; pass < 4 && e.scrollWidth > e.clientWidth; pass++) {
+        const current = Number(e.style.getPropertyValue("--fit"));
+        const fitted = Math.max(0.55, current * (e.clientWidth / e.scrollWidth) * 0.98);
+        e.style.setProperty("--fit", fitted.toFixed(3));
+        if (fitted === 0.55) break;
       }
     });
   }
-  if (document.fonts) document.fonts.ready.then(fitText);
+  let fitFrame;
+  function scheduleFit() {
+    cancelAnimationFrame(fitFrame);
+    fitFrame = requestAnimationFrame(fitText);
+  }
+  if (document.fonts) document.fonts.ready.then(scheduleFit);
   let fitW = 0;
   new ResizeObserver(([entry]) => {
     const w = Math.round(entry.contentRect.width);
-    if (w !== fitW) { fitW = w; fitText(); }
+    if (w !== fitW) { fitW = w; scheduleFit(); }
   }).observe(seatsEl);
 
   // ── Coffin ─────────────────────────────────────────────
@@ -384,12 +403,20 @@
 
   // ── View switch (Round Table / Leaderboard) ────────────
   const params = new URLSearchParams(location.search);
+  let tablePositioned = false;
   function setView(v) {
     $("stage").hidden = v !== "table";
     $("board").hidden = v !== "board";
     document.querySelectorAll(".views button").forEach((b) => b.classList.toggle("on", b.dataset.view === v));
     if (v === "board") { renderBoard(); }
-    else fitText();
+    else {
+      if (!tablePositioned && matchMedia("(max-width: 720px)").matches) {
+        $("stage").scrollLeft = ($("stage").scrollWidth - $("stage").clientWidth) / 2;
+        tablePositioned = true;
+      }
+      fitText();
+      scheduleFit();
+    }
   }
   document.querySelectorAll(".views button").forEach((b) => (b.onclick = () => setView(b.dataset.view)));
   // ?rotate=30 flips between the two views every 30s (for the projector)
