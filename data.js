@@ -668,16 +668,16 @@ window.SWEEPSTAKE = {
     "pendingEpisodes": [
       5
     ],
-    "runUrl": "https://github.com/yosayssmoe/-F-F-Celeb-Traitors/actions/runs/38240109816",
-    "latestEpisodeChecked": 4,
+    "runUrl": "https://github.com/yosayssmoe/-F-F-Celeb-Traitors/actions/runs/38880200976",
+    "latestEpisodeChecked": 6,
     "latestEpisodeFullyScored": 4,
     "partiallyScoredEpisodes": [],
     "pendingEvents": [
       {
         "episode": 5,
-        "status": "not-published",
-        "reason": "No confirmed results published.",
-        "id": "7788413284f51a06"
+        "status": "ambiguous",
+        "reason": "Order of recruitment/murder and Round Tables is not explicitly established. Dependent events remain pending.",
+        "id": "0be7cb4247357308"
       }
     ]
   }
