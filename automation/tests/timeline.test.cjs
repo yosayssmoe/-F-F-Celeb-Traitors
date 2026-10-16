@@ -117,6 +117,20 @@ test('Negated and speculative temporal clauses cannot establish chronology',()=>
  for(const text of ['If Ross Kemp was murdered before Miranda Hart was recruited as a Traitor.','Ross Kemp was not murdered before Miranda Hart was recruited as a Traitor.','Ross Kemp might be murdered before Miranda Hart was recruited as a Traitor.'])assert.equal(episode(7,[murder(),recruit()],text).safePrefix,0);
 });
 
+test('An independent event still imports when other events have contradictory chronology',()=>{
+ const ep=episode(7,[murder(),recruit(),shield()],'Ross Kemp was murdered before Miranda Hart was recruited as a Traitor.');
+ ep.externalEdges=[{before:'recruit:Miranda Hart',after:'murder:Ross Kemp',reason:'explicit-temporal-clause'}];resolveChronology(ep);
+ assert.equal(ep.timeline.status,'conflicting');assert.equal(ep.safePrefix,1);
+ const r=run([ep]);assert.deepEqual(r.report.accepted.map(e=>e.event),['murder:Jerry Hall']);
+ assert(r.report.pendingEvents.some(p=>p.event==='recruit:Miranda Hart'));
+});
+
+test('Pending corroboration timestamps do not churn scheduled commits',()=>{
+ const first=episode(7,[murder(),recruit()]);first.candidates[0].corroboration=[{url:'https://www.bbc.co.uk/example',retrievedAt:'2026-10-16T10:00:00Z'}];
+ const initial=run([first]);const later=clone(first);later.candidates[0].corroboration[0].retrievedAt='2026-10-17T10:00:00Z';
+ assert.equal(run([later],initial.data).changed,false);
+});
+
 test('Multiple Round Tables use verified voting-column sequence; unordered table objects remain pending',()=>{
  const a=candidate({ep:7,type:'roundtable',banished:'Ross Kemp',votes:{},revotes:[],absent:[],votingComplete:false}),b=candidate({ep:7,type:'roundtable',banished:'Jerry Hall',votes:{},revotes:[],absent:[],votingComplete:false});
  a.kind=b.kind='table';const ep={episode:7,source,candidates:[b,a],issues:[]};resolveChronology(ep);assert.equal(ep.safePrefix,0);

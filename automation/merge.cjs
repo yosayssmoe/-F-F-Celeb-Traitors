@@ -43,7 +43,8 @@ function merge(data,parsed,config,now=new Date().toISOString()){
   const hold=(c,reason,status='event-pending',dependencies=[])=>{
    const id=`ep${ep.episode}:${key(c.event)}`;
    const source=clone(ep.source);delete source.retrievedAt;
-   report.deferred.push({episode:ep.episode,event:key(c.event),status,reason,dependencies,candidate:clone(c),sources:[source],evidence:c.evidence||[]});
+   const retained=clone(c);for(const s of retained.corroboration||[])delete s.retrievedAt;
+   report.deferred.push({episode:ep.episode,event:key(c.event),status,reason,dependencies,candidate:retained,sources:[source],evidence:c.evidence||[]});
    if(!old.some(e=>key(e)===key(c.event)))blockers.push({id,event:c.event});
   };
   for(const c of ep.candidates.slice(limit)){

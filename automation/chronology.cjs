@@ -58,8 +58,8 @@ function resolveChronology(ep,old=[]){
  const reaches=(a,b,seen=new Set())=>{if(seen.has(a))return false;seen.add(a);return edges.some(e=>e.before===a&&(e.after===b||reaches(e.after,b,seen)));};
  const cycle=cs.some(c=>reaches(key(c),key(c)));
  const remaining=[...cs],safe=[];
- if(!cycle)while(remaining.length){
-  const ready=remaining.find(a=>remaining.every(b=>a===b||(!reaches(key(b),key(a))&&(reaches(key(a),key(b))||!dependent(a.event,b.event)))));
+ while(remaining.length){
+  const ready=remaining.find(a=>!reaches(key(a),key(a))&&remaining.every(b=>a===b||(!reaches(key(b),key(a))&&(reaches(key(a),key(b))||!dependent(a.event,b.event)))));
   if(!ready)break;safe.push(ready);remaining.splice(remaining.indexOf(ready),1);
  }
  ep.candidates=[...safe,...remaining];ep.safePrefix=safe.length;
