@@ -137,7 +137,7 @@
       seat.setAttribute("aria-label", `${c.name}, ${c.participant || "Unassigned"}, ${s.status}, ${s.total} points. Show points history.`);
       seat.onclick = () => openHistory(c.name);
       seat.onfocus = () => {
-        if (matchMedia("(max-width: 720px)").matches) seat.scrollIntoView({ block: "nearest", inline: "nearest" });
+        if (matchMedia("(max-width: 720px)").matches && $("stage").classList.contains("is-expanded")) seat.scrollIntoView({ block: "nearest", inline: "nearest" });
       };
       seat.onkeydown = (e) => {
         if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openHistory(c.name); }
@@ -183,6 +183,31 @@
     const w = Math.round(entry.contentRect.width);
     if (w !== fitW) { fitW = w; scheduleFit(); }
   }).observe(seatsEl);
+
+  // Keep one 1440px logical canvas for both mobile modes. Only its parent
+  // transform changes; artwork, typography and seat coordinates scale together.
+  const tableWindow = $("table-window");
+  function layoutTable() {
+    if (!matchMedia("(max-width: 720px)").matches || !tableWindow.clientWidth) return;
+    const scale = tableWindow.clientWidth / 1440;
+    $("stage").style.setProperty("--table-scale", scale);
+    $("stage").style.setProperty("--table-height", (tableWindow.clientWidth * IMG_H / IMG_W) + "px");
+  }
+  let tableLayoutFrame;
+  new ResizeObserver(() => {
+    cancelAnimationFrame(tableLayoutFrame);
+    tableLayoutFrame = requestAnimationFrame(layoutTable);
+  }).observe(tableWindow);
+  $("expand-table").onclick = () => {
+    const expanded = $("stage").classList.toggle("is-expanded");
+    $("expand-table").setAttribute("aria-expanded", String(expanded));
+    $("expand-table").textContent = expanded ? "Fit Table" : "Expand Table";
+    $("table-help").textContent = expanded ? "Scroll inside the table. Tap a name for details." : "Tap a nameplate for contestant details.";
+    layoutTable();
+    tableWindow.scrollTop = 0;
+    tableWindow.scrollLeft = expanded ? (1440 - tableWindow.clientWidth) / 2 : 0;
+    scheduleFit();
+  };
 
   // ── Coffin ─────────────────────────────────────────────
   function renderCoffin() {
@@ -403,19 +428,16 @@
 
   // ── View switch (Round Table / Leaderboard) ────────────
   const params = new URLSearchParams(location.search);
-  let tablePositioned = false;
   function setView(v) {
     $("stage").hidden = v !== "table";
     $("board").hidden = v !== "board";
     document.querySelectorAll(".views button").forEach((b) => b.classList.toggle("on", b.dataset.view === v));
     if (v === "board") { renderBoard(); }
     else {
-      if (!tablePositioned && matchMedia("(max-width: 720px)").matches) {
-        $("stage").scrollLeft = ($("stage").scrollWidth - $("stage").clientWidth) / 2;
-        tablePositioned = true;
-      }
+      layoutTable();
       fitText();
       scheduleFit();
+      if (matchMedia("(max-width: 720px)").matches) $("stage").scrollIntoView({ block: "nearest" });
     }
   }
   document.querySelectorAll(".views button").forEach((b) => (b.onclick = () => setView(b.dataset.view)));

@@ -68,7 +68,8 @@ body {
 }
 .seats { position: absolute; inset: 0; }
 .table-canvas { position: relative; width: 100%; aspect-ratio: 1312 / 1199; container-type: inline-size; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-.table-help { display: none; }
+.table-controls { display: none; }
+.table-window { position: relative; width: 100%; aspect-ratio: 1312 / 1199; }
 
 /* ── Place cards ──────────────────────────────────────
    Drawn in the same style as the painted cards, centred over each one and a
@@ -515,7 +516,7 @@ body.projector .manage-btn { display: none; }
   .coffin { flex: none; width: 100%; }
 }
 
-/* Phones: preserve the artwork's coordinate system and pan at a readable size. */
+/* Phones: uniformly scale the complete logical canvas, not its separate parts. */
 @media (max-width: 720px) {
   .board { padding: 14px 8px; }
   .lb .bd { display: none; }
@@ -528,15 +529,18 @@ body.projector .manage-btn { display: none; }
   .ev-field { grid-template-columns: 1fr; }
   .stage {
     max-width: 100%; aspect-ratio: auto; container-type: normal;
-    overflow-x: auto; overscroll-behavior-x: contain;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
   }
-  .table-canvas { width: 1440px; }
-  .table-help {
-    display: block; position: sticky; left: 0; width: 100%;
-    margin: 0; padding: 12px; color: var(--gold-hi); background: #17100b;
-    font-size: 0.8rem; line-height: 1.5; text-align: center;
+  .table-window { height: var(--table-height); aspect-ratio: auto; overflow: hidden; }
+  .table-canvas { width: 1440px; transform: scale(var(--table-scale, 1)); transform-origin: top left; }
+  .table-controls {
+    display: flex; align-items: center; gap: 10px; padding: 10px;
+    color: var(--gold-hi); background: #17100b;
   }
+  .table-controls p { flex: 1; margin: 0; font-size: 0.75rem; line-height: 1.4; }
+  .table-controls button { flex: none; min-height: 44px; }
+  .stage.is-expanded .table-window { height: min(70vh, 700px); height: min(70dvh, 700px); overflow: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+  .stage.is-expanded .table-canvas { transform: none; }
   .seat { width: var(--mobile-card-width) !important; height: var(--mobile-card-height) !important; }
   .name, .seat.wrap .name { font-size: calc(var(--cw) * 0.1cqw * var(--fit)); line-height: 1.12; }
   .who, .seat.wrap .who { font-size: calc(var(--cw) * 0.088cqw * var(--fit)); }

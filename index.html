@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Celebrity Traitors UK — Friends &amp; Family Sweepstake</title>
-  <link rel="stylesheet" href="styles.css?v=20261016-round-table" />
+  <link rel="stylesheet" href="styles.css?v=20261016-fit-table-2" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗡️</text></svg>" />
 </head>
 <body>
@@ -16,11 +16,16 @@
 
   <header class="brand"><span>THE CASTLE • SERIES 2</span><h1>Celebrity Traitors UK</h1><p>Friends &amp; Family Sweepstake</p></header><p id="storage-status" class="storage-status" role="status"></p><main class="layout">
     <section class="stage" id="stage" aria-label="The round table" aria-describedby="table-help" tabindex="0">
-      <p class="table-help" id="table-help">Swipe across the table to read every name. Pinch to zoom.</p>
-      <div class="table-canvas">
+      <div class="table-controls">
+        <p id="table-help">Tap a nameplate for contestant details.</p>
+        <button type="button" class="btn gold sm" id="expand-table" aria-expanded="false" aria-controls="table-window">Expand Table</button>
+      </div>
+      <div class="table-window" id="table-window">
+       <div class="table-canvas">
         <img class="stage-img" src="images/table.webp" alt="" />
         <div class="stage-vignette" aria-hidden="true"></div>
         <div class="seats" id="seats"></div>
+       </div>
       </div>
     </section>
 
@@ -251,6 +256,6 @@
       <footer class="admin-foot"><label class="episode-confirm"><input id="episode-confirm" type="checkbox" disabled> I have reviewed the events, sources, warnings and score changes.</label><button type="button" id="episode-approve" class="btn gold" disabled>Approve episode update</button></footer>
     </div>
   </dialog>
-  <script src="validation.js"></script><script src="episode-updates.js"></script><script src="episode-sources.js"></script><script src="automation-status.js"></script><script src="app.js?v=20261016-round-table"></script><script src="episode-ui.js"></script>
+  <script src="validation.js"></script><script src="episode-updates.js"></script><script src="episode-sources.js"></script><script src="automation-status.js"></script><script src="app.js?v=20261016-fit-table-2"></script><script src="episode-ui.js"></script>
 </body>
 </html>
