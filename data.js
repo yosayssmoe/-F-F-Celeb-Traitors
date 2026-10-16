@@ -527,6 +527,52 @@ window.SWEEPSTAKE = {
         ],
         "locked": false
       }
+    },
+    {
+      "ep": 6,
+      "type": "roundtable",
+      "votes": {
+        "James Acaster": "Joanne McNally",
+        "James Blunt": "Joe Lycett",
+        "Jerry Hall": "Joe Lycett",
+        "Joanne McNally": "Joe Lycett",
+        "King Kenny": "Joe Lycett",
+        "Leigh-Anne Pinnock": "Joe Lycett",
+        "Maya Jama": "Joe Lycett",
+        "Michael Sheen": "Joe Lycett",
+        "Miranda Hart": "Ross Kemp",
+        "Romesh Ranganathan": "Joe Lycett",
+        "Ross Kemp": "Joe Lycett",
+        "Sebastian Croft": "Joe Lycett",
+        "Sharon Rooney": "Joe Lycett",
+        "Joe Lycett": "James Blunt"
+      },
+      "revotes": [],
+      "absent": [],
+      "banished": "Joe Lycett",
+      "votingComplete": true,
+      "id": "ep6-auto-3855462ff7bb",
+      "automation": {
+        "owner": "github-actions",
+        "verification": "structured-verified",
+        "verifiedAt": "2026-10-16T22:19:06.161Z",
+        "payloadHash": "b0df1ac04a1a5086fb54b7d09531522ed37a95ff48fb65358ce6408e17e96324",
+        "sources": [
+          {
+            "title": "Wikipedia: Celebrity Traitors UK Series 2",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1380609185",
+            "retrievedAt": "2026-10-16T22:19:04.981Z",
+            "revision": 1380609185,
+            "revisionTimestamp": "2026-10-16T20:20:52Z"
+          }
+        ],
+        "evidence": [
+          "Banishment: Joe Lycett",
+          "Contestant finish agrees"
+        ],
+        "chronology": [],
+        "locked": false
+      }
     }
   ],
   "participants": [
@@ -589,6 +635,23 @@ window.SWEEPSTAKE = {
       ],
       "approvedAt": "2026-10-16T11:13:45.618Z",
       "automationPayloadHash": "54a904e42a26d85e3d2fa95f3e3dd6344cea6dc4a9b73aa7752cfe0f1aa5f1d5",
+      "automationLocked": false
+    },
+    "6": {
+      "date": "2026-10-16",
+      "status": "complete",
+      "notes": "Automatically verified structured events. Unsupported or unpublished information remains in the workflow report.",
+      "sources": [
+        {
+          "title": "Wikipedia: Celebrity Traitors UK Series 2",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1380609185",
+          "retrievedAt": "2026-10-16T22:19:04.981Z",
+          "revision": 1380609185,
+          "revisionTimestamp": "2026-10-16T20:20:52Z"
+        }
+      ],
+      "approvedAt": "2026-10-16T22:19:06.161Z",
+      "automationPayloadHash": "c3fd486504e07800826de9571ca430b4354f4355dd54f56abd99b4cce4610c77",
       "automationLocked": false
     }
   },
@@ -1005,33 +1068,90 @@ window.SWEEPSTAKE = {
           "revisionTimestamp": "2026-10-16T08:22:42Z"
         }
       ]
+    },
+    {
+      "episode": 6,
+      "approvedAt": "2026-10-16T22:19:06.161Z",
+      "method": "GitHub Actions verified update",
+      "previousEvents": [],
+      "previousRecord": null,
+      "newEvents": [
+        {
+          "ep": 6,
+          "type": "roundtable",
+          "votes": {
+            "James Acaster": "Joanne McNally",
+            "James Blunt": "Joe Lycett",
+            "Jerry Hall": "Joe Lycett",
+            "Joanne McNally": "Joe Lycett",
+            "King Kenny": "Joe Lycett",
+            "Leigh-Anne Pinnock": "Joe Lycett",
+            "Maya Jama": "Joe Lycett",
+            "Michael Sheen": "Joe Lycett",
+            "Miranda Hart": "Ross Kemp",
+            "Romesh Ranganathan": "Joe Lycett",
+            "Ross Kemp": "Joe Lycett",
+            "Sebastian Croft": "Joe Lycett",
+            "Sharon Rooney": "Joe Lycett",
+            "Joe Lycett": "James Blunt"
+          },
+          "revotes": [],
+          "absent": [],
+          "banished": "Joe Lycett",
+          "votingComplete": true,
+          "id": "ep6-auto-3855462ff7bb",
+          "automation": {
+            "owner": "github-actions",
+            "verification": "structured-verified",
+            "verifiedAt": "2026-10-16T22:19:06.161Z",
+            "payloadHash": "b0df1ac04a1a5086fb54b7d09531522ed37a95ff48fb65358ce6408e17e96324",
+            "sources": [
+              {
+                "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1380609185",
+                "retrievedAt": "2026-10-16T22:19:04.981Z",
+                "revision": 1380609185,
+                "revisionTimestamp": "2026-10-16T20:20:52Z"
+              }
+            ],
+            "evidence": [
+              "Banishment: Joe Lycett",
+              "Contestant finish agrees"
+            ],
+            "chronology": [],
+            "locked": false
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Wikipedia: Celebrity Traitors UK Series 2",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1380609185",
+          "retrievedAt": "2026-10-16T22:19:04.981Z",
+          "revision": 1380609185,
+          "revisionTimestamp": "2026-10-16T20:20:52Z"
+        }
+      ]
     }
   ],
   "automation": {
     "version": 2,
-    "lastVerifiedUpdate": "2026-10-16T11:13:45.618Z",
-    "latestConfirmedEpisode": 5,
+    "lastVerifiedUpdate": "2026-10-16T22:19:06.161Z",
+    "latestConfirmedEpisode": 6,
     "votingData": "Complete",
     "scheduleDescription": "Daily 10:00, plus Thursday and Friday 23:00 (Europe/London). Checks revisit pending and historical results. GitHub may delay or skip runs.",
     "verification": "structured-source validation",
     "pendingEpisodes": [
-      6,
       7,
       8,
       9,
       10
     ],
-    "runUrl": "https://github.com/yosayssmoe/-F-F-Celeb-Traitors/actions/runs/38892338097",
+    "runUrl": "https://github.com/yosayssmoe/-F-F-Celeb-Traitors/actions/runs/38974980788",
     "latestEpisodeChecked": 6,
-    "latestEpisodeFullyScored": 5,
+    "latestEpisodeFullyScored": 6,
     "partiallyScoredEpisodes": [],
     "pendingEvents": [
-      {
-        "episode": 6,
-        "status": "not-published",
-        "reason": "No confirmed results published.",
-        "id": "6f4dcb1e7d79a2f0"
-      },
       {
         "episode": 7,
         "status": "not-published",
