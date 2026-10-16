@@ -128,7 +128,7 @@
         txt.appendChild(el("div", "fate fit " + cls, fate));
       } else if (s.status === "winner") {
         seat.classList.add("won");
-        txt.appendChild(el("div", "fate fit winner", "Winner · " + (c.participant || "")));
+        txt.appendChild(el("div", "fate fit winner", "Winner"));
       }
       seat.appendChild(txt);
       seat.title = `${c.name} — ${s.total} pts${c.participant ? " · drawn by " + c.participant : ""} (click for points history)`;
