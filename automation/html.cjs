@@ -19,4 +19,8 @@ function aliases(names){const map=new Map();for(const name of names){const p=nam
  for(const [a,n] of [['James A.','James Acaster'],['James B.','James Blunt'],['Kenny','King Kenny'],['Leigh-Anne','Leigh-Anne Pinnock']])if(names.includes(n))map.set(a.toLowerCase(),n);
  return value=>map.get((value||'').trim().replace(/’/g,"'").toLowerCase())||null;
 }
-module.exports={parse,all,attr,text,grid,aliases};
+function aliasVariants(names,name){
+ const resolve=aliases(names),parts=name.split(' ');
+ return [...new Set([name,parts[0],parts[0]+' '+(parts[1]?.[0]||'')+'.','James A.','James B.','Kenny','Leigh-Anne'])].filter(a=>resolve(a)===name);
+}
+module.exports={parse,all,attr,text,grid,aliases,aliasVariants};

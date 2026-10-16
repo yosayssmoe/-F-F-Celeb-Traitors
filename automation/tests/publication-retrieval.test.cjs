@@ -31,10 +31,10 @@ test('Invalid re-vote targets and unverified ties do not earn vote bonuses',()=>
 });
 test('Independent recap disagreement explicitly blocks chronology rather than choosing a source',async()=>{
  const previous=global.fetch;
- const candidates=[{event:{type:'murder',victim:'A'},key:'murder:A',evidence:[]},{event:{type:'roundtable',banished:'B'},key:'roundtable:B',evidence:[]}];
+ const candidates=[{event:{type:'murder',victim:'A'},key:'murder:A',evidence:[]},{event:{type:'roundtable',banished:'B'},key:'roundtable:B',kind:'table',rounds:[{raw:{A:'Murdered (Episode 4)'}}],evidence:[]}];
  const ep={episode:4,candidates,issues:[],safePrefix:2};
  try{
-  global.fetch=async()=>({ok:true,text:async()=>'<article><p>B was banished. A was murdered.</p></article>'});
+  global.fetch=async()=>({ok:true,text:async()=>'<article><p>B was banished before A was murdered.</p></article>'});
   await corroborate({episodes:[ep],recaps:[{episode:4,url:'https://www.bbc.co.uk/example'}]},config,[]);
   assert(ep.issues.some(x=>x.status==='conflicting'));assert.equal(ep.candidates[0].key,'murder:A');
  }finally{global.fetch=previous;}

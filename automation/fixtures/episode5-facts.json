@@ -1,0 +1,121 @@
+{
+  "episode": 5,
+  "candidates": [
+    {
+      "event": {
+        "ep": 5,
+        "type": "murder",
+        "victim": "Rob Beckett"
+      },
+      "key": "murder:Rob Beckett",
+      "column": 11,
+      "kind": "decision",
+      "verified": true,
+      "evidence": [
+        "Murder: Rob",
+        "Second structured section agrees"
+      ],
+      "observedRole": "Faithful",
+      "aliases": [
+        "Rob"
+      ]
+    },
+    {
+      "event": {
+        "ep": 5,
+        "type": "roundtable",
+        "votes": {},
+        "revotes": [],
+        "absent": [],
+        "banished": "Hannah Fry",
+        "votingComplete": false
+      },
+      "key": "roundtable:Hannah Fry",
+      "column": 11,
+      "kind": "table",
+      "verified": true,
+      "rounds": [
+        {
+          "votes": {
+            "James Acaster": "Hannah Fry",
+            "James Blunt": "Hannah Fry",
+            "Jerry Hall": "Hannah Fry",
+            "Joanne McNally": "Sebastian Croft",
+            "Joe Lycett": "Hannah Fry",
+            "King Kenny": "Hannah Fry",
+            "Leigh-Anne Pinnock": "Hannah Fry",
+            "Maya Jama": "Hannah Fry",
+            "Michael Sheen": "Hannah Fry",
+            "Miranda Hart": "Hannah Fry",
+            "Romesh Ranganathan": "James Blunt",
+            "Ross Kemp": "Hannah Fry",
+            "Sebastian Croft": "Hannah Fry",
+            "Sharon Rooney": "Hannah Fry",
+            "Hannah Fry": "Jerry Hall"
+          },
+          "raw": {
+            "James Acaster": "Hannah",
+            "James Blunt": "Hannah",
+            "Jerry Hall": "Hannah",
+            "Joanne McNally": "Sebastian",
+            "Joe Lycett": "Hannah",
+            "King Kenny": "Hannah",
+            "Leigh-Anne Pinnock": "Hannah",
+            "Maya Jama": "Hannah",
+            "Michael Sheen": "Hannah",
+            "Miranda Hart": "Hannah",
+            "Romesh Ranganathan": "James B.",
+            "Ross Kemp": "Hannah",
+            "Sebastian Croft": "Hannah",
+            "Sharon Rooney": "Hannah",
+            "Hannah Fry": "Jerry",
+            "Rob Beckett": "Murdered (Episode 5)",
+            "Julie Hesmondhalgh": "Banished (Episode 4)",
+            "Bella Ramsey": "Murdered (Episode 4)",
+            "Myha'la": "Banished (Episode 3)",
+            "Richard E. Grant": "Banished (Episode 3)",
+            "Amol Rajan": "Murdered (Episode 2)"
+          },
+          "tally": "12–1–1–1"
+        }
+      ],
+      "evidence": [
+        "Banishment: Hannah Fry",
+        "Contestant finish agrees"
+      ],
+      "observedRole": "Traitor",
+      "aliases": [
+        "Hannah"
+      ]
+    },
+    {
+      "event": {
+        "ep": 5,
+        "type": "recruit",
+        "who": "King Kenny",
+        "accepted": true
+      },
+      "key": "recruit:King Kenny",
+      "column": 12,
+      "kind": "decision",
+      "verified": true,
+      "evidence": [
+        "Seduce: Kenny",
+        "Second structured section agrees"
+      ],
+      "aliases": [
+        "Kenny"
+      ]
+    }
+  ],
+  "source": {
+    "title": "Wikipedia: Celebrity Traitors UK Series 2",
+    "url": "https://en.wikipedia.org/w/index.php?oldid=1380532698",
+    "retrievedAt": "2026-10-16T11:02:35.7154945Z",
+    "revision": 1380532698,
+    "revisionTimestamp": "2026-10-16T08:22:42Z"
+  },
+  "description": "At the Round Table, suspicions predominantly fell on Hannah (for hesitating to take shields and for not being murdered). She was banished by a near unanimous vote with both Maya and James A. voting for her. She revealed she was a Traitor to the delight of the Faithful.Afterwards, some suspicion fell on Joanne after she unintentionally implied she had been at the face to face murder. Joe openly begged every player for the Traitors to recruit him now that a spot was available. That night, the Traitors decided to recruit either Joanne, Kenny, or Joe. They chose Kenny and he accepted the offer.",
+  "noEvents": false,
+  "provenance": "Normalized structured facts from pinned Wikipedia revision 1380532698, retrieved 16 October 2026. Recap excerpt retained only for explicit sequencing; no invented broadcast results."
+}

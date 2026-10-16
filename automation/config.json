@@ -10,10 +10,7 @@
   "userAgent": "FriendsFamilyTraitors/1.0 (https://github.com/yosayssmoe/-F-F-Celeb-Traitors; personal results checker)",
   "recapHosts": [
     "www.bbc.co.uk",
-    "www.bbc.com",
-    "www.standard.co.uk",
-    "www.the-independent.com",
-    "www.independent.co.uk"
+    "www.bbc.com"
   ],
   "maxRecapsPerRun": 4,
   "scheduleDescription": "Daily 10:00, plus Thursday and Friday 23:00 (Europe/London). Checks revisit pending and historical results. GitHub may delay or skip runs."

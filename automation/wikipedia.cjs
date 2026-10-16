@@ -75,9 +75,10 @@ function parseWikipedia(snapshot,data,config){
   for(const c of result.candidates){
    const who=c.event.who||c.event.victim||c.event.shielded||c.event.banished;
    if(c.event.victim||c.event.banished){const role=finishes.get(who)?.role;if(/^(Faithful|Traitor)$/.test(role))c.observedRole=role;}
-   c.aliases=voterRows.map((r,i)=>voterNames[i]===who?r.slice(0,first).find(v=>resolve(v.text)===who)?.text:null).filter(Boolean);
+   c.aliases=[...new Set([...H.aliasVariants(names,who),...voterRows.map((r,i)=>voterNames[i]===who?r.slice(0,first).find(v=>resolve(v.text)===who)?.text:null).filter(Boolean)])];
   }
-  resolveChronology(result,data.events.filter(e=>e.ep===ep));
+  result.publishedEvents=data.events.filter(e=>e.ep===ep);
+  resolveChronology(result,result.publishedEvents);
   result.noEvents=!result.candidates.length&&!result.issues.length&&columns.every(c=>/^(None|No vote)$/i.test(bRow?.[c]?.text||''))&&!!result.description;
  }
  return {episodes:[...episodes.values()],source,recaps:recaps.filter((r,i,a)=>a.findIndex(x=>x.url===r.url)===i)};

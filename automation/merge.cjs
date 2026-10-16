@@ -1,5 +1,6 @@
 const {T,D,E,clone,stable,hash,payload}=require('./shared.cjs');
 const {verifyVotes}=require('./wikipedia.cjs');
+const {dependent}=require('./chronology.cjs');
 const key=e=>e.type+':'+(e.who||e.victim||e.shielded||e.banished||(e.winners||[]).join('|')||'');
 function assertDraw(d){
  const draw={Talia:['Ross Kemp','Jerry Hall','Richard E. Grant'],Joe:['Maya Jama',"Myha'la",'King Kenny'],Alex:['Romesh Ranganathan','James Blunt','Hannah Fry'],Apala:['Michael Sheen','Sharon Rooney','Leigh-Anne Pinnock'],Reuben:['Joe Lycett','Rob Beckett','Bella Ramsey'],Julian:['Julie Hesmondhalgh','James Acaster','Sebastian Croft'],Ava:['Joanne McNally','Miranda Hart']};
@@ -16,39 +17,60 @@ function mergeRound(old,fresh){
  return {...clone(old),votes:fresh.votes,revotes:fresh.revotes,absent:fresh.absent,votingComplete:fresh.votingComplete};
 }
 function merge(data,parsed,config,now=new Date().toISOString()){
- D.validate(data);assertDraw(data);let next=clone(data),changed=false,blockedAt=null;
+ D.validate(data);assertDraw(data);let next=clone(data),changed=false;const blockers=[];
  const report={checkedAt:now,sources:[parsed.source],accepted:[],deferred:[],unchanged:[],scoresChanged:false,dataUpdated:false,publication:'not attempted',beforeTotals:clone(E.totals(data)),afterTotals:null};
  const ordered=parsed.episodes.slice().sort((a,b)=>a.episode-b.episode);
+ // A disappearing pending candidate is a source regression, not a resolution.
+ // Revisit it, and keep its state dependency until evidence returns.
+ for(const item of data.automation?.pendingEvents||[]){
+  if(!item.event||!item.candidate)continue;
+  const ep=ordered.find(e=>e.episode===item.episode);
+  if(ep?.candidates.some(c=>key(c.event)===item.event))continue;
+  report.deferred.push({...clone(item),status:'source-missing',reason:'Previously pending event is absent from this source revision; awaiting renewed verification.'});
+  blockers.push({id:`ep${item.episode}:${item.event}`,event:item.candidate.event||item.candidate,episode:item.episode});
+ }
+ report.timelines=ordered.filter(ep=>ep.timeline).map(ep=>({episode:ep.episode,...ep.timeline}));
  for(const ep of ordered){
   const old=next.events.filter(e=>e.ep===ep.episode),before=clone(next),accepted=[];
   const defer=(reason,status='deferred')=>report.deferred.push({episode:ep.episode,status,reason});
   const record=next.episodeRecords?.[ep.episode];
   if(old.some(locked)||record?.automationLocked||(record?.automationPayloadHash&&record.automationPayloadHash!==hash(old.map(payload)))){defer('Manually protected episode retained. Later results will use this authoritative local history.','manual-protected');continue;}
-  if(blockedAt!==null&&ep.episode>=blockedAt){if(ep.candidates.length)defer('Earlier episode '+blockedAt+' needs resolution before new role/survival scoring.');continue;}
   const issues=ep.issues.filter(x=>['conflicting','ambiguous','unsupported','incomplete'].includes(x.status));
   issues.forEach(x=>defer(x.detail,x.status));
   // Unscoped issues can hide an earlier role change or elimination.
   const globalIssue=issues.some(x=>!x.eventKey&&x.scope!=='chronology');
   const limit=globalIssue?0:(ep.safePrefix??ep.candidates.length);
-  if(limit<ep.candidates.length||globalIssue)blockedAt=ep.episode;
-  if(globalIssue||(!limit&&ep.candidates.length))continue;
+  const hold=(c,reason,status='event-pending',dependencies=[])=>{
+   const id=`ep${ep.episode}:${key(c.event)}`;
+   const source=clone(ep.source);delete source.retrievedAt;
+   report.deferred.push({episode:ep.episode,event:key(c.event),status,reason,dependencies,candidate:clone(c),sources:[source],evidence:c.evidence||[]});
+   if(!old.some(e=>key(e)===key(c.event)))blockers.push({id,event:c.event});
+  };
+  for(const c of ep.candidates.slice(limit)){
+   const node=ep.timeline?.pending.find(n=>n.event===key(c.event));
+   hold(c,node?.reason||'An unresolved event may change role or survival eligibility.','chronology-pending',(node?.dependencies||[]).map(k=>`ep${ep.episode}:${k}`));
+   const blocker=blockers.find(b=>b.id===`ep${ep.episode}:${key(c.event)}`);if(blocker)blocker.afterSafePrefix=ep.episode;
+  }
+  if(globalIssue){blockers.push({id:`ep${ep.episode}:unknown-event`,event:null});continue;}
+  if(!limit&&ep.candidates.length)continue;
   if(!ep.candidates.length){
-   if(old.length){defer('The source no longer contains this episode’s existing events; keeping the published record.','conflicting');blockedAt=ep.episode;}
+   if(old.length){defer('The source no longer contains this episode’s existing events; keeping the published record.','conflicting');blockers.push({id:`ep${ep.episode}:missing-history`,event:null});}
    else if(ep.noEvents)report.unchanged.push({episode:ep.episode,reason:'Source explicitly records no completed scoring events.'});
-   else {report.deferred.push({episode:ep.episode,status:'not-published',reason:'No confirmed results published.'});blockedAt=ep.episode;}
+   else {report.deferred.push({episode:ep.episode,status:'not-published',reason:'No confirmed results published.'});blockers.push({id:`ep${ep.episode}:not-published`,event:null});}
    continue;
   }
   try{
    const candidates=ep.candidates.slice(0,limit);
    if(new Set(ep.candidates.map(c=>key(c.event))).size!==ep.candidates.length)throw Error('Duplicate event candidates; episode retained for verification.');
-   if(limit<ep.candidates.length)for(const c of ep.candidates.slice(limit))report.deferred.push({episode:ep.episode,event:key(c.event),status:'chronology-pending',reason:'An earlier unresolved event may change role or survival eligibility.'});
-   if(old.some(e=>!candidates.some(c=>key(c.event)===key(e))))throw Error('Source conflicts with an existing event or omits it. Existing history retained.');
+   if(old.some(e=>!ep.candidates.some(c=>key(c.event)===key(e))))throw Error('Source conflicts with an existing event or omits it. Existing history retained.');
    // Never reorder existing events. The source must agree with their relative order.
-   if(stable(candidates.filter(c=>old.some(e=>key(e)===key(c.event))).map(c=>key(c.event)))!==stable(old.map(key)))throw Error('Source event order conflicts with the existing chronology.');
+   if(stable(candidates.filter(c=>old.some(e=>key(e)===key(c.event))).map(c=>key(c.event)))!==stable(old.filter(e=>candidates.some(c=>key(c.event)===key(e))).map(key)))throw Error('Source event order conflicts with the existing chronology.');
    const merged=[];
    for(let i=0;i<candidates.length;i++){
     try{
     const c=candidates[i],existing=old.find(e=>key(e)===key(c.event));
+    const dependencies=blockers.filter(b=>(!b.episode||b.episode<=ep.episode)&&b.afterSafePrefix!==ep.episode&&b.id!==`ep${ep.episode}:${key(c.event)}`&&dependent(b.event,c.event));
+    if(!existing&&dependencies.length){hold(c,'Earlier pending events can change the roles, attendance or survival points used by this event.','dependency-pending',dependencies.map(b=>b.id));continue;}
     if(!c.verified||issues.some(x=>x.eventKey===key(c.event)))throw Error('Event lacks consistent supporting evidence: '+key(c.event));
     if(config.requireIndependentCorroboration&&!c.corroboration?.length)throw Error('Independent-source corroboration is required but unavailable.');
     const prefix={...next,events:[...next.events.filter(e=>e.ep<ep.episode),...merged]};
@@ -62,7 +84,7 @@ function merge(data,parsed,config,now=new Date().toISOString()){
     if(existing&&stable(payload(existing))===stable(payload(event))){merged.push(clone(existing));continue;}
     const sourceList=[ep.source,...(c.corroboration||[])];
     event.id=existing?.id||`ep${ep.episode}-auto-${hash(key(event)).slice(0,12)}`;
-    event.automation={owner:'github-actions',verification:c.corroboration?.length?'corroborated':'structured-verified',verifiedAt:now,payloadHash:hash(payload(event)),sources:sourceList,evidence:c.evidence,locked:false};
+    event.automation={owner:'github-actions',verification:c.corroboration?.length?'corroborated':'structured-verified',verifiedAt:now,payloadHash:hash(payload(event)),sources:sourceList,evidence:c.evidence,chronology:ep.timeline?.edges.filter(e=>e.before===key(c.event)||e.after===key(c.event))||[],locked:false};
     D.validate({...next,events:[...next.events.filter(e=>e.ep<ep.episode),...merged,event,...old.filter(e=>!merged.some(m=>key(m)===key(e))&&key(e)!==key(event)),...next.events.filter(e=>e.ep>ep.episode)]});
     merged.push(event);accepted.push({episode:ep.episode,event:key(event),action:existing?'backfilled':'added',votingComplete:event.type==='roundtable'?event.votingComplete:undefined,verification:event.automation.verification,sources:sourceList});
     }catch(error){
@@ -71,12 +93,11 @@ function merge(data,parsed,config,now=new Date().toISOString()){
       report.deferred.push({episode:ep.episode,event:key(existing),status:'conflicting',reason:error.message});
       merged.push(clone(existing));continue;
      }
-     blockedAt=ep.episode;
-     for(const c of candidates.slice(i))report.deferred.push({episode:ep.episode,event:key(c.event),status:'event-pending',reason:error.message});
-     merged.push(...old.filter(e=>!merged.some(m=>key(m)===key(e))));
-     break;
+     hold(c,error.message);
+     if(existing)merged.push(clone(existing));
     }
    }
+   merged.push(...old.filter(e=>!merged.some(m=>key(m)===key(e))));
    if(!accepted.length){report.unchanged.push({episode:ep.episode,reason:'No newly verified scoring changes.'});continue;}
    next.events=[...next.events.filter(e=>e.ep<ep.episode),...merged,...next.events.filter(e=>e.ep>ep.episode)];
    D.validate(next);assertDraw(next);
@@ -87,7 +108,7 @@ function merge(data,parsed,config,now=new Date().toISOString()){
    next.episodeRecords[ep.episode]={...(previous||{}),date:ep.date||previous?.date||'',status:complete?'complete':'partial',notes:'Automatically verified structured events. Unsupported or unpublished information remains in the workflow report.',sources:[ep.source],approvedAt:now,automationPayloadHash:hash(merged.map(payload)),automationLocked:false};
    next.episodeAudit??=[];next.episodeAudit.push({episode:ep.episode,approvedAt:now,method:'GitHub Actions verified update',previousEvents:old,previousRecord:previous,newEvents:clone(merged),sources:[ep.source]});
    report.accepted.push(...accepted);changed=true;
-  }catch(e){next=before;defer(e.message,'conflicting');blockedAt=ep.episode;}
+  }catch(e){next=before;defer(e.message,'conflicting');blockers.push({id:`ep${ep.episode}:conflicting`,event:null});}
  }
  // Pending state is canonical and durable, but stable checks must not churn commits.
  const missingVotes=[];
@@ -99,7 +120,7 @@ function merge(data,parsed,config,now=new Date().toISOString()){
  }
  const pending=[...report.deferred.map(x=>({...x,id:hash([x.episode,x.event||'',x.status,x.reason]).slice(0,16)})),...missingVotes.map(x=>({...x,id:hash([x.episode,x.event,'votes']).slice(0,16),status:'missing-votes'}))];
  // Preserve unresolved records for episodes omitted altogether by a regressing source.
- for(const item of data.automation?.pendingEvents||[])if(!ordered.some(e=>e.episode===item.episode))pending.push(item);
+ for(const item of data.automation?.pendingEvents||[])if(!ordered.some(e=>e.episode===item.episode)&&!pending.some(p=>p.episode===item.episode&&p.event===item.event))pending.push(item);
  const beforePending=data.automation?.pendingEvents||[];
  const pendingChanged=stable(beforePending)!==stable(pending);
  let recordsChanged=false;
