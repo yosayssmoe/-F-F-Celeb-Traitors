@@ -370,6 +370,163 @@ window.SWEEPSTAKE = {
         ],
         "locked": false
       }
+    },
+    {
+      "ep": 5,
+      "type": "murder",
+      "victim": "Rob Beckett",
+      "id": "ep5-auto-85ef02b2b2cc",
+      "automation": {
+        "owner": "github-actions",
+        "verification": "structured-verified",
+        "verifiedAt": "2026-10-16T11:13:45.618Z",
+        "payloadHash": "82a56017910f1c45fc9fd353045acee4b917e1ea79bd574fd10c112454516b39",
+        "sources": [
+          {
+            "title": "Wikipedia: Celebrity Traitors UK Series 2",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1380532698",
+            "retrievedAt": "2026-10-16T11:13:45.058Z",
+            "revision": 1380532698,
+            "revisionTimestamp": "2026-10-16T08:22:42Z"
+          }
+        ],
+        "evidence": [
+          "Murder: Rob",
+          "Second structured section agrees"
+        ],
+        "chronology": [
+          {
+            "before": "murder:Rob Beckett",
+            "after": "roundtable:Hannah Fry",
+            "reason": "eliminated-before-voting",
+            "evidence": "Rob Beckett explicitly out in every voting round",
+            "source": {
+              "title": "Wikipedia: Celebrity Traitors UK Series 2",
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1380532698",
+              "retrievedAt": "2026-10-16T11:13:45.058Z",
+              "revision": 1380532698,
+              "revisionTimestamp": "2026-10-16T08:22:42Z"
+            }
+          }
+        ],
+        "locked": false
+      }
+    },
+    {
+      "ep": 5,
+      "type": "roundtable",
+      "votes": {
+        "James Acaster": "Hannah Fry",
+        "James Blunt": "Hannah Fry",
+        "Jerry Hall": "Hannah Fry",
+        "Joanne McNally": "Sebastian Croft",
+        "Joe Lycett": "Hannah Fry",
+        "King Kenny": "Hannah Fry",
+        "Leigh-Anne Pinnock": "Hannah Fry",
+        "Maya Jama": "Hannah Fry",
+        "Michael Sheen": "Hannah Fry",
+        "Miranda Hart": "Hannah Fry",
+        "Romesh Ranganathan": "James Blunt",
+        "Ross Kemp": "Hannah Fry",
+        "Sebastian Croft": "Hannah Fry",
+        "Sharon Rooney": "Hannah Fry",
+        "Hannah Fry": "Jerry Hall"
+      },
+      "revotes": [],
+      "absent": [],
+      "banished": "Hannah Fry",
+      "votingComplete": true,
+      "id": "ep5-auto-ee0b703c6058",
+      "automation": {
+        "owner": "github-actions",
+        "verification": "structured-verified",
+        "verifiedAt": "2026-10-16T11:13:45.618Z",
+        "payloadHash": "81ef4939495e1d150a75bdc26bd7633ef5c70a18d9dcdadaaee69645b1dde2b2",
+        "sources": [
+          {
+            "title": "Wikipedia: Celebrity Traitors UK Series 2",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1380532698",
+            "retrievedAt": "2026-10-16T11:13:45.058Z",
+            "revision": 1380532698,
+            "revisionTimestamp": "2026-10-16T08:22:42Z"
+          }
+        ],
+        "evidence": [
+          "Banishment: Hannah Fry",
+          "Contestant finish agrees"
+        ],
+        "chronology": [
+          {
+            "before": "murder:Rob Beckett",
+            "after": "roundtable:Hannah Fry",
+            "reason": "eliminated-before-voting",
+            "evidence": "Rob Beckett explicitly out in every voting round",
+            "source": {
+              "title": "Wikipedia: Celebrity Traitors UK Series 2",
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1380532698",
+              "retrievedAt": "2026-10-16T11:13:45.058Z",
+              "revision": 1380532698,
+              "revisionTimestamp": "2026-10-16T08:22:42Z"
+            }
+          },
+          {
+            "before": "roundtable:Hannah Fry",
+            "after": "recruit:King Kenny",
+            "reason": "recap-explicit-subsequent-night",
+            "evidence": "At the Round Table, suspicions predominantly fell on Hannah (for hesitating to take shields and for not being murdered). She was banished by a near unanimous vote with both Maya and James A. voting for her. She revealed she was a Traitor to the delight of the Faithful.Afterwards, some suspicion fell on Joanne after she unintentionally implied she had been at the face to face murder. Joe openly begged every player for the Traitors to recruit him now that a spot was available. That night, the Traitors decided to recruit either Joanne, Kenny, or Joe. They chose Kenny and he accepted the offer.",
+            "source": {
+              "title": "Wikipedia: Celebrity Traitors UK Series 2",
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1380532698",
+              "retrievedAt": "2026-10-16T11:13:45.058Z",
+              "revision": 1380532698,
+              "revisionTimestamp": "2026-10-16T08:22:42Z"
+            }
+          }
+        ],
+        "locked": false
+      }
+    },
+    {
+      "ep": 5,
+      "type": "recruit",
+      "who": "King Kenny",
+      "accepted": true,
+      "id": "ep5-auto-4159f2497b5d",
+      "automation": {
+        "owner": "github-actions",
+        "verification": "structured-verified",
+        "verifiedAt": "2026-10-16T11:13:45.618Z",
+        "payloadHash": "dba22b1a7497a1f7270d724590d1b4a37222e5e42307d9f9d95b844baaaeba89",
+        "sources": [
+          {
+            "title": "Wikipedia: Celebrity Traitors UK Series 2",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1380532698",
+            "retrievedAt": "2026-10-16T11:13:45.058Z",
+            "revision": 1380532698,
+            "revisionTimestamp": "2026-10-16T08:22:42Z"
+          }
+        ],
+        "evidence": [
+          "Seduce: Kenny",
+          "Second structured section agrees"
+        ],
+        "chronology": [
+          {
+            "before": "roundtable:Hannah Fry",
+            "after": "recruit:King Kenny",
+            "reason": "recap-explicit-subsequent-night",
+            "evidence": "At the Round Table, suspicions predominantly fell on Hannah (for hesitating to take shields and for not being murdered). She was banished by a near unanimous vote with both Maya and James A. voting for her. She revealed she was a Traitor to the delight of the Faithful.Afterwards, some suspicion fell on Joanne after she unintentionally implied she had been at the face to face murder. Joe openly begged every player for the Traitors to recruit him now that a spot was available. That night, the Traitors decided to recruit either Joanne, Kenny, or Joe. They chose Kenny and he accepted the offer.",
+            "source": {
+              "title": "Wikipedia: Celebrity Traitors UK Series 2",
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1380532698",
+              "retrievedAt": "2026-10-16T11:13:45.058Z",
+              "revision": 1380532698,
+              "revisionTimestamp": "2026-10-16T08:22:42Z"
+            }
+          }
+        ],
+        "locked": false
+      }
     }
   ],
   "participants": [
@@ -415,6 +572,23 @@ window.SWEEPSTAKE = {
       ],
       "approvedAt": "2026-10-12T11:03:26.588Z",
       "automationPayloadHash": "bc0a8afd917e86eb36a9f83de6cf25c553b423752118525a336fb19c63dca3d3",
+      "automationLocked": false
+    },
+    "5": {
+      "date": "2026-10-15",
+      "status": "complete",
+      "notes": "Automatically verified structured events. Unsupported or unpublished information remains in the workflow report.",
+      "sources": [
+        {
+          "title": "Wikipedia: Celebrity Traitors UK Series 2",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1380532698",
+          "retrievedAt": "2026-10-16T11:13:45.058Z",
+          "revision": 1380532698,
+          "revisionTimestamp": "2026-10-16T08:22:42Z"
+        }
+      ],
+      "approvedAt": "2026-10-16T11:13:45.618Z",
+      "automationPayloadHash": "54a904e42a26d85e3d2fa95f3e3dd6344cea6dc4a9b73aa7752cfe0f1aa5f1d5",
       "automationLocked": false
     }
   },
@@ -656,28 +830,231 @@ window.SWEEPSTAKE = {
           "revisionTimestamp": "2026-10-11T21:35:28Z"
         }
       ]
+    },
+    {
+      "episode": 5,
+      "approvedAt": "2026-10-16T11:13:45.618Z",
+      "method": "GitHub Actions verified update",
+      "previousEvents": [],
+      "previousRecord": null,
+      "newEvents": [
+        {
+          "ep": 5,
+          "type": "murder",
+          "victim": "Rob Beckett",
+          "id": "ep5-auto-85ef02b2b2cc",
+          "automation": {
+            "owner": "github-actions",
+            "verification": "structured-verified",
+            "verifiedAt": "2026-10-16T11:13:45.618Z",
+            "payloadHash": "82a56017910f1c45fc9fd353045acee4b917e1ea79bd574fd10c112454516b39",
+            "sources": [
+              {
+                "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1380532698",
+                "retrievedAt": "2026-10-16T11:13:45.058Z",
+                "revision": 1380532698,
+                "revisionTimestamp": "2026-10-16T08:22:42Z"
+              }
+            ],
+            "evidence": [
+              "Murder: Rob",
+              "Second structured section agrees"
+            ],
+            "chronology": [
+              {
+                "before": "murder:Rob Beckett",
+                "after": "roundtable:Hannah Fry",
+                "reason": "eliminated-before-voting",
+                "evidence": "Rob Beckett explicitly out in every voting round",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1380532698",
+                  "retrievedAt": "2026-10-16T11:13:45.058Z",
+                  "revision": 1380532698,
+                  "revisionTimestamp": "2026-10-16T08:22:42Z"
+                }
+              }
+            ],
+            "locked": false
+          }
+        },
+        {
+          "ep": 5,
+          "type": "roundtable",
+          "votes": {
+            "James Acaster": "Hannah Fry",
+            "James Blunt": "Hannah Fry",
+            "Jerry Hall": "Hannah Fry",
+            "Joanne McNally": "Sebastian Croft",
+            "Joe Lycett": "Hannah Fry",
+            "King Kenny": "Hannah Fry",
+            "Leigh-Anne Pinnock": "Hannah Fry",
+            "Maya Jama": "Hannah Fry",
+            "Michael Sheen": "Hannah Fry",
+            "Miranda Hart": "Hannah Fry",
+            "Romesh Ranganathan": "James Blunt",
+            "Ross Kemp": "Hannah Fry",
+            "Sebastian Croft": "Hannah Fry",
+            "Sharon Rooney": "Hannah Fry",
+            "Hannah Fry": "Jerry Hall"
+          },
+          "revotes": [],
+          "absent": [],
+          "banished": "Hannah Fry",
+          "votingComplete": true,
+          "id": "ep5-auto-ee0b703c6058",
+          "automation": {
+            "owner": "github-actions",
+            "verification": "structured-verified",
+            "verifiedAt": "2026-10-16T11:13:45.618Z",
+            "payloadHash": "81ef4939495e1d150a75bdc26bd7633ef5c70a18d9dcdadaaee69645b1dde2b2",
+            "sources": [
+              {
+                "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1380532698",
+                "retrievedAt": "2026-10-16T11:13:45.058Z",
+                "revision": 1380532698,
+                "revisionTimestamp": "2026-10-16T08:22:42Z"
+              }
+            ],
+            "evidence": [
+              "Banishment: Hannah Fry",
+              "Contestant finish agrees"
+            ],
+            "chronology": [
+              {
+                "before": "murder:Rob Beckett",
+                "after": "roundtable:Hannah Fry",
+                "reason": "eliminated-before-voting",
+                "evidence": "Rob Beckett explicitly out in every voting round",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1380532698",
+                  "retrievedAt": "2026-10-16T11:13:45.058Z",
+                  "revision": 1380532698,
+                  "revisionTimestamp": "2026-10-16T08:22:42Z"
+                }
+              },
+              {
+                "before": "roundtable:Hannah Fry",
+                "after": "recruit:King Kenny",
+                "reason": "recap-explicit-subsequent-night",
+                "evidence": "At the Round Table, suspicions predominantly fell on Hannah (for hesitating to take shields and for not being murdered). She was banished by a near unanimous vote with both Maya and James A. voting for her. She revealed she was a Traitor to the delight of the Faithful.Afterwards, some suspicion fell on Joanne after she unintentionally implied she had been at the face to face murder. Joe openly begged every player for the Traitors to recruit him now that a spot was available. That night, the Traitors decided to recruit either Joanne, Kenny, or Joe. They chose Kenny and he accepted the offer.",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1380532698",
+                  "retrievedAt": "2026-10-16T11:13:45.058Z",
+                  "revision": 1380532698,
+                  "revisionTimestamp": "2026-10-16T08:22:42Z"
+                }
+              }
+            ],
+            "locked": false
+          }
+        },
+        {
+          "ep": 5,
+          "type": "recruit",
+          "who": "King Kenny",
+          "accepted": true,
+          "id": "ep5-auto-4159f2497b5d",
+          "automation": {
+            "owner": "github-actions",
+            "verification": "structured-verified",
+            "verifiedAt": "2026-10-16T11:13:45.618Z",
+            "payloadHash": "dba22b1a7497a1f7270d724590d1b4a37222e5e42307d9f9d95b844baaaeba89",
+            "sources": [
+              {
+                "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1380532698",
+                "retrievedAt": "2026-10-16T11:13:45.058Z",
+                "revision": 1380532698,
+                "revisionTimestamp": "2026-10-16T08:22:42Z"
+              }
+            ],
+            "evidence": [
+              "Seduce: Kenny",
+              "Second structured section agrees"
+            ],
+            "chronology": [
+              {
+                "before": "roundtable:Hannah Fry",
+                "after": "recruit:King Kenny",
+                "reason": "recap-explicit-subsequent-night",
+                "evidence": "At the Round Table, suspicions predominantly fell on Hannah (for hesitating to take shields and for not being murdered). She was banished by a near unanimous vote with both Maya and James A. voting for her. She revealed she was a Traitor to the delight of the Faithful.Afterwards, some suspicion fell on Joanne after she unintentionally implied she had been at the face to face murder. Joe openly begged every player for the Traitors to recruit him now that a spot was available. That night, the Traitors decided to recruit either Joanne, Kenny, or Joe. They chose Kenny and he accepted the offer.",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1380532698",
+                  "retrievedAt": "2026-10-16T11:13:45.058Z",
+                  "revision": 1380532698,
+                  "revisionTimestamp": "2026-10-16T08:22:42Z"
+                }
+              }
+            ],
+            "locked": false
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Wikipedia: Celebrity Traitors UK Series 2",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1380532698",
+          "retrievedAt": "2026-10-16T11:13:45.058Z",
+          "revision": 1380532698,
+          "revisionTimestamp": "2026-10-16T08:22:42Z"
+        }
+      ]
     }
   ],
   "automation": {
     "version": 2,
-    "lastVerifiedUpdate": "2026-10-12T11:03:26.588Z",
-    "latestConfirmedEpisode": 4,
+    "lastVerifiedUpdate": "2026-10-16T11:13:45.618Z",
+    "latestConfirmedEpisode": 5,
     "votingData": "Complete",
     "scheduleDescription": "Daily 10:00, plus Thursday and Friday 23:00 (Europe/London). Checks revisit pending and historical results. GitHub may delay or skip runs.",
     "verification": "structured-source validation",
     "pendingEpisodes": [
-      5
+      6,
+      7,
+      8,
+      9,
+      10
     ],
-    "runUrl": "https://github.com/yosayssmoe/-F-F-Celeb-Traitors/actions/runs/38880200976",
+    "runUrl": "https://github.com/yosayssmoe/-F-F-Celeb-Traitors/actions/runs/38892338097",
     "latestEpisodeChecked": 6,
-    "latestEpisodeFullyScored": 4,
+    "latestEpisodeFullyScored": 5,
     "partiallyScoredEpisodes": [],
     "pendingEvents": [
       {
-        "episode": 5,
-        "status": "ambiguous",
-        "reason": "Order of recruitment/murder and Round Tables is not explicitly established. Dependent events remain pending.",
-        "id": "0be7cb4247357308"
+        "episode": 6,
+        "status": "not-published",
+        "reason": "No confirmed results published.",
+        "id": "6f4dcb1e7d79a2f0"
+      },
+      {
+        "episode": 7,
+        "status": "not-published",
+        "reason": "No confirmed results published.",
+        "id": "1be4e3142ee0a6d5"
+      },
+      {
+        "episode": 8,
+        "status": "not-published",
+        "reason": "No confirmed results published.",
+        "id": "c6d209fab13c8df4"
+      },
+      {
+        "episode": 9,
+        "status": "not-published",
+        "reason": "No confirmed results published.",
+        "id": "99d6eb3e8f5fe72d"
+      },
+      {
+        "episode": 10,
+        "status": "not-published",
+        "reason": "No confirmed results published.",
+        "id": "21fb0287fbfcef40"
       }
     ]
   }
