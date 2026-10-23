@@ -365,50 +365,44 @@
   }
 
   function renderBoard() {
-    const tbody = $("lb-rows");
-    tbody.innerHTML = "";
+    const model = window.ScoreboardModel.build(state, T);
+    const root = $("lb-rows"); root.replaceChildren();
+    $("score-episode").textContent = 'Episode ' + model.episode + (model.partial ? ' — partially scored' : ' — scored') + ' · Previous: Episode ' + (model.episode - 1) + (model.previousPartial ? ' (partially scored)' : '');
     $("leader-summary").replaceChildren();
-    participants().forEach(p => {
-      const card = el('div','leader-card');
-      card.append(el('span',null,(p.tied?'=':'')+p.rank+' · '+p.name),el('strong',null,p.total),el('small',null,'points'));
+    model.participants.forEach(p => {
+      const rank = (p.tied ? '=' : '') + p.rank;
+      const card = el('div', 'leader-card');
+      card.append(el('span', null, rank + ' · ' + p.name), el('strong', null, p.total), el('small', null, 'points'));
       $("leader-summary").appendChild(card);
-    });
-    participants().forEach((p, pi) => {
-      if (!p.celebs.length) { const row = el("tr"); const cell = el("td", null, `${p.rank}. ${p.name} — no assigned contestants — 0 points`); cell.colSpan = 11; row.appendChild(cell); tbody.appendChild(row); }
-      p.celebs.forEach((s, i) => {
-        const tr = el("tr", "st-" + s.status + (i === 0 ? " first" : "") + (pi % 2 ? " alt" : ""));
-        if (i === 0) {
-          const rk = el("td", "rk", (p.tied ? "=" : "") + p.rank);
-          rk.rowSpan = p.celebs.length;
-          tr.appendChild(rk);
-          const pn = el("td", "p-name", p.name);
-          pn.rowSpan = p.celebs.length;
-          tr.appendChild(pn);
-        }
-        const who = el("td", "who-cell");
-        who.appendChild(el("div", "lb-name", s.name));
-        const meta = el("div", "lb-meta");
-        meta.appendChild(el("span", s.role === "Traitor" ? "is-traitor" : "is-faithful", roleLabel(s)));
-        meta.append(" · " + statusLabel(s));
-        who.appendChild(meta);
-        who.tabIndex = 0;
-        who.onclick = () => openHistory(s.name);
-        who.onkeydown = (e) => { if (e.key === "Enter") openHistory(s.name); };
-        tr.appendChild(who);
-        tr.appendChild(el("td", "num bd", s.cols.survival));
-        tr.appendChild(el("td", "num bd c-murder" + (s.cols.murder ? " pos" : ""), s.cols.murder ? "+" + s.cols.murder : "0"));
-        tr.appendChild(el("td", "num bd c-recruit" + (s.cols.recruitment ? " pos" : ""), s.cols.recruitment ? "+" + s.cols.recruitment : "0"));
-        tr.appendChild(el("td", "num bd c-other" + (s.cols.other ? " pos" : ""), s.cols.other ? "+" + s.cols.other : "0"));
-        tr.appendChild(el("td", "num bd score", s.celebScore));
-        tr.appendChild(el("td", "num bd mult" + (s.multiplier !== 1 ? " x" : ""), "×" + s.multiplier));
-        tr.appendChild(el("td", "num contrib", s.contributed));
-        if (i === 0) {
-          const tot = el("td", "num total", p.total);
-          tot.rowSpan = p.celebs.length;
-          tr.appendChild(tot);
-        }
-        tbody.appendChild(tr);
+      const group = el('section', 'participant-group');
+      group.dataset.participant = p.name;
+      const heading = el('h3');
+      heading.append(el('span', null, rank + ' · ' + p.name + (p.tied ? ' · tied' : '')), el('strong', 'total', p.total + ' points'));
+      group.appendChild(heading);
+      const table = el('table', 'simple-scores'); table.setAttribute('aria-label', p.name + ' celebrity scores');
+      const head = el('thead'), hr = el('tr');
+      ['Celebrity', 'Previous episode · Ep ' + (model.episode - 1), 'Current score · Ep ' + model.episode, 'Contribution'].forEach(label => {const th = el('th', null, label); th.scope = 'col'; hr.appendChild(th);});
+      head.appendChild(hr); table.appendChild(head);
+      const body = el('tbody');
+      p.celebs.forEach(s => {
+        const row = el('tr'); row.dataset.celebrity = s.name;
+        const who = el('td', 'celebrity-cell');
+        const button = el('button', 'celebrity-link'); button.type = 'button';
+        button.append(el('span', 'lb-name', s.name));
+        if (s.multiplier !== 1) button.append(el('span', 'multiplier-badge', '×' + s.multiplier));
+        button.append(el('span', 'breakdown-label', 'View full celebrity scoring breakdown'));
+        button.onclick = () => openHistory(s.name);
+        who.append(button, el('span', 'lb-meta', roleLabel(s) + ' · ' + statusLabel(s))); row.appendChild(who);
+        [['Previous episode', s.previous === null ? 'Unavailable' : s.previous, 'previous'], ['Current score', s.celebScore, 'current'], ['Contribution', s.contributed, 'contribution']].forEach(([label, value, cls]) => {
+          const td = el('td', cls); td.dataset.label = label;
+          td.appendChild(el('strong', null, value));
+          if (cls === 'previous' && s.previous === null) td.appendChild(el('small', null, model.unavailableReason));
+          if (cls === 'current' && s.delta) td.appendChild(el('small', s.delta < 0 ? 'delta negative' : 'delta', (s.delta > 0 ? '+' : '') + s.delta));
+          row.appendChild(td);
+        });
+        body.appendChild(row);
       });
+      table.appendChild(body); group.appendChild(table); root.appendChild(group);
     });
     fitBoard();
   }
@@ -429,6 +423,7 @@
   // ── View switch (Round Table / Leaderboard) ────────────
   const params = new URLSearchParams(location.search);
   function setView(v) {
+    document.body.classList.toggle('scoreboard-view', v === 'board');
     $("stage").hidden = v !== "table";
     $("board").hidden = v !== "board";
     document.querySelectorAll(".views button").forEach((b) => b.classList.toggle("on", b.dataset.view === v));
@@ -448,63 +443,67 @@
   // ── Points history ─────────────────────────────────────
   const histDlg = $("hist");
   function openHistory(name) {
-    const s = sc(name);
-    const c = state.celebs.find((x) => x.name === name);
-    const body = $("hist-body");
-    body.innerHTML = "";
+    const model = window.ScoreboardModel.build(state, T), s = model.contestants[name];
+    const c = state.celebs.find(x => x.name === name), body = $("hist-body");
+    body.replaceChildren();
     $("hist-name").textContent = name;
-    $("hist-sub").textContent = [c.participant ? "Drawn by " + c.participant : "Unassigned", roleLabel(s) + (s.recruitedEp ? " from Ep " + s.recruitedEp : ""), statusLabel(s)].join(" · ");
-
-    const sum = el("div", "hist-sum");
-    const box = (val, label, cls) => {
-      const b = el("div", "hs " + (cls || ""));
-      b.appendChild(el("strong", null, val));
-      b.appendChild(el("span", null, label));
-      sum.appendChild(b);
+    $("hist-sub").textContent = [c.participant ? 'Drawn by ' + c.participant : 'Unassigned', roleLabel(s), statusLabel(s)].join(' · ');
+    const sum = el('div', 'hist-sum');
+    [[s.celebScore, 'Raw celebrity score', 'total'], ['×' + s.multiplier, 'Allocation multiplier', ''], [c.participant ? s.contributed : 0, c.participant ? 'Contribution to ' + c.participant : 'Unassigned contribution', '']].forEach(([value, label, cls]) => {
+      const box = el('div', 'hs ' + cls); box.append(el('strong', null, value), el('span', null, label)); sum.appendChild(box);
+    });
+    body.append(sum, el('p', 'hint', 'Awarded points only. Episode ' + model.episode + (model.partial ? ' is partially scored.' : ' is scored.') + ' Initial Episodes 1–2 use the supplied project baseline; later automated additions use verified sources.'));
+    const controls = el('div', 'detail-switch'); controls.setAttribute('role', 'group'); controls.setAttribute('aria-label', 'Scoring detail view');
+    const overall = el('section', 'overall-panel'), history = el('section', 'history-panel');
+    overall.id = 'celebrity-overall'; history.id = 'celebrity-history'; history.hidden = true;
+    const buttons = ['Overall breakdown', 'Episode history'].map((label, i) => {
+      const button = el('button', 'btn ghost', label); button.type = 'button'; button.setAttribute('aria-pressed', String(i === 0)); button.setAttribute('aria-controls', i ? history.id : overall.id);
+      button.onclick = () => {overall.hidden = !!i; history.hidden = !i; buttons.forEach((b, n) => b.setAttribute('aria-pressed', String(i === n)));};
+      controls.appendChild(button); return button;
+    });
+    body.appendChild(controls);
+    overall.appendChild(el('h3', null, 'Overall breakdown'));
+    const explanations = {
+      survival: 'One starting point in Episode 1, plus one for each other contestant’s elimination outlasted.',
+      traitorVote: 'Faithful points for voting for a Traitor; each Round Table counts once, including re-votes.',
+      traitorBanished: 'Faithful team bonus when a Traitor is banished.',
+      shield: 'Faithful bonus for a Shield stopping a murder.',
+      recruited: 'Bonus for accepting recruitment; earlier Faithful points are retained.',
+      murder: 'Traitor team points for a successful murder.',
+      faithfulBanished: 'Traitor team bonus when a Faithful is banished.',
+      zeroVote: 'No votes received across all rounds of a fully recorded Round Table.',
+      winner: 'Bonus for being a confirmed winner.'
     };
-    T.COLS.forEach((k) => box(s.cols[k], T.COL_LABEL[k], "c-" + k));
-    box(s.celebScore, "Celeb score", "total");
-    body.appendChild(sum);
-    if (s.multiplier !== 1) {
-      body.appendChild(el("p", "hist-mult", `×${s.multiplier} multiplier: contributes ${s.contributed} points to ${c.participant}`));
-    }
-
-    // every scoring category, even when zero
-    const cats = el("dl", "hist-cats");
-    const survivalRow = el("div", "c-survival");
-    survivalRow.appendChild(el("dt", null, "Survival"));
-    survivalRow.title = s.log[0].note;
-    survivalRow.appendChild(el("dd", null, s.survival));
-    cats.appendChild(survivalRow);
-    Object.entries(T.CATS).forEach(([k, def]) => {
-      if (k === "survival") return;
-      const label = def.label + (def.role ? " (" + def.role + ")" : "");
-      const row = el("div", "c-" + def.col + (s.cats[k] ? "" : " zero"));
-      row.appendChild(el("dt", null, label));
-      row.appendChild(el("dd", null, s.cats[k] || 0));
-      cats.appendChild(row);
+    const cats = el('dl', 'category-breakdown');
+    Object.entries(T.CATS).forEach(([key, def]) => {
+      if (!s.cats[key]) return;
+      const row = el('div'), term = el('dt', null, def.label), amount = el('dd', null, s.cats[key]);
+      term.appendChild(el('small', null, explanations[key])); row.append(term, amount); cats.appendChild(row);
     });
-    body.appendChild(cats);
-
-    const hist = T.history(s);
-    if (!hist.length) body.appendChild(el("p", "hint", "No bonus points yet."));
-    hist.forEach((h) => {
-      const sec = el("section", "hist-ep");
-      sec.appendChild(el("h4", null, h.ep ? "Episode " + h.ep : "Series"));
-      const ul = el("ul");
-      h.items.forEach((it) => {
-        const li = el("li", "c-" + T.CATS[it.cat].col);
-        li.appendChild(el("span", null, T.CATS[it.cat].label + (it.note ? " — " + it.note : "")));
-        li.appendChild(el("b", null, "+" + it.pts));
-        ul.appendChild(li);
+    overall.append(cats, el('p', 'hist-mult', c.participant ? 'Raw total ' + s.celebScore + ' × ' + s.multiplier + ' = ' + s.contributed + ' contribution.' : 'Unassigned: raw points remain in game history and do not count towards a participant total.'));
+    history.appendChild(el('h3', null, 'Episode history'));
+    s.history.forEach(h => {
+      const section = el('section', 'hist-ep');
+      section.appendChild(el('h4', null, 'Episode ' + h.ep + (h.partial ? ' — partially scored' : '')));
+      if (h.partial) section.appendChild(el('p', 'hint', 'Only confirmed awards are included; unresolved information has not been scored.'));
+      h.pending.forEach(p => section.appendChild(el('p', 'hint', p.reason || p.status || 'Awaiting verification')));
+      const list = el('ul');
+      h.items.forEach(item => {
+        const label = item.cat === 'survival' && item.note !== 'Starting survival point' ? 'Survived another contestant’s elimination' : T.CATS[item.cat].label;
+        const li = el('li'); li.append(el('span', null, label + (item.note ? ' — ' + item.note : '')), el('b', null, (item.pts > 0 ? '+' : '') + item.pts)); list.appendChild(li);
       });
-      const tl = el("li", "ep-total");
-      tl.appendChild(el("span", null, "Episode points · cumulative " + h.cumulative));
-      tl.appendChild(el("b", null, "+" + h.pts));
-      ul.appendChild(tl);
-      sec.appendChild(ul);
-      body.appendChild(sec);
+      if (!h.items.length) list.appendChild(el('li', null, 'No awarded points in this episode.'));
+      h.roleChanges.forEach(change => list.appendChild(el('li', null, 'Role change: ' + change)));
+      const total = el('li', 'ep-total'); total.append(el('span', null, 'Episode points: ' + h.pts + ' · running raw total'), el('b', null, h.cumulative)); list.appendChild(total);
+      section.appendChild(list); history.appendChild(section);
     });
+    const pending = state.automation?.pendingEvents || [];
+    if (pending.length) {
+      const unresolved = el('details', 'pending-detail'); unresolved.appendChild(el('summary', null, 'Unresolved information — no points awarded'));
+      pending.forEach(p => unresolved.appendChild(el('p', null, 'Episode ' + p.episode + ': ' + (p.reason || p.status || 'Awaiting verification') + (p.dependencies?.length ? ' · Depends on: ' + p.dependencies.join(', ') : ''))));
+      body.appendChild(unresolved);
+    }
+    body.append(overall, history);
     histDlg.showModal();
   }
 

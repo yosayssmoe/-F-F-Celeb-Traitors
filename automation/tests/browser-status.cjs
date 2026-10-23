@@ -16,7 +16,7 @@ const {pathToFileURL}=require('node:url');
   for(let i=0;i<50;i++){await new Promise(r=>setTimeout(r,100));if(await evaluate('!!window.SweepstakeApp'))break;}
   const data=require('../shared.cjs').load(path.resolve('_site/data.js'));
   const expected=Object.values(require('../shared.cjs').E.totals(data)).sort((a,b)=>b-a);
-  assert.deepEqual(await evaluate('[...document.querySelectorAll("#lb-rows .total")].map(e=>+e.textContent)'),expected);
+  assert.deepEqual(await evaluate('[...document.querySelectorAll("#lb-rows .total")].map(e=>parseFloat(e.textContent))'),expected);
   const status=await evaluate('document.querySelector("#automation-status").textContent');
   assert(status.includes('Episode '+Math.max(...data.events.map(e=>e.ep))));assert(status.includes('Complete'));assert(status.includes('Europe/London'));assert(status.includes('Latest episode fully scored'));assert(status.includes('Partially scored episodes'));
   await evaluate('AutomationStatus.render({...SweepstakeApp.getState(),events:[{ep:4,type:"roundtable",votingComplete:false}]})');

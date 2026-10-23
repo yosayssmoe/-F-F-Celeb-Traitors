@@ -619,4 +619,53 @@ body.projector .manage-btn { display: none; }
 .episode-score-preview td,.episode-score-preview th { padding:8px; text-align:left; border-bottom:1px solid var(--line); }
 .episode-votes { overflow:auto; max-height:420px; }
 button:disabled { opacity:.45; cursor:not-allowed; }
+.episode-heading { color:var(--gold-hi); font-weight:700; margin:8px 0; }
+.score-explanation { color:var(--ink-dim); font-size:.85rem; line-height:1.6; margin:0 0 18px; }
+.participant-group { border:1px solid var(--line); border-radius:10px; margin-bottom:18px; overflow:hidden; }
+.participant-group h3 { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; align-items:center; padding:12px; margin:0; background:#24180f; font:600 1.1rem var(--font-display); color:var(--gold-hi); }
+.participant-group .total { font-size:1.25rem; }
+.simple-scores { width:100%; border-collapse:collapse; table-layout:fixed; font-size:.9rem; }
+.simple-scores th { padding:10px; text-align:right; font-size:.73rem; color:var(--ink-dim); font-weight:500; }
+.simple-scores th:first-child { width:43%; text-align:left; }
+.simple-scores td { padding:10px; border-top:1px solid var(--line); text-align:right; overflow-wrap:anywhere; font-variant-numeric:tabular-nums; }
+.simple-scores td:first-child { text-align:left; }
+.simple-scores .contribution { color:var(--gold-hi); }
+.celebrity-link { padding:5px 0; min-height:44px; border:0; color:var(--ink); background:none; text-align:left; cursor:pointer; width:100%; }
+.celebrity-link .lb-name { font:600 1rem var(--font-display); white-space:normal; line-height:1.4; }
+.celebrity-link:focus-visible { outline:2px solid var(--gold-hi); outline-offset:2px; }
+.breakdown-label { display:block; color:var(--gold-hi); font-size:.72rem; margin-top:5px; line-height:1.5; text-decoration:underline; text-underline-offset:3px; }
+.celebrity-cell .lb-meta { display:block; white-space:normal; color:var(--ink-dim); line-height:1.5; }
+.multiplier-badge { display:inline-block; padding:2px 6px; margin-left:6px; border:1px solid var(--gold); border-radius:4px; color:var(--gold-hi); font-weight:700; }
+.delta { display:inline-block; margin-left:6px; color:#b7d8b7; font-size:.75rem; }
+.delta.negative { color:#ffb5b5; }
+.hist .hist-sum { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.hist .hs span { overflow-wrap:anywhere; }
+.detail-switch { display:flex; gap:8px; flex-wrap:wrap; margin:16px 0; }
+.detail-switch button { min-height:44px; flex:1; white-space:normal; }
+.detail-switch [aria-pressed="true"] { background:#382615; border-color:var(--gold-hi); color:var(--gold-hi); }
+.category-breakdown { margin:0; }
+.category-breakdown > div { display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid var(--line); }
+.category-breakdown dt { font-size:.9rem; }
+.category-breakdown dt small { display:block; color:var(--ink-dim); line-height:1.6; margin-top:5px; }
+.category-breakdown dd { margin:0; color:var(--gold-hi); font-weight:700; font-variant-numeric:tabular-nums; }
+.overall-panel .hist-mult { margin:16px 0 0; }
+.hist-body h3 { color:var(--gold-hi); font:600 1.2rem var(--font-display); }
+.pending-detail { border:1px solid var(--line); padding:12px; margin:8px 0 16px; color:var(--ink-dim); font-size:.85rem; line-height:1.6; }
+.pending-detail summary { cursor:pointer; color:var(--gold-hi); min-height:32px; }
+.scoreboard-view .manage-btn { position:static; display:block; margin:16px auto; min-height:44px; }
+@media(max-width:720px) {
+ .simple-scores, .simple-scores tbody, .simple-scores tr, .simple-scores td { display:block; }
+ .simple-scores thead { position:absolute; width:1px; height:1px; clip-path:inset(50%); overflow:hidden; }
+ .simple-scores tr { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); padding:12px; gap:10px; border-top:1px solid var(--line); }
+ .simple-scores td { padding:0; border:0; text-align:left; }
+ .simple-scores td:first-child { grid-column:1 / -1; }
+ .simple-scores td[data-label]::before { content:attr(data-label); display:block; color:var(--ink-dim); font-size:.72rem; line-height:1.4; margin-bottom:6px; }
+ .simple-scores td strong { font-size:1.1rem; }
+ .simple-scores .delta { display:block; margin:3px 0 0; }
+ .hist-body { padding:12px; }
+ .hist-ep li span { min-width:0; overflow-wrap:anywhere; }
+ .hist-ep li b { flex:none; }
+ .participant-group h3 { font-size:1rem; }
+ .leader-card { padding:10px 3px; }
+}
 @media(max-width:720px) { .episode-meta { grid-template-columns:1fr; } .episode-body { padding:12px; } .episode-field { align-items:flex-start; flex-direction:column; } .episode-field select { max-width:100%; } }

@@ -1,6 +1,6 @@
 const fs=require('node:fs'),path=require('node:path');
 const {root,load,D}=require('./shared.cjs');
-const files=['index.html','styles.css','data.js','scoring.js','validation.js','app.js','episode-updates.js','episode-sources.js','episode-ui.js','automation-status.js','.nojekyll'];
+const files=['index.html','styles.css','data.js','scoring.js','scoreboard-model.js','validation.js','app.js','episode-updates.js','episode-sources.js','episode-ui.js','automation-status.js','.nojekyll'];
 function build(destination=path.join(root,'_site')){
  const resolved=path.resolve(destination);if(resolved!==path.join(root,'_site'))throw Error('Build output must be the project _site directory.');
  D.validate(load());fs.mkdirSync(resolved,{recursive:true});
