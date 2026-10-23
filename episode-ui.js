@@ -23,7 +23,8 @@
     cancelFetch();loadedState=A.getState();draft=E.snapshot(loadedState,ep);fill();$('episode-evidence').replaceChildren();
     status(`Episode ${ep}: ${draft.events.length} saved event(s) loaded. Edits are a draft until approved.`);
   }
-  $('episode-update-btn').onclick=()=>{const s=A.getState();load(Math.min(100,Math.max(1,...s.events.map(e=>e.ep))+1));dialog.showModal();};
+  $('episode-update-btn').onclick=()=>{document.getElementById('admin').close();const s=A.getState();load(Math.min(100,Math.max(1,...s.events.map(e=>e.ep))+1));dialog.showModal();};
+  dialog.addEventListener('close',()=>document.getElementById('manage-btn').focus());
   $('episode-close').onclick=()=>{cancelFetch();dialog.close();};dialog.addEventListener('cancel',cancelFetch);
   $('episode-load').onclick=()=>{try{if(confirm('Load the selected episode and discard this unapproved draft?'))load(Number($('episode-number').value));}catch(e){status(e.message,true);}};
   // Changing only the selector cannot approve a stale preview for another episode.

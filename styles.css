@@ -653,6 +653,90 @@ button:disabled { opacity:.45; cursor:not-allowed; }
 .pending-detail { border:1px solid var(--line); padding:12px; margin:8px 0 16px; color:var(--ink-dim); font-size:.85rem; line-height:1.6; }
 .pending-detail summary { cursor:pointer; color:var(--gold-hi); min-height:32px; }
 .scoreboard-view .manage-btn { position:static; display:block; margin:16px auto; min-height:44px; }
+/* One standings list; celebrity details expand within each participant row. */
+.main-views { width:min(520px,calc(100% - 24px)); margin:16px auto 4px; grid-template-columns:repeat(3,minmax(0,1fr)); }
+.main-views button { min-height:44px; white-space:normal; }
+.board { min-height:0; align-self:flex-start; }
+.scoreboard-view .layout,.rules-view .layout { min-height:0; }
+.board-head { align-items:center; }
+#bonus-btn { min-height:44px; }
+.participant-groups { border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+.participant-group { margin:0; border:0; border-radius:0; }
+.participant-group + .participant-group { border-top:1px solid var(--line); }
+.standing-row { display:grid; grid-template-columns:32px minmax(0,1fr) 65px 130px; gap:12px; align-items:center; padding:6px 12px; min-height:58px; background:#1b130f; }
+.participant-group:nth-child(even) .standing-row { background:#21170f; }
+.standing-rank { color:var(--ink-dim); font-variant-numeric:tabular-nums; }
+.standing-row .participant-name { display:block; padding:0; margin:0; background:none; font:600 1.12rem var(--font-display); color:var(--ink); }
+.standing-row .total { text-align:right; font:700 1.5rem var(--font-display); color:var(--gold-hi); }
+.expand-celebrities { min-height:44px; font:500 .78rem var(--font-ui); color:var(--gold-hi); background:transparent; border:1px solid #7c6536; border-radius:6px; cursor:pointer; padding:6px; line-height:1.35; }
+.expand-celebrities[aria-expanded="true"] { background:#3a2915; }
+.celebrity-list { border-top:1px solid var(--line); padding:0 14px 0 44px; background:#100d0b; }
+.celebrity-row { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0; }
+.celebrity-row + .celebrity-row { border-top:1px solid #30271d; }
+.celebrity-identity { min-width:0; }
+.celebrity-link { display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 12px; width:auto; max-width:100%; }
+.celebrity-link .lb-name { overflow-wrap:anywhere; }
+.breakdown-label { margin:0; font-size:.75rem; }
+.status-badge { display:inline-block; padding:3px 6px; border:1px solid #6d5b32; border-radius:4px; font-size:.7rem; color:#e5d9bc; }
+.status-murdered .lb-name,.status-banished .lb-name,.status-left .lb-name { color:#beb8b1; }
+.status-murdered .status-badge,.status-banished .status-badge,.status-left .status-badge { color:#cbc5bd; border-color:#625b53; background:#25211d; }
+.status-murdered .celebrity-points,.status-banished .celebrity-points,.status-left .celebrity-points { color:#cbc5bd; }
+.celebrity-points { flex:none; text-align:right; color:var(--ink); }
+.raw-score { display:flex; justify-content:flex-end; align-items:baseline; gap:8px; font-variant-numeric:tabular-nums; }
+.raw-score strong { font-size:1.15rem; }
+.celebrity-points > small { display:block; color:var(--ink-dim); font-size:.65rem; margin-top:3px; }
+.episode-gain { font-size:.85rem; font-weight:600; }
+.episode-gain.positive { color:#a7dda7; }
+.episode-gain.negative { color:#ffb5b5; }
+.episode-gain.zero { color:#bfb5a6; }
+.multiplied-contribution { display:block; max-width:145px; margin-top:6px; font-size:.78rem; color:var(--gold-hi); }
+.partial-notice { border-left:2px solid var(--gold); padding:6px 10px; color:var(--gold-hi); font-size:.85rem; line-height:1.5; }
+.rules-page h2 { color:var(--gold-hi); font:600 1.5rem var(--font-display); margin:0 0 18px; }
+.rules-page h3 { color:var(--gold-hi); font:600 1.2rem var(--font-display); margin-top:26px; }
+.rules-page h4 { color:var(--gold-hi); margin:0 0 12px; }
+.rules-page p,.rules-page li { line-height:1.7; font-size:.92rem; color:var(--ink-dim); }
+.rules-page ul { padding-left:20px; }
+.rules-page li { margin-bottom:8px; }
+.rule-columns { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+.rule-columns section { padding:14px; border:1px solid var(--line); border-radius:8px; }
+.rules-view .manage-btn { position:static; display:block; margin:16px auto; }
+.admin-operations { padding:12px 20px; border-bottom:1px solid var(--line); max-height:45dvh; overflow:auto; flex-shrink:0; }
+.admin-operations summary { min-height:44px; cursor:pointer; color:var(--gold-hi); font-size:.85rem; }
+.admin-operations[open] summary { margin-bottom:10px; }
+.admin-operations button { margin-top:12px; }
+.facts-dialog { width:min(850px,calc(100vw - 24px)); }
+.facts-dialog .icon-btn,.hist .icon-btn { min-width:44px; min-height:44px; flex:none; }
+.facts-body { overflow:auto; padding:16px 20px; }
+.facts-body p { color:var(--ink-dim); font-size:.85rem; line-height:1.6; }
+.facts-table { width:100%; border-collapse:collapse; font-size:.85rem; }
+.facts-table caption { text-align:left; padding:14px 0; color:var(--gold-hi); }
+.facts-table th,.facts-table td { text-align:left; padding:12px 8px; border-bottom:1px solid var(--line); }
+.facts-table th { color:var(--ink); }
+.facts-table td { color:var(--ink-dim); }
+.facts-table th small { display:block; margin-top:4px; color:var(--ink-dim); font-weight:400; }
+@media(max-width:720px) {
+ .main-views { margin-top:12px; }
+ .main-views button { font-size:.74rem; padding:6px; }
+ .board-head h2 { font-size:clamp(1.15rem,5vw,1.5rem); }
+ .standing-row { grid-template-columns:24px minmax(0,1fr) 40px 88px; gap:7px; padding:5px 8px; min-height:54px; }
+ .standing-row .participant-name { font-size:1.05rem; }
+ .standing-row .total { font-size:1.35rem; }
+ .expand-celebrities { font-size:.7rem; }
+ .celebrity-list { padding:0 10px; }
+ .celebrity-row { gap:8px; }
+ .celebrity-link { flex-direction:column; gap:3px; }
+ .celebrity-points { max-width:120px; }
+ .multiplied-contribution { max-width:110px; }
+ .rule-columns { grid-template-columns:1fr; }
+ .facts-body { padding:12px; }
+ .facts-table thead { position:absolute; width:1px; height:1px; clip-path:inset(50%); overflow:hidden; }
+ .facts-table,.facts-table tbody,.facts-table tr,.facts-table th,.facts-table td { display:block; }
+ .facts-table caption { display:block; width:100%; }
+ .facts-table tr { padding:12px 0; border-bottom:1px solid var(--line); }
+ .facts-table th,.facts-table td { border:0; padding:5px 0; }
+ .facts-table td { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:10px; }
+ .facts-table td::before { content:attr(data-label); color:var(--ink); }
+}
 @media(max-width:720px) {
  .simple-scores, .simple-scores tbody, .simple-scores tr, .simple-scores td { display:block; }
  .simple-scores thead { position:absolute; width:1px; height:1px; clip-path:inset(50%); overflow:hidden; }

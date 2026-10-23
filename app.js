@@ -272,59 +272,10 @@
     requestAnimationFrame(step);
   })();
 
-  // ── Countdown ──────────────────────────────────────────
-  let eps = state.episodes.map((s) => new Date(s));
-  const epLen = (state.episodeLengthMins || 60) * 60000;
-  const fmtWhen = new Intl.DateTimeFormat("en-GB", {
-    weekday: "long", day: "numeric", month: "long", hour: "numeric", minute: "2-digit",
-    hour12: true, timeZone: "Europe/London",
-  });
-  const pad = (n) => String(n).padStart(2, "0");
-  const cd = $("countdown");
-  const clock = $("cd-clock");
-  const clockHTML = clock.innerHTML;
-
+  // Air times remain available to the administrator when adding events.
   function airedCount(now = Date.now()) {
-    return eps.filter((d) => d.getTime() <= now).length;
+    return state.episodes.filter(date => Date.parse(date) <= now).length;
   }
-
-  function tick() {
-    const now = Date.now();
-    if (!eps.length) { $("cd-label").textContent = "Episode tracker"; clock.innerHTML = '<div class="onair">Awaiting the next twist</div>'; $("cd-when").textContent = "Add confirmed air times in Manage for a countdown."; return; }
-    const liveIdx = eps.findIndex((d) => now >= d.getTime() && now < d.getTime() + epLen);
-    const nextIdx = eps.findIndex((d) => d.getTime() > now);
-
-    if (liveIdx >= 0) {
-      cd.classList.add("live");
-      $("cd-label").textContent = liveIdx === eps.length - 1 ? "The Final" : `Episode ${liveIdx + 1}`;
-      if (!clock.querySelector(".onair")) clock.innerHTML = '<div class="onair"><i></i>On air now</div>';
-      $("cd-when").textContent = "BBC One & iPlayer";
-      return;
-    }
-    cd.classList.remove("live");
-    if (!clock.querySelector("#cd-d")) clock.innerHTML = clockHTML;
-
-    if (nextIdx < 0) {
-      $("cd-label").textContent = "The series has ended";
-      ["cd-d", "cd-h", "cd-m", "cd-s"].forEach((id) => ($(id).textContent = "00"));
-      $("cd-when").textContent = "Thanks for playing";
-      return;
-    }
-
-    const secs = Math.floor((eps[nextIdx].getTime() - now) / 1000);
-    $("cd-d").textContent = pad(Math.floor(secs / 86400));
-    $("cd-h").textContent = pad(Math.floor((secs % 86400) / 3600));
-    $("cd-m").textContent = pad(Math.floor((secs % 3600) / 60));
-    $("cd-s").textContent = pad(secs % 60);
-    const label = nextIdx === eps.length - 1 ? "The Final" : `Episode ${nextIdx + 1}`;
-    $("cd-label").textContent = `Next episode · ${label}`;
-    const [day, time] = fmtWhen.format(eps[nextIdx]).split(" at ");
-    const when = $("cd-when");
-    when.innerHTML = "";
-    when.append(el("span", null, day), " · ", el("span", null, time + " · BBC One"));
-  }
-  tick();
-  setInterval(tick, 1000);
 
   // ── Scoreboard ─────────────────────────────────────────
   // Laid out as in the games team's deck: one block per participant, a row
@@ -364,48 +315,63 @@
     return ranked(Object.values(players), (p) => p.total);
   }
 
+  const expandedParticipants = new Set();
   function renderBoard() {
-    const model = window.ScoreboardModel.build(state, T);
-    const root = $("lb-rows"); root.replaceChildren();
-    $("score-episode").textContent = 'Episode ' + model.episode + (model.partial ? ' — partially scored' : ' — scored') + ' · Previous: Episode ' + (model.episode - 1) + (model.previousPartial ? ' (partially scored)' : '');
-    $("leader-summary").replaceChildren();
-    model.participants.forEach(p => {
-      const rank = (p.tied ? '=' : '') + p.rank;
-      const card = el('div', 'leader-card');
-      card.append(el('span', null, rank + ' · ' + p.name), el('strong', null, p.total), el('small', null, 'points'));
-      $("leader-summary").appendChild(card);
-      const group = el('section', 'participant-group');
-      group.dataset.participant = p.name;
-      const heading = el('h3');
-      heading.append(el('span', null, rank + ' · ' + p.name + (p.tied ? ' · tied' : '')), el('strong', 'total', p.total + ' points'));
-      group.appendChild(heading);
-      const table = el('table', 'simple-scores'); table.setAttribute('aria-label', p.name + ' celebrity scores');
-      const head = el('thead'), hr = el('tr');
-      ['Celebrity', 'Previous episode · Ep ' + (model.episode - 1), 'Current score · Ep ' + model.episode, 'Contribution'].forEach(label => {const th = el('th', null, label); th.scope = 'col'; hr.appendChild(th);});
-      head.appendChild(hr); table.appendChild(head);
-      const body = el('tbody');
+    const model = window.ScoreboardModel.build(state, T), root = $("lb-rows");
+    root.replaceChildren();
+    $("score-episode").textContent = 'Scores through Episode ' + model.episode + (model.partial ? ' — partially scored' : '');
+    $("partial-notice").hidden = !model.partial;
+    model.participants.forEach((p, index) => {
+      const group = el('section', 'participant-group'); group.dataset.participant = p.name;
+      const header = el('div', 'standing-row');
+      const rank = el('span', 'standing-rank', (p.tied ? '=' : '') + p.rank); rank.setAttribute('aria-label', (p.tied ? 'Tied rank ' : 'Rank ') + p.rank);
+      const name = el('h3', 'participant-name', p.name), total = el('strong', 'total', p.total);
+      total.setAttribute('aria-label', p.total + ' points');
+      const toggle = el('button', 'expand-celebrities', expandedParticipants.has(p.name) ? 'Hide celebrities' : 'View celebrities'); toggle.type = 'button';
+      const list = el('div', 'celebrity-list'); list.id = 'participant-celebrities-' + index; list.hidden = !expandedParticipants.has(p.name);
+      toggle.setAttribute('aria-controls', list.id); toggle.setAttribute('aria-expanded', String(!list.hidden)); toggle.setAttribute('aria-label', (list.hidden ? 'View' : 'Hide') + ' celebrities for ' + p.name);
+      toggle.onclick = () => {
+        list.hidden = !list.hidden;
+        if (list.hidden) expandedParticipants.delete(p.name); else expandedParticipants.add(p.name);
+        toggle.textContent = list.hidden ? 'View celebrities' : 'Hide celebrities'; toggle.setAttribute('aria-expanded', String(!list.hidden));
+        toggle.setAttribute('aria-label', (list.hidden ? 'View' : 'Hide') + ' celebrities for ' + p.name);
+      };
+      header.append(rank, name, total, toggle); group.appendChild(header);
       p.celebs.forEach(s => {
-        const row = el('tr'); row.dataset.celebrity = s.name;
-        const who = el('td', 'celebrity-cell');
-        const button = el('button', 'celebrity-link'); button.type = 'button';
-        button.append(el('span', 'lb-name', s.name));
-        if (s.multiplier !== 1) button.append(el('span', 'multiplier-badge', '×' + s.multiplier));
-        button.append(el('span', 'breakdown-label', 'View full celebrity scoring breakdown'));
-        button.onclick = () => openHistory(s.name);
-        who.append(button, el('span', 'lb-meta', roleLabel(s) + ' · ' + statusLabel(s))); row.appendChild(who);
-        [['Previous episode', s.previous === null ? 'Unavailable' : s.previous, 'previous'], ['Current score', s.celebScore, 'current'], ['Contribution', s.contributed, 'contribution']].forEach(([label, value, cls]) => {
-          const td = el('td', cls); td.dataset.label = label;
-          td.appendChild(el('strong', null, value));
-          if (cls === 'previous' && s.previous === null) td.appendChild(el('small', null, model.unavailableReason));
-          if (cls === 'current' && s.delta) td.appendChild(el('small', s.delta < 0 ? 'delta negative' : 'delta', (s.delta > 0 ? '+' : '') + s.delta));
-          row.appendChild(td);
-        });
-        body.appendChild(row);
+        const row = el('div', 'celebrity-row status-' + s.status); row.dataset.celebrity = s.name;
+        const identity = el('div', 'celebrity-identity'), button = el('button', 'celebrity-link'); button.type = 'button';
+        button.append(el('span', 'lb-name', s.name), el('span', 'breakdown-label', 'Breakdown'));
+        button.setAttribute('aria-label', 'Scoring breakdown for ' + s.name); button.onclick = () => {button.focus({preventScroll:true}); openHistory(s.name);};
+        identity.append(button, el('span', 'status-badge', statusLabel(s)));
+        const points = el('div', 'celebrity-points'), raw = el('div', 'raw-score'); raw.appendChild(el('strong', null, s.celebScore));
+        const gain = window.ScoreboardModel.gainLabel(s.latestGain), change = el('span', 'episode-gain ' + gain.kind, gain.text);
+        change.setAttribute('aria-label', gain.text + ' raw points in Episode ' + model.episode); raw.appendChild(change); points.appendChild(raw);
+        points.appendChild(el('small', null, 'raw points'));
+        if (s.multiplier !== 1) points.appendChild(el('span', 'multiplied-contribution', '×' + s.multiplier + ' = ' + s.contributed + ' contribution'));
+        row.append(identity, points); list.appendChild(row);
       });
-      table.appendChild(body); group.appendChild(table); root.appendChild(group);
+      if (!p.celebs.length) list.appendChild(el('p', 'hint', 'No allocated celebrities.'));
+      group.appendChild(list); root.appendChild(group);
     });
     fitBoard();
   }
+
+  $("bonus-btn").onclick = () => {
+    // Safari does not focus a button on pointer activation. Give the native dialog
+    // a reliable return target for both pointer and keyboard users.
+    $("bonus-btn").focus({preventScroll:true});
+    const facts = window.ScoreboardModel.facts(state, T), body = $("bonus-rows"); body.replaceChildren();
+    $("bonus-caption").textContent = 'Recorded facts through Episode ' + facts.episode + ' · all 21 contestants';
+    $("bonus-coverage").textContent = facts.complete ? 'Voting records cover all scored episodes.' : 'Voting history is not fully recorded across all episodes. Positive counts are lower bounds (At least N); missing records are not zero.';
+    facts.rows.forEach(fact => {
+      const row = el('tr', 'status-' + fact.status), name = el('th', null, fact.name); name.scope = 'row';
+      row.setAttribute('role', 'row'); name.setAttribute('role', 'rowheader');
+      name.appendChild(el('small', null, statusLabel(sc(fact.name)))); row.appendChild(name);
+      [['Votes received', fact.receivedLabel], ['Ballots cast for a Traitor', fact.traitorBallotsLabel], ['Shields won', fact.shieldsLabel]].forEach(([label, value]) => {const td = el('td', null, value); td.setAttribute('role', 'cell'); td.dataset.label = label; row.appendChild(td);});
+      body.appendChild(row);
+    });
+    $("bonus-facts").showModal();
+  };
 
   // Keep the scoreboard on one screen: shrink rows until it fits.
   function fitBoard() {
@@ -423,19 +389,28 @@
   // ── View switch (Round Table / Leaderboard) ────────────
   const params = new URLSearchParams(location.search);
   function setView(v) {
+    if (!['board', 'table', 'rules'].includes(v)) v = 'board';
     document.body.classList.toggle('scoreboard-view', v === 'board');
-    $("stage").hidden = v !== "table";
-    $("board").hidden = v !== "board";
-    document.querySelectorAll(".views button").forEach((b) => b.classList.toggle("on", b.dataset.view === v));
-    if (v === "board") { renderBoard(); }
-    else {
-      layoutTable();
-      fitText();
-      scheduleFit();
-      if (matchMedia("(max-width: 720px)").matches) $("stage").scrollIntoView({ block: "nearest" });
+    document.body.classList.toggle('rules-view', v === 'rules');
+    $("stage").hidden = v !== 'table'; $("board").hidden = v !== 'board'; $("sweepstake-rules").hidden = v !== 'rules';
+    document.querySelectorAll('.views button').forEach(button => {
+      const selected = button.dataset.view === v; button.classList.toggle('on', selected);
+      button.setAttribute('aria-selected', String(selected)); button.tabIndex = selected ? 0 : -1;
+    });
+    if (v === 'board') renderBoard();
+    if (v === 'table') {
+      layoutTable(); fitText(); scheduleFit();
+      if (matchMedia('(max-width: 720px)').matches) $("stage").scrollIntoView({block:'nearest'});
     }
   }
-  document.querySelectorAll(".views button").forEach((b) => (b.onclick = () => setView(b.dataset.view)));
+  const viewTabs = [...document.querySelectorAll('.views button')];
+  viewTabs.forEach((button, index) => {
+    button.onclick = () => setView(button.dataset.view);
+    button.onkeydown = event => {
+      const next = event.key === 'Home' ? 0 : event.key === 'End' ? viewTabs.length - 1 : event.key === 'ArrowRight' ? (index + 1) % viewTabs.length : event.key === 'ArrowLeft' ? (index + viewTabs.length - 1) % viewTabs.length : null;
+      if (next !== null) {event.preventDefault(); setView(viewTabs[next].dataset.view); viewTabs[next].focus();}
+    };
+  });
   // ?rotate=30 flips between the two views every 30s (for the projector)
   const rotate = Number(params.get("rotate"));
   if (rotate > 0) setInterval(() => setView($("board").hidden ? "board" : "table"), rotate * 1000);
@@ -708,7 +683,7 @@
 
   $("manage-btn").onclick = openAdmin;
   document.addEventListener("keydown", (e) => {
-    if (/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) || dlg.open || histDlg.open) return;
+    if (/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) || dlg.open || histDlg.open || $("bonus-facts").open || $("episode-dialog").open) return;
     const k = e.key.toLowerCase();
     if (k === "m") openAdmin();
     if (k === "l") setView($("board").hidden ? "board" : "table");
@@ -729,7 +704,7 @@
     window.AutomationStatus?.render(state);
     renderSeats();
     renderCoffin();
-    eps = state.episodes.map(s => new Date(s)); tick(); updateStorageStatus();
+    updateStorageStatus();
     if (!$("board").hidden) renderBoard();
   }
 
@@ -813,7 +788,7 @@
   // ── Go ─────────────────────────────────────────────────
   renderSeats();
   renderCoffin();
-  setView(params.get("view") === "table" ? "table" : "board");
+  setView(params.get("view") || "board");
   updateStorageStatus();
   window.AutomationStatus?.render(state);
   window.SweepstakeApp = {

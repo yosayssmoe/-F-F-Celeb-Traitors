@@ -23,7 +23,8 @@
           roleChanges: items.filter(x => x.cat === 'recruited').map(() => 'Faithful → Traitor'),
           pending: pending.filter(p => Number(p.episode) === ep)};
       });
-      contestants[name] = {...s, previous: prev, delta: prev === null ? null : s.celebScore - prev, history};
+      const latestGain = s.log.filter(item => item.ep === episode).reduce((total, item) => total + item.pts, 0);
+      contestants[name] = {...s, previous: prev, delta: prev === null ? null : s.celebScore - prev, latestGain, history};
     }
     const players = Object.fromEntries((data.participants || []).map(name => [name, {name, total: 0, celebs: []}]));
     for (const c of data.celebs) if (c.participant) {
@@ -39,5 +40,30 @@
     return {episode, partial: partial(episode), previousPartial: partial(episode - 1), contestants, participants,
       unavailableReason: available ? null : 'Historical event episode numbers are missing; a previous-episode total cannot be reconstructed.'};
   }
-  root.ScoreboardModel = {build};
+  function gainLabel(value) { return {text: value >= 0 ? '+' + value : String(value), kind: value < 0 ? 'negative' : value > 0 ? 'positive' : 'zero'}; }
+  function facts(data, T) {
+    const model = build(data, T), replay = T.compute(data);
+    const rows = data.celebs.map(c => ({name: c.name, status: replay.contestants[c.name].status, received: 0, traitorBallots: 0, shieldsWon: null}));
+    const byName = Object.fromEntries(rows.map(r => [r.name, r]));
+    // Complete recorded tables alone cannot establish coverage for missing episodes.
+    let complete = Array.from({length: model.episode}, (_, i) => data.episodeRecords?.[i + 1]?.status === 'complete' && !(data.automation?.partiallyScoredEpisodes || []).includes(i + 1)).every(Boolean) &&
+      !Array.from({length: model.episode}, (_, i) => i + 1).some(n => (data.automation?.pendingEvents || []).some(p => Number(p.episode) === n));
+    (data.events || []).forEach((event, index) => {
+      if (event.type !== 'roundtable') return;
+      const step = replay.steps[index], present = new Set(step.active.filter(name => !(event.absent || []).includes(name)));
+      if (event.votingComplete !== true || [...present].some(name => !event.votes?.[name]) || (event.revotes || []).some(round => !Object.values(round).some(Boolean))) complete = false;
+      [event.votes || {}, ...(event.revotes || [])].forEach(ballots => {
+        for (const [voter, target] of Object.entries(ballots)) {
+          if (!target) continue;
+          if (!present.has(voter) || !present.has(target) || voter === target) { complete = false; continue; }
+          byName[target].received++;
+          // Factual ballots include Traitor voters too; scoring eligibility is separate.
+          if (step.roles[target] === 'Traitor') byName[voter].traitorBallots++;
+        }
+      });
+    });
+    const label = value => complete ? String(value) : value > 0 ? 'At least ' + value : 'Not fully recorded';
+    return {episode: model.episode, complete, rows: rows.map(r => ({...r, receivedLabel: label(r.received), traitorBallotsLabel: label(r.traitorBallots), shieldsLabel: 'Unavailable'}))};
+  }
+  root.ScoreboardModel = {build, facts, gainLabel};
 })(typeof window === 'undefined' ? module.exports : window);
