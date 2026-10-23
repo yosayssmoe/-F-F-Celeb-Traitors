@@ -1379,16 +1379,63 @@ window.SWEEPSTAKE = {
       9,
       10
     ],
-    "runUrl": "https://github.com/yosayssmoe/-F-F-Celeb-Traitors/actions/runs/39935578427",
+    "runUrl": "https://github.com/yosayssmoe/-F-F-Celeb-Traitors/actions/runs/40024825750",
     "latestEpisodeChecked": 8,
     "latestEpisodeFullyScored": 7,
     "partiallyScoredEpisodes": [],
     "pendingEvents": [
       {
         "episode": 8,
-        "status": "not-published",
-        "reason": "No confirmed results published.",
-        "id": "c6d209fab13c8df4"
+        "status": "unsupported",
+        "reason": "Decision Dagger for King Kenny requires manual evidence.",
+        "id": "eabf45652488ec67"
+      },
+      {
+        "episode": 8,
+        "status": "ambiguous",
+        "reason": "Unrecognised banishment: Tie",
+        "id": "860899b31d4dc3d7"
+      },
+      {
+        "episode": 8,
+        "event": "murder:Miranda Hart",
+        "status": "chronology-pending",
+        "reason": "An unresolved event may change role or survival eligibility.",
+        "dependencies": [],
+        "candidate": {
+          "event": {
+            "ep": 8,
+            "type": "murder",
+            "victim": "Miranda Hart"
+          },
+          "key": "murder:Miranda Hart",
+          "column": 15,
+          "kind": "decision",
+          "verified": true,
+          "evidence": [
+            "Murder: Miranda",
+            "Second structured section agrees"
+          ],
+          "observedRole": "Faithful",
+          "aliases": [
+            "Miranda Hart",
+            "Miranda",
+            "Miranda H."
+          ]
+        },
+        "sources": [
+          {
+            "title": "Wikipedia: Celebrity Traitors UK Series 2",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1381636096",
+            "revision": 1381636096,
+            "revisionTimestamp": "2026-10-23T20:23:27Z"
+          }
+        ],
+        "evidence": [
+          "Murder: Miranda",
+          "Second structured section agrees"
+        ],
+        "id": "6ec6da4af163304e"
       },
       {
         "episode": 9,
