@@ -573,6 +573,105 @@ window.SWEEPSTAKE = {
         "chronology": [],
         "locked": false
       }
+    },
+    {
+      "ep": 7,
+      "type": "murder",
+      "victim": "Ross Kemp",
+      "id": "ep7-auto-66866c3268eb",
+      "automation": {
+        "owner": "github-actions",
+        "verification": "structured-verified",
+        "verifiedAt": "2026-10-23T09:57:44.425Z",
+        "payloadHash": "27f99acd9dfae6af0af8d960db107fd98238f53614c4273404f46f4889254268",
+        "sources": [
+          {
+            "title": "Wikipedia: Celebrity Traitors UK Series 2",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1381559156",
+            "retrievedAt": "2026-10-23T09:57:43.242Z",
+            "revision": 1381559156,
+            "revisionTimestamp": "2026-10-23T09:21:31Z"
+          }
+        ],
+        "evidence": [
+          "Murder: Ross",
+          "Second structured section agrees"
+        ],
+        "chronology": [
+          {
+            "before": "murder:Ross Kemp",
+            "after": "roundtable:Jerry Hall",
+            "reason": "eliminated-before-voting",
+            "evidence": "Ross Kemp explicitly out in every voting round",
+            "source": {
+              "title": "Wikipedia: Celebrity Traitors UK Series 2",
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1381559156",
+              "retrievedAt": "2026-10-23T09:57:43.242Z",
+              "revision": 1381559156,
+              "revisionTimestamp": "2026-10-23T09:21:31Z"
+            }
+          }
+        ],
+        "locked": false
+      }
+    },
+    {
+      "ep": 7,
+      "type": "roundtable",
+      "votes": {
+        "James Acaster": "Jerry Hall",
+        "James Blunt": "Jerry Hall",
+        "Joanne McNally": "Jerry Hall",
+        "King Kenny": "Sebastian Croft",
+        "Leigh-Anne Pinnock": "Jerry Hall",
+        "Maya Jama": "Jerry Hall",
+        "Michael Sheen": "Jerry Hall",
+        "Miranda Hart": "Jerry Hall",
+        "Romesh Ranganathan": "Jerry Hall",
+        "Sebastian Croft": "Jerry Hall",
+        "Sharon Rooney": "Leigh-Anne Pinnock",
+        "Jerry Hall": "Joanne McNally"
+      },
+      "revotes": [],
+      "absent": [],
+      "banished": "Jerry Hall",
+      "votingComplete": true,
+      "id": "ep7-auto-379460dc2268",
+      "automation": {
+        "owner": "github-actions",
+        "verification": "structured-verified",
+        "verifiedAt": "2026-10-23T09:57:44.425Z",
+        "payloadHash": "6f72f6c84056087cb69a18826c79843ac465efa7d85728dd3ea8ebdb907afb4b",
+        "sources": [
+          {
+            "title": "Wikipedia: Celebrity Traitors UK Series 2",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1381559156",
+            "retrievedAt": "2026-10-23T09:57:43.242Z",
+            "revision": 1381559156,
+            "revisionTimestamp": "2026-10-23T09:21:31Z"
+          }
+        ],
+        "evidence": [
+          "Banishment: Jerry Hall",
+          "Contestant finish agrees"
+        ],
+        "chronology": [
+          {
+            "before": "murder:Ross Kemp",
+            "after": "roundtable:Jerry Hall",
+            "reason": "eliminated-before-voting",
+            "evidence": "Ross Kemp explicitly out in every voting round",
+            "source": {
+              "title": "Wikipedia: Celebrity Traitors UK Series 2",
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1381559156",
+              "retrievedAt": "2026-10-23T09:57:43.242Z",
+              "revision": 1381559156,
+              "revisionTimestamp": "2026-10-23T09:21:31Z"
+            }
+          }
+        ],
+        "locked": false
+      }
     }
   ],
   "participants": [
@@ -652,6 +751,23 @@ window.SWEEPSTAKE = {
       ],
       "approvedAt": "2026-10-16T22:19:06.161Z",
       "automationPayloadHash": "c3fd486504e07800826de9571ca430b4354f4355dd54f56abd99b4cce4610c77",
+      "automationLocked": false
+    },
+    "7": {
+      "date": "2026-10-22",
+      "status": "complete",
+      "notes": "Automatically verified structured events. Unsupported or unpublished information remains in the workflow report.",
+      "sources": [
+        {
+          "title": "Wikipedia: Celebrity Traitors UK Series 2",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1381559156",
+          "retrievedAt": "2026-10-23T09:57:43.242Z",
+          "revision": 1381559156,
+          "revisionTimestamp": "2026-10-23T09:21:31Z"
+        }
+      ],
+      "approvedAt": "2026-10-23T09:57:44.425Z",
+      "automationPayloadHash": "2497db218d75d4faf4685cd73b3afe46bf152ec84da7923f9dc8c02430562c8b",
       "automationLocked": false
     }
   },
@@ -1132,32 +1248,142 @@ window.SWEEPSTAKE = {
           "revisionTimestamp": "2026-10-16T20:20:52Z"
         }
       ]
+    },
+    {
+      "episode": 7,
+      "approvedAt": "2026-10-23T09:57:44.425Z",
+      "method": "GitHub Actions verified update",
+      "previousEvents": [],
+      "previousRecord": null,
+      "newEvents": [
+        {
+          "ep": 7,
+          "type": "murder",
+          "victim": "Ross Kemp",
+          "id": "ep7-auto-66866c3268eb",
+          "automation": {
+            "owner": "github-actions",
+            "verification": "structured-verified",
+            "verifiedAt": "2026-10-23T09:57:44.425Z",
+            "payloadHash": "27f99acd9dfae6af0af8d960db107fd98238f53614c4273404f46f4889254268",
+            "sources": [
+              {
+                "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1381559156",
+                "retrievedAt": "2026-10-23T09:57:43.242Z",
+                "revision": 1381559156,
+                "revisionTimestamp": "2026-10-23T09:21:31Z"
+              }
+            ],
+            "evidence": [
+              "Murder: Ross",
+              "Second structured section agrees"
+            ],
+            "chronology": [
+              {
+                "before": "murder:Ross Kemp",
+                "after": "roundtable:Jerry Hall",
+                "reason": "eliminated-before-voting",
+                "evidence": "Ross Kemp explicitly out in every voting round",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1381559156",
+                  "retrievedAt": "2026-10-23T09:57:43.242Z",
+                  "revision": 1381559156,
+                  "revisionTimestamp": "2026-10-23T09:21:31Z"
+                }
+              }
+            ],
+            "locked": false
+          }
+        },
+        {
+          "ep": 7,
+          "type": "roundtable",
+          "votes": {
+            "James Acaster": "Jerry Hall",
+            "James Blunt": "Jerry Hall",
+            "Joanne McNally": "Jerry Hall",
+            "King Kenny": "Sebastian Croft",
+            "Leigh-Anne Pinnock": "Jerry Hall",
+            "Maya Jama": "Jerry Hall",
+            "Michael Sheen": "Jerry Hall",
+            "Miranda Hart": "Jerry Hall",
+            "Romesh Ranganathan": "Jerry Hall",
+            "Sebastian Croft": "Jerry Hall",
+            "Sharon Rooney": "Leigh-Anne Pinnock",
+            "Jerry Hall": "Joanne McNally"
+          },
+          "revotes": [],
+          "absent": [],
+          "banished": "Jerry Hall",
+          "votingComplete": true,
+          "id": "ep7-auto-379460dc2268",
+          "automation": {
+            "owner": "github-actions",
+            "verification": "structured-verified",
+            "verifiedAt": "2026-10-23T09:57:44.425Z",
+            "payloadHash": "6f72f6c84056087cb69a18826c79843ac465efa7d85728dd3ea8ebdb907afb4b",
+            "sources": [
+              {
+                "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1381559156",
+                "retrievedAt": "2026-10-23T09:57:43.242Z",
+                "revision": 1381559156,
+                "revisionTimestamp": "2026-10-23T09:21:31Z"
+              }
+            ],
+            "evidence": [
+              "Banishment: Jerry Hall",
+              "Contestant finish agrees"
+            ],
+            "chronology": [
+              {
+                "before": "murder:Ross Kemp",
+                "after": "roundtable:Jerry Hall",
+                "reason": "eliminated-before-voting",
+                "evidence": "Ross Kemp explicitly out in every voting round",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1381559156",
+                  "retrievedAt": "2026-10-23T09:57:43.242Z",
+                  "revision": 1381559156,
+                  "revisionTimestamp": "2026-10-23T09:21:31Z"
+                }
+              }
+            ],
+            "locked": false
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Wikipedia: Celebrity Traitors UK Series 2",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1381559156",
+          "retrievedAt": "2026-10-23T09:57:43.242Z",
+          "revision": 1381559156,
+          "revisionTimestamp": "2026-10-23T09:21:31Z"
+        }
+      ]
     }
   ],
   "automation": {
     "version": 2,
-    "lastVerifiedUpdate": "2026-10-16T22:19:06.161Z",
-    "latestConfirmedEpisode": 6,
+    "lastVerifiedUpdate": "2026-10-23T09:57:44.425Z",
+    "latestConfirmedEpisode": 7,
     "votingData": "Complete",
     "scheduleDescription": "Daily 10:00, plus Thursday and Friday 23:00 (Europe/London). Checks revisit pending and historical results. GitHub may delay or skip runs.",
     "verification": "structured-source validation",
     "pendingEpisodes": [
-      7,
       8,
       9,
       10
     ],
-    "runUrl": "https://github.com/yosayssmoe/-F-F-Celeb-Traitors/actions/runs/38974980788",
-    "latestEpisodeChecked": 6,
-    "latestEpisodeFullyScored": 6,
+    "runUrl": "https://github.com/yosayssmoe/-F-F-Celeb-Traitors/actions/runs/39935578427",
+    "latestEpisodeChecked": 8,
+    "latestEpisodeFullyScored": 7,
     "partiallyScoredEpisodes": [],
     "pendingEvents": [
-      {
-        "episode": 7,
-        "status": "not-published",
-        "reason": "No confirmed results published.",
-        "id": "1be4e3142ee0a6d5"
-      },
       {
         "episode": 8,
         "status": "not-published",
