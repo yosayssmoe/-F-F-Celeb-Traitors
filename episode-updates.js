@@ -6,7 +6,7 @@ window.EpisodeUpdates = (() => {
   const stable=x=>JSON.stringify(sort(x));
   function sort(x) { if(Array.isArray(x)) return x.map(sort); if(x && typeof x==='object') return Object.fromEntries(Object.keys(x).sort().map(k=>[k,sort(x[k])])); return x; }
   function signature(e) {
-    const keys={murder:['victim','shielded'],recruit:['who','accepted'],exit:['who'],final:['winners'],roundtable:['votes','revotes','absent','banished','votingComplete']};
+    const keys={murder:['victim','shielded'],recruit:['who','accepted'],exit:['who'],final:['winners'],roundtable:['votes','revotes','absent','banished','votingComplete','tableId','ballotPowers','extraBallots','outcome']};
     return stable(Object.fromEntries(['type',...(keys[e.type]||[])].map(k=>[k,e[k]??null])));
   }
   function migrate(data) {

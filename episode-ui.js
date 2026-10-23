@@ -51,6 +51,7 @@
       const li=el('li',null,'ev'),head=el('div',null,'ev-head');head.append(el('strong',`${i+1}. ${ {murder:'Murder / Shield save',roundtable:'Round Table',recruit:'Recruitment',exit:'Other exit',final:'Final winners'}[e.type] }`));
       head.append(button('↑',()=>{if(i)[draft.events[i-1],draft.events[i]]=[e,draft.events[i-1]];}),button('↓',()=>{if(i<draft.events.length-1)[draft.events[i+1],draft.events[i]]=[e,draft.events[i+1]];}),button('Remove',()=>{draft.events.splice(i,1);}));li.append(head);
       const body=el('div',null,'ev-body');
+      if(e.type==='roundtable'&&(e.ballotPowers||e.outcome))body.append(el('p','Verified voting metadata (retained on review): '+JSON.stringify({tableId:e.tableId,ballotPowers:e.ballotPowers,extraBallots:e.extraBallots,outcome:e.outcome})+'. Changes must remain consistent with these ballots.','hint'));
       if(e.type==='murder') {
         field(body,'Murder victim',select(active,e.victim,v=>{e.victim=v||null;if(v)e.shielded=null;},'Murder victim'));
         field(body,'Target whose Shield actually blocked murder',select(active.filter(n=>roles[n]==='Faithful'),e.shielded,v=>{e.shielded=v||null;if(v)e.victim=null;},'Shield saved target'));

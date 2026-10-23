@@ -18,6 +18,8 @@ window.SweepstakeData = (() => {
     if (!Array.isArray(d.events)) fail('Events must be a list.');
     const ids = d.events.map(e=>e.id).filter(Boolean);
     if (!unique(ids)) fail('Event IDs must be unique. An event cannot be scored twice.');
+    const tables=d.events.filter(e=>e.type==='roundtable'&&e.tableId).map(e=>e.tableId);
+    if(!unique(tables)) fail('Round Table identities must be unique, including unresolved tables.');
     if(d.episodeRecords!==undefined) {
       if(!d.episodeRecords || typeof d.episodeRecords!=='object' || Array.isArray(d.episodeRecords)) fail('Invalid episode records.');
       Object.entries(d.episodeRecords).forEach(([ep,r])=>{
@@ -46,6 +48,7 @@ window.SweepstakeData = (() => {
       else if(e.type==='roundtable') {
         if(!Array.isArray(e.absent) || !unique(e.absent) || e.absent.some(n=>!active.has(n))) error('Absentees must be unique active contestants.');
         const participants=[...active].filter(n=>!e.absent.includes(n));
+        if(e.tableId!==undefined&&(!new RegExp('^ep'+e.ep+'-table-[a-zA-Z0-9_-]+$').test(e.tableId)))error('Invalid stable Round Table identity.');
         if(!participants.length) error('A Round Table needs participants.');
         if(!e.votes || typeof e.votes!=='object' || Array.isArray(e.votes) || !Array.isArray(e.revotes)) error('Invalid voting rounds.');
         if(e.votingComplete !== undefined && typeof e.votingComplete !== 'boolean') error('Voting completeness must be true or false.');
@@ -55,6 +58,18 @@ window.SweepstakeData = (() => {
           if(j && e.votingComplete !== false && !Object.values(r).some(Boolean)) error('Remove empty re-votes or mark voting incomplete.');
           Object.entries(r).forEach(([v,t])=>{ if(t && (!participants.includes(v) || !participants.includes(t) || v===t)) error('Votes must be between different, present contestants. Clear stale votes after changing attendance.'); });
         });
+        if(e.ballotPowers!==undefined||e.extraBallots!==undefined){
+          const view=window.TraitorsScoring.ballotView(e,participants);
+          if(view.errors.length)error(view.errors.join(' '));
+          if(e.votingComplete===true&&!view.complete)error('Complete voting requires every extra ballot and valid re-vote.');
+        }
+        if(e.outcome!==undefined){
+          if(!e.outcome||!['pending','banished','no-banishment'].includes(e.outcome.status))error('Invalid Round Table outcome.');
+          if(e.outcome.tied!==undefined&&(!Array.isArray(e.outcome.tied)||e.outcome.tied.length<2||!unique(e.outcome.tied)||e.outcome.tied.some(n=>!participants.includes(n))))error('Tie candidates must be distinct present contestants.');
+          if(e.outcome.status==='pending'&&(e.banished||e.votingComplete===true))error('An unresolved tie cannot confirm an elimination or complete voting.');
+          if(e.outcome.status==='banished'&&(!e.banished||e.outcome.tied&&!e.outcome.tied.includes(e.banished)))error('Confirmed tie resolution needs the actual banished contestant.');
+          if(e.outcome.status==='no-banishment'&&e.banished)error('No-banishment outcome cannot eliminate a contestant.');
+        }
         if(e.banished) { present(e.banished); if(!participants.includes(e.banished)) error('An absent contestant cannot be banished at this table.'); active.delete(e.banished); }
       } else if(e.type==='final') {
         if(!Array.isArray(e.winners) || !e.winners.length || !unique(e.winners)) error('Select the actual winner(s), once each.');

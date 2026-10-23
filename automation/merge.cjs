@@ -1,7 +1,7 @@
 const {T,D,E,clone,stable,hash,payload}=require('./shared.cjs');
 const {verifyVotes}=require('./wikipedia.cjs');
 const {dependent}=require('./chronology.cjs');
-const key=e=>e.type+':'+(e.who||e.victim||e.shielded||e.banished||(e.winners||[]).join('|')||'');
+const key=e=>e.type+':'+(e.tableId||e.who||e.victim||e.shielded||e.banished||(e.winners||[]).join('|')||'');
 function assertDraw(d){
  const draw={Talia:['Ross Kemp','Jerry Hall','Richard E. Grant'],Joe:['Maya Jama',"Myha'la",'King Kenny'],Alex:['Romesh Ranganathan','James Blunt','Hannah Fry'],Apala:['Michael Sheen','Sharon Rooney','Leigh-Anne Pinnock'],Reuben:['Joe Lycett','Rob Beckett','Bella Ramsey'],Julian:['Julie Hesmondhalgh','James Acaster','Sebastian Croft'],Ava:['Joanne McNally','Miranda Hart']};
  if(stable([...d.participants].sort())!==stable(Object.keys(draw).sort()))throw Error('The seven participant names changed; automation will not alter the draw.');
@@ -10,16 +10,21 @@ function assertDraw(d){
 function locked(e){return e.automation?.locked===true || (e.automation?.payloadHash && e.automation.payloadHash!==hash(payload(e)));}
 function mergeRound(old,fresh){
  // Existing assertions cannot be deleted or changed by an automated backfill.
- if(old.banished!==fresh.banished||stable([...(old.absent||[])].sort())!==stable([...(fresh.absent||[])].sort()))throw Error('Banishment or attendance conflicts with recorded results.');
+ if((old.banished!==fresh.banished&&!(old.tableId&&old.tableId===fresh.tableId&&old.outcome?.status==='pending'&&!old.banished&&fresh.outcome?.status==='banished'))||stable([...(old.absent||[])].sort())!==stable([...(fresh.absent||[])].sort()))throw Error('Banishment or attendance conflicts with recorded results.');
+ if(stable(old.ballotPowers||[])!==stable(fresh.ballotPowers||[]))throw Error('Voting power conflicts with the published mechanics.');
+ for(const ballot of old.extraBallots||[])if(!(fresh.extraBallots||[]).some(b=>stable(b)===stable(ballot)))throw Error('A published extra ballot is missing or changed.');
  const a=[old.votes||{},...(old.revotes||[])],b=[fresh.votes||{},...(fresh.revotes||[])];
  for(let i=0;i<a.length;i++)for(const [v,t] of Object.entries(a[i]))if(t && b[i]?.[v]!==t)throw Error('A published vote is missing or changed for '+v+'.');
  if(old.votingComplete===true && !fresh.votingComplete)throw Error('Source regressed from a complete voting record.');
- return {...clone(old),votes:fresh.votes,revotes:fresh.revotes,absent:fresh.absent,votingComplete:fresh.votingComplete};
+ return {...clone(old),votes:fresh.votes,revotes:fresh.revotes,absent:fresh.absent,banished:fresh.banished,votingComplete:fresh.votingComplete,...(fresh.tableId?{tableId:fresh.tableId,outcome:fresh.outcome}:{}),...(fresh.ballotPowers?{ballotPowers:fresh.ballotPowers,extraBallots:fresh.extraBallots}:{})};
 }
 function merge(data,parsed,config,now=new Date().toISOString()){
  D.validate(data);assertDraw(data);let next=clone(data),changed=false;const blockers=[];
  const report={checkedAt:now,sources:[parsed.source],accepted:[],deferred:[],unchanged:[],scoresChanged:false,dataUpdated:false,publication:'not attempted',beforeTotals:clone(E.totals(data)),afterTotals:null};
  const ordered=parsed.episodes.slice().sort((a,b)=>a.episode-b.episode);
+ // Persisted unresolved outcomes still constrain later events when a source
+ // omits the whole episode or the episode is manually protected.
+ for(const e of data.events.filter(e=>e.type==='roundtable'&&e.outcome?.status==='pending'))blockers.push({id:`ep${e.ep}:${key(e)}:outcome`,event:null,episode:e.ep});
  // A disappearing pending candidate is a source regression, not a resolution.
  // Revisit it, and keep its state dependency until evidence returns.
  for(const item of data.automation?.pendingEvents||[]){
@@ -82,12 +87,13 @@ function merge(data,parsed,config,now=new Date().toISOString()){
      if(existing.type==='roundtable')event=mergeRound(existing,event);
      else {if(stable(payload(existing))!==stable(payload(event)))throw Error('Recorded event differs from source: '+key(event));event=clone(existing);}
     }
-    if(existing&&stable(payload(existing))===stable(payload(event))){merged.push(clone(existing));continue;}
+    const blockOutcome=()=>{const id=`ep${ep.episode}:${key(event)}:outcome`,index=blockers.findIndex(b=>b.id===id);if(index>=0)blockers.splice(index,1);if(event.outcome?.status==='pending')blockers.push({id,event:null,episode:ep.episode});};
+    if(existing&&stable(payload(existing))===stable(payload(event))){merged.push(clone(existing));blockOutcome();continue;}
     const sourceList=[ep.source,...(c.corroboration||[])];
     event.id=existing?.id||`ep${ep.episode}-auto-${hash(key(event)).slice(0,12)}`;
     event.automation={owner:'github-actions',verification:c.corroboration?.length?'corroborated':'structured-verified',verifiedAt:now,payloadHash:hash(payload(event)),sources:sourceList,evidence:c.evidence,chronology:ep.timeline?.edges.filter(e=>e.before===key(c.event)||e.after===key(c.event))||[],locked:false};
     D.validate({...next,events:[...next.events.filter(e=>e.ep<ep.episode),...merged,event,...old.filter(e=>!merged.some(m=>key(m)===key(e))&&key(e)!==key(event)),...next.events.filter(e=>e.ep>ep.episode)]});
-    merged.push(event);accepted.push({episode:ep.episode,event:key(event),action:existing?'backfilled':'added',votingComplete:event.type==='roundtable'?event.votingComplete:undefined,verification:event.automation.verification,sources:sourceList});
+    merged.push(event);blockOutcome();accepted.push({episode:ep.episode,event:key(event),action:existing?'backfilled':'added',votingComplete:event.type==='roundtable'?event.votingComplete:undefined,verification:event.automation.verification,sources:sourceList});
     }catch(error){
      const c=candidates[i],existing=old.find(e=>key(e)===key(c.event));
      if(existing?.type==='roundtable'&&c.verified&&/^A published vote|^Source regressed/.test(error.message)){
@@ -112,12 +118,19 @@ function merge(data,parsed,config,now=new Date().toISOString()){
   }catch(e){next=before;defer(e.message,'conflicting');blockers.push({id:`ep${ep.episode}:conflicting`,event:null});}
  }
  // Pending state is canonical and durable, but stable checks must not churn commits.
+ for(const event of next.events.filter(e=>e.type==='roundtable'&&e.outcome?.status==='pending')){
+  report.deferred.push({episode:event.ep,event:key(event),status:'outcome-pending',reason:'Tied Round Table has no verified final banishment. Await the remaining ballot(s), their extra votes and the announced outcome.',dependencies:[key(event)]});
+ }
  const missingVotes=[];
  for(let i=0;i<next.events.length;i++){
   const event=next.events[i];if(event.type!=='roundtable'||event.votingComplete===true)continue;
   const state=T.compute({...next,events:next.events.slice(0,i)}).steps[i];
   const voters=state.active.filter(n=>!(event.absent||[]).includes(n));
-  missingVotes.push({episode:event.ep,event:key(event),voters:voters.filter(n=>!event.votes?.[n]),reason:'Full voting rounds, attendance and tally must be verified before zero-vote bonuses.'});
+  const detail=event.tableId?{rounds:[event.votes,...event.revotes].map((r,i)=>{
+   const eligible=T.ballotView(event,voters).eligibleByRound[i]||[];
+   return {round:i+1,voters:eligible.filter(n=>!r[n]),extraBallotVoters:(event.ballotPowers||[]).filter(p=>eligible.includes(p.holder)&&!(event.extraBallots||[]).some(b=>b.round===i&&b.voter===p.holder)).map(p=>p.holder)};
+  })}:{};
+  missingVotes.push({episode:event.ep,event:key(event),voters:voters.filter(n=>!event.votes?.[n]),...detail,reason:'Full voting rounds, attendance and tally must be verified before zero-vote bonuses.'});
  }
  const pending=[...report.deferred.map(x=>({...x,id:hash([x.episode,x.event||'',x.status,x.reason]).slice(0,16)})),...missingVotes.map(x=>({...x,id:hash([x.episode,x.event,'votes']).slice(0,16),status:'missing-votes'}))];
  // Preserve unresolved records for episodes omitted altogether by a regressing source.

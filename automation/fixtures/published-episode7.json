@@ -1,0 +1,464 @@
+{
+  "title": "Celebrity Traitors UK",
+  "subtitle": "Friends & Family Sweepstake",
+  "episodeLengthMins": 60,
+  "episodes": [],
+  "celebs": [
+    {
+      "name": "Amol Rajan",
+      "role": "Broadcaster",
+      "photo": "",
+      "participant": "",
+      "multiplier": 1
+    },
+    {
+      "name": "Bella Ramsey",
+      "role": "Actor",
+      "photo": "",
+      "participant": "Reuben",
+      "multiplier": 1
+    },
+    {
+      "name": "Hannah Fry",
+      "role": "Mathematician & broadcaster",
+      "photo": "",
+      "participant": "Alex",
+      "multiplier": 1
+    },
+    {
+      "name": "James Acaster",
+      "role": "Comedian",
+      "photo": "",
+      "participant": "Julian",
+      "multiplier": 1
+    },
+    {
+      "name": "James Blunt",
+      "role": "Singer",
+      "photo": "",
+      "participant": "Alex",
+      "multiplier": 1
+    },
+    {
+      "name": "Jerry Hall",
+      "role": "Model & actress",
+      "photo": "",
+      "participant": "Talia",
+      "multiplier": 1
+    },
+    {
+      "name": "Joanne McNally",
+      "role": "Comedian",
+      "photo": "",
+      "participant": "Ava",
+      "multiplier": 1
+    },
+    {
+      "name": "Joe Lycett",
+      "role": "Comedian",
+      "photo": "",
+      "participant": "Reuben",
+      "multiplier": 1
+    },
+    {
+      "name": "Julie Hesmondhalgh",
+      "role": "Actress",
+      "photo": "",
+      "participant": "Julian",
+      "multiplier": 1
+    },
+    {
+      "name": "King Kenny",
+      "role": "Content creator",
+      "photo": "",
+      "participant": "Joe",
+      "multiplier": 1
+    },
+    {
+      "name": "Leigh-Anne Pinnock",
+      "role": "Singer",
+      "photo": "",
+      "participant": "Apala",
+      "multiplier": 1
+    },
+    {
+      "name": "Maya Jama",
+      "role": "Presenter",
+      "photo": "",
+      "participant": "Joe",
+      "multiplier": 1
+    },
+    {
+      "name": "Michael Sheen",
+      "role": "Actor",
+      "photo": "",
+      "participant": "Apala",
+      "multiplier": 1
+    },
+    {
+      "name": "Miranda Hart",
+      "role": "Actress & comedian",
+      "photo": "",
+      "participant": "Ava",
+      "multiplier": 2
+    },
+    {
+      "name": "Myha'la",
+      "role": "Actress",
+      "photo": "",
+      "participant": "Joe",
+      "multiplier": 1
+    },
+    {
+      "name": "Richard E. Grant",
+      "role": "Actor",
+      "photo": "",
+      "participant": "Talia",
+      "multiplier": 1
+    },
+    {
+      "name": "Rob Beckett",
+      "role": "Comedian",
+      "photo": "",
+      "participant": "Reuben",
+      "multiplier": 1
+    },
+    {
+      "name": "Romesh Ranganathan",
+      "role": "Comedian",
+      "photo": "",
+      "participant": "Alex",
+      "multiplier": 1
+    },
+    {
+      "name": "Ross Kemp",
+      "role": "Actor & broadcaster",
+      "photo": "",
+      "participant": "Talia",
+      "multiplier": 1
+    },
+    {
+      "name": "Sebastian Croft",
+      "role": "Actor",
+      "photo": "",
+      "multiplier": 1,
+      "participant": "Julian"
+    },
+    {
+      "name": "Sharon Rooney",
+      "role": "Actress",
+      "photo": "",
+      "participant": "Apala",
+      "multiplier": 1
+    }
+  ],
+  "originalTraitors": [
+    "Maya Jama",
+    "Richard E. Grant"
+  ],
+  "events": [
+    {
+      "ep": 2,
+      "type": "murder",
+      "victim": "Amol Rajan"
+    },
+    {
+      "ep": 2,
+      "type": "recruit",
+      "who": "James Acaster",
+      "accepted": true
+    },
+    {
+      "ep": 3,
+      "type": "roundtable",
+      "votes": {
+        "Bella Ramsey": "Richard E. Grant",
+        "Hannah Fry": "Richard E. Grant",
+        "James Acaster": "Richard E. Grant",
+        "James Blunt": "Hannah Fry",
+        "Jerry Hall": "Leigh-Anne Pinnock",
+        "Joanne McNally": "Leigh-Anne Pinnock",
+        "Joe Lycett": "Richard E. Grant",
+        "Julie Hesmondhalgh": "Richard E. Grant",
+        "King Kenny": "Richard E. Grant",
+        "Leigh-Anne Pinnock": "Richard E. Grant",
+        "Maya Jama": "Richard E. Grant",
+        "Michael Sheen": "Richard E. Grant",
+        "Miranda Hart": "Richard E. Grant",
+        "Rob Beckett": "Richard E. Grant",
+        "Romesh Ranganathan": "Richard E. Grant",
+        "Ross Kemp": "Richard E. Grant",
+        "Sebastian Croft": "Richard E. Grant",
+        "Sharon Rooney": "Richard E. Grant",
+        "Myha'la": "Richard E. Grant",
+        "Richard E. Grant": "Bella Ramsey"
+      },
+      "revotes": [],
+      "absent": [],
+      "banished": "Richard E. Grant",
+      "votingComplete": true,
+      "id": "ep3-auto-4b03cdf55596"
+    },
+    {
+      "ep": 3,
+      "type": "recruit",
+      "who": "Hannah Fry",
+      "accepted": true,
+      "id": "ep3-auto-3009dfcb389f"
+    },
+    {
+      "ep": 3,
+      "type": "roundtable",
+      "votes": {
+        "Bella Ramsey": "Myha'la",
+        "Hannah Fry": "Myha'la",
+        "James Acaster": "Michael Sheen",
+        "James Blunt": "Myha'la",
+        "Jerry Hall": "Myha'la",
+        "Joanne McNally": "Jerry Hall",
+        "Joe Lycett": "Myha'la",
+        "Julie Hesmondhalgh": "Myha'la",
+        "King Kenny": "Jerry Hall",
+        "Leigh-Anne Pinnock": "Jerry Hall",
+        "Maya Jama": "Jerry Hall",
+        "Michael Sheen": "Myha'la",
+        "Miranda Hart": "Myha'la",
+        "Rob Beckett": "Myha'la",
+        "Romesh Ranganathan": "Myha'la",
+        "Ross Kemp": "Myha'la",
+        "Sebastian Croft": "Myha'la",
+        "Sharon Rooney": "Myha'la",
+        "Myha'la": "Julie Hesmondhalgh"
+      },
+      "revotes": [],
+      "absent": [],
+      "banished": "Myha'la",
+      "votingComplete": true,
+      "id": "ep3-auto-45f38a99ca97"
+    },
+    {
+      "ep": 4,
+      "type": "murder",
+      "victim": "Bella Ramsey",
+      "id": "ep4-auto-2f2d798dcf55"
+    },
+    {
+      "ep": 4,
+      "type": "roundtable",
+      "votes": {
+        "Hannah Fry": "Jerry Hall",
+        "James Acaster": "Julie Hesmondhalgh",
+        "James Blunt": "Julie Hesmondhalgh",
+        "Jerry Hall": "Hannah Fry",
+        "Joanne McNally": "Julie Hesmondhalgh",
+        "Joe Lycett": "Hannah Fry",
+        "King Kenny": "Hannah Fry",
+        "Leigh-Anne Pinnock": "Hannah Fry",
+        "Maya Jama": "Julie Hesmondhalgh",
+        "Michael Sheen": "Julie Hesmondhalgh",
+        "Miranda Hart": "Julie Hesmondhalgh",
+        "Rob Beckett": "Julie Hesmondhalgh",
+        "Romesh Ranganathan": "Hannah Fry",
+        "Ross Kemp": "Julie Hesmondhalgh",
+        "Sebastian Croft": "Hannah Fry",
+        "Sharon Rooney": "Julie Hesmondhalgh",
+        "Julie Hesmondhalgh": "James Blunt"
+      },
+      "revotes": [],
+      "absent": [],
+      "banished": "Julie Hesmondhalgh",
+      "votingComplete": true,
+      "id": "ep4-auto-5312c0ee3d54"
+    },
+    {
+      "ep": 5,
+      "type": "murder",
+      "victim": "Rob Beckett",
+      "id": "ep5-auto-85ef02b2b2cc"
+    },
+    {
+      "ep": 5,
+      "type": "roundtable",
+      "votes": {
+        "James Acaster": "Hannah Fry",
+        "James Blunt": "Hannah Fry",
+        "Jerry Hall": "Hannah Fry",
+        "Joanne McNally": "Sebastian Croft",
+        "Joe Lycett": "Hannah Fry",
+        "King Kenny": "Hannah Fry",
+        "Leigh-Anne Pinnock": "Hannah Fry",
+        "Maya Jama": "Hannah Fry",
+        "Michael Sheen": "Hannah Fry",
+        "Miranda Hart": "Hannah Fry",
+        "Romesh Ranganathan": "James Blunt",
+        "Ross Kemp": "Hannah Fry",
+        "Sebastian Croft": "Hannah Fry",
+        "Sharon Rooney": "Hannah Fry",
+        "Hannah Fry": "Jerry Hall"
+      },
+      "revotes": [],
+      "absent": [],
+      "banished": "Hannah Fry",
+      "votingComplete": true,
+      "id": "ep5-auto-ee0b703c6058"
+    },
+    {
+      "ep": 5,
+      "type": "recruit",
+      "who": "King Kenny",
+      "accepted": true,
+      "id": "ep5-auto-4159f2497b5d"
+    },
+    {
+      "ep": 6,
+      "type": "roundtable",
+      "votes": {
+        "James Acaster": "Joanne McNally",
+        "James Blunt": "Joe Lycett",
+        "Jerry Hall": "Joe Lycett",
+        "Joanne McNally": "Joe Lycett",
+        "King Kenny": "Joe Lycett",
+        "Leigh-Anne Pinnock": "Joe Lycett",
+        "Maya Jama": "Joe Lycett",
+        "Michael Sheen": "Joe Lycett",
+        "Miranda Hart": "Ross Kemp",
+        "Romesh Ranganathan": "Joe Lycett",
+        "Ross Kemp": "Joe Lycett",
+        "Sebastian Croft": "Joe Lycett",
+        "Sharon Rooney": "Joe Lycett",
+        "Joe Lycett": "James Blunt"
+      },
+      "revotes": [],
+      "absent": [],
+      "banished": "Joe Lycett",
+      "votingComplete": true,
+      "id": "ep6-auto-3855462ff7bb"
+    },
+    {
+      "ep": 7,
+      "type": "murder",
+      "victim": "Ross Kemp",
+      "id": "ep7-auto-66866c3268eb"
+    },
+    {
+      "ep": 7,
+      "type": "roundtable",
+      "votes": {
+        "James Acaster": "Jerry Hall",
+        "James Blunt": "Jerry Hall",
+        "Joanne McNally": "Jerry Hall",
+        "King Kenny": "Sebastian Croft",
+        "Leigh-Anne Pinnock": "Jerry Hall",
+        "Maya Jama": "Jerry Hall",
+        "Michael Sheen": "Jerry Hall",
+        "Miranda Hart": "Jerry Hall",
+        "Romesh Ranganathan": "Jerry Hall",
+        "Sebastian Croft": "Jerry Hall",
+        "Sharon Rooney": "Leigh-Anne Pinnock",
+        "Jerry Hall": "Joanne McNally"
+      },
+      "revotes": [],
+      "absent": [],
+      "banished": "Jerry Hall",
+      "votingComplete": true,
+      "id": "ep7-auto-379460dc2268"
+    }
+  ],
+  "participants": [
+    "Talia",
+    "Joe",
+    "Alex",
+    "Apala",
+    "Reuben",
+    "Julian",
+    "Ava"
+  ],
+  "notes": "The confirmed draw has 20 contestants plus Claudia’s special slot. Amol Rajan is the 21st contestant and is unassigned. Initial events are supplied by the project brief, not independently verified broadcast results.",
+  "episodeRecords": {
+    "3": {
+      "date": "2026-10-08",
+      "status": "complete",
+      "notes": "Automatically verified structured events. Unsupported or unpublished information remains in the workflow report.",
+      "sources": [
+        {
+          "title": "Wikipedia: Celebrity Traitors UK Series 2",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1379299498",
+          "retrievedAt": "2026-10-09T08:08:04.913Z",
+          "revision": 1379299498,
+          "revisionTimestamp": "2026-10-09T02:59:28Z"
+        }
+      ],
+      "approvedAt": "2026-10-09T08:08:05.864Z",
+      "automationPayloadHash": "366f3d325a266efeb2e06225a966bbd6226c06f303a95f51c3325d76226dee45",
+      "automationLocked": false
+    },
+    "4": {
+      "date": "2026-10-09",
+      "status": "complete",
+      "notes": "Automatically verified structured events. Unsupported or unpublished information remains in the workflow report.",
+      "sources": [
+        {
+          "title": "Wikipedia: Celebrity Traitors UK Series 2",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1379772773",
+          "retrievedAt": "2026-10-12T11:03:26.327Z",
+          "revision": 1379772773,
+          "revisionTimestamp": "2026-10-11T21:35:28Z"
+        }
+      ],
+      "approvedAt": "2026-10-12T11:03:26.588Z",
+      "automationPayloadHash": "bc0a8afd917e86eb36a9f83de6cf25c553b423752118525a336fb19c63dca3d3",
+      "automationLocked": false
+    },
+    "5": {
+      "date": "2026-10-15",
+      "status": "complete",
+      "notes": "Automatically verified structured events. Unsupported or unpublished information remains in the workflow report.",
+      "sources": [
+        {
+          "title": "Wikipedia: Celebrity Traitors UK Series 2",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1380532698",
+          "retrievedAt": "2026-10-16T11:13:45.058Z",
+          "revision": 1380532698,
+          "revisionTimestamp": "2026-10-16T08:22:42Z"
+        }
+      ],
+      "approvedAt": "2026-10-16T11:13:45.618Z",
+      "automationPayloadHash": "54a904e42a26d85e3d2fa95f3e3dd6344cea6dc4a9b73aa7752cfe0f1aa5f1d5",
+      "automationLocked": false
+    },
+    "6": {
+      "date": "2026-10-16",
+      "status": "complete",
+      "notes": "Automatically verified structured events. Unsupported or unpublished information remains in the workflow report.",
+      "sources": [
+        {
+          "title": "Wikipedia: Celebrity Traitors UK Series 2",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1380609185",
+          "retrievedAt": "2026-10-16T22:19:04.981Z",
+          "revision": 1380609185,
+          "revisionTimestamp": "2026-10-16T20:20:52Z"
+        }
+      ],
+      "approvedAt": "2026-10-16T22:19:06.161Z",
+      "automationPayloadHash": "c3fd486504e07800826de9571ca430b4354f4355dd54f56abd99b4cce4610c77",
+      "automationLocked": false
+    },
+    "7": {
+      "date": "2026-10-22",
+      "status": "complete",
+      "notes": "Automatically verified structured events. Unsupported or unpublished information remains in the workflow report.",
+      "sources": [
+        {
+          "title": "Wikipedia: Celebrity Traitors UK Series 2",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1381559156",
+          "retrievedAt": "2026-10-23T09:57:43.242Z",
+          "revision": 1381559156,
+          "revisionTimestamp": "2026-10-23T09:21:31Z"
+        }
+      ],
+      "approvedAt": "2026-10-23T09:57:44.425Z",
+      "automationPayloadHash": "2497db218d75d4faf4685cd73b3afe46bf152ec84da7923f9dc8c02430562c8b",
+      "automationLocked": false
+    }
+  }
+}

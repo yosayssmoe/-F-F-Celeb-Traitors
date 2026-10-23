@@ -1,0 +1,228 @@
+{
+  "source": {
+    "url": "https://en.wikipedia.org/w/index.php?oldid=1381636096",
+    "revision": 1381636096,
+    "timestamp": "2026-10-23T20:23:27Z"
+  },
+  "cast": [
+    {
+      "name": "Amol Rajan",
+      "role": "Faithful",
+      "finish": "Murdered(Episode 2)"
+    },
+    {
+      "name": "Richard E. Grant",
+      "role": "Traitor",
+      "finish": "Banished(Episode 3)"
+    },
+    {
+      "name": "Myha'la",
+      "role": "Faithful",
+      "finish": "Banished(Episode 3)"
+    },
+    {
+      "name": "Bella Ramsey",
+      "role": "Faithful",
+      "finish": "Murdered(Episode 4)"
+    },
+    {
+      "name": "Julie Hesmondhalgh",
+      "role": "Faithful",
+      "finish": "Banished(Episode 4)"
+    },
+    {
+      "name": "Rob Beckett",
+      "role": "Faithful",
+      "finish": "Murdered(Episode 5)"
+    },
+    {
+      "name": "Hannah Fry",
+      "role": "Traitor",
+      "finish": "Banished(Episode 5)"
+    },
+    {
+      "name": "Joe Lycett",
+      "role": "Faithful",
+      "finish": "Banished(Episode 6)"
+    },
+    {
+      "name": "Ross Kemp",
+      "role": "Faithful",
+      "finish": "Murdered(Episode 7)"
+    },
+    {
+      "name": "Jerry Hall",
+      "role": "Faithful",
+      "finish": "Banished(Episode 7)"
+    },
+    {
+      "name": "Miranda Hart",
+      "role": "Faithful",
+      "finish": "Murdered(Episode 8)"
+    },
+    {
+      "name": "James Acaster",
+      "role": "Traitor",
+      "finish": "Participating"
+    },
+    {
+      "name": "James Blunt",
+      "role": "Faithful",
+      "finish": "Participating"
+    },
+    {
+      "name": "Joanne McNally",
+      "role": "Faithful",
+      "finish": "Participating"
+    },
+    {
+      "name": "King Kenny",
+      "role": "Traitor",
+      "finish": "Participating"
+    },
+    {
+      "name": "Leigh-Anne Pinnock",
+      "role": "Faithful",
+      "finish": "Participating"
+    },
+    {
+      "name": "Maya Jama",
+      "role": "Traitor",
+      "finish": "Participating"
+    },
+    {
+      "name": "Michael Sheen",
+      "role": "Faithful",
+      "finish": "Participating"
+    },
+    {
+      "name": "Romesh Ranganathan",
+      "role": "Faithful",
+      "finish": "Participating"
+    },
+    {
+      "name": "Sebastian Croft",
+      "role": "Faithful",
+      "finish": "Participating"
+    },
+    {
+      "name": "Sharon Rooney",
+      "role": "Faithful",
+      "finish": "Participating"
+    }
+  ],
+  "voters": [
+    {
+      "name": "James Acaster",
+      "first": "Joanne",
+      "revote": "Joanne"
+    },
+    {
+      "name": "James Blunt",
+      "first": "Sharon",
+      "revote": "Sharon"
+    },
+    {
+      "name": "Joanne McNally",
+      "first": "Leigh-Anne",
+      "revote": "Novote"
+    },
+    {
+      "name": "King Kenny",
+      "first": "Sharon",
+      "revote": "TBC"
+    },
+    {
+      "name": "Leigh-Anne Pinnock",
+      "first": "Joanne",
+      "revote": "Sharon"
+    },
+    {
+      "name": "Maya Jama",
+      "first": "Sebastian",
+      "revote": "Sharon"
+    },
+    {
+      "name": "Michael Sheen",
+      "first": "Sharon",
+      "revote": "Sharon"
+    },
+    {
+      "name": "Romesh Ranganathan",
+      "first": "Michael",
+      "revote": "Joanne"
+    },
+    {
+      "name": "Sebastian Croft",
+      "first": "Joanne",
+      "revote": "Joanne"
+    },
+    {
+      "name": "Sharon Rooney",
+      "first": "Joanne",
+      "revote": "Novote"
+    },
+    {
+      "name": "Miranda Hart",
+      "first": "Murdered (Episode 8)",
+      "revote": "Murdered (Episode 8)"
+    },
+    {
+      "name": "Jerry Hall",
+      "first": "Banished (Episode 7)",
+      "revote": "Banished (Episode 7)"
+    },
+    {
+      "name": "Ross Kemp",
+      "first": "Murdered (Episode 7)",
+      "revote": "Murdered (Episode 7)"
+    },
+    {
+      "name": "Joe Lycett",
+      "first": "Banished (Episode 6)",
+      "revote": "Banished (Episode 6)"
+    },
+    {
+      "name": "Hannah Fry",
+      "first": "Banished (Episode 5)",
+      "revote": "Banished (Episode 5)"
+    },
+    {
+      "name": "Rob Beckett",
+      "first": "Murdered (Episode 5)",
+      "revote": "Murdered (Episode 5)"
+    },
+    {
+      "name": "Julie Hesmondhalgh",
+      "first": "Banished (Episode 4)",
+      "revote": "Banished (Episode 4)"
+    },
+    {
+      "name": "Bella Ramsey",
+      "first": "Murdered (Episode 4)",
+      "revote": "Murdered (Episode 4)"
+    },
+    {
+      "name": "Myha'la",
+      "first": "Banished (Episode 3)",
+      "revote": "Banished (Episode 3)"
+    },
+    {
+      "name": "Richard E. Grant",
+      "first": "Banished (Episode 3)",
+      "revote": "Banished (Episode 3)"
+    },
+    {
+      "name": "Amol Rajan",
+      "first": "Murdered (Episode 2)",
+      "revote": "Murdered (Episode 2)"
+    }
+  ],
+  "tally": "4–4–1–1–1",
+  "holder": "King Kenny",
+  "tied": [
+    "Joanne McNally",
+    "Sharon Rooney"
+  ],
+  "note": "Normalized factual source structure; narrative is paraphrased. Final re-vote/outcome not published."
+}

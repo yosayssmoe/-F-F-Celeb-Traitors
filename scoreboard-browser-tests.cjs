@@ -4,7 +4,7 @@ const pw=require(process.env.PLAYWRIGHT_MODULE||'playwright-core');
 const root=__dirname,out=path.join(root,'test-results/league-table');
 (async()=>{
  fs.mkdirSync(out,{recursive:true});
- const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));try{if(file!==root&&!file.startsWith(root+path.sep))throw Error();const target=fs.statSync(file).isDirectory()?path.join(file,'index.html'):file;res.setHeader('Content-Type',({'js':'application/javascript','css':'text/css','html':'text/html','webp':'image/webp'})[path.extname(target).slice(1)]||'application/octet-stream');res.end(fs.readFileSync(target));}catch{res.writeHead(404);res.end();}});
+ const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));try{if(file!==root&&!file.startsWith(root+path.sep))throw Error();const target=file===path.join(root,'data.js')&&process.env.TEST_DATA_FILE?path.resolve(process.env.TEST_DATA_FILE):fs.statSync(file).isDirectory()?path.join(file,'index.html'):file;res.setHeader('Content-Type',({'js':'application/javascript','css':'text/css','html':'text/html','webp':'image/webp'})[path.extname(target).slice(1)]||'application/octet-stream');res.end(fs.readFileSync(target));}catch{res.writeHead(404);res.end();}});
  await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=process.env.TEST_BASE_URL||`http://127.0.0.1:${server.address().port}/`;
  const report=[];
  try{for(const engine of ['chromium','webkit']){
@@ -63,7 +63,15 @@ const root=__dirname,out=path.join(root,'test-results/league-table');
     await page.keyboard.press('Escape');assert.equal(await page.locator('#hist').isVisible(),false);assert(await button.evaluate(e=>document.activeElement===e));assert(Math.abs(await page.evaluate(()=>scrollY)-scroll)<2,'User place restored');
     await button.click();await page.locator('#hist button[aria-label="Close"]').click();assert.equal(await page.locator('#hist').isVisible(),false);
    }
-   await page.getByRole('tab',{name:'Sweepstake rules',exact:true}).click();assert(await page.locator('#sweepstake-rules').isVisible());assert.equal(await page.locator('#board').isVisible(),false);assert((await page.locator('#sweepstake-rules').textContent()).includes('Miranda Hart’s points ×2'));
+   await page.locator('#votes-btn').click();
+   for(const event of original.events.filter(e=>e.outcome?.status==='pending')){
+    const section=page.locator('#hist-body section').filter({has:page.locator('h4',{hasText:'Episode '+event.ep+' ·'})});
+    assert((await section.textContent()).includes('Outcome pending'));
+    assert.equal(await section.locator('.vote-record').filter({hasText:'(extra ballot)'}).count(),event.extraBallots?.length||0);
+    assert((await section.textContent()).includes('Sharon Rooney 4'),'Weighted first tally is displayed');
+   }
+   await page.keyboard.press('Escape');
+   await page.getByRole('tab',{name:'Sweepstake rules',exact:true}).click();assert(await page.locator('#sweepstake-rules').isVisible());assert.equal(await page.locator('#board').isVisible(),false);assert((await page.locator('#sweepstake-rules').textContent()).includes('Miranda Hart’s points ×2'));assert((await page.locator('#sweepstake-rules').textContent()).includes('extra ballots and re-votes'));
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.screenshot({path:path.join(out,`${engine}-${width}-rules.png`)});
    await page.locator('#tab-rules').press('Home');assert.equal(await page.locator('#tab-table').getAttribute('aria-selected'),'true');await page.locator('#tab-table').press('ArrowRight');assert(await page.locator('#board').isVisible());
    await page.locator('#manage-btn').click();await page.locator('.admin-operations summary').click();assert(await page.locator('#automation-status').isVisible());

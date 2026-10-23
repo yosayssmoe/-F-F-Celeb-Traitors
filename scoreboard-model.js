@@ -79,6 +79,10 @@
           if (step.roles[target] === 'Traitor') byName[voter].traitorBallots++;
         }
       });
+        if(event.ballotPowers || event.extraBallots || event.outcome){
+          const view=T.ballotView(event,[...present]);if(!view.complete || view.errors.length || event.outcome?.status==='pending')complete=false;
+          (event.extraBallots||[]).forEach(({voter,target})=>{if(!present.has(voter)||!present.has(target)){complete=false;return;}byName[target].received++;if(step.roles[target]==='Traitor')byName[voter].traitorBallots++;});
+        }
     });
     const label = value => complete ? String(value) : value > 0 ? 'At least ' + value : 'Not fully recorded';
     return {episode: model.episode, complete, rows: rows.map(r => ({...r, receivedLabel: label(r.received), traitorBallotsLabel: label(r.traitorBallots), shieldsLabel: 'Unavailable'}))};

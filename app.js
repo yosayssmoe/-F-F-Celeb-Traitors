@@ -755,14 +755,15 @@
   };
   $("votes-btn").onclick = () => {
     $("hist-name").textContent = "Round Table vote history";
-    $("hist-sub").textContent = "Each table scores once. Re-votes are retained; a vote in any round prevents a zero-vote bonus.";
+    $("hist-sub").textContent = "Each table scores once. Extra ballots and re-votes count towards votes received; incomplete records withhold zero-vote bonuses.";
     const body = $("hist-body"); body.replaceChildren();
     const tables = state.events.filter(e=>e.type==='roundtable');
     if (!tables.length) body.appendChild(el("p", "hint", "No Round Tables recorded yet. Add voting results in Manage."));
     tables.forEach((ev,i)=>{
       const section = el('section','hist-ep');
       section.appendChild(el('h4',null,`Episode ${ev.ep} · Round Table ${i+1}`));
-      section.appendChild(el('p',null,ev.banished ? 'Banished: '+ev.banished : 'No banishment'));
+      section.appendChild(el('p',null,ev.banished ? 'Banished: '+ev.banished : ev.outcome?.status==='pending' ? 'Outcome pending: tied Round Table, final result not verified.' : 'No banishment'));
+      (ev.ballotPowers||[]).forEach(p=>section.appendChild(el('p','hint',p.holder+': '+(p.kind==='double-vote'?'vote counts twice for the same target':'verified extra vote'))));
       if(ev.votingComplete===false || (ev.votingComplete===undefined && ev.revotes.length)) section.appendChild(el('p','draw-note','Voting completeness not confirmed: zero-vote bonuses withheld.'));
       if (ev.absent.length) section.appendChild(el('p','hint','Absent: '+ev.absent.join(', ')));
       [ev.votes,...ev.revotes].forEach((round,j)=>{
@@ -772,7 +773,10 @@
           if (!t || ev.absent.includes(v)) return;
           section.appendChild(el('p','vote-record',v+' → '+t)); tally[t]=(tally[t]||0)+1;
         });
-        section.appendChild(el('p','hist-mult','Result: '+Object.entries(tally).sort((a,b)=>b[1]-a[1]).map(([n,v])=>n+' '+v).join(' · ')));
+        (ev.extraBallots||[]).filter(b=>b.round===j).forEach(b=>{
+          section.appendChild(el('p','vote-record',b.voter+' → '+b.target+' (extra ballot)'));tally[b.target]=(tally[b.target]||0)+1;
+        });
+        section.appendChild(el('p','hist-mult','Recorded tally: '+Object.entries(tally).sort((a,b)=>b[1]-a[1]).map(([n,v])=>n+' '+v).join(' · ')));
       });
       body.appendChild(section);
     });

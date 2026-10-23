@@ -1,6 +1,7 @@
 const H=require('./html.cjs');
 const {resolveChronology}=require('./chronology.cjs');
 const {stable}=require('./shared.cjs');
+const powered=require('./powered-voting.cjs');
 const escape=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 const empty=s=>!s||/^(none|no vote|no murder|tba|tbc|tbd|pending|—|–|-)$/i.test(s);
 function parseWikipedia(snapshot,data,config){
@@ -49,10 +50,20 @@ function parseWikipedia(snapshot,data,config){
     event={ep,type:'recruit',who,accepted:true};secondary=notes.some(s=>new RegExp('(?:^|\\s)'+escape(cell.text)+' (?:was|is) recruited as a Traitor in Episode '+ep+'\\.','i').test(s));
    } else if(/^(shield save|murder blocked by shield)$/i.test(kind)){
     event={ep,type:'murder',shielded:who};secondary=new RegExp(escape(cell.text)+' (?:was|is) saved from murder by (?:a |their |his |her )?[Ss]hield').test(result.description);
+   } else if(/^dagger$/i.test(kind)){
+    const power=powered.dagger(g[dIndex+1][col],who,H.aliasVariants(names,who),doc,result.description);
+    if(!power||result.power)result.issues.push({status:'unsupported',detail:`Decision ${kind} for ${who} has unverified or conflicting voting mechanics.`});
+    else result.power=power;
+    continue;
    } else {result.issues.push({status:'unsupported',detail:`Decision ${kind} for ${who} requires manual evidence.`});continue;}
    result.candidates.push({event,key:`${event.type}:${who}`,column:col,kind:'decision',verified:secondary,evidence:[`${kind}: ${cell.text}`,secondary?'Second structured section agrees':'Second structured assertion missing']});
    if(!secondary)result.issues.push({eventKey:`${event.type}:${who}`,status:'incomplete',detail:`Decision for ${who} is not supported by a second explicit section.`});
   }
+  const advanced=result.power||columns.some(col=>/^tie$/i.test(bRow?.[col]?.text||''))||data.events.some(e=>e.ep===ep&&e.tableId);
+  if(advanced){
+   const voting=powered.tables({ep,columns,bRow,tallyRow,voterRows,voterNames,resolve,finishes,power:result.power,description:result.description,doc});
+   result.candidates.push(...voting.candidates);result.issues.push(...voting.issues);
+  }else{
   const groups=new Map();
   for(const col of columns){const b=bRow?.[col];if(!b||empty(b.text))continue;const who=resolve(b.text);if(!who){result.issues.push({status:'ambiguous',detail:'Unrecognised banishment: '+b.text});continue;}
    if(!groups.has(b.id))groups.set(b.id,{who,columns:[],cell:b});groups.get(b.id).columns.push(col);
@@ -67,6 +78,7 @@ function parseWikipedia(snapshot,data,config){
    result.candidates.push({event:{ep,type:'roundtable',votes:{},revotes:[],absent:[],banished:who,votingComplete:false},key:'roundtable:'+who,column:cols[0],kind:'table',verified,rounds,evidence:['Banishment: '+who,verified?'Contestant finish agrees':'Contestant finish does not agree']});
    if(!verified)result.issues.push({eventKey:'roundtable:'+who,status:'conflicting',detail:'Banishment and contestant finish disagree for '+who});
   }
+  }
   // Unsupported exits/winners must be visible in the report and block later scoring.
   for(const [who,finish] of finishes){if(new RegExp('\\(Episode '+ep+'\\)').test(finish.text)&&!result.candidates.some(c=>(c.event.victim||c.event.banished)===who)){
     if(/^(Left|Withdrawn|Disqualified|Winner)/i.test(finish.text))result.issues.push({status:'unsupported',detail:`${finish.text}: ${who}. No unambiguous chronological event adapter.`});
@@ -75,7 +87,7 @@ function parseWikipedia(snapshot,data,config){
   for(const c of result.candidates){
    const who=c.event.who||c.event.victim||c.event.shielded||c.event.banished;
    if(c.event.victim||c.event.banished){const role=finishes.get(who)?.role;if(/^(Faithful|Traitor)$/.test(role))c.observedRole=role;}
-   c.aliases=[...new Set([...H.aliasVariants(names,who),...voterRows.map((r,i)=>voterNames[i]===who?r.slice(0,first).find(v=>resolve(v.text)===who)?.text:null).filter(Boolean)])];
+   c.aliases=who?[...new Set([...H.aliasVariants(names,who),...voterRows.map((r,i)=>voterNames[i]===who?r.slice(0,first).find(v=>resolve(v.text)===who)?.text:null).filter(Boolean)])]:[];
   }
   result.publishedEvents=data.events.filter(e=>e.ep===ep);
   resolveChronology(result,result.publishedEvents);
@@ -85,6 +97,7 @@ function parseWikipedia(snapshot,data,config){
 }
 function verifyVotes(candidate,step){
  const event=JSON.parse(JSON.stringify(candidate.event));if(event.type!=='roundtable')return event;
+ if(event.tableId||event.ballotPowers||event.outcome)return powered.verify(candidate,step);
  const rounds=candidate.rounds||[];if(!rounds.length)return event;
  const absent=step.active.filter(n=>/^(Absent|Ineligible|Not eligible)$/i.test(rounds[0].raw[n]||''));const eligible=step.active.filter(n=>!absent.includes(n));event.absent=absent;
  const valid=r=>Object.fromEntries(Object.entries(r.votes).filter(([v,t])=>eligible.includes(v)&&eligible.includes(t)&&v!==t));

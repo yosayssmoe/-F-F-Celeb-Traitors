@@ -1,0 +1,1648 @@
+{
+  "1": {
+    "Amol Rajan": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Bella Ramsey": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Hannah Fry": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "James Acaster": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "James Blunt": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Jerry Hall": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Joanne McNally": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Joe Lycett": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Julie Hesmondhalgh": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "King Kenny": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Leigh-Anne Pinnock": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Maya Jama": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "Michael Sheen": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Miranda Hart": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 2,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Myha'la": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Richard E. Grant": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "Rob Beckett": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Romesh Ranganathan": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Ross Kemp": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Sebastian Croft": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Sharon Rooney": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "active"
+    }
+  },
+  "2": {
+    "Amol Rajan": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "murdered"
+    },
+    "Bella Ramsey": {
+      "cats": {
+        "survival": 2
+      },
+      "raw": 2,
+      "contribution": 2,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Hannah Fry": {
+      "cats": {
+        "survival": 2
+      },
+      "raw": 2,
+      "contribution": 2,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "James Acaster": {
+      "cats": {
+        "survival": 2,
+        "recruited": 2
+      },
+      "raw": 4,
+      "contribution": 4,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "James Blunt": {
+      "cats": {
+        "survival": 2
+      },
+      "raw": 2,
+      "contribution": 2,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Jerry Hall": {
+      "cats": {
+        "survival": 2
+      },
+      "raw": 2,
+      "contribution": 2,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Joanne McNally": {
+      "cats": {
+        "survival": 2
+      },
+      "raw": 2,
+      "contribution": 2,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Joe Lycett": {
+      "cats": {
+        "survival": 2
+      },
+      "raw": 2,
+      "contribution": 2,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Julie Hesmondhalgh": {
+      "cats": {
+        "survival": 2
+      },
+      "raw": 2,
+      "contribution": 2,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "King Kenny": {
+      "cats": {
+        "survival": 2
+      },
+      "raw": 2,
+      "contribution": 2,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Leigh-Anne Pinnock": {
+      "cats": {
+        "survival": 2
+      },
+      "raw": 2,
+      "contribution": 2,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Maya Jama": {
+      "cats": {
+        "survival": 2,
+        "murder": 1
+      },
+      "raw": 3,
+      "contribution": 3,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "Michael Sheen": {
+      "cats": {
+        "survival": 2
+      },
+      "raw": 2,
+      "contribution": 2,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Miranda Hart": {
+      "cats": {
+        "survival": 2
+      },
+      "raw": 2,
+      "contribution": 4,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Myha'la": {
+      "cats": {
+        "survival": 2
+      },
+      "raw": 2,
+      "contribution": 2,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Richard E. Grant": {
+      "cats": {
+        "survival": 2,
+        "murder": 1
+      },
+      "raw": 3,
+      "contribution": 3,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "Rob Beckett": {
+      "cats": {
+        "survival": 2
+      },
+      "raw": 2,
+      "contribution": 2,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Romesh Ranganathan": {
+      "cats": {
+        "survival": 2
+      },
+      "raw": 2,
+      "contribution": 2,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Ross Kemp": {
+      "cats": {
+        "survival": 2
+      },
+      "raw": 2,
+      "contribution": 2,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Sebastian Croft": {
+      "cats": {
+        "survival": 2
+      },
+      "raw": 2,
+      "contribution": 2,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Sharon Rooney": {
+      "cats": {
+        "survival": 2
+      },
+      "raw": 2,
+      "contribution": 2,
+      "role": "Faithful",
+      "status": "active"
+    }
+  },
+  "3": {
+    "Amol Rajan": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "murdered"
+    },
+    "Bella Ramsey": {
+      "cats": {
+        "survival": 4,
+        "traitorVote": 2,
+        "traitorBanished": 2,
+        "zeroVote": 1
+      },
+      "raw": 9,
+      "contribution": 9,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Hannah Fry": {
+      "cats": {
+        "survival": 4,
+        "traitorVote": 2,
+        "traitorBanished": 2,
+        "recruited": 2,
+        "zeroVote": 1,
+        "faithfulBanished": 2
+      },
+      "raw": 13,
+      "contribution": 13,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "James Acaster": {
+      "cats": {
+        "survival": 4,
+        "recruited": 2,
+        "zeroVote": 2,
+        "faithfulBanished": 2
+      },
+      "raw": 10,
+      "contribution": 10,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "James Blunt": {
+      "cats": {
+        "survival": 4,
+        "zeroVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 8,
+      "contribution": 8,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Jerry Hall": {
+      "cats": {
+        "survival": 4,
+        "zeroVote": 1,
+        "traitorBanished": 2
+      },
+      "raw": 7,
+      "contribution": 7,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Joanne McNally": {
+      "cats": {
+        "survival": 4,
+        "zeroVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 8,
+      "contribution": 8,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Joe Lycett": {
+      "cats": {
+        "survival": 4,
+        "zeroVote": 2,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 10,
+      "contribution": 10,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Julie Hesmondhalgh": {
+      "cats": {
+        "survival": 4,
+        "zeroVote": 1,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 9,
+      "contribution": 9,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "King Kenny": {
+      "cats": {
+        "survival": 4,
+        "zeroVote": 2,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 10,
+      "contribution": 10,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Leigh-Anne Pinnock": {
+      "cats": {
+        "survival": 4,
+        "traitorVote": 2,
+        "traitorBanished": 2,
+        "zeroVote": 1
+      },
+      "raw": 9,
+      "contribution": 9,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Maya Jama": {
+      "cats": {
+        "survival": 4,
+        "murder": 1,
+        "zeroVote": 2,
+        "faithfulBanished": 2
+      },
+      "raw": 9,
+      "contribution": 9,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "Michael Sheen": {
+      "cats": {
+        "survival": 4,
+        "zeroVote": 1,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 9,
+      "contribution": 9,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Miranda Hart": {
+      "cats": {
+        "survival": 4,
+        "zeroVote": 2,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 10,
+      "contribution": 20,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Myha'la": {
+      "cats": {
+        "survival": 3,
+        "zeroVote": 1,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 8,
+      "contribution": 8,
+      "role": "Faithful",
+      "status": "banished"
+    },
+    "Richard E. Grant": {
+      "cats": {
+        "survival": 2,
+        "murder": 1
+      },
+      "raw": 3,
+      "contribution": 3,
+      "role": "Traitor",
+      "status": "banished"
+    },
+    "Rob Beckett": {
+      "cats": {
+        "survival": 4,
+        "zeroVote": 2,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 10,
+      "contribution": 10,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Romesh Ranganathan": {
+      "cats": {
+        "survival": 4,
+        "zeroVote": 2,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 10,
+      "contribution": 10,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Ross Kemp": {
+      "cats": {
+        "survival": 4,
+        "zeroVote": 2,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 10,
+      "contribution": 10,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Sebastian Croft": {
+      "cats": {
+        "survival": 4,
+        "zeroVote": 2,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 10,
+      "contribution": 10,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Sharon Rooney": {
+      "cats": {
+        "survival": 4,
+        "zeroVote": 2,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 10,
+      "contribution": 10,
+      "role": "Faithful",
+      "status": "active"
+    }
+  },
+  "4": {
+    "Amol Rajan": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "murdered"
+    },
+    "Bella Ramsey": {
+      "cats": {
+        "survival": 4,
+        "traitorVote": 2,
+        "traitorBanished": 2,
+        "zeroVote": 1
+      },
+      "raw": 9,
+      "contribution": 9,
+      "role": "Faithful",
+      "status": "murdered"
+    },
+    "Hannah Fry": {
+      "cats": {
+        "survival": 6,
+        "traitorVote": 2,
+        "traitorBanished": 2,
+        "recruited": 2,
+        "zeroVote": 1,
+        "faithfulBanished": 4,
+        "murder": 1
+      },
+      "raw": 18,
+      "contribution": 18,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "James Acaster": {
+      "cats": {
+        "survival": 6,
+        "recruited": 2,
+        "zeroVote": 3,
+        "faithfulBanished": 4,
+        "murder": 1
+      },
+      "raw": 16,
+      "contribution": 16,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "James Blunt": {
+      "cats": {
+        "survival": 6,
+        "zeroVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 10,
+      "contribution": 10,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Jerry Hall": {
+      "cats": {
+        "survival": 6,
+        "zeroVote": 1,
+        "traitorBanished": 2,
+        "traitorVote": 2
+      },
+      "raw": 11,
+      "contribution": 11,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Joanne McNally": {
+      "cats": {
+        "survival": 6,
+        "zeroVote": 3,
+        "traitorBanished": 2
+      },
+      "raw": 11,
+      "contribution": 11,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Joe Lycett": {
+      "cats": {
+        "survival": 6,
+        "zeroVote": 3,
+        "traitorVote": 4,
+        "traitorBanished": 2
+      },
+      "raw": 15,
+      "contribution": 15,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Julie Hesmondhalgh": {
+      "cats": {
+        "survival": 5,
+        "zeroVote": 1,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 10,
+      "contribution": 10,
+      "role": "Faithful",
+      "status": "banished"
+    },
+    "King Kenny": {
+      "cats": {
+        "survival": 6,
+        "zeroVote": 3,
+        "traitorVote": 4,
+        "traitorBanished": 2
+      },
+      "raw": 15,
+      "contribution": 15,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Leigh-Anne Pinnock": {
+      "cats": {
+        "survival": 6,
+        "traitorVote": 4,
+        "traitorBanished": 2,
+        "zeroVote": 2
+      },
+      "raw": 14,
+      "contribution": 14,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Maya Jama": {
+      "cats": {
+        "survival": 6,
+        "murder": 2,
+        "zeroVote": 3,
+        "faithfulBanished": 4
+      },
+      "raw": 15,
+      "contribution": 15,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "Michael Sheen": {
+      "cats": {
+        "survival": 6,
+        "zeroVote": 2,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 12,
+      "contribution": 12,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Miranda Hart": {
+      "cats": {
+        "survival": 6,
+        "zeroVote": 3,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 13,
+      "contribution": 26,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Myha'la": {
+      "cats": {
+        "survival": 3,
+        "zeroVote": 1,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 8,
+      "contribution": 8,
+      "role": "Faithful",
+      "status": "banished"
+    },
+    "Richard E. Grant": {
+      "cats": {
+        "survival": 2,
+        "murder": 1
+      },
+      "raw": 3,
+      "contribution": 3,
+      "role": "Traitor",
+      "status": "banished"
+    },
+    "Rob Beckett": {
+      "cats": {
+        "survival": 6,
+        "zeroVote": 3,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 13,
+      "contribution": 13,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Romesh Ranganathan": {
+      "cats": {
+        "survival": 6,
+        "zeroVote": 3,
+        "traitorVote": 4,
+        "traitorBanished": 2
+      },
+      "raw": 15,
+      "contribution": 15,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Ross Kemp": {
+      "cats": {
+        "survival": 6,
+        "zeroVote": 3,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 13,
+      "contribution": 13,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Sebastian Croft": {
+      "cats": {
+        "survival": 6,
+        "zeroVote": 3,
+        "traitorVote": 4,
+        "traitorBanished": 2
+      },
+      "raw": 15,
+      "contribution": 15,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Sharon Rooney": {
+      "cats": {
+        "survival": 6,
+        "zeroVote": 3,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 13,
+      "contribution": 13,
+      "role": "Faithful",
+      "status": "active"
+    }
+  },
+  "5": {
+    "Amol Rajan": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "murdered"
+    },
+    "Bella Ramsey": {
+      "cats": {
+        "survival": 4,
+        "traitorVote": 2,
+        "traitorBanished": 2,
+        "zeroVote": 1
+      },
+      "raw": 9,
+      "contribution": 9,
+      "role": "Faithful",
+      "status": "murdered"
+    },
+    "Hannah Fry": {
+      "cats": {
+        "survival": 7,
+        "traitorVote": 2,
+        "traitorBanished": 2,
+        "recruited": 2,
+        "zeroVote": 1,
+        "faithfulBanished": 4,
+        "murder": 2
+      },
+      "raw": 20,
+      "contribution": 20,
+      "role": "Traitor",
+      "status": "banished"
+    },
+    "James Acaster": {
+      "cats": {
+        "survival": 8,
+        "recruited": 2,
+        "zeroVote": 4,
+        "faithfulBanished": 4,
+        "murder": 2
+      },
+      "raw": 20,
+      "contribution": 20,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "James Blunt": {
+      "cats": {
+        "survival": 8,
+        "zeroVote": 2,
+        "traitorBanished": 4,
+        "traitorVote": 2
+      },
+      "raw": 16,
+      "contribution": 16,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Jerry Hall": {
+      "cats": {
+        "survival": 8,
+        "zeroVote": 1,
+        "traitorBanished": 4,
+        "traitorVote": 4
+      },
+      "raw": 17,
+      "contribution": 17,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Joanne McNally": {
+      "cats": {
+        "survival": 8,
+        "zeroVote": 4,
+        "traitorBanished": 4
+      },
+      "raw": 16,
+      "contribution": 16,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Joe Lycett": {
+      "cats": {
+        "survival": 8,
+        "zeroVote": 4,
+        "traitorVote": 6,
+        "traitorBanished": 4
+      },
+      "raw": 22,
+      "contribution": 22,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Julie Hesmondhalgh": {
+      "cats": {
+        "survival": 5,
+        "zeroVote": 1,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 10,
+      "contribution": 10,
+      "role": "Faithful",
+      "status": "banished"
+    },
+    "King Kenny": {
+      "cats": {
+        "survival": 8,
+        "zeroVote": 4,
+        "traitorVote": 6,
+        "traitorBanished": 4,
+        "recruited": 2
+      },
+      "raw": 24,
+      "contribution": 24,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "Leigh-Anne Pinnock": {
+      "cats": {
+        "survival": 8,
+        "traitorVote": 6,
+        "traitorBanished": 4,
+        "zeroVote": 3
+      },
+      "raw": 21,
+      "contribution": 21,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Maya Jama": {
+      "cats": {
+        "survival": 8,
+        "murder": 3,
+        "zeroVote": 4,
+        "faithfulBanished": 4
+      },
+      "raw": 19,
+      "contribution": 19,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "Michael Sheen": {
+      "cats": {
+        "survival": 8,
+        "zeroVote": 3,
+        "traitorVote": 4,
+        "traitorBanished": 4
+      },
+      "raw": 19,
+      "contribution": 19,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Miranda Hart": {
+      "cats": {
+        "survival": 8,
+        "zeroVote": 4,
+        "traitorVote": 4,
+        "traitorBanished": 4
+      },
+      "raw": 20,
+      "contribution": 40,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Myha'la": {
+      "cats": {
+        "survival": 3,
+        "zeroVote": 1,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 8,
+      "contribution": 8,
+      "role": "Faithful",
+      "status": "banished"
+    },
+    "Richard E. Grant": {
+      "cats": {
+        "survival": 2,
+        "murder": 1
+      },
+      "raw": 3,
+      "contribution": 3,
+      "role": "Traitor",
+      "status": "banished"
+    },
+    "Rob Beckett": {
+      "cats": {
+        "survival": 6,
+        "zeroVote": 3,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 13,
+      "contribution": 13,
+      "role": "Faithful",
+      "status": "murdered"
+    },
+    "Romesh Ranganathan": {
+      "cats": {
+        "survival": 8,
+        "zeroVote": 4,
+        "traitorVote": 4,
+        "traitorBanished": 4
+      },
+      "raw": 20,
+      "contribution": 20,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Ross Kemp": {
+      "cats": {
+        "survival": 8,
+        "zeroVote": 4,
+        "traitorVote": 4,
+        "traitorBanished": 4
+      },
+      "raw": 20,
+      "contribution": 20,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Sebastian Croft": {
+      "cats": {
+        "survival": 8,
+        "zeroVote": 3,
+        "traitorVote": 6,
+        "traitorBanished": 4
+      },
+      "raw": 21,
+      "contribution": 21,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Sharon Rooney": {
+      "cats": {
+        "survival": 8,
+        "zeroVote": 4,
+        "traitorVote": 4,
+        "traitorBanished": 4
+      },
+      "raw": 20,
+      "contribution": 20,
+      "role": "Faithful",
+      "status": "active"
+    }
+  },
+  "6": {
+    "Amol Rajan": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "murdered"
+    },
+    "Bella Ramsey": {
+      "cats": {
+        "survival": 4,
+        "traitorVote": 2,
+        "traitorBanished": 2,
+        "zeroVote": 1
+      },
+      "raw": 9,
+      "contribution": 9,
+      "role": "Faithful",
+      "status": "murdered"
+    },
+    "Hannah Fry": {
+      "cats": {
+        "survival": 7,
+        "traitorVote": 2,
+        "traitorBanished": 2,
+        "recruited": 2,
+        "zeroVote": 1,
+        "faithfulBanished": 4,
+        "murder": 2
+      },
+      "raw": 20,
+      "contribution": 20,
+      "role": "Traitor",
+      "status": "banished"
+    },
+    "James Acaster": {
+      "cats": {
+        "survival": 9,
+        "recruited": 2,
+        "zeroVote": 5,
+        "faithfulBanished": 6,
+        "murder": 2
+      },
+      "raw": 24,
+      "contribution": 24,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "James Blunt": {
+      "cats": {
+        "survival": 9,
+        "zeroVote": 2,
+        "traitorBanished": 4,
+        "traitorVote": 2
+      },
+      "raw": 17,
+      "contribution": 17,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Jerry Hall": {
+      "cats": {
+        "survival": 9,
+        "zeroVote": 2,
+        "traitorBanished": 4,
+        "traitorVote": 4
+      },
+      "raw": 19,
+      "contribution": 19,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Joanne McNally": {
+      "cats": {
+        "survival": 9,
+        "zeroVote": 4,
+        "traitorBanished": 4
+      },
+      "raw": 17,
+      "contribution": 17,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Joe Lycett": {
+      "cats": {
+        "survival": 8,
+        "zeroVote": 4,
+        "traitorVote": 6,
+        "traitorBanished": 4
+      },
+      "raw": 22,
+      "contribution": 22,
+      "role": "Faithful",
+      "status": "banished"
+    },
+    "Julie Hesmondhalgh": {
+      "cats": {
+        "survival": 5,
+        "zeroVote": 1,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 10,
+      "contribution": 10,
+      "role": "Faithful",
+      "status": "banished"
+    },
+    "King Kenny": {
+      "cats": {
+        "survival": 9,
+        "zeroVote": 5,
+        "traitorVote": 6,
+        "traitorBanished": 4,
+        "recruited": 2,
+        "faithfulBanished": 2
+      },
+      "raw": 28,
+      "contribution": 28,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "Leigh-Anne Pinnock": {
+      "cats": {
+        "survival": 9,
+        "traitorVote": 6,
+        "traitorBanished": 4,
+        "zeroVote": 4
+      },
+      "raw": 23,
+      "contribution": 23,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Maya Jama": {
+      "cats": {
+        "survival": 9,
+        "murder": 3,
+        "zeroVote": 5,
+        "faithfulBanished": 6
+      },
+      "raw": 23,
+      "contribution": 23,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "Michael Sheen": {
+      "cats": {
+        "survival": 9,
+        "zeroVote": 4,
+        "traitorVote": 4,
+        "traitorBanished": 4
+      },
+      "raw": 21,
+      "contribution": 21,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Miranda Hart": {
+      "cats": {
+        "survival": 9,
+        "zeroVote": 5,
+        "traitorVote": 4,
+        "traitorBanished": 4
+      },
+      "raw": 22,
+      "contribution": 44,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Myha'la": {
+      "cats": {
+        "survival": 3,
+        "zeroVote": 1,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 8,
+      "contribution": 8,
+      "role": "Faithful",
+      "status": "banished"
+    },
+    "Richard E. Grant": {
+      "cats": {
+        "survival": 2,
+        "murder": 1
+      },
+      "raw": 3,
+      "contribution": 3,
+      "role": "Traitor",
+      "status": "banished"
+    },
+    "Rob Beckett": {
+      "cats": {
+        "survival": 6,
+        "zeroVote": 3,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 13,
+      "contribution": 13,
+      "role": "Faithful",
+      "status": "murdered"
+    },
+    "Romesh Ranganathan": {
+      "cats": {
+        "survival": 9,
+        "zeroVote": 5,
+        "traitorVote": 4,
+        "traitorBanished": 4
+      },
+      "raw": 22,
+      "contribution": 22,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Ross Kemp": {
+      "cats": {
+        "survival": 9,
+        "zeroVote": 4,
+        "traitorVote": 4,
+        "traitorBanished": 4
+      },
+      "raw": 21,
+      "contribution": 21,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Sebastian Croft": {
+      "cats": {
+        "survival": 9,
+        "zeroVote": 4,
+        "traitorVote": 6,
+        "traitorBanished": 4
+      },
+      "raw": 23,
+      "contribution": 23,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Sharon Rooney": {
+      "cats": {
+        "survival": 9,
+        "zeroVote": 5,
+        "traitorVote": 4,
+        "traitorBanished": 4
+      },
+      "raw": 22,
+      "contribution": 22,
+      "role": "Faithful",
+      "status": "active"
+    }
+  },
+  "7": {
+    "Amol Rajan": {
+      "cats": {
+        "survival": 1
+      },
+      "raw": 1,
+      "contribution": 1,
+      "role": "Faithful",
+      "status": "murdered"
+    },
+    "Bella Ramsey": {
+      "cats": {
+        "survival": 4,
+        "traitorVote": 2,
+        "traitorBanished": 2,
+        "zeroVote": 1
+      },
+      "raw": 9,
+      "contribution": 9,
+      "role": "Faithful",
+      "status": "murdered"
+    },
+    "Hannah Fry": {
+      "cats": {
+        "survival": 7,
+        "traitorVote": 2,
+        "traitorBanished": 2,
+        "recruited": 2,
+        "zeroVote": 1,
+        "faithfulBanished": 4,
+        "murder": 2
+      },
+      "raw": 20,
+      "contribution": 20,
+      "role": "Traitor",
+      "status": "banished"
+    },
+    "James Acaster": {
+      "cats": {
+        "survival": 11,
+        "recruited": 2,
+        "zeroVote": 6,
+        "faithfulBanished": 8,
+        "murder": 3
+      },
+      "raw": 30,
+      "contribution": 30,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "James Blunt": {
+      "cats": {
+        "survival": 11,
+        "zeroVote": 3,
+        "traitorBanished": 4,
+        "traitorVote": 2
+      },
+      "raw": 20,
+      "contribution": 20,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Jerry Hall": {
+      "cats": {
+        "survival": 10,
+        "zeroVote": 2,
+        "traitorBanished": 4,
+        "traitorVote": 4
+      },
+      "raw": 20,
+      "contribution": 20,
+      "role": "Faithful",
+      "status": "banished"
+    },
+    "Joanne McNally": {
+      "cats": {
+        "survival": 11,
+        "zeroVote": 4,
+        "traitorBanished": 4
+      },
+      "raw": 19,
+      "contribution": 19,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Joe Lycett": {
+      "cats": {
+        "survival": 8,
+        "zeroVote": 4,
+        "traitorVote": 6,
+        "traitorBanished": 4
+      },
+      "raw": 22,
+      "contribution": 22,
+      "role": "Faithful",
+      "status": "banished"
+    },
+    "Julie Hesmondhalgh": {
+      "cats": {
+        "survival": 5,
+        "zeroVote": 1,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 10,
+      "contribution": 10,
+      "role": "Faithful",
+      "status": "banished"
+    },
+    "King Kenny": {
+      "cats": {
+        "survival": 11,
+        "zeroVote": 6,
+        "traitorVote": 6,
+        "traitorBanished": 4,
+        "recruited": 2,
+        "faithfulBanished": 4,
+        "murder": 1
+      },
+      "raw": 34,
+      "contribution": 34,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "Leigh-Anne Pinnock": {
+      "cats": {
+        "survival": 11,
+        "traitorVote": 6,
+        "traitorBanished": 4,
+        "zeroVote": 4
+      },
+      "raw": 25,
+      "contribution": 25,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Maya Jama": {
+      "cats": {
+        "survival": 11,
+        "murder": 4,
+        "zeroVote": 6,
+        "faithfulBanished": 8
+      },
+      "raw": 29,
+      "contribution": 29,
+      "role": "Traitor",
+      "status": "active"
+    },
+    "Michael Sheen": {
+      "cats": {
+        "survival": 11,
+        "zeroVote": 5,
+        "traitorVote": 4,
+        "traitorBanished": 4
+      },
+      "raw": 24,
+      "contribution": 24,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Miranda Hart": {
+      "cats": {
+        "survival": 11,
+        "zeroVote": 6,
+        "traitorVote": 4,
+        "traitorBanished": 4
+      },
+      "raw": 25,
+      "contribution": 50,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Myha'la": {
+      "cats": {
+        "survival": 3,
+        "zeroVote": 1,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 8,
+      "contribution": 8,
+      "role": "Faithful",
+      "status": "banished"
+    },
+    "Richard E. Grant": {
+      "cats": {
+        "survival": 2,
+        "murder": 1
+      },
+      "raw": 3,
+      "contribution": 3,
+      "role": "Traitor",
+      "status": "banished"
+    },
+    "Rob Beckett": {
+      "cats": {
+        "survival": 6,
+        "zeroVote": 3,
+        "traitorVote": 2,
+        "traitorBanished": 2
+      },
+      "raw": 13,
+      "contribution": 13,
+      "role": "Faithful",
+      "status": "murdered"
+    },
+    "Romesh Ranganathan": {
+      "cats": {
+        "survival": 11,
+        "zeroVote": 6,
+        "traitorVote": 4,
+        "traitorBanished": 4
+      },
+      "raw": 25,
+      "contribution": 25,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Ross Kemp": {
+      "cats": {
+        "survival": 9,
+        "zeroVote": 4,
+        "traitorVote": 4,
+        "traitorBanished": 4
+      },
+      "raw": 21,
+      "contribution": 21,
+      "role": "Faithful",
+      "status": "murdered"
+    },
+    "Sebastian Croft": {
+      "cats": {
+        "survival": 11,
+        "zeroVote": 4,
+        "traitorVote": 6,
+        "traitorBanished": 4
+      },
+      "raw": 25,
+      "contribution": 25,
+      "role": "Faithful",
+      "status": "active"
+    },
+    "Sharon Rooney": {
+      "cats": {
+        "survival": 11,
+        "zeroVote": 6,
+        "traitorVote": 4,
+        "traitorBanished": 4
+      },
+      "raw": 25,
+      "contribution": 25,
+      "role": "Faithful",
+      "status": "active"
+    }
+  }
+}

@@ -26,6 +26,47 @@ window.TraitorsScoring = (function () {
   const COL_LABEL = { survival: "Survival", murder: "Murder", recruitment: "Recruitment", other: "Other" };
   const OUT = ["murdered", "banished", "left"];
 
+  // Explicit extra ballots, separate from re-votes. A double-vote repeats the
+  // holder's target; an independently verified extra-vote may choose another.
+  // Missing required ballots never imply that nobody received them.
+  function ballotView(event, voters) {
+    const rounds = [event.votes || {}, ...(event.revotes || [])], powers = event.ballotPowers || [], supplied = event.extraBallots || [];
+    const errors = [], extras = [], eligibleByRound = [], tallies = [];
+    let complete = true, eligible = voters.slice(), targets = voters.slice();
+    if (!Array.isArray(powers) || !Array.isArray(supplied)) return {errors:['Ballot powers and extra ballots must be lists.'],extras,complete:false};
+    const holders = new Set();
+    for (const p of powers) {
+      if (!p || !['double-vote','extra-vote'].includes(p.kind) || !voters.includes(p.holder) || holders.has(p.holder)) errors.push('Unknown, duplicate or ineligible voting power.');
+      if (p) holders.add(p.holder);
+    }
+    const used = new Set();
+    for (let i = 0; i < rounds.length; i++) {
+      const round = rounds[i], counts = {}; eligibleByRound.push(eligible.slice());
+      if (!eligible.every(n => !!round[n])) complete = false;
+      for (const [v, target] of Object.entries(round)) if (target) {
+        if (!eligible.includes(v) || !targets.includes(target) || v === target) errors.push('A ballot is outside this round’s eligible voters or targets.');
+        else counts[target] = (counts[target] || 0) + 1;
+      }
+      for (const b of supplied.filter(b => b?.round === i)) {
+        const p = powers.find(p => p?.holder === b.voter), id = i + ':' + b.voter;
+        if (!p || used.has(id) || !eligible.includes(b.voter) || !targets.includes(b.target) || b.voter === b.target || (p.kind === 'double-vote' && (!round[b.voter] || b.target !== round[b.voter]))) errors.push('Extra ballot is duplicated, ineligible, missing its normal ballot, or inconsistent with its power.');
+        else {used.add(id); extras.push(b); counts[b.target] = (counts[b.target] || 0) + 1;}
+      }
+      for (const p of powers) if (eligible.includes(p?.holder) && !used.has(i + ':' + p.holder)) complete = false;
+      tallies.push(counts);
+      if (i < rounds.length - 1) {
+        const max = Math.max(0, ...Object.values(counts)), tied = Object.keys(counts).filter(n => counts[n] === max);
+        if (!complete || tied.length < 2) {complete = false; eligible = [];}
+        else eligible = voters.filter(n => !tied.includes(n));
+        targets = tied;
+        for (const target of Object.values(rounds[i+1])) if (target && !tied.includes(target)) errors.push('A re-vote target was not tied in the preceding round.');
+      }
+    }
+    if (supplied.some(b => !b || !Number.isInteger(b.round) || b.round < 0 || b.round >= rounds.length || typeof b.voter !== 'string' || typeof b.target !== 'string')) errors.push('Extra ballot needs a valid round, voter and target.');
+    if (event.outcome?.status === 'pending') complete = false;
+    return {errors,extras,eligibleByRound,tallies,complete:complete && !errors.length};
+  }
+
   function compute(data) {
     const names = data.celebs.map((c) => c.name);
     const total = names.length;
@@ -85,17 +126,20 @@ window.TraitorsScoring = (function () {
         const absent = new Set(ev.absent || []);
         const voters = active().filter((n) => !absent.has(n));
         const rounds = [ev.votes || {}].concat(ev.revotes || []);
+        const special = ev.ballotPowers !== undefined || ev.extraBallots !== undefined;
+        const ballots = special ? ballotView(ev, voters) : null;
         const gotVotes = new Set();
         rounds.forEach((r) => voters.forEach((v) => { if (r[v]) gotVotes.add(r[v]); }));
+        (ballots?.extras || []).forEach(b => gotVotes.add(b.target));
         // Partial records never imply zero votes. New records require an explicit
         // confirmation; legacy complete first-round records remain compatible.
-        const votingComplete = (ev.votingComplete === true || (ev.votingComplete === undefined && !(ev.revotes||[]).length)) && voters.every(n => !!ev.votes?.[n]) && (ev.revotes||[]).every(r=>Object.values(r).some(Boolean));
+        const votingComplete = (ev.votingComplete === true || (ev.votingComplete === undefined && !(ev.revotes||[]).length)) && voters.every(n => !!ev.votes?.[n]) && (ev.revotes||[]).every(r=>Object.values(r).some(Boolean)) && (!special || ballots.complete) && ev.outcome?.status !== 'pending';
 
         voters.forEach((p) => {
           const role = S[p].role;
           if (votingComplete && !gotVotes.has(p)) add(p, "zeroVote", ep);
           if (role === "Faithful") {
-            const hit = rounds.map((r) => r[p]).find((t) => t && S[t] && S[t].role === "Traitor");
+            const hit = rounds.map((r) => r[p]).concat((ballots?.extras || []).filter(b => b.voter === p).map(b => b.target)).find((t) => t && S[t] && S[t].role === "Traitor");
             if (hit) add(p, "traitorVote", ep, "voted for " + hit);
           }
         });
@@ -162,5 +206,5 @@ window.TraitorsScoring = (function () {
     return n + (s[(v - 20) % 10] || s[v] || s[0]);
   }
 
-  return { compute, history, CATS, COLS, COL_LABEL, ordinal };
+  return { compute, history, CATS, COLS, COL_LABEL, ordinal, ballotView };
 })();

@@ -1,6 +1,6 @@
 // A partial order, not the order names happen to occur in an article.
 const escape=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-const identity=e=>e.type+':'+(e.who||e.victim||e.shielded||e.banished||(e.winners||[]).join('|')||'');
+const identity=e=>e.type+':'+(e.tableId||e.who||e.victim||e.shielded||e.banished||(e.winners||[]).join('|')||'');
 const names=c=>[...new Set([c.event.who,c.event.victim,c.event.shielded,c.event.banished,...(c.aliases||[])])].filter(Boolean).map(escape).sort((a,b)=>b.length-a.length).join('|');
 const negative=/\b(not|never|could|would|might|may|if|predicted|rumour|rumor)\b/i;
 function assertion(c){
