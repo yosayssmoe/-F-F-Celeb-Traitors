@@ -1,6 +1,11 @@
 // Presentation only: every total comes from the unchanged event-replay engine.
 (function (root) {
   'use strict';
+  const GROUPS = [
+    {key:'shared', label:'Shared scoring', cats:['survival','zeroVote','winner']},
+    {key:'faithful', label:'Faithful points', cats:['traitorVote','traitorBanished','shield','recruited']},
+    {key:'traitor', label:'Traitor points', cats:['murder','faithfulBanished']}
+  ];
   function build(data, T) {
     const events = data.events || [], records = data.episodeRecords || {};
     const pending = data.automation?.pendingEvents || [];
@@ -24,7 +29,19 @@
           pending: pending.filter(p => Number(p.episode) === ep)};
       });
       const latestGain = s.log.filter(item => item.ep === episode).reduce((total, item) => total + item.pts, 0);
-      contestants[name] = {...s, previous: prev, delta: prev === null ? null : s.celebScore - prev, latestGain, history};
+      // A missing award is not proof that an unresolved event earned zero. Only
+      // complete historical coverage (or categorical ineligibility) establishes it.
+      const through = Math.min(s.exitEp || episode, episode);
+      const coverageComplete = Array.from({length:through}, (_, i) => records[i+1]?.status === 'complete' && !partial(i+1)).every(Boolean) &&
+        events.filter(e => e.ep <= through && e.type === 'roundtable').every(e => e.votingComplete === true);
+      const rolesCertain = Array.from({length:through}, (_, i) => ['complete','seeded'].includes(records[i+1]?.status) && !partial(i+1)).every(Boolean);
+      const roles = new Set([s.originalRole, s.role]);
+      const categoryCells = Object.fromEntries(Object.entries(T.CATS).map(([key, def]) => {
+        const points = s.cats[key] || 0;
+        const knownZero = !points && (coverageComplete || (rolesCertain && def.role && !roles.has(def.role)) || (key === 'winner' && ['murdered','banished','left'].includes(s.status)));
+        return [key, {points, knownZero:!!knownZero, text:points ? String(points) : knownZero ? '—' : '?'}];
+      }));
+      contestants[name] = {...s, previous: prev, delta: prev === null ? null : s.celebScore - prev, latestGain, history, categoryCells};
     }
     const players = Object.fromEntries((data.participants || []).map(name => [name, {name, total: 0, celebs: []}]));
     for (const c of data.celebs) if (c.participant) {
@@ -36,6 +53,7 @@
       p.rank = i && participants[i - 1].total === p.total ? participants[i - 1].rank : i + 1;
       p.tied = participants.filter(x => x.total === p.total).length > 1;
       p.celebs.sort((a, b) => b.contributed - a.contributed || a.name.localeCompare(b.name));
+      p.latestGain = p.celebs.reduce((total, celeb) => total + celeb.latestGain * celeb.multiplier, 0);
     });
     return {episode, partial: partial(episode), previousPartial: partial(episode - 1), contestants, participants,
       unavailableReason: available ? null : 'Historical event episode numbers are missing; a previous-episode total cannot be reconstructed.'};
@@ -65,5 +83,5 @@
     const label = value => complete ? String(value) : value > 0 ? 'At least ' + value : 'Not fully recorded';
     return {episode: model.episode, complete, rows: rows.map(r => ({...r, receivedLabel: label(r.received), traitorBallotsLabel: label(r.traitorBallots), shieldsLabel: 'Unavailable'}))};
   }
-  root.ScoreboardModel = {build, facts, gainLabel};
+  root.ScoreboardModel = {build, facts, gainLabel, GROUPS};
 })(typeof window === 'undefined' ? module.exports : window);

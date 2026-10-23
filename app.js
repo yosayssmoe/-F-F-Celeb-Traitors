@@ -315,76 +315,70 @@
     return ranked(Object.values(players), (p) => p.total);
   }
 
-  const expandedParticipants = new Set();
   function renderBoard() {
-    const model = window.ScoreboardModel.build(state, T), root = $("lb-rows");
-    root.replaceChildren();
+    const M = window.ScoreboardModel, model = M.build(state, T), table = $("league-table");
+    table.querySelectorAll('tbody').forEach(body => body.remove());
+    $("league-head").replaceChildren(); $("league-columns").replaceChildren();
     $("score-episode").textContent = 'Scores through Episode ' + model.episode + (model.partial ? ' — partially scored' : '');
     $("partial-notice").hidden = !model.partial;
-    model.participants.forEach((p, index) => {
-      const group = el('section', 'participant-group'); group.dataset.participant = p.name;
-      const header = el('div', 'standing-row');
+    const columns = ['celebrity', ...M.GROUPS.flatMap(g => g.cats), 'raw', 'contribution'];
+    columns.forEach(key => {const col = el('col', 'column-' + key); $("league-columns").appendChild(col);});
+    const groups = el('tr'), headings = el('tr');
+    const who = el('th', 'league-name', 'Celebrity'); who.rowSpan = 2; who.scope = 'col'; groups.appendChild(who);
+    const labels = {survival:'Survival',zeroVote:'Zero votes',winner:'Win',traitorVote:'Voted for a Traitor',traitorBanished:'Traitor banished',shield:'Shield save',recruited:'Recruited',murder:'Successful murder',faithfulBanished:'Faithful banished'};
+    M.GROUPS.forEach(group => {
+      const th = el('th', 'group-' + group.key, group.label); th.colSpan = group.cats.length; th.scope = 'colgroup'; groups.appendChild(th);
+      group.cats.forEach(key => {const heading = el('th', 'group-' + group.key, labels[key]); heading.scope = 'col'; heading.id = 'category-' + key; headings.appendChild(heading);});
+    });
+    const totals = el('th', 'group-totals', 'Totals'); totals.colSpan = 2; totals.scope = 'colgroup'; groups.appendChild(totals);
+    ['Raw total','Contribution'].forEach(label => {const th = el('th', 'group-totals', label); th.scope = 'col'; headings.appendChild(th);});
+    $("league-head").append(groups, headings);
+    const gain = (value, cls, label) => {
+      const formatted = M.gainLabel(value), badge = el('span', 'episode-gain ' + formatted.kind + ' ' + cls, formatted.text);
+      badge.setAttribute('aria-label', formatted.text + ' ' + label + ' points in Episode ' + model.episode); return badge;
+    };
+    model.participants.forEach(p => {
+      const body = el('tbody', 'participant-group'); body.dataset.participant = p.name;
+      const header = el('tr', 'participant-header'), cell = el('th'); cell.colSpan = columns.length; cell.scope = 'rowgroup';
+      const strip = el('div', 'participant-strip');
       const rank = el('span', 'standing-rank', (p.tied ? '=' : '') + p.rank); rank.setAttribute('aria-label', (p.tied ? 'Tied rank ' : 'Rank ') + p.rank);
-      const name = el('h3', 'participant-name', p.name), total = el('strong', 'total', p.total);
-      total.setAttribute('aria-label', p.total + ' points');
-      const toggle = el('button', 'expand-celebrities', expandedParticipants.has(p.name) ? 'Hide celebrities' : 'View celebrities'); toggle.type = 'button';
-      const list = el('div', 'celebrity-list'); list.id = 'participant-celebrities-' + index; list.hidden = !expandedParticipants.has(p.name);
-      toggle.setAttribute('aria-controls', list.id); toggle.setAttribute('aria-expanded', String(!list.hidden)); toggle.setAttribute('aria-label', (list.hidden ? 'View' : 'Hide') + ' celebrities for ' + p.name);
-      toggle.onclick = () => {
-        list.hidden = !list.hidden;
-        if (list.hidden) expandedParticipants.delete(p.name); else expandedParticipants.add(p.name);
-        toggle.textContent = list.hidden ? 'View celebrities' : 'Hide celebrities'; toggle.setAttribute('aria-expanded', String(!list.hidden));
-        toggle.setAttribute('aria-label', (list.hidden ? 'View' : 'Hide') + ' celebrities for ' + p.name);
-      };
-      header.append(rank, name, total, toggle); group.appendChild(header);
+      const total = el('span', 'participant-score'); total.append(el('strong', 'total', p.total), gain(p.latestGain, 'participant-gain', 'allocated'));
+      total.querySelector('strong').setAttribute('aria-label', p.total + ' current participant points');
+      strip.append(rank, el('span', 'participant-name', p.name), total); cell.appendChild(strip); header.appendChild(cell); body.appendChild(header);
       p.celebs.forEach(s => {
-        const row = el('div', 'celebrity-row status-' + s.status); row.dataset.celebrity = s.name;
-        const identity = el('div', 'celebrity-identity'), button = el('button', 'celebrity-link'); button.type = 'button';
-        button.append(el('span', 'lb-name', s.name), el('span', 'breakdown-label', 'Breakdown'));
-        button.setAttribute('aria-label', 'Scoring breakdown for ' + s.name); button.onclick = () => {button.focus({preventScroll:true}); openHistory(s.name);};
-        identity.append(button, el('span', 'status-badge', statusLabel(s)));
-        const points = el('div', 'celebrity-points'), raw = el('div', 'raw-score'); raw.appendChild(el('strong', null, s.celebScore));
-        const gain = window.ScoreboardModel.gainLabel(s.latestGain), change = el('span', 'episode-gain ' + gain.kind, gain.text);
-        change.setAttribute('aria-label', gain.text + ' raw points in Episode ' + model.episode); raw.appendChild(change); points.appendChild(raw);
-        points.appendChild(el('small', null, 'raw points'));
-        if (s.multiplier !== 1) points.appendChild(el('span', 'multiplied-contribution', '×' + s.multiplier + ' = ' + s.contributed + ' contribution'));
-        row.append(identity, points); list.appendChild(row);
+        const row = el('tr', 'celebrity-row status-' + s.status); row.dataset.celebrity = s.name;
+        const nameCell = el('th', 'league-name'); nameCell.scope = 'row';
+        nameCell.id = 'league-celebrity-' + state.celebs.findIndex(c => c.name === s.name);
+        const button = el('button', 'celebrity-link'); button.type = 'button'; button.setAttribute('aria-label', 'Scoring breakdown for ' + s.name);
+        button.appendChild(el('span', 'lb-name', s.name));
+        if (s.multiplier !== 1) button.appendChild(el('span', 'multiplier-badge', '×' + s.multiplier));
+        button.appendChild(el('span', 'league-meta', roleLabel(s) + ' · ' + statusLabel(s)));
+        button.onclick = () => {button.focus({preventScroll:true}); openHistory(s.name);}; nameCell.appendChild(button); row.appendChild(nameCell);
+        M.GROUPS.forEach(group => group.cats.forEach(key => {
+          const value = s.categoryCells[key], td = el('td', 'category-points group-' + group.key + (value.text === '?' ? ' unresolved' : ''), value.text);
+          td.dataset.category = key; td.dataset.points = value.points; td.setAttribute('headers', nameCell.id + ' category-' + key);
+          td.setAttribute('aria-label', T.CATS[key].label + ': ' + (value.text === '?' ? 'Not fully verified; no points awarded yet' : value.knownZero ? 'Confirmed zero points' : value.points + ' awarded points'));
+          row.appendChild(td);
+        }));
+        const raw = el('td', 'raw-total group-totals'); raw.append(el('strong', null, s.celebScore), gain(s.latestGain, 'raw-gain', 'raw')); row.appendChild(raw);
+        const contribution = el('td', 'contribution group-totals'); contribution.appendChild(el('strong', null, s.contributed));
+        if (s.multiplier !== 1) contribution.appendChild(el('small', null, s.celebScore + ' ×' + s.multiplier)); row.appendChild(contribution);
+        body.appendChild(row);
       });
-      if (!p.celebs.length) list.appendChild(el('p', 'hint', 'No allocated celebrities.'));
-      group.appendChild(list); root.appendChild(group);
+      table.appendChild(body);
     });
     fitBoard();
   }
-
-  $("bonus-btn").onclick = () => {
-    // Safari does not focus a button on pointer activation. Give the native dialog
-    // a reliable return target for both pointer and keyboard users.
-    $("bonus-btn").focus({preventScroll:true});
-    const facts = window.ScoreboardModel.facts(state, T), body = $("bonus-rows"); body.replaceChildren();
-    $("bonus-caption").textContent = 'Recorded facts through Episode ' + facts.episode + ' · all 21 contestants';
-    $("bonus-coverage").textContent = facts.complete ? 'Voting records cover all scored episodes.' : 'Voting history is not fully recorded across all episodes. Positive counts are lower bounds (At least N); missing records are not zero.';
-    facts.rows.forEach(fact => {
-      const row = el('tr', 'status-' + fact.status), name = el('th', null, fact.name); name.scope = 'row';
-      row.setAttribute('role', 'row'); name.setAttribute('role', 'rowheader');
-      name.appendChild(el('small', null, statusLabel(sc(fact.name)))); row.appendChild(name);
-      [['Votes received', fact.receivedLabel], ['Ballots cast for a Traitor', fact.traitorBallotsLabel], ['Shields won', fact.shieldsLabel]].forEach(([label, value]) => {const td = el('td', null, value); td.setAttribute('role', 'cell'); td.dataset.label = label; row.appendChild(td);});
-      body.appendChild(row);
-    });
-    $("bonus-facts").showModal();
-  };
-
-  // Keep the scoreboard on one screen: shrink rows until it fits.
   function fitBoard() {
-    const board = $("board");
-    if (board.hidden) return;
-    board.style.setProperty("--bs", "1"); return;
-    for (let k = 1; k >= 0.6; k -= 0.03) {
-      board.style.setProperty("--bs", k.toFixed(2));
-      const table = board.querySelector(".lb"), main = board.querySelector(".board-main");
-      if (main.scrollHeight <= main.clientHeight + 1 && table.scrollWidth <= main.clientWidth + 1) break;
-    }
+    const scroll = $("league-scroll");
+    if (scroll.clientWidth) scroll.style.setProperty('--league-viewport', scroll.clientWidth + 'px');
   }
-  new ResizeObserver(fitBoard).observe($("board"));
+  new ResizeObserver(fitBoard).observe($("league-scroll"));
+  $("league-scroll").addEventListener('keydown', event => {
+    if (event.target !== event.currentTarget) return;
+    const scroll = event.currentTarget;
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {event.preventDefault(); scroll.scrollLeft += event.key === 'ArrowRight' ? 90 : -90;}
+  });
 
   // ── View switch (Round Table / Leaderboard) ────────────
   const params = new URLSearchParams(location.search);
@@ -683,7 +677,7 @@
 
   $("manage-btn").onclick = openAdmin;
   document.addEventListener("keydown", (e) => {
-    if (/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) || dlg.open || histDlg.open || $("bonus-facts").open || $("episode-dialog").open) return;
+    if (/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) || dlg.open || histDlg.open || $("episode-dialog").open) return;
     const k = e.key.toLowerCase();
     if (k === "m") openAdmin();
     if (k === "l") setView($("board").hidden ? "board" : "table");

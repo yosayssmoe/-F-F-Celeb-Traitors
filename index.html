@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Celebrity Traitors UK — Friends &amp; Family Sweepstake</title>
-  <link rel="stylesheet" href="styles.css?v=20261023-compact-1" />
+  <link rel="stylesheet" href="styles.css?v=20261023-league-1" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗡️</text></svg>" />
 </head>
 <body>
@@ -38,12 +38,16 @@
       <div class="board-main">
         <header class="board-head">
           <h2>Scoreboard</h2>
-          <button type="button" class="btn ghost sm" id="bonus-btn">Bonus facts</button>
         </header>
         <p id="score-episode" class="episode-heading"></p>
-        <p class="score-explanation">Green +N shows raw points earned in the labelled episode.</p>
+        <p class="score-explanation">Green gains are for this episode: raw for celebrities, multiplied for participants.</p>
         <p id="partial-notice" class="partial-notice" hidden>Some points await verification. Only confirmed awards are included.</p>
-        <div id="lb-rows" class="participant-groups"></div>
+        <div class="league-legend" aria-label="Scoring groups and symbols"><span class="legend-shared">Shared scoring</span><span class="legend-faithful">Faithful points</span><span class="legend-traitor">Traitor points</span></div>
+        <p class="hint category-key">Cumulative awarded points · — confirmed zero · ? not fully verified. Totals include awarded points only.</p>
+        <p class="league-swipe">Swipe across scoring columns. Names stay on the left.</p>
+        <div id="league-scroll" class="league-scroll" role="region" tabindex="0" aria-label="Celebrity scoring table; scroll horizontally for scoring columns">
+          <table id="league-table" class="league-table"><caption class="sr-only">Participant standings and cumulative celebrity scoring points</caption><colgroup id="league-columns"></colgroup><thead id="league-head"></thead></table>
+        </div>
 
       </div>
     </section>
@@ -86,7 +90,6 @@
         <li>Winning a Shield alone earns no points. The Shield-save bonus requires a confirmed attempted murder stopped by that Shield.</li>
         <li>Unverified events or incomplete voting records may delay points. Historical corrections update the episode where the event belongs and subsequent totals.</li>
         <li>Green +N figures beside raw scores show raw points earned in the labelled scoring episode. Zero is shown neutrally; negative changes have a minus sign and are not green. Miranda’s multiplied contribution is labelled separately.</li>
-        <li>Bonus facts describe recorded game events and do not award points. Factual ballot counts include re-votes, unlike the once-per-table scoring bonus.</li>
         <li>Equal participant totals share the same rank. No additional tie-break rule is applied.</li>
       </ul>
     </section>
@@ -224,18 +227,6 @@
     </form>
   </dialog>
 
-  <dialog id="bonus-facts" class="admin facts-dialog" aria-labelledby="bonus-title" aria-describedby="bonus-coverage">
-    <form method="dialog" class="admin-inner">
-      <header class="admin-head"><h2 id="bonus-title">Bonus facts</h2><button class="icon-btn" aria-label="Close bonus facts" value="close">×</button></header>
-      <div class="facts-body">
-        <p id="bonus-coverage"></p>
-        <p>Counts use recorded ballots, including re-votes, and the target’s role at that moment. Votes cast by Traitors count too. These facts award no points; scoring bonuses count once per Round Table.</p>
-        <p>Shield wins are not recorded separately from successful Shield saves, so wins are unavailable.</p>
-        <table class="facts-table" role="table"><caption id="bonus-caption"></caption><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">Celebrity</th><th scope="col" role="columnheader">Votes received</th><th scope="col" role="columnheader">Ballots cast for a Traitor</th><th scope="col" role="columnheader">Shields won</th></tr></thead><tbody id="bonus-rows" role="rowgroup"></tbody></table>
-      </div>
-    </form>
-  </dialog>
-
   <!-- Points history -->
   <dialog id="hist" class="admin hist" aria-labelledby="hist-name" aria-describedby="hist-sub">
     <form method="dialog" class="admin-inner">
@@ -252,7 +243,7 @@
 
   <script src="data.js"></script>
   <script src="scoring.js"></script>
-  <script src="scoreboard-model.js?v=20261023-compact-1"></script>
+  <script src="scoreboard-model.js?v=20261023-league-1"></script>
   <dialog id="episode-dialog" class="admin">
     <div class="episode-shell">
       <header class="admin-head"><h2>Update Episode</h2><button type="button" id="episode-close" class="icon-btn" aria-label="Close episode update">×</button></header>
@@ -291,6 +282,6 @@
       <footer class="admin-foot"><label class="episode-confirm"><input id="episode-confirm" type="checkbox" disabled> I have reviewed the events, sources, warnings and score changes.</label><button type="button" id="episode-approve" class="btn gold" disabled>Approve episode update</button></footer>
     </div>
   </dialog>
-  <script src="validation.js"></script><script src="episode-updates.js"></script><script src="episode-sources.js"></script><script src="automation-status.js"></script><script src="app.js?v=20261023-compact-1"></script><script src="episode-ui.js?v=20261023-compact-1"></script>
+  <script src="validation.js"></script><script src="episode-updates.js"></script><script src="episode-sources.js"></script><script src="automation-status.js"></script><script src="app.js?v=20261023-league-1"></script><script src="episode-ui.js?v=20261023-league-1"></script>
 </body>
 </html>

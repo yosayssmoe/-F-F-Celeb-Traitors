@@ -16,7 +16,7 @@ const {pathToFileURL}=require('node:url');
   for(let i=0;i<50;i++){await new Promise(r=>setTimeout(r,100));if(await evaluate('!!window.SweepstakeApp'))break;}
   const data=require('../shared.cjs').load(path.resolve('_site/data.js'));
   const expected=Object.values(require('../shared.cjs').E.totals(data)).sort((a,b)=>b-a);
-  assert.deepEqual(await evaluate('[...document.querySelectorAll("#lb-rows .total")].map(e=>parseFloat(e.textContent))'),expected);
+  assert.deepEqual(await evaluate('[...document.querySelectorAll("#league-table .total")].map(e=>parseFloat(e.textContent))'),expected);
   assert(await evaluate('!document.querySelector("#countdown") && document.querySelector("#automation-status").getBoundingClientRect().width===0 && document.querySelector("#episode-update-btn").getBoundingClientRect().width===0'));
   await evaluate('document.querySelector("#manage-btn").click();document.querySelector(".admin-operations").open=true;');
   assert(await evaluate('document.querySelector("#automation-status").getBoundingClientRect().width>0'));

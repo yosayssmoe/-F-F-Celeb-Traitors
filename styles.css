@@ -653,6 +653,57 @@ button:disabled { opacity:.45; cursor:not-allowed; }
 .pending-detail { border:1px solid var(--line); padding:12px; margin:8px 0 16px; color:var(--ink-dim); font-size:.85rem; line-height:1.6; }
 .pending-detail summary { cursor:pointer; color:var(--gold-hi); min-height:32px; }
 .scoreboard-view .manage-btn { position:static; display:block; margin:16px auto; min-height:44px; }
+/* League table: fixed readable columns scroll inside this region only. */
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+.league-legend { display:flex; flex-wrap:wrap; gap:6px 14px; margin:0 0 8px; font-size:.75rem; color:var(--ink-dim); }
+.league-legend span::before { content:''; display:inline-block; width:9px; height:9px; border:1px solid #8b795c; margin-right:6px; }
+.legend-shared::before { background:#342a1b; }
+.legend-faithful::before { background:#26384d; }
+.legend-traitor::before { background:#48252b; }
+.league-swipe { display:none; font-size:.78rem; color:var(--gold-hi); line-height:1.5; }
+.league-scroll { overflow-x:auto; max-width:100%; width:100%; border:1px solid var(--line); border-radius:8px; isolation:isolate; -webkit-overflow-scrolling:touch; }
+.league-table { width:100%; min-width:980px; table-layout:fixed; border-collapse:separate; border-spacing:0; font-size:.85rem; font-variant-numeric:tabular-nums; }
+.league-table col { width:62px; }
+.league-table col.column-celebrity { width:200px; }
+.league-table col.column-raw { width:110px; }
+.league-table col.column-contribution { width:104px; }
+.league-table th,.league-table td { padding:8px 5px; text-align:center; border-bottom:1px solid #433524; vertical-align:middle; }
+.league-table thead th { font-size:.72rem; font-weight:600; line-height:1.45; overflow-wrap:normal; color:var(--ink); }
+.league-table thead tr:first-child th { font-size:.8rem; padding:10px 5px; }
+.league-table .group-shared { background:#211c14; }
+.league-table .group-faithful { background:#142230; }
+.league-table .group-traitor { background:#2a171c; }
+.league-table .group-totals { background:#211b12; }
+.league-table .league-name { position:sticky; left:0; z-index:2; background:#191410; text-align:left; box-shadow:2px 0 0 #59462c; }
+.league-table thead .league-name { z-index:3; }
+.league-table .participant-group { border:0; }
+.league-table .participant-header > th { padding:0; background:#342515; border-top:1px solid var(--gold); border-bottom:1px solid #735b31; }
+.participant-strip { position:sticky; left:0; width:var(--league-viewport,280px); display:flex; align-items:center; gap:10px; padding:9px 12px; min-height:44px; background:#342515; text-align:left; }
+.participant-strip .participant-name { flex:1; font:700 1.05rem var(--font-display); color:var(--gold-hi); }
+.participant-strip .standing-rank { flex:none; min-width:22px; color:var(--ink-dim); font-weight:500; }
+.participant-score { display:flex; align-items:baseline; justify-content:flex-end; gap:7px; white-space:nowrap; }
+.participant-strip .total { font:700 1.4rem var(--font-display); color:var(--gold-hi); }
+.league-table .celebrity-row { display:table-row; }
+.league-table .celebrity-link { display:block; width:100%; min-height:44px; padding:3px 4px; color:var(--ink); }
+.league-table .celebrity-link .lb-name { font:600 .92rem/1.35 var(--font-display); text-decoration:underline; text-underline-offset:3px; white-space:normal; overflow-wrap:anywhere; }
+.league-table .celebrity-link:focus-visible { outline-offset:-1px; }
+.league-meta { display:block; margin-top:5px; color:var(--ink-dim); font:400 .68rem/1.5 var(--font-ui); }
+.league-table .status-murdered .lb-name,.league-table .status-banished .lb-name,.league-table .status-left .lb-name { color:#bfb9b2; }
+.league-table .status-murdered .category-points,.league-table .status-banished .category-points,.league-table .status-left .category-points { color:#bfb9b2; }
+.league-table .category-points { color:var(--ink); }
+.league-table .category-points.unresolved { color:#cabd9d; }
+.league-table .raw-total strong { font-size:1rem; }
+.league-table .episode-gain { display:inline-block; font-size:.72rem; margin-left:5px; }
+.league-table .participant-gain { margin-left:0; }
+.league-table .contribution { color:var(--gold-hi); }
+.league-table .contribution small { display:block; margin-top:4px; font-size:.68rem; color:var(--ink-dim); }
+@media(max-width:720px) {
+ .league-table { min-width:950px; }
+ .league-table col.column-celebrity { width:170px; }
+ .league-swipe { display:block; }
+ .participant-strip { padding:8px 10px; }
+ .participant-strip .participant-name { font-size:1rem; }
+}
 /* One standings list; celebrity details expand within each participant row. */
 .main-views { width:min(520px,calc(100% - 24px)); margin:16px auto 4px; grid-template-columns:repeat(3,minmax(0,1fr)); }
 .main-views button { min-height:44px; white-space:normal; }

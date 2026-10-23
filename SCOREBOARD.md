@@ -1,8 +1,12 @@
-The scoreboard is one compact leaderboard with seven calculated participant totals
-and competition ranks (1, 2, 2, 4). Celebrity sections start collapsed. Expand controls
-reveal status badges, raw scores, latest-episode gains and concise breakdown controls.
-Only multiplied allocations repeat a separate contribution. Miranda's ×2 applies
-once, to her full raw score. Eliminated celebrities retain their earned points.
+The scoreboard is one league table, with seven calculated participant totals and
+competition ranks (1, 2, 2, 4). All 20 allocated celebrities are always visible below
+their participant's header. Nine scoring columns contain cumulative POINTS directly
+from the existing engine's categories, grouped as Shared, Faithful and Traitor.
+Each row also shows the raw total/latest gain and participant contribution. Miranda's
+×2 applies once, to her full raw score. Participant gains sum raw episode awards times
+each allocation multiplier. Eliminated celebrities retain earned points and have
+explicit, muted status labels. Recruited players retain both earlier Faithful and
+later Traitor points. Celebrity names open the complete existing detail dialog.
 
 `scoreboard-model.js` calls `TraitorsScoring.compute` unchanged. It never writes game
 data or runs the updater. Public countdown controls have been removed. Operational
@@ -30,9 +34,9 @@ Validation:
 
 - `npm test`: existing scoring/update tests plus `automation/tests/scoreboard.test.cjs`.
 - `node scoreboard-browser-tests.cjs`: Chromium/Android and WebKit/iPhone profiles at
-  320, 375, 390, 430 and 1440px; totals, raw episode gains, collapse controls, dialogs,
-  facts, rules tabs, administration/import compatibility, category reconciliation,
-  focus restoration, screenshots and no page overflow.
+  320, 375, 390, 430 and 1440px; category sums, raw/multiplied episode gains, all rows,
+  horizontal table scrolling, opaque sticky names and participant headers, dialogs,
+  rules tabs, administration/import compatibility, focus restoration and screenshots.
 - `node mobile-browser-tests.cjs`: unchanged Round Table checks, including all 21
   contestant taps, expanded view and desktop geometry. `DESKTOP_BASELINE_URL` can
   compare it with the currently published site before deploying.
@@ -43,17 +47,22 @@ production dependencies. `TEST_BASE_URL` checks the rendered published dashboard
 instead of the local server. Screenshots/reports are written under `test-results/`.
 These are emulated browser checks, not physical iPhone/Android device tests.
 
-Bonus facts count recorded ballots, including re-votes, using the target's role in
-the engine snapshot before each table. All eligible voters' ballots count as facts,
-including ballots cast by Traitors; this does not change the Faithful-only scoring
-bonus or its once-per-table limit. Eliminated and unassigned contestants are included.
-Counts are exact only when all scored episodes and voting rounds have complete
-coverage. Otherwise positive values say “At least N” and missing zeros say “Not fully
-recorded”. The current initial-episode voting history is incomplete. Shield wins have
-no separate structured records, so they are “Unavailable”; Shield saves never become
-invented Shield wins. No new source extraction or scoring rules have been added.
+Bonus facts and its public panel have been removed, including its rules reference.
+The legacy pure facts helper remains regression-tested and is not called by the UI.
+No source extraction or scoring rules have been added.
+
+Zero presentation is conservative. Complete historical coverage through the player's
+exit/current episode establishes a verified zero, shown as “—”. Missing/seeded episode
+coverage, partial voting or pending events cannot establish eligible zero categories;
+these show “?” while the numeric awarded value remains zero for reconciliation. A
+role-ineligible category can show a dash when the role history is established by
+complete or supplied baseline records without pending changes. An eliminated player
+cannot earn a winner bonus. Positive cells always show actual awarded points.
+The supplied Episodes 1–2 baseline is not independently complete coverage, so some
+eligible zero categories remain “?” even though subsequent episodes are complete.
 
 The Sweepstake rules tab separates show mechanics from sweepstake points and matches
 the existing engine. No discrepancy was found. No prize arrangement or tie-break rule
-has been introduced. Tabs support arrow keys/Home/End, dialogs restore focus, and
-expanded rows remain expanded when switching tabs or refreshing imported state.
+has been introduced. Tabs support arrow keys/Home/End and dialogs restore focus.
+Mobile uses the same table. Its scroll region supports touch and arrow keys, sticky
+opaque celebrity cells, and participant strips pinned to the available viewport.
