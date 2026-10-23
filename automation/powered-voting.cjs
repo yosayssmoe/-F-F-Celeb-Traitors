@@ -49,14 +49,27 @@ function tables({ep,columns,bRow,tallyRow,voterRows,voterNames,resolve,finishes,
   }
   const tally=counts(rounds[0],powers),max=Math.max(0,...Object.values(tally)),tied=Object.keys(tally).filter(n=>tally[n]===max).sort();
   const tiedNote=group.columns.some(col=>voterRows.some(r=>referencedNotes(r[col]?.node,doc).some(n=>/first round[^.]*tie/i.test(n.text)&&/second vote/i.test(n.text)&&/would not vote/i.test(n.text))));
-  const tieVerified=group.firstTie&&tied.length>=2&&matches(tally,rounds[0].tally)&&tiedNote;
+  // A source may move continuation ballots into the next episode. The original
+  // tied ballot can still be verified against an explicit narrative assertion;
+  // this does not import or associate any of the later episode's ballots.
+  const tieSentence=description.match(/[^.!?]*\b(?:ended in|resulted in) a tie between ([^.!?]+)[.!?]/i);
+  const narrativeTied=tieSentence&&!/\b(not|never|could|might|may|if|reportedly)\b/i.test(tieSentence[0])?tieSentence[1].split(/\s+and\s+/i).map(resolve):[];
+  const narrativeTie=narrativeTied.length===tied.length&&narrativeTied.every(Boolean)&&stable([...narrativeTied].sort())===stable(tied);
+  const tieVerified=group.firstTie&&tied.length>=2&&matches(tally,rounds[0].tally)&&(tiedNote||(rounds.length===1&&narrativeTie));
   const banished=group.outcome||null;
   const verified=banished ? new RegExp('^Banished\\s*\\(Episode '+ep+'\\)$','i').test(finishes.get(banished)?.text) : tieVerified;
   const tableId=`ep${ep}-table-${index+1}`;
   const event={ep,type:'roundtable',tableId,votes:{},revotes:[],absent:[],banished,votingComplete:false,
    ...(powers.length?{ballotPowers:powers,extraBallots:[]}:{}),
    outcome:{status:banished?'banished':'pending',...(tied.length>=2?{tied}:{} )}};
-  const evidence=[banished?'Banishment and contestant finish agree.':'The first tally and referenced tie procedure establish an unfinished Round Table.',...(power?.evidence||[])];
+  if(!banished&&power){
+   const holderRow=voterRows[voterNames.indexOf(power.holder)]||[];
+   for(let col=Math.max(...group.columns)+1;col<holderRow.length;col++)for(const note of referencedNotes(holderRow[col]?.node,doc)){
+    const next=Number(note.text.match(/second double vote[^.]*carry over into episode (\d+)/i)?.[1]);
+    if(next>ep){event.outcome.continuationEpisode=next;event.outcome.unrevealedVoter=power.holder;}
+   }
+  }
+  const evidence=[banished?'Banishment and contestant finish agree.':tiedNote?'The first tally and referenced tie procedure establish an unfinished Round Table.':'The weighted tally and episode narrative agree on the tied contestants; continuation ballots outside this episode remain unassociated.',...(power?.evidence||[])];
   const candidate={event,key:'roundtable:'+tableId,column:group.columns[0],kind:'table',verified,rounds,evidence};
   candidates.push(candidate);
   if(!verified)issues.push({eventKey:candidate.key,status:'incomplete',detail:'Voting power/tie outcome lacks consistent structured supporting evidence.'});

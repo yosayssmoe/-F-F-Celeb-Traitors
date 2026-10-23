@@ -69,6 +69,7 @@ window.SweepstakeData = (() => {
           if(e.outcome.status==='pending'&&(e.banished||e.votingComplete===true))error('An unresolved tie cannot confirm an elimination or complete voting.');
           if(e.outcome.status==='banished'&&(!e.banished||e.outcome.tied&&!e.outcome.tied.includes(e.banished)))error('Confirmed tie resolution needs the actual banished contestant.');
           if(e.outcome.status==='no-banishment'&&e.banished)error('No-banishment outcome cannot eliminate a contestant.');
+          if(e.outcome.continuationEpisode!==undefined&&(!Number.isInteger(e.outcome.continuationEpisode)||e.outcome.continuationEpisode<=e.ep||!(e.ballotPowers||[]).some(p=>p.holder===e.outcome.unrevealedVoter)))error('A continuation needs a later episode and a verified power holder.');
         }
         if(e.banished) { present(e.banished); if(!participants.includes(e.banished)) error('An absent contestant cannot be banished at this table.'); active.delete(e.banished); }
       } else if(e.type==='final') {

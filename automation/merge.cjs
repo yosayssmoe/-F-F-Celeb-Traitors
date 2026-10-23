@@ -119,7 +119,8 @@ function merge(data,parsed,config,now=new Date().toISOString()){
  }
  // Pending state is canonical and durable, but stable checks must not churn commits.
  for(const event of next.events.filter(e=>e.type==='roundtable'&&e.outcome?.status==='pending')){
-  report.deferred.push({episode:event.ep,event:key(event),status:'outcome-pending',reason:'Tied Round Table has no verified final banishment. Await the remaining ballot(s), their extra votes and the announced outcome.',dependencies:[key(event)]});
+  const continuation=event.outcome.continuationEpisode?' The source places continuation under Episode '+event.outcome.continuationEpisode+' and identifies '+event.outcome.unrevealedVoter+'’s deciding doubled re-vote as unrevealed; these later columns are not automatically associated for scoring.':'';
+  report.deferred.push({episode:event.ep,event:key(event),status:'outcome-pending',reason:'Tied Round Table has no verified final banishment. Await the remaining ballot(s), their extra votes and the announced outcome.'+continuation,dependencies:[`ep${event.ep}:${key(event)}:final-ballots`,`ep${event.ep}:${key(event)}:announced-outcome`]});
  }
  const missingVotes=[];
  for(let i=0;i<next.events.length;i++){
