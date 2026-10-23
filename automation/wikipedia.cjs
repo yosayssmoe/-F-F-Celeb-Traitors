@@ -81,7 +81,7 @@ function parseWikipedia(snapshot,data,config){
   resolveChronology(result,result.publishedEvents);
   result.noEvents=!result.candidates.length&&!result.issues.length&&columns.every(c=>/^(None|No vote)$/i.test(bRow?.[c]?.text||''))&&!!result.description;
  }
- return {episodes:[...episodes.values()],source,recaps:recaps.filter((r,i,a)=>a.findIndex(x=>x.url===r.url)===i)};
+ return {episodes:[...episodes.values()],source,castAssertions:[...finishes].map(([name,f])=>({name,role:f.role,finish:f.text})).sort((a,b)=>a.name.localeCompare(b.name)),recaps:recaps.filter((r,i,a)=>a.findIndex(x=>x.url===r.url)===i)};
 }
 function verifyVotes(candidate,step){
  const event=JSON.parse(JSON.stringify(candidate.event));if(event.type!=='roundtable')return event;

@@ -1,0 +1,104 @@
+{
+  "episode": 7,
+  "date": "2026-10-22",
+  "candidates": [
+    {
+      "event": {
+        "ep": 7,
+        "type": "murder",
+        "victim": "Ross Kemp"
+      },
+      "key": "murder:Ross Kemp",
+      "column": 14,
+      "kind": "decision",
+      "verified": true,
+      "evidence": [
+        "Murder: Ross",
+        "Second structured section agrees"
+      ],
+      "observedRole": "Faithful",
+      "aliases": [
+        "Ross Kemp",
+        "Ross",
+        "Ross K."
+      ]
+    },
+    {
+      "event": {
+        "ep": 7,
+        "type": "roundtable",
+        "votes": {},
+        "revotes": [],
+        "absent": [],
+        "banished": "Jerry Hall",
+        "votingComplete": false
+      },
+      "key": "roundtable:Jerry Hall",
+      "column": 14,
+      "kind": "table",
+      "verified": true,
+      "rounds": [
+        {
+          "votes": {
+            "James Acaster": "Jerry Hall",
+            "James Blunt": "Jerry Hall",
+            "Joanne McNally": "Jerry Hall",
+            "King Kenny": "Sebastian Croft",
+            "Leigh-Anne Pinnock": "Jerry Hall",
+            "Maya Jama": "Jerry Hall",
+            "Michael Sheen": "Jerry Hall",
+            "Miranda Hart": "Jerry Hall",
+            "Romesh Ranganathan": "Jerry Hall",
+            "Sebastian Croft": "Jerry Hall",
+            "Sharon Rooney": "Leigh-Anne Pinnock",
+            "Jerry Hall": "Joanne McNally"
+          },
+          "raw": {
+            "James Acaster": "Jerry",
+            "James Blunt": "Jerry",
+            "Joanne McNally": "Jerry",
+            "King Kenny": "Sebastian",
+            "Leigh-Anne Pinnock": "Jerry",
+            "Maya Jama": "Jerry",
+            "Michael Sheen": "Jerry",
+            "Miranda Hart": "Jerry",
+            "Romesh Ranganathan": "Jerry",
+            "Sebastian Croft": "Jerry",
+            "Sharon Rooney": "Leigh-Anne",
+            "Jerry Hall": "Joanne",
+            "Ross Kemp": "Murdered (Episode 7)",
+            "Joe Lycett": "Banished (Episode 6)",
+            "Hannah Fry": "Banished (Episode 5)",
+            "Rob Beckett": "Murdered (Episode 5)",
+            "Julie Hesmondhalgh": "Banished (Episode 4)",
+            "Bella Ramsey": "Murdered (Episode 4)",
+            "Myha'la": "Banished (Episode 3)",
+            "Richard E. Grant": "Banished (Episode 3)",
+            "Amol Rajan": "Murdered (Episode 2)"
+          },
+          "tally": "9–1–1–1"
+        }
+      ],
+      "evidence": [
+        "Banishment: Jerry Hall",
+        "Contestant finish agrees"
+      ],
+      "observedRole": "Faithful",
+      "aliases": [
+        "Jerry Hall",
+        "Jerry",
+        "Jerry H."
+      ]
+    }
+  ],
+  "issues": [],
+  "source": {
+    "title": "Wikipedia: Celebrity Traitors UK Series 2",
+    "url": "https://en.wikipedia.org/w/index.php?oldid=1381501791",
+    "retrievedAt": "2026-10-23T09:49:13.5856635Z",
+    "revision": 1381501791,
+    "revisionTimestamp": "2026-10-22T23:13:57Z"
+  },
+  "noEvents": false,
+  "safePrefix": 2
+}
