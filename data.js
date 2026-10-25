@@ -752,23 +752,21 @@ window.SWEEPSTAKE = {
         "tied": [
           "Joanne McNally",
           "Sharon Rooney"
-        ],
-        "continuationEpisode": 9,
-        "unrevealedVoter": "King Kenny"
+        ]
       },
       "id": "ep8-auto-8f2871d0ef2b",
       "automation": {
         "owner": "github-actions",
         "verification": "structured-verified",
-        "verifiedAt": "2026-10-23T21:56:20.478Z",
-        "payloadHash": "3349d07db928f3f29fde5118cf1da591deeaf871cde6c2adf5607f74e5b7ff02",
+        "verifiedAt": "2026-10-25T10:19:09.593Z",
+        "payloadHash": "d55559498bbefcdcaf0eda8b5678ce18b5036af88cdd18f943be837c9081df91",
         "sources": [
           {
             "title": "Wikipedia: Celebrity Traitors UK Series 2",
-            "url": "https://en.wikipedia.org/w/index.php?oldid=1381644746",
-            "retrievedAt": "2026-10-23T21:56:19.963Z",
-            "revision": 1381644746,
-            "revisionTimestamp": "2026-10-23T21:25:46Z"
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1381835994",
+            "retrievedAt": "2026-10-25T10:19:08.797Z",
+            "revision": 1381835994,
+            "revisionTimestamp": "2026-10-25T02:38:36Z"
           }
         ],
         "evidence": [
@@ -784,10 +782,23 @@ window.SWEEPSTAKE = {
             "evidence": "Miranda Hart explicitly out in every voting round",
             "source": {
               "title": "Wikipedia: Celebrity Traitors UK Series 2",
-              "url": "https://en.wikipedia.org/w/index.php?oldid=1381644746",
-              "retrievedAt": "2026-10-23T21:56:19.963Z",
-              "revision": 1381644746,
-              "revisionTimestamp": "2026-10-23T21:25:46Z"
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1381835994",
+              "retrievedAt": "2026-10-25T10:19:08.797Z",
+              "revision": 1381835994,
+              "revisionTimestamp": "2026-10-25T02:38:36Z"
+            }
+          },
+          {
+            "before": "murder:Miranda Hart",
+            "after": "roundtable:ep8-table-1",
+            "reason": "published-history",
+            "evidence": "Previously validated local event order",
+            "source": {
+              "title": "Wikipedia: Celebrity Traitors UK Series 2",
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1381835994",
+              "retrievedAt": "2026-10-25T10:19:08.797Z",
+              "revision": 1381835994,
+              "revisionTimestamp": "2026-10-25T02:38:36Z"
             }
           }
         ],
@@ -898,14 +909,14 @@ window.SWEEPSTAKE = {
       "sources": [
         {
           "title": "Wikipedia: Celebrity Traitors UK Series 2",
-          "url": "https://en.wikipedia.org/w/index.php?oldid=1381644746",
-          "retrievedAt": "2026-10-23T21:56:19.963Z",
-          "revision": 1381644746,
-          "revisionTimestamp": "2026-10-23T21:25:46Z"
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1381835994",
+          "retrievedAt": "2026-10-25T10:19:08.797Z",
+          "revision": 1381835994,
+          "revisionTimestamp": "2026-10-25T02:38:36Z"
         }
       ],
-      "approvedAt": "2026-10-23T21:56:20.478Z",
-      "automationPayloadHash": "9d29e98880d2b4c5cb9f41bfc58075a7a9cf9adcfb06ff8aaf4056a815300461",
+      "approvedAt": "2026-10-25T10:19:09.593Z",
+      "automationPayloadHash": "0b80b980d76173ab791ddd93b0dd68d41e0db0d8aa2edbd136c94a3cdbeec79d",
       "automationLocked": false
     }
   },
@@ -1642,11 +1653,299 @@ window.SWEEPSTAKE = {
           "revisionTimestamp": "2026-10-23T21:25:46Z"
         }
       ]
+    },
+    {
+      "episode": 8,
+      "approvedAt": "2026-10-25T10:19:09.593Z",
+      "method": "GitHub Actions verified update",
+      "previousEvents": [
+        {
+          "ep": 8,
+          "type": "murder",
+          "victim": "Miranda Hart",
+          "id": "ep8-auto-b6eadea00b63",
+          "automation": {
+            "owner": "github-actions",
+            "verification": "structured-verified",
+            "verifiedAt": "2026-10-23T21:56:20.478Z",
+            "payloadHash": "57d8f2f409a36657db80f0aca5f47604124e0edc24365036d6cb761f92d6aab9",
+            "sources": [
+              {
+                "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1381644746",
+                "retrievedAt": "2026-10-23T21:56:19.963Z",
+                "revision": 1381644746,
+                "revisionTimestamp": "2026-10-23T21:25:46Z"
+              }
+            ],
+            "evidence": [
+              "Murder: Miranda",
+              "Second structured section agrees"
+            ],
+            "chronology": [
+              {
+                "before": "murder:Miranda Hart",
+                "after": "roundtable:ep8-table-1",
+                "reason": "eliminated-before-voting",
+                "evidence": "Miranda Hart explicitly out in every voting round",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1381644746",
+                  "retrievedAt": "2026-10-23T21:56:19.963Z",
+                  "revision": 1381644746,
+                  "revisionTimestamp": "2026-10-23T21:25:46Z"
+                }
+              }
+            ],
+            "locked": false
+          }
+        },
+        {
+          "ep": 8,
+          "type": "roundtable",
+          "tableId": "ep8-table-1",
+          "votes": {
+            "James Acaster": "Joanne McNally",
+            "James Blunt": "Sharon Rooney",
+            "Joanne McNally": "Leigh-Anne Pinnock",
+            "King Kenny": "Sharon Rooney",
+            "Leigh-Anne Pinnock": "Joanne McNally",
+            "Maya Jama": "Sebastian Croft",
+            "Michael Sheen": "Sharon Rooney",
+            "Romesh Ranganathan": "Michael Sheen",
+            "Sebastian Croft": "Joanne McNally",
+            "Sharon Rooney": "Joanne McNally"
+          },
+          "revotes": [],
+          "absent": [],
+          "banished": null,
+          "votingComplete": false,
+          "ballotPowers": [
+            {
+              "kind": "double-vote",
+              "holder": "King Kenny"
+            }
+          ],
+          "extraBallots": [
+            {
+              "round": 0,
+              "voter": "King Kenny",
+              "target": "Sharon Rooney"
+            }
+          ],
+          "outcome": {
+            "status": "pending",
+            "tied": [
+              "Joanne McNally",
+              "Sharon Rooney"
+            ],
+            "continuationEpisode": 9,
+            "unrevealedVoter": "King Kenny"
+          },
+          "id": "ep8-auto-8f2871d0ef2b",
+          "automation": {
+            "owner": "github-actions",
+            "verification": "structured-verified",
+            "verifiedAt": "2026-10-23T21:56:20.478Z",
+            "payloadHash": "3349d07db928f3f29fde5118cf1da591deeaf871cde6c2adf5607f74e5b7ff02",
+            "sources": [
+              {
+                "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1381644746",
+                "retrievedAt": "2026-10-23T21:56:19.963Z",
+                "revision": 1381644746,
+                "revisionTimestamp": "2026-10-23T21:25:46Z"
+              }
+            ],
+            "evidence": [
+              "The weighted tally and episode narrative agree on the tied contestants; continuation ballots outside this episode remain unassociated.",
+              "Referenced Dagger footnote explicitly doubles the holder’s vote.",
+              "Episode description independently explains the double vote at the Round Table."
+            ],
+            "chronology": [
+              {
+                "before": "murder:Miranda Hart",
+                "after": "roundtable:ep8-table-1",
+                "reason": "eliminated-before-voting",
+                "evidence": "Miranda Hart explicitly out in every voting round",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1381644746",
+                  "retrievedAt": "2026-10-23T21:56:19.963Z",
+                  "revision": 1381644746,
+                  "revisionTimestamp": "2026-10-23T21:25:46Z"
+                }
+              }
+            ],
+            "locked": false
+          }
+        }
+      ],
+      "previousRecord": {
+        "date": "2026-10-23",
+        "status": "partial",
+        "notes": "Automatically verified structured events. Unsupported or unpublished information remains in the workflow report.",
+        "sources": [
+          {
+            "title": "Wikipedia: Celebrity Traitors UK Series 2",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1381644746",
+            "retrievedAt": "2026-10-23T21:56:19.963Z",
+            "revision": 1381644746,
+            "revisionTimestamp": "2026-10-23T21:25:46Z"
+          }
+        ],
+        "approvedAt": "2026-10-23T21:56:20.478Z",
+        "automationPayloadHash": "9d29e98880d2b4c5cb9f41bfc58075a7a9cf9adcfb06ff8aaf4056a815300461",
+        "automationLocked": false
+      },
+      "newEvents": [
+        {
+          "ep": 8,
+          "type": "murder",
+          "victim": "Miranda Hart",
+          "id": "ep8-auto-b6eadea00b63",
+          "automation": {
+            "owner": "github-actions",
+            "verification": "structured-verified",
+            "verifiedAt": "2026-10-23T21:56:20.478Z",
+            "payloadHash": "57d8f2f409a36657db80f0aca5f47604124e0edc24365036d6cb761f92d6aab9",
+            "sources": [
+              {
+                "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1381644746",
+                "retrievedAt": "2026-10-23T21:56:19.963Z",
+                "revision": 1381644746,
+                "revisionTimestamp": "2026-10-23T21:25:46Z"
+              }
+            ],
+            "evidence": [
+              "Murder: Miranda",
+              "Second structured section agrees"
+            ],
+            "chronology": [
+              {
+                "before": "murder:Miranda Hart",
+                "after": "roundtable:ep8-table-1",
+                "reason": "eliminated-before-voting",
+                "evidence": "Miranda Hart explicitly out in every voting round",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1381644746",
+                  "retrievedAt": "2026-10-23T21:56:19.963Z",
+                  "revision": 1381644746,
+                  "revisionTimestamp": "2026-10-23T21:25:46Z"
+                }
+              }
+            ],
+            "locked": false
+          }
+        },
+        {
+          "ep": 8,
+          "type": "roundtable",
+          "tableId": "ep8-table-1",
+          "votes": {
+            "James Acaster": "Joanne McNally",
+            "James Blunt": "Sharon Rooney",
+            "Joanne McNally": "Leigh-Anne Pinnock",
+            "King Kenny": "Sharon Rooney",
+            "Leigh-Anne Pinnock": "Joanne McNally",
+            "Maya Jama": "Sebastian Croft",
+            "Michael Sheen": "Sharon Rooney",
+            "Romesh Ranganathan": "Michael Sheen",
+            "Sebastian Croft": "Joanne McNally",
+            "Sharon Rooney": "Joanne McNally"
+          },
+          "revotes": [],
+          "absent": [],
+          "banished": null,
+          "votingComplete": false,
+          "ballotPowers": [
+            {
+              "kind": "double-vote",
+              "holder": "King Kenny"
+            }
+          ],
+          "extraBallots": [
+            {
+              "round": 0,
+              "voter": "King Kenny",
+              "target": "Sharon Rooney"
+            }
+          ],
+          "outcome": {
+            "status": "pending",
+            "tied": [
+              "Joanne McNally",
+              "Sharon Rooney"
+            ]
+          },
+          "id": "ep8-auto-8f2871d0ef2b",
+          "automation": {
+            "owner": "github-actions",
+            "verification": "structured-verified",
+            "verifiedAt": "2026-10-25T10:19:09.593Z",
+            "payloadHash": "d55559498bbefcdcaf0eda8b5678ce18b5036af88cdd18f943be837c9081df91",
+            "sources": [
+              {
+                "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1381835994",
+                "retrievedAt": "2026-10-25T10:19:08.797Z",
+                "revision": 1381835994,
+                "revisionTimestamp": "2026-10-25T02:38:36Z"
+              }
+            ],
+            "evidence": [
+              "The weighted tally and episode narrative agree on the tied contestants; continuation ballots outside this episode remain unassociated.",
+              "Referenced Dagger footnote explicitly doubles the holder’s vote.",
+              "Episode description independently explains the double vote at the Round Table."
+            ],
+            "chronology": [
+              {
+                "before": "murder:Miranda Hart",
+                "after": "roundtable:ep8-table-1",
+                "reason": "eliminated-before-voting",
+                "evidence": "Miranda Hart explicitly out in every voting round",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1381835994",
+                  "retrievedAt": "2026-10-25T10:19:08.797Z",
+                  "revision": 1381835994,
+                  "revisionTimestamp": "2026-10-25T02:38:36Z"
+                }
+              },
+              {
+                "before": "murder:Miranda Hart",
+                "after": "roundtable:ep8-table-1",
+                "reason": "published-history",
+                "evidence": "Previously validated local event order",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1381835994",
+                  "retrievedAt": "2026-10-25T10:19:08.797Z",
+                  "revision": 1381835994,
+                  "revisionTimestamp": "2026-10-25T02:38:36Z"
+                }
+              }
+            ],
+            "locked": false
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Wikipedia: Celebrity Traitors UK Series 2",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1381835994",
+          "retrievedAt": "2026-10-25T10:19:08.797Z",
+          "revision": 1381835994,
+          "revisionTimestamp": "2026-10-25T02:38:36Z"
+        }
+      ]
     }
   ],
   "automation": {
     "version": 2,
-    "lastVerifiedUpdate": "2026-10-23T21:56:20.478Z",
+    "lastVerifiedUpdate": "2026-10-25T10:19:09.593Z",
     "latestConfirmedEpisode": 8,
     "votingData": "Partial",
     "scheduleDescription": "Daily 10:00, plus Thursday and Friday 23:00 (Europe/London). Checks revisit pending and historical results. GitHub may delay or skip runs.",
@@ -1656,7 +1955,7 @@ window.SWEEPSTAKE = {
       10,
       8
     ],
-    "runUrl": "https://github.com/yosayssmoe/-F-F-Celeb-Traitors/actions/runs/40030260888",
+    "runUrl": "https://github.com/yosayssmoe/-F-F-Celeb-Traitors/actions/runs/40184260366",
     "latestEpisodeChecked": 8,
     "latestEpisodeFullyScored": 7,
     "partiallyScoredEpisodes": [
@@ -1679,12 +1978,12 @@ window.SWEEPSTAKE = {
         "episode": 8,
         "event": "roundtable:ep8-table-1",
         "status": "outcome-pending",
-        "reason": "Tied Round Table has no verified final banishment. Await the remaining ballot(s), their extra votes and the announced outcome. The source places continuation under Episode 9 and identifies King Kenny’s deciding doubled re-vote as unrevealed; these later columns are not automatically associated for scoring.",
+        "reason": "Tied Round Table has no verified final banishment. Await the remaining ballot(s), their extra votes and the announced outcome.",
         "dependencies": [
           "ep8:roundtable:ep8-table-1:final-ballots",
           "ep8:roundtable:ep8-table-1:announced-outcome"
         ],
-        "id": "1f18e3fa40ae9859"
+        "id": "4ede98becd2f4b8a"
       },
       {
         "episode": 8,
