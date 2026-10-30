@@ -1955,8 +1955,8 @@ window.SWEEPSTAKE = {
       9,
       10
     ],
-    "runUrl": "https://github.com/yosayssmoe/-F-F-Celeb-Traitors/actions/runs/40973022169",
-    "latestEpisodeChecked": 9,
+    "runUrl": "https://github.com/yosayssmoe/-F-F-Celeb-Traitors/actions/runs/41042265890",
+    "latestEpisodeChecked": 10,
     "latestEpisodeFullyScored": 7,
     "partiallyScoredEpisodes": [
       8
@@ -2053,9 +2053,9 @@ window.SWEEPSTAKE = {
         "sources": [
           {
             "title": "Wikipedia: Celebrity Traitors UK Series 2",
-            "url": "https://en.wikipedia.org/w/index.php?oldid=1382701202",
-            "revision": 1382701202,
-            "revisionTimestamp": "2026-10-29T21:30:33Z"
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+            "revision": 1382740076,
+            "revisionTimestamp": "2026-10-30T01:25:05Z"
           }
         ],
         "evidence": [
@@ -2103,9 +2103,9 @@ window.SWEEPSTAKE = {
         "sources": [
           {
             "title": "Wikipedia: Celebrity Traitors UK Series 2",
-            "url": "https://en.wikipedia.org/w/index.php?oldid=1382701202",
-            "revision": 1382701202,
-            "revisionTimestamp": "2026-10-29T21:30:33Z"
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+            "revision": 1382740076,
+            "revisionTimestamp": "2026-10-30T01:25:05Z"
           }
         ],
         "evidence": [
@@ -2188,9 +2188,9 @@ window.SWEEPSTAKE = {
         "sources": [
           {
             "title": "Wikipedia: Celebrity Traitors UK Series 2",
-            "url": "https://en.wikipedia.org/w/index.php?oldid=1382701202",
-            "revision": 1382701202,
-            "revisionTimestamp": "2026-10-29T21:30:33Z"
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+            "revision": 1382740076,
+            "revisionTimestamp": "2026-10-30T01:25:05Z"
           }
         ],
         "evidence": [
@@ -2256,7 +2256,7 @@ window.SWEEPSTAKE = {
                 "Richard E. Grant": "Banished (Episode 3)",
                 "Amol Rajan": "Murdered (Episode 2)"
               },
-              "tally": "7"
+              "tally": "7–0"
             }
           ],
           "evidence": [
@@ -2272,9 +2272,9 @@ window.SWEEPSTAKE = {
         "sources": [
           {
             "title": "Wikipedia: Celebrity Traitors UK Series 2",
-            "url": "https://en.wikipedia.org/w/index.php?oldid=1382701202",
-            "revision": 1382701202,
-            "revisionTimestamp": "2026-10-29T21:30:33Z"
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+            "revision": 1382740076,
+            "revisionTimestamp": "2026-10-30T01:25:05Z"
           }
         ],
         "evidence": [
