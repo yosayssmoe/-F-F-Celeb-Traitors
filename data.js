@@ -983,6 +983,101 @@ window.SWEEPSTAKE = {
         ],
         "locked": false
       }
+    },
+    {
+      "id": "ep10-murder-michael",
+      "ep": 10,
+      "type": "murder",
+      "victim": "Michael Sheen"
+    },
+    {
+      "id": "ep10-table-maya",
+      "ep": 10,
+      "type": "roundtable",
+      "tableId": "ep10-table-1",
+      "votes": {
+        "Maya Jama": "Romesh Ranganathan",
+        "Leigh-Anne Pinnock": "Romesh Ranganathan",
+        "Sebastian Croft": "Maya Jama",
+        "Romesh Ranganathan": "Maya Jama",
+        "James Blunt": "Maya Jama",
+        "King Kenny": "Maya Jama"
+      },
+      "revotes": [],
+      "absent": [],
+      "banished": "Maya Jama",
+      "votingComplete": true
+    },
+    {
+      "id": "ep10-table-leigh-anne",
+      "ep": 10,
+      "type": "roundtable",
+      "tableId": "ep10-table-2",
+      "votes": {
+        "Leigh-Anne Pinnock": "Romesh Ranganathan",
+        "King Kenny": "Leigh-Anne Pinnock",
+        "Sebastian Croft": "Leigh-Anne Pinnock",
+        "Romesh Ranganathan": "Leigh-Anne Pinnock",
+        "James Blunt": "Leigh-Anne Pinnock"
+      },
+      "revotes": [],
+      "absent": [],
+      "banished": "Leigh-Anne Pinnock",
+      "votingComplete": true
+    },
+    {
+      "id": "ep10-table-kenny",
+      "ep": 10,
+      "type": "roundtable",
+      "tableId": "ep10-table-3",
+      "votes": {
+        "Romesh Ranganathan": "James Blunt",
+        "James Blunt": "King Kenny",
+        "King Kenny": "James Blunt",
+        "Sebastian Croft": "King Kenny"
+      },
+      "revotes": [
+        {
+          "Sebastian Croft": "King Kenny",
+          "Romesh Ranganathan": "King Kenny"
+        }
+      ],
+      "absent": [],
+      "banished": "King Kenny",
+      "votingComplete": true,
+      "ballotPowers": [],
+      "extraBallots": [],
+      "outcome": {
+        "status": "banished",
+        "tied": [
+          "James Blunt",
+          "King Kenny"
+        ]
+      }
+    },
+    {
+      "id": "ep10-table-blunt",
+      "ep": 10,
+      "type": "roundtable",
+      "tableId": "ep10-table-4",
+      "votes": {
+        "Romesh Ranganathan": "James Blunt",
+        "James Blunt": "Romesh Ranganathan",
+        "Sebastian Croft": "James Blunt"
+      },
+      "revotes": [],
+      "absent": [],
+      "banished": "James Blunt",
+      "votingComplete": true
+    },
+    {
+      "id": "ep10-final-winners",
+      "ep": 10,
+      "type": "final",
+      "winners": [
+        "Romesh Ranganathan",
+        "Sebastian Croft"
+      ]
     }
   ],
   "participants": [
@@ -996,6 +1091,40 @@ window.SWEEPSTAKE = {
   ],
   "notes": "The confirmed draw has 20 contestants plus Claudia’s special slot. Amol Rajan is the 21st contestant and is unassigned. Initial events are supplied by the project brief, not independently verified broadcast results.",
   "episodeRecords": {
+    "1": {
+      "date": "2026-10-01",
+      "status": "complete",
+      "notes": "Verified starting-role selections only; no completed scoring events in Episode 1.",
+      "sources": [
+        {
+          "title": "Wikipedia revision 1382891180: cast finishes, Michael murder and Maya ballots",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1382891180",
+          "revision": 1382891180,
+          "revisionTimestamp": "2026-10-30T21:25:31Z"
+        }
+      ],
+      "approvedAt": "2026-10-30T21:40:40.326Z",
+      "automationLocked": true
+    },
+    "2": {
+      "date": "2026-10-02",
+      "status": "complete",
+      "notes": "Verified Amol murder and James Acaster recruitment; the Round Table vote is revealed in Episode 3.",
+      "sources": [
+        {
+          "title": "Wikipedia revision 1382891180: cast finishes, Michael murder and Maya ballots",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1382891180",
+          "revision": 1382891180,
+          "revisionTimestamp": "2026-10-30T21:25:31Z"
+        },
+        {
+          "title": "BBC Episode 2 recap",
+          "url": "https://www.bbc.co.uk/news/articles/czxe30796xno"
+        }
+      ],
+      "approvedAt": "2026-10-30T21:40:40.339Z",
+      "automationLocked": true
+    },
     "3": {
       "date": "2026-10-08",
       "status": "complete",
@@ -1114,6 +1243,33 @@ window.SWEEPSTAKE = {
       "approvedAt": "2026-10-30T12:31:58.981Z",
       "automationPayloadHash": "5060369bc01023884112801d945648327c491fd66986e04c9cd6d444bd62ec0d",
       "automationLocked": false
+    },
+    "10": {
+      "date": "2026-10-30",
+      "status": "complete",
+      "notes": "Reviewed finale evidence: Michael murdered before Maya's 4-2 banishment; Leigh-Anne banished 4-1 at the fire pit; Kenny banished following a 2-2 tie and the two eligible re-votes; James Blunt banished 2-1; Romesh and Sebastian confirmed winners. End-game continue/stop choices are not contestant ballots and are excluded from scoring. Episode 9 still has an unshown James Acaster ballot; series standings remain PROVISIONAL.",
+      "sources": [
+        {
+          "title": "Guardian finale liveblog: individual votes, re-vote and winners",
+          "url": "https://www.theguardian.com/tv-and-radio/live/2026/oct/30/the-celebrity-traitors-finale-live"
+        },
+        {
+          "title": "Guardian earlier finale entries: Maya and Leigh-Anne ballots",
+          "url": "https://www.theguardian.com/tv-and-radio/live/2026/oct/30/the-celebrity-traitors-finale-live?page=with%3Ablock-6ae506298f08964d851bd5a1"
+        },
+        {
+          "title": "The Sun: independent finale outcome and elimination sequence",
+          "url": "https://www.thesun.co.uk/tv/40860902/celebrity-traitors-winners-romesh-ranganathan-bash-james-blunt/"
+        },
+        {
+          "title": "Wikipedia revision 1382891180: cast finishes, Michael murder and Maya ballots",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1382891180",
+          "revision": 1382891180,
+          "revisionTimestamp": "2026-10-30T21:25:31Z"
+        }
+      ],
+      "approvedAt": "2026-10-30T21:40:40.351Z",
+      "automationLocked": true
     }
   },
   "episodeAudit": [
@@ -2827,32 +2983,207 @@ window.SWEEPSTAKE = {
           "revisionTimestamp": "2026-10-30T01:25:05Z"
         }
       ]
+    },
+    {
+      "episode": 1,
+      "approvedAt": "2026-10-30T21:40:40.326Z",
+      "previousEvents": [],
+      "previousRecord": null,
+      "newEvents": [],
+      "sources": [
+        {
+          "title": "Wikipedia revision 1382891180: cast finishes, Michael murder and Maya ballots",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1382891180",
+          "revision": 1382891180,
+          "revisionTimestamp": "2026-10-30T21:25:31Z"
+        }
+      ]
+    },
+    {
+      "episode": 2,
+      "approvedAt": "2026-10-30T21:40:40.339Z",
+      "method": "Verified historical coverage; events unchanged",
+      "previousEvents": [
+        {
+          "ep": 2,
+          "type": "murder",
+          "victim": "Amol Rajan"
+        },
+        {
+          "ep": 2,
+          "type": "recruit",
+          "who": "James Acaster",
+          "accepted": true
+        }
+      ],
+      "previousRecord": null,
+      "newEvents": [
+        {
+          "ep": 2,
+          "type": "murder",
+          "victim": "Amol Rajan"
+        },
+        {
+          "ep": 2,
+          "type": "recruit",
+          "who": "James Acaster",
+          "accepted": true
+        }
+      ],
+      "sources": [
+        {
+          "title": "Wikipedia revision 1382891180: cast finishes, Michael murder and Maya ballots",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1382891180",
+          "revision": 1382891180,
+          "revisionTimestamp": "2026-10-30T21:25:31Z"
+        },
+        {
+          "title": "BBC Episode 2 recap",
+          "url": "https://www.bbc.co.uk/news/articles/czxe30796xno"
+        }
+      ]
+    },
+    {
+      "episode": 10,
+      "approvedAt": "2026-10-30T21:40:40.351Z",
+      "previousEvents": [],
+      "previousRecord": null,
+      "newEvents": [
+        {
+          "id": "ep10-murder-michael",
+          "ep": 10,
+          "type": "murder",
+          "victim": "Michael Sheen"
+        },
+        {
+          "id": "ep10-table-maya",
+          "ep": 10,
+          "type": "roundtable",
+          "tableId": "ep10-table-1",
+          "votes": {
+            "Maya Jama": "Romesh Ranganathan",
+            "Leigh-Anne Pinnock": "Romesh Ranganathan",
+            "Sebastian Croft": "Maya Jama",
+            "Romesh Ranganathan": "Maya Jama",
+            "James Blunt": "Maya Jama",
+            "King Kenny": "Maya Jama"
+          },
+          "revotes": [],
+          "absent": [],
+          "banished": "Maya Jama",
+          "votingComplete": true
+        },
+        {
+          "id": "ep10-table-leigh-anne",
+          "ep": 10,
+          "type": "roundtable",
+          "tableId": "ep10-table-2",
+          "votes": {
+            "Leigh-Anne Pinnock": "Romesh Ranganathan",
+            "King Kenny": "Leigh-Anne Pinnock",
+            "Sebastian Croft": "Leigh-Anne Pinnock",
+            "Romesh Ranganathan": "Leigh-Anne Pinnock",
+            "James Blunt": "Leigh-Anne Pinnock"
+          },
+          "revotes": [],
+          "absent": [],
+          "banished": "Leigh-Anne Pinnock",
+          "votingComplete": true
+        },
+        {
+          "id": "ep10-table-kenny",
+          "ep": 10,
+          "type": "roundtable",
+          "tableId": "ep10-table-3",
+          "votes": {
+            "Romesh Ranganathan": "James Blunt",
+            "James Blunt": "King Kenny",
+            "King Kenny": "James Blunt",
+            "Sebastian Croft": "King Kenny"
+          },
+          "revotes": [
+            {
+              "Sebastian Croft": "King Kenny",
+              "Romesh Ranganathan": "King Kenny"
+            }
+          ],
+          "absent": [],
+          "banished": "King Kenny",
+          "votingComplete": true,
+          "ballotPowers": [],
+          "extraBallots": [],
+          "outcome": {
+            "status": "banished",
+            "tied": [
+              "James Blunt",
+              "King Kenny"
+            ]
+          }
+        },
+        {
+          "id": "ep10-table-blunt",
+          "ep": 10,
+          "type": "roundtable",
+          "tableId": "ep10-table-4",
+          "votes": {
+            "Romesh Ranganathan": "James Blunt",
+            "James Blunt": "Romesh Ranganathan",
+            "Sebastian Croft": "James Blunt"
+          },
+          "revotes": [],
+          "absent": [],
+          "banished": "James Blunt",
+          "votingComplete": true
+        },
+        {
+          "id": "ep10-final-winners",
+          "ep": 10,
+          "type": "final",
+          "winners": [
+            "Romesh Ranganathan",
+            "Sebastian Croft"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Guardian finale liveblog: individual votes, re-vote and winners",
+          "url": "https://www.theguardian.com/tv-and-radio/live/2026/oct/30/the-celebrity-traitors-finale-live"
+        },
+        {
+          "title": "Guardian earlier finale entries: Maya and Leigh-Anne ballots",
+          "url": "https://www.theguardian.com/tv-and-radio/live/2026/oct/30/the-celebrity-traitors-finale-live?page=with%3Ablock-6ae506298f08964d851bd5a1"
+        },
+        {
+          "title": "The Sun: independent finale outcome and elimination sequence",
+          "url": "https://www.thesun.co.uk/tv/40860902/celebrity-traitors-winners-romesh-ranganathan-bash-james-blunt/"
+        },
+        {
+          "title": "Wikipedia revision 1382891180: cast finishes, Michael murder and Maya ballots",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1382891180",
+          "revision": 1382891180,
+          "revisionTimestamp": "2026-10-30T21:25:31Z"
+        }
+      ]
     }
   ],
   "automation": {
     "version": 2,
-    "lastVerifiedUpdate": "2026-10-30T12:31:58.981Z",
-    "latestConfirmedEpisode": 9,
+    "lastVerifiedUpdate": "2026-10-30T21:40:40.351Z",
+    "latestConfirmedEpisode": 10,
     "votingData": "Partial",
     "scheduleDescription": "Daily 10:00, plus Thursday and Friday 23:00 (Europe/London). Checks revisit pending and historical results. GitHub may delay or skip runs.",
     "verification": "structured-source validation",
     "pendingEpisodes": [
-      10,
       9
     ],
-    "runUrl": "https://github.com/yosayssmoe/-F-F-Celeb-Traitors/actions/runs/41055901371",
+    "runUrl": null,
     "latestEpisodeChecked": 10,
-    "latestEpisodeFullyScored": 8,
+    "latestEpisodeFullyScored": 10,
     "partiallyScoredEpisodes": [
       9
     ],
     "pendingEvents": [
-      {
-        "episode": 10,
-        "status": "not-published",
-        "reason": "No confirmed results published.",
-        "id": "21fb0287fbfcef40"
-      },
       {
         "episode": 9,
         "event": "roundtable:James Acaster",

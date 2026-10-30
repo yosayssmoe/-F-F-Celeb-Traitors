@@ -55,7 +55,11 @@
       p.celebs.sort((a, b) => b.contributed - a.contributed || a.name.localeCompare(b.name));
       p.latestGain = p.celebs.reduce((total, celeb) => total + celeb.latestGain * celeb.multiplier, 0);
     });
-    return {episode, partial: partial(episode), previousPartial: partial(episode - 1), contestants, participants,
+    const final = events.find(e => e.type === 'final');
+    const seriesComplete = !!final && Array.from({length: final.ep}, (_, i) => records[i + 1]?.status === 'complete' && !partial(i + 1)).every(Boolean) &&
+      events.every((e, i) => e.type !== 'roundtable' || (e.votingComplete === true && e.outcome?.status !== 'pending' &&
+        T.ballotView(e, current.steps[i].active.filter(n => !(e.absent || []).includes(n))).complete));
+    return {episode, partial: partial(episode) || (!!final && !seriesComplete), seriesStatus: final ? (seriesComplete ? 'FINAL' : 'PROVISIONAL') : null, previousPartial: partial(episode - 1), contestants, participants,
       unavailableReason: available ? null : 'Historical event episode numbers are missing; a previous-episode total cannot be reconstructed.'};
   }
   function gainLabel(value) { return {text: value >= 0 ? '+' + value : String(value), kind: value < 0 ? 'negative' : value > 0 ? 'positive' : 'zero'}; }

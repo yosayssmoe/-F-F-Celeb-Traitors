@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "series": "celebrity-traitors-uk-2",
+  "episode": 10,
+  "date": "2026-10-30",
+  "status": "complete",
+  "notes": "Reviewed finale evidence: Michael murdered before Maya's 4-2 banishment; Leigh-Anne banished 4-1 at the fire pit; Kenny banished following a 2-2 tie and the two eligible re-votes; James Blunt banished 2-1; Romesh and Sebastian confirmed winners. End-game continue/stop choices are not contestant ballots and are excluded from scoring. Episode 9 still has an unshown James Acaster ballot; series standings remain PROVISIONAL.",
+  "sources": [
+    {"title": "Guardian finale liveblog: individual votes, re-vote and winners", "url": "https://www.theguardian.com/tv-and-radio/live/2026/oct/30/the-celebrity-traitors-finale-live"},
+    {"title": "Guardian earlier finale entries: Maya and Leigh-Anne ballots", "url": "https://www.theguardian.com/tv-and-radio/live/2026/oct/30/the-celebrity-traitors-finale-live?page=with%3Ablock-6ae506298f08964d851bd5a1"},
+    {"title": "The Sun: independent finale outcome and elimination sequence", "url": "https://www.thesun.co.uk/tv/40860902/celebrity-traitors-winners-romesh-ranganathan-bash-james-blunt/"},
+    {"title": "Wikipedia revision 1382891180: cast finishes, Michael murder and Maya ballots", "url": "https://en.wikipedia.org/w/index.php?oldid=1382891180", "revision": 1382891180, "revisionTimestamp": "2026-10-30T21:25:31Z"}
+  ],
+  "events": [
+    {"id": "ep10-murder-michael", "ep": 10, "type": "murder", "victim": "Michael Sheen"},
+    {
+      "id": "ep10-table-maya", "ep": 10, "type": "roundtable", "tableId": "ep10-table-1",
+      "votes": {"Maya Jama": "Romesh Ranganathan", "Leigh-Anne Pinnock": "Romesh Ranganathan", "Sebastian Croft": "Maya Jama", "Romesh Ranganathan": "Maya Jama", "James Blunt": "Maya Jama", "King Kenny": "Maya Jama"},
+      "revotes": [], "absent": [], "banished": "Maya Jama", "votingComplete": true
+    },
+    {
+      "id": "ep10-table-leigh-anne", "ep": 10, "type": "roundtable", "tableId": "ep10-table-2",
+      "votes": {"Leigh-Anne Pinnock": "Romesh Ranganathan", "King Kenny": "Leigh-Anne Pinnock", "Sebastian Croft": "Leigh-Anne Pinnock", "Romesh Ranganathan": "Leigh-Anne Pinnock", "James Blunt": "Leigh-Anne Pinnock"},
+      "revotes": [], "absent": [], "banished": "Leigh-Anne Pinnock", "votingComplete": true
+    },
+    {
+      "id": "ep10-table-kenny", "ep": 10, "type": "roundtable", "tableId": "ep10-table-3",
+      "votes": {"Romesh Ranganathan": "James Blunt", "James Blunt": "King Kenny", "King Kenny": "James Blunt", "Sebastian Croft": "King Kenny"},
+      "revotes": [{"Sebastian Croft": "King Kenny", "Romesh Ranganathan": "King Kenny"}],
+      "absent": [], "banished": "King Kenny", "votingComplete": true,
+      "ballotPowers": [], "extraBallots": [], "outcome": {"status": "banished", "tied": ["James Blunt", "King Kenny"]}
+    },
+    {
+      "id": "ep10-table-blunt", "ep": 10, "type": "roundtable", "tableId": "ep10-table-4",
+      "votes": {"Romesh Ranganathan": "James Blunt", "James Blunt": "Romesh Ranganathan", "Sebastian Croft": "James Blunt"},
+      "revotes": [], "absent": [], "banished": "James Blunt", "votingComplete": true
+    },
+    {"id": "ep10-final-winners", "ep": 10, "type": "final", "winners": ["Romesh Ranganathan", "Sebastian Croft"]}
+  ]
+}

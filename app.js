@@ -319,7 +319,7 @@
     const M = window.ScoreboardModel, model = M.build(state, T), table = $("league-table");
     table.querySelectorAll('tbody').forEach(body => body.remove());
     $("league-head").replaceChildren(); $("league-columns").replaceChildren();
-    $("score-episode").textContent = 'Scores through Episode ' + model.episode + (model.partial ? ' — partially scored' : '');
+    $("score-episode").textContent = (model.seriesStatus ? model.seriesStatus + ' — ' : '') + 'Scores through Episode ' + model.episode + (model.partial ? ' — partially scored' : '');
     $("partial-notice").hidden = !model.partial;
     const columns = ['celebrity', ...M.GROUPS.flatMap(g => g.cats), 'raw', 'contribution'];
     columns.forEach(key => {const col = el('col', 'column-' + key); $("league-columns").appendChild(col);});

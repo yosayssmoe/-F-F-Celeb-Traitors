@@ -165,7 +165,9 @@ function merge(data,parsed,config,now=new Date().toISOString()){
   })}:{};
   missingVotes.push({episode:event.ep,event:key(event),voters:voters.filter(n=>!event.votes?.[n]),...detail,reason:'Full voting rounds, attendance and tally must be verified before zero-vote bonuses.'});
  }
- const pending=[...report.deferred.map(x=>({...x,id:hash([x.episode,x.event||'',x.status,x.reason]).slice(0,16)})),...missingVotes.map(x=>({...x,id:hash([x.episode,x.event,'votes']).slice(0,16),status:'missing-votes'}))];
+ // Protection is a publication/editor policy, not evidence of missing points.
+ // Retain the report notice; genuine missing ballots are collected separately.
+ const pending=[...report.deferred.filter(x=>x.status!=='manual-protected'||!next.episodeRecords?.[x.episode]?.automationLocked||next.episodeRecords[x.episode].status!=='complete').map(x=>({...x,id:hash([x.episode,x.event||'',x.status,x.reason]).slice(0,16)})),...missingVotes.map(x=>({...x,id:hash([x.episode,x.event,'votes']).slice(0,16),status:'missing-votes'}))];
  // Preserve unresolved records for episodes omitted altogether by a regressing source.
  for(const item of data.automation?.pendingEvents||[])if(!ordered.some(e=>e.episode===item.episode)&&!pending.some(p=>p.episode===item.episode&&p.event===item.event))pending.push(item);
  const beforePending=data.automation?.pendingEvents||[];
