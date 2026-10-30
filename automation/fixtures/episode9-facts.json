@@ -1,0 +1,2419 @@
+{
+  "source": {
+    "url": "https://en.wikipedia.org/w/index.php?oldid=1382810873",
+    "revision": 1382810873,
+    "timestamp": "2026-10-30T12:20:52Z"
+  },
+  "tables": [
+    [
+      [
+        {
+          "text": "Contestant",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Age",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-asshown-20"
+          ]
+        },
+        {
+          "text": "Notability",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-asshown-20"
+          ]
+        },
+        {
+          "text": "Chosen charity",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Affiliation",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Finish",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Amol Rajan",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "43",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Journalist & broadcaster",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "TBA",
+          "colspan": 1,
+          "rowspan": 21,
+          "notes": []
+        },
+        {
+          "text": "Faithful",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Murdered(Episode 2)",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Richard E. Grant",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "69",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Actor & author",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Traitor",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Banished(Episode 3)",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Myha'la",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "30",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Actor",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Faithful",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Banished(Episode 3)",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Bella Ramsey",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "23",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Actor",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Faithful",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Murdered(Episode 4)",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Julie Hesmondhalgh",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "56",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Actor",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Faithful",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Banished(Episode 4)",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Rob Beckett",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "40",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Comedian",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Faithful",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Murdered(Episode 5)",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Hannah Fry",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "42",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Broadcaster & mathematician",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Traitor",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-21"
+          ]
+        },
+        {
+          "text": "Banished(Episode 5)",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Joe Lycett",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "38",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Comedian",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Faithful",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Banished(Episode 6)",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Ross Kemp",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "62",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Actor & presenter",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Faithful",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Murdered(Episode 7)",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Jerry Hall",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "70",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Model & actor",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Faithful",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Banished(Episode 7)",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Miranda Hart",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "53",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Actor & author",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Faithful",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Murdered(Episode 8)",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Joanne McNally",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "43",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Comedian",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Faithful",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Banished(Episode 9)",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Sharon Rooney",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "37",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Actor",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Faithful",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Murdered(Episode 9)",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "James Acaster",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "41",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Comedian & podcaster",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Traitor",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-22"
+          ]
+        },
+        {
+          "text": "Banished(Episode 9)",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "James Blunt",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "52",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Singer-songwriter",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Faithful",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Participating",
+          "colspan": 1,
+          "rowspan": 9,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "King Kenny",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "29",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Content creator",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Traitor",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-23"
+          ]
+        }
+      ],
+      [
+        {
+          "text": "Leigh-Anne Pinnock",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "34",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Singer-songwriter",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Faithful",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Maya Jama",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "32",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Broadcaster & entrepreneur",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Traitor",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Michael Sheen",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "57",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Actor & presenter",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Faithful",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Romesh Ranganathan",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "48",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Comedian",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Faithful",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Sebastian Croft",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "24",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Musician & actor",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Faithful",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [],
+      []
+    ],
+    [
+      [
+        {
+          "text": "Episode",
+          "colspan": 3,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "1",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "2",
+          "colspan": 3,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "3",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "4",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "5",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "6",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "7",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "8",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "9",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "10",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Traitors'Decision",
+          "colspan": 3,
+          "rowspan": 2,
+          "notes": []
+        },
+        {
+          "text": "Amol,James A.",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Amol",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "James A.",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Ross",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Bella",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Leigh-Anne,Rob,Romesh,Ross",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Rob",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Kenny",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "None",
+          "colspan": 1,
+          "rowspan": 2,
+          "notes": []
+        },
+        {
+          "text": "Ross",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-24"
+          ]
+        },
+        {
+          "text": "Miranda",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Kenny",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Sharon",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "TBC",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Shortlist",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-Recruit-25"
+          ]
+        },
+        {
+          "text": "Murder",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-Recruit-25"
+          ]
+        },
+        {
+          "text": "Recruit",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-Recruit-25"
+          ]
+        },
+        {
+          "text": "Shield",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-Shield-26"
+          ]
+        },
+        {
+          "text": "Seduce",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-27"
+          ]
+        },
+        {
+          "text": "Murder",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Shortlist",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-Hide_&_Seek-28"
+          ]
+        },
+        {
+          "text": "Murder",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-Hide_&_Seek-28"
+          ]
+        },
+        {
+          "text": "Seduce",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-29"
+          ]
+        },
+        {
+          "text": "Murder",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Dagger",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-Dagger-30"
+          ]
+        },
+        {
+          "text": "Murder",
+          "colspan": 3,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Immune",
+          "colspan": 3,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joe,Julie",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-31"
+          ]
+        },
+        {
+          "text": "Bella & James A.,James B. & Rob,Joanne & Maya,Joe & Julie,Kenny & Richard,Leigh-Anne & Myha'la,Michael & Miranda,Romesh & Ross,Sebastian & Sharon",
+          "colspan": 3,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-Shield-26"
+          ]
+        },
+        {
+          "text": "Maya,Myha'la,Sharon",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-32"
+          ]
+        },
+        {
+          "text": "Kenny,Sebastian",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Leigh-Anne",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-Hide_&_Seek-28"
+          ]
+        },
+        {
+          "text": "None",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Maya",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "James A.,James B.,Joanne,Michael",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "None",
+          "colspan": 5,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Banishment",
+          "colspan": 3,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "None",
+          "colspan": 4,
+          "rowspan": 2,
+          "notes": []
+        },
+        {
+          "text": "Richard",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Myha'la",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Julie",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joe",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Jerry",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Tie",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joanne",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "James A.",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "Vote",
+          "colspan": 3,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "16–2–1–1",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "13–4–1–1",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "9–6–1–1",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "12–1–1–1",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "11–1–1–1",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "9–1–1–1",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "4–4–1–1–1",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "5–4",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "7–0",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "James B.",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Novote",
+          "colspan": 4,
+          "rowspan": 25,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Myha'la",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Julie",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joe",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Jerry",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Sharon",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Sharon",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "James A.",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Kenny",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Richard",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Jerry",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joe",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Sebastian",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Sharon",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-Dagger-30"
+          ]
+        },
+        {
+          "text": "Joanne",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-33"
+          ]
+        },
+        {
+          "text": "James A.",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Leigh-Anne",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Richard",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Jerry",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joe",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Jerry",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joanne",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Sharon",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "James A.",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Maya",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Richard",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Jerry",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Julie",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joe",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Jerry",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Sebastian",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Sharon",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "James A.",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Michael",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Richard",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Myha'la",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Julie",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joe",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Jerry",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Sharon",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Sharon",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "James A.",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Romesh",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Richard",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Myha'la",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "James B.",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joe",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Jerry",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Michael",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joanne",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "James A.",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Sebastian",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Richard",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Myha'la",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joe",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Jerry",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joanne",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joanne",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "James A.",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "James A.",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Richard",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Michael",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Julie",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joanne",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Jerry",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joanne",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joanne",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Novote",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-34"
+          ]
+        },
+        {
+          "text": "Banished (Episode 9)",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Sharon",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Richard",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Myha'la",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Julie",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joe",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Leigh-Anne",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joanne",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Novote",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-Tied-35"
+          ]
+        },
+        {
+          "text": "Murdered (Episode 9)",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joanne",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Leigh-Anne",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Jerry",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Julie",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Sebastian",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joe",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Jerry",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Leigh-Anne",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Novote",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": [
+            "cite_note-Tied-35"
+          ]
+        },
+        {
+          "text": "Banished (Episode 9)",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Miranda",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Richard",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Myha'la",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Julie",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Ross",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Jerry",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Murdered (Episode 8)",
+          "colspan": 5,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Jerry",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Leigh-Anne",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Myha'la",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joe",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joanne",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Banished (Episode 7)",
+          "colspan": 5,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Ross",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Richard",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Myha'la",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Julie",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joe",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Murdered (Episode 7)",
+          "colspan": 6,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Joe",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Richard",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Myha'la",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "James B.",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Banished (Episode 6)",
+          "colspan": 6,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Hannah",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Richard",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Myha'la",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Jerry",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Jerry",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Banished (Episode 5)",
+          "colspan": 7,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Rob",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Richard",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Myha'la",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Julie",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Murdered (Episode 5)",
+          "colspan": 9,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Julie",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Richard",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Myha'la",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "James B.",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Banished (Episode 4)",
+          "colspan": 9,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Bella",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Richard",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Myha'la",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Murdered (Episode 4)",
+          "colspan": 11,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Myha'la",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Richard",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Julie",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Banished (Episode 3)",
+          "colspan": 11,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Richard",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Bella",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Banished (Episode 3)",
+          "colspan": 12,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [
+        {
+          "text": "",
+          "colspan": 2,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Amol",
+          "colspan": 1,
+          "rowspan": 1,
+          "notes": []
+        },
+        {
+          "text": "Murdered (Episode 2)",
+          "colspan": 13,
+          "rowspan": 1,
+          "notes": []
+        }
+      ],
+      [],
+      [],
+      [],
+      []
+    ]
+  ],
+  "notes": [
+    {
+      "id": "cite_note-21",
+      "text": "^ Hannah was recruited as a Traitor in Episode 3."
+    },
+    {
+      "id": "cite_note-22",
+      "text": "^ James A. was recruited as a Traitor in Episode 2."
+    },
+    {
+      "id": "cite_note-23",
+      "text": "^ Kenny was recruited as a Traitor in Episode 5."
+    },
+    {
+      "id": "cite_note-Recruit-25",
+      "text": "^ The Traitors were asked to choose two players to have the opportunity to plead their case and be recruited as a Traitor. Whoever was not selected by the Traitors would be murdered. Maya and Richard both chose Amol and James A."
+    },
+    {
+      "id": "cite_note-Dagger-30",
+      "text": "^ At the end of the mission, one player was awarded The Dagger, making their vote count twice at the next round table. The Dagger was granted to Kenny by James A. and Maya."
+    },
+    {
+      "id": "cite_note-33",
+      "text": "^ Episode 8 ended before Kenny's deciding double vote was revealed making it carry over into episode 9."
+    },
+    {
+      "id": "cite_note-34",
+      "text": "^ During the round table, James A. disclosed that he was a Traitor and was unanimously banished. His vote, if he cast one, was not shown."
+    },
+    {
+      "id": "cite_note-Tied-35",
+      "text": "^ The first round of voting resulted in a tie. Per the rules, a second vote was held where the players involved in the tie would not vote and the remaining players could only vote for those who tied."
+    }
+  ]
+}

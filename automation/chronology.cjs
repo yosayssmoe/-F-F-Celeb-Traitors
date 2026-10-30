@@ -34,6 +34,7 @@ function resolveChronology(ep,old=[]){
   const target=a.event.victim||a.event.banished|| (a.event.type==='exit'&&a.event.who);
   if(target&&b.kind==='table'&&b.rounds?.length&&b.rounds.every(r=>new RegExp('^(?:Murdered|Banished|Left|Withdrawn)\\s*\\(Episode '+ep.episode+'\\)$','i').test(r.raw[target]||'')))add(a,b,'eliminated-before-voting',target+' explicitly out in every voting round');
   if(a.kind==='table'&&b.kind==='table'&&Number.isInteger(a.column)&&Number.isInteger(b.column)&&a.column<b.column)add(a,b,'voting-round-columns','Separate banishments in ordered episode voting columns');
+  if(a.kind==='table'&&b.event.victim&&a.present?.includes(b.event.victim))add(a,b,'verified-continuation-attendance','The later murder victim was present for the verified deciding re-vote.');
   // Same-sentence explicit temporal relationships; bare prose order never counts.
   for(const sentence of text.split(/(?<=[.!?])\s+/)){
    if(negative.test(sentence))continue;

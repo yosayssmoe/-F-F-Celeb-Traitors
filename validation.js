@@ -48,7 +48,8 @@ window.SweepstakeData = (() => {
       else if(e.type==='roundtable') {
         if(!Array.isArray(e.absent) || !unique(e.absent) || e.absent.some(n=>!active.has(n))) error('Absentees must be unique active contestants.');
         const participants=[...active].filter(n=>!e.absent.includes(n));
-        if(e.tableId!==undefined&&(!new RegExp('^ep'+e.ep+'-table-[a-zA-Z0-9_-]+$').test(e.tableId)))error('Invalid stable Round Table identity.');
+        if(e.tableId!==undefined&&(!new RegExp('^ep'+(e.outcome?.startedEpisode||e.ep)+'-table-[a-zA-Z0-9_-]+$').test(e.tableId)))error('Invalid stable Round Table identity.');
+        if(e.outcome?.startedEpisode!==undefined&&(!Number.isInteger(e.outcome.startedEpisode)||e.outcome.startedEpisode<1||e.outcome.startedEpisode>=e.ep||e.outcome.status!=='banished'))error('Invalid continued Round Table episode.');
         if(!participants.length) error('A Round Table needs participants.');
         if(!e.votes || typeof e.votes!=='object' || Array.isArray(e.votes) || !Array.isArray(e.revotes)) error('Invalid voting rounds.');
         if(e.votingComplete !== undefined && typeof e.votingComplete !== 'boolean') error('Voting completeness must be true or false.');

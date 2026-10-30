@@ -59,7 +59,7 @@ function parseWikipedia(snapshot,data,config){
    result.candidates.push({event,key:`${event.type}:${who}`,column:col,kind:'decision',verified:secondary,evidence:[`${kind}: ${cell.text}`,secondary?'Second structured section agrees':'Second structured assertion missing']});
    if(!secondary)result.issues.push({eventKey:`${event.type}:${who}`,status:'incomplete',detail:`Decision for ${who} is not supported by a second explicit section.`});
   }
-  const advanced=result.power||columns.some(col=>/^tie$/i.test(bRow?.[col]?.text||''))||data.events.some(e=>e.ep===ep&&e.tableId);
+  const advanced=result.power||columns.some(col=>/^tie$/i.test(bRow?.[col]?.text||''))||data.events.some(e=>e.ep===ep&&e.tableId&&!e.outcome?.startedEpisode);
   if(advanced){
    const voting=powered.tables({ep,columns,bRow,tallyRow,voterRows,voterNames,resolve,finishes,power:result.power,description:result.description,doc});
    result.candidates.push(...voting.candidates);result.issues.push(...voting.issues);
@@ -93,7 +93,9 @@ function parseWikipedia(snapshot,data,config){
   resolveChronology(result,result.publishedEvents);
   result.noEvents=!result.candidates.length&&!result.issues.length&&columns.every(c=>/^(None|No vote)$/i.test(bRow?.[c]?.text||''))&&!!result.description;
  }
- return {episodes:[...episodes.values()],source,castAssertions:[...finishes].map(([name,f])=>({name,role:f.role,finish:f.text})).sort((a,b)=>a.name.localeCompare(b.name)),recaps:recaps.filter((r,i,a)=>a.findIndex(x=>x.url===r.url)===i)};
+ const relocations=powered.continuations([...episodes.values()],{voterRows,voterNames,resolve,doc});
+ for(const ep of episodes.values())resolveChronology(ep,ep.publishedEvents);
+ return {episodes:[...episodes.values()],relocations,source,castAssertions:[...finishes].map(([name,f])=>({name,role:f.role,finish:f.text})).sort((a,b)=>a.name.localeCompare(b.name)),recaps:recaps.filter((r,i,a)=>a.findIndex(x=>x.url===r.url)===i)};
 }
 function verifyVotes(candidate,step){
  const event=JSON.parse(JSON.stringify(candidate.event));if(event.type!=='roundtable')return event;

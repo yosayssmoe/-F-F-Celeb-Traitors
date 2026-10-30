@@ -52,7 +52,7 @@ function tables({ep,columns,bRow,tallyRow,voterRows,voterNames,resolve,finishes,
   // A source may move continuation ballots into the next episode. The original
   // tied ballot can still be verified against an explicit narrative assertion;
   // this does not import or associate any of the later episode's ballots.
-  const tieSentence=description.match(/[^.!?]*\b(?:ended in|resulted in) a tie between ([^.!?]+)[.!?]/i);
+  const tieSentence=description.match(/[^.!?]*\b(?:ended in|resulted in|results in) a tie between ([^.!?]+)[.!?]/i);
   const narrativeTied=tieSentence&&!/\b(not|never|could|might|may|if|reportedly)\b/i.test(tieSentence[0])?tieSentence[1].split(/\s+and\s+/i).map(resolve):[];
   const narrativeTie=narrativeTied.length===tied.length&&narrativeTied.every(Boolean)&&stable([...narrativeTied].sort())===stable(tied);
   const tieVerified=group.firstTie&&tied.length>=2&&matches(tally,rounds[0].tally)&&(tiedNote||(rounds.length===1&&narrativeTie));
@@ -103,4 +103,35 @@ function verify(candidate,step){
  if(event.votingComplete&&!view.complete)throw Error('A required extra ballot is missing.');
  return event;
 }
-module.exports={dagger,tables,verify};
+// An explicit linked cliffhanger footnote is required: adjacency is insufficient.
+function continuations(episodes,{voterRows,voterNames,resolve,doc}){
+ const relocations=[];
+ for(const origin of episodes){
+  const initial=origin.candidates.find(c=>c.event.tableId&&c.event.outcome?.status==='pending');
+  if(!initial?.verified||initial.rounds.length!==1||!origin.power)continue;
+  const holder=origin.power.holder,holderRow=voterRows[voterNames.indexOf(holder)];
+  for(const dest of episodes.filter(e=>e.episode===origin.episode+1)){
+   const final=dest.candidates.filter(c=>c.kind==='table').sort((a,b)=>a.column-b.column)[0];
+   if(!final?.verified||!initial.event.outcome.tied.includes(final.event.banished)||final.rounds.length!==1)continue;
+   const carry=referencedNotes(holderRow?.[final.column]?.node,doc).some(n=>{
+    const m=n.text.match(/^(?:\^\s*)?Episode (\d+) ended before (.+?)'s deciding double vote was revealed making it carry over into episode (\d+)\.$/i);
+    return m&&Number(m[1])===origin.episode&&Number(m[3])===dest.episode&&resolve(m[2])===holder;
+   });
+   const tied=initial.event.outcome.tied;
+   const procedure=tied.every(name=>{
+    const cell=voterRows[voterNames.indexOf(name)]?.[final.column];
+    return /^No\s*vote$/i.test(cell?.text||'')&&referencedNotes(cell?.node,doc).some(n=>/first round[^.]*tie/i.test(n.text)&&/second vote/i.test(n.text)&&/would not vote/i.test(n.text));
+   });
+   if(!carry||!procedure)continue;
+   const joined={...initial,event:{...initial.event,ep:dest.episode,banished:final.event.banished,outcome:{status:'banished',tied,startedEpisode:origin.episode}},rounds:[...initial.rounds,...final.rounds],verified:true,observedRole:final.observedRole,aliases:final.aliases,column:final.column,present:[...new Set([...Object.keys(final.rounds[0].votes),...tied])],evidence:[...initial.evidence,'Linked footnote explicitly identifies this deciding doubled vote as the continuation of the preceding episode.',...final.evidence]};
+   const tally=counts(final.rounds[0],initial.event.ballotPowers||[]),max=Math.max(...Object.values(tally));
+   if(!matches(tally,final.rounds[0].tally)||Object.entries(tally).filter(([,n])=>n===max).length!==1||tally[final.event.banished]!==max)continue;
+   origin.candidates=origin.candidates.filter(c=>c!==initial);
+   dest.candidates=dest.candidates.map(c=>c===final?joined:c);
+   origin.publishedEvents=(origin.publishedEvents||[]).filter(e=>e.tableId!==initial.event.tableId);
+   relocations.push({tableId:initial.event.tableId,from:origin.episode,to:dest.episode});
+  }
+ }
+ return relocations;
+}
+module.exports={dagger,tables,verify,continuations};

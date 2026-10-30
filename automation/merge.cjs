@@ -19,6 +19,38 @@ function mergeRound(old,fresh){
  return {...clone(old),votes:fresh.votes,revotes:fresh.revotes,absent:fresh.absent,banished:fresh.banished,votingComplete:fresh.votingComplete,...(fresh.tableId?{tableId:fresh.tableId,outcome:fresh.outcome}:{}),...(fresh.ballotPowers?{ballotPowers:fresh.ballotPowers,extraBallots:fresh.extraBallots}:{})};
 }
 function merge(data,parsed,config,now=new Date().toISOString()){
+ // Finalise a cliffhanger in the episode where its outcome was announced.
+ // Keep the original identity and every published ballot. Moving a table is
+ // atomic and allowed only before any dependent later history was scored.
+ for(const move of parsed.relocations||[]){
+  const old=data.events.find(e=>e.tableId===move.tableId&&e.ep===move.from);
+  if(!old)continue;
+  const ep=parsed.episodes.find(e=>e.episode===move.to),c=ep?.candidates.find(c=>c.event.tableId===move.tableId);
+  const record=data.episodeRecords?.[move.from];
+  if(!c?.verified||ep.candidates.indexOf(c)>=ep.safePrefix||locked(old)||record?.automationLocked||record?.automationPayloadHash&&record.automationPayloadHash!==hash(data.events.filter(e=>e.ep===move.from).map(payload))||old.outcome?.status!=='pending'||data.events.at(-1)!==old)continue;
+  try{
+   const prefix={...data,events:data.events.slice(0,-1)},step=T.compute(prefix).steps[prefix.events.length];
+   if(config.requireIndependentCorroboration&&!c.corroboration?.length)continue;
+   if(c.observedRole&&step.roles[c.event.banished]!==c.observedRole)continue;
+   const fresh=verifyVotes(c,step);if(!fresh.votingComplete)continue;
+   const resolved={...mergeRound(old,fresh),ep:move.to};
+   resolved.automation={...clone(old.automation),verifiedAt:now,payloadHash:hash(payload(resolved)),sources:[ep.source],evidence:c.evidence,chronology:ep.timeline.edges};
+   const migrated=clone(data);migrated.events[migrated.events.length-1]=resolved;
+   if(migrated.episodeRecords?.[move.from])migrated.episodeRecords[move.from].automationPayloadHash=hash(migrated.events.filter(e=>e.ep===move.from).map(payload));
+   migrated.episodeAudit??=[];migrated.episodeAudit.push({episode:move.to,startedEpisode:move.from,approvedAt:now,method:'Verified cross-episode Round Table continuation',previousEvents:[clone(old)],previousRecord:clone(record||null),newEvents:[clone(resolved)],sources:[ep.source]});
+   migrated.automation.pendingEvents=(migrated.automation.pendingEvents||[]).filter(p=>!(p.event==='roundtable:'+move.tableId||p.episode===move.to&&p.event==='roundtable:'+resolved.banished));
+   D.validate(migrated);
+   const result=merge(migrated,{...parsed,relocations:[]},config,now);
+   result.report.beforeTotals=clone(E.totals(data));result.report.pointsAdded=Object.fromEntries(Object.keys(result.report.afterTotals).map(p=>[p,result.report.afterTotals[p]-result.report.beforeTotals[p]]));
+   result.report.scoresChanged=stable(result.report.beforeTotals)!==stable(result.report.afterTotals);
+   const before=T.compute(data).contestants,after=T.compute(result.data).contestants;result.report.celebrityPointsAdded=Object.fromEntries(Object.keys(after).map(n=>[n,after[n].celebScore-before[n].celebScore]));
+   result.report.accepted.unshift({episode:move.to,event:key(resolved),action:'continued-and-backfilled',startedEpisode:move.from,votingComplete:true,sources:[ep.source]});
+   result.data.automation.lastVerifiedUpdate=now;result.changed=true;result.report.dataUpdated=true;
+   return result;
+  }catch(error){
+   ep.issues.push({eventKey:c.key,status:'conflicting',detail:'Continuation conflicts with published table: '+error.message});
+  }
+ }
  D.validate(data);assertDraw(data);let next=clone(data),changed=false;const blockers=[];
  const report={checkedAt:now,sources:[parsed.source],accepted:[],deferred:[],unchanged:[],scoresChanged:false,dataUpdated:false,publication:'not attempted',beforeTotals:clone(E.totals(data)),afterTotals:null};
  const ordered=parsed.episodes.slice().sort((a,b)=>a.episode-b.episode);
