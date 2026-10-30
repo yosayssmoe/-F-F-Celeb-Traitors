@@ -715,25 +715,36 @@ window.SWEEPSTAKE = {
       }
     },
     {
-      "ep": 8,
+      "ep": 9,
       "type": "roundtable",
       "tableId": "ep8-table-1",
       "votes": {
-        "James Acaster": "Joanne McNally",
         "James Blunt": "Sharon Rooney",
-        "Joanne McNally": "Leigh-Anne Pinnock",
         "King Kenny": "Sharon Rooney",
         "Leigh-Anne Pinnock": "Joanne McNally",
         "Maya Jama": "Sebastian Croft",
         "Michael Sheen": "Sharon Rooney",
         "Romesh Ranganathan": "Michael Sheen",
         "Sebastian Croft": "Joanne McNally",
-        "Sharon Rooney": "Joanne McNally"
+        "James Acaster": "Joanne McNally",
+        "Sharon Rooney": "Joanne McNally",
+        "Joanne McNally": "Leigh-Anne Pinnock"
       },
-      "revotes": [],
+      "revotes": [
+        {
+          "James Blunt": "Sharon Rooney",
+          "King Kenny": "Joanne McNally",
+          "Leigh-Anne Pinnock": "Sharon Rooney",
+          "Maya Jama": "Sharon Rooney",
+          "Michael Sheen": "Sharon Rooney",
+          "Romesh Ranganathan": "Joanne McNally",
+          "Sebastian Croft": "Joanne McNally",
+          "James Acaster": "Joanne McNally"
+        }
+      ],
       "absent": [],
-      "banished": null,
-      "votingComplete": false,
+      "banished": "Joanne McNally",
+      "votingComplete": true,
       "ballotPowers": [
         {
           "kind": "double-vote",
@@ -745,60 +756,228 @@ window.SWEEPSTAKE = {
           "round": 0,
           "voter": "King Kenny",
           "target": "Sharon Rooney"
+        },
+        {
+          "round": 1,
+          "voter": "King Kenny",
+          "target": "Joanne McNally"
         }
       ],
       "outcome": {
-        "status": "pending",
+        "status": "banished",
         "tied": [
           "Joanne McNally",
           "Sharon Rooney"
-        ]
+        ],
+        "startedEpisode": 8
       },
       "id": "ep8-auto-8f2871d0ef2b",
       "automation": {
         "owner": "github-actions",
         "verification": "structured-verified",
-        "verifiedAt": "2026-10-25T10:19:09.593Z",
-        "payloadHash": "d55559498bbefcdcaf0eda8b5678ce18b5036af88cdd18f943be837c9081df91",
+        "verifiedAt": "2026-10-30T12:31:58.981Z",
+        "payloadHash": "93b4cde7d372cce6855d480d5237bc99f3a9339c18496105dd62297559329671",
         "sources": [
           {
             "title": "Wikipedia: Celebrity Traitors UK Series 2",
-            "url": "https://en.wikipedia.org/w/index.php?oldid=1381835994",
-            "retrievedAt": "2026-10-25T10:19:08.797Z",
-            "revision": 1381835994,
-            "revisionTimestamp": "2026-10-25T02:38:36Z"
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+            "retrievedAt": "2026-10-30T12:31:58.396Z",
+            "revision": 1382740076,
+            "revisionTimestamp": "2026-10-30T01:25:05Z"
           }
         ],
         "evidence": [
           "The weighted tally and episode narrative agree on the tied contestants; continuation ballots outside this episode remain unassociated.",
           "Referenced Dagger footnote explicitly doubles the holder’s vote.",
-          "Episode description independently explains the double vote at the Round Table."
+          "Episode description independently explains the double vote at the Round Table.",
+          "Linked footnote explicitly identifies this deciding doubled vote as the continuation of the preceding episode.",
+          "Banishment: Joanne McNally",
+          "Contestant finish agrees"
         ],
         "chronology": [
           {
-            "before": "murder:Miranda Hart",
-            "after": "roundtable:ep8-table-1",
-            "reason": "eliminated-before-voting",
-            "evidence": "Miranda Hart explicitly out in every voting round",
+            "before": "roundtable:ep8-table-1",
+            "after": "murder:Sharon Rooney",
+            "reason": "verified-continuation-attendance",
+            "evidence": "The later murder victim was present for the verified deciding re-vote.",
             "source": {
               "title": "Wikipedia: Celebrity Traitors UK Series 2",
-              "url": "https://en.wikipedia.org/w/index.php?oldid=1381835994",
-              "retrievedAt": "2026-10-25T10:19:08.797Z",
-              "revision": 1381835994,
-              "revisionTimestamp": "2026-10-25T02:38:36Z"
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+              "retrievedAt": "2026-10-30T12:31:58.396Z",
+              "revision": 1382740076,
+              "revisionTimestamp": "2026-10-30T01:25:05Z"
             }
           },
           {
-            "before": "murder:Miranda Hart",
-            "after": "roundtable:ep8-table-1",
-            "reason": "published-history",
-            "evidence": "Previously validated local event order",
+            "before": "roundtable:ep8-table-1",
+            "after": "roundtable:James Acaster",
+            "reason": "eliminated-before-voting",
+            "evidence": "Joanne McNally explicitly out in every voting round",
             "source": {
               "title": "Wikipedia: Celebrity Traitors UK Series 2",
-              "url": "https://en.wikipedia.org/w/index.php?oldid=1381835994",
-              "retrievedAt": "2026-10-25T10:19:08.797Z",
-              "revision": 1381835994,
-              "revisionTimestamp": "2026-10-25T02:38:36Z"
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+              "retrievedAt": "2026-10-30T12:31:58.396Z",
+              "revision": 1382740076,
+              "revisionTimestamp": "2026-10-30T01:25:05Z"
+            }
+          },
+          {
+            "before": "roundtable:ep8-table-1",
+            "after": "roundtable:James Acaster",
+            "reason": "voting-round-columns",
+            "evidence": "Separate banishments in ordered episode voting columns",
+            "source": {
+              "title": "Wikipedia: Celebrity Traitors UK Series 2",
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+              "retrievedAt": "2026-10-30T12:31:58.396Z",
+              "revision": 1382740076,
+              "revisionTimestamp": "2026-10-30T01:25:05Z"
+            }
+          },
+          {
+            "before": "murder:Sharon Rooney",
+            "after": "roundtable:James Acaster",
+            "reason": "eliminated-before-voting",
+            "evidence": "Sharon Rooney explicitly out in every voting round",
+            "source": {
+              "title": "Wikipedia: Celebrity Traitors UK Series 2",
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+              "retrievedAt": "2026-10-30T12:31:58.396Z",
+              "revision": 1382740076,
+              "revisionTimestamp": "2026-10-30T01:25:05Z"
+            }
+          }
+        ],
+        "locked": false
+      }
+    },
+    {
+      "ep": 9,
+      "type": "murder",
+      "victim": "Sharon Rooney",
+      "id": "ep9-auto-215ffa98acd5",
+      "automation": {
+        "owner": "github-actions",
+        "verification": "structured-verified",
+        "verifiedAt": "2026-10-30T12:31:58.981Z",
+        "payloadHash": "89a11b8df8fc67e99d150fb20975fcf77e17609c931f5a4ed1fe393f8f825a8b",
+        "sources": [
+          {
+            "title": "Wikipedia: Celebrity Traitors UK Series 2",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+            "retrievedAt": "2026-10-30T12:31:58.396Z",
+            "revision": 1382740076,
+            "revisionTimestamp": "2026-10-30T01:25:05Z"
+          }
+        ],
+        "evidence": [
+          "Murder: Sharon",
+          "Second structured section agrees"
+        ],
+        "chronology": [
+          {
+            "before": "roundtable:ep8-table-1",
+            "after": "murder:Sharon Rooney",
+            "reason": "verified-continuation-attendance",
+            "evidence": "The later murder victim was present for the verified deciding re-vote.",
+            "source": {
+              "title": "Wikipedia: Celebrity Traitors UK Series 2",
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+              "retrievedAt": "2026-10-30T12:31:58.396Z",
+              "revision": 1382740076,
+              "revisionTimestamp": "2026-10-30T01:25:05Z"
+            }
+          },
+          {
+            "before": "murder:Sharon Rooney",
+            "after": "roundtable:James Acaster",
+            "reason": "eliminated-before-voting",
+            "evidence": "Sharon Rooney explicitly out in every voting round",
+            "source": {
+              "title": "Wikipedia: Celebrity Traitors UK Series 2",
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+              "retrievedAt": "2026-10-30T12:31:58.396Z",
+              "revision": 1382740076,
+              "revisionTimestamp": "2026-10-30T01:25:05Z"
+            }
+          }
+        ],
+        "locked": false
+      }
+    },
+    {
+      "ep": 9,
+      "type": "roundtable",
+      "votes": {
+        "James Blunt": "James Acaster",
+        "King Kenny": "James Acaster",
+        "Leigh-Anne Pinnock": "James Acaster",
+        "Maya Jama": "James Acaster",
+        "Michael Sheen": "James Acaster",
+        "Romesh Ranganathan": "James Acaster",
+        "Sebastian Croft": "James Acaster"
+      },
+      "revotes": [],
+      "absent": [],
+      "banished": "James Acaster",
+      "votingComplete": false,
+      "id": "ep9-auto-18477b93fda7",
+      "automation": {
+        "owner": "github-actions",
+        "verification": "structured-verified",
+        "verifiedAt": "2026-10-30T12:31:58.981Z",
+        "payloadHash": "8df852156d97e5899666bf9224be08478112fa450fb9d15658258a0ec4d8340e",
+        "sources": [
+          {
+            "title": "Wikipedia: Celebrity Traitors UK Series 2",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+            "retrievedAt": "2026-10-30T12:31:58.396Z",
+            "revision": 1382740076,
+            "revisionTimestamp": "2026-10-30T01:25:05Z"
+          }
+        ],
+        "evidence": [
+          "Banishment: James Acaster",
+          "Contestant finish agrees"
+        ],
+        "chronology": [
+          {
+            "before": "roundtable:ep8-table-1",
+            "after": "roundtable:James Acaster",
+            "reason": "eliminated-before-voting",
+            "evidence": "Joanne McNally explicitly out in every voting round",
+            "source": {
+              "title": "Wikipedia: Celebrity Traitors UK Series 2",
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+              "retrievedAt": "2026-10-30T12:31:58.396Z",
+              "revision": 1382740076,
+              "revisionTimestamp": "2026-10-30T01:25:05Z"
+            }
+          },
+          {
+            "before": "roundtable:ep8-table-1",
+            "after": "roundtable:James Acaster",
+            "reason": "voting-round-columns",
+            "evidence": "Separate banishments in ordered episode voting columns",
+            "source": {
+              "title": "Wikipedia: Celebrity Traitors UK Series 2",
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+              "retrievedAt": "2026-10-30T12:31:58.396Z",
+              "revision": 1382740076,
+              "revisionTimestamp": "2026-10-30T01:25:05Z"
+            }
+          },
+          {
+            "before": "murder:Sharon Rooney",
+            "after": "roundtable:James Acaster",
+            "reason": "eliminated-before-voting",
+            "evidence": "Sharon Rooney explicitly out in every voting round",
+            "source": {
+              "title": "Wikipedia: Celebrity Traitors UK Series 2",
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+              "retrievedAt": "2026-10-30T12:31:58.396Z",
+              "revision": 1382740076,
+              "revisionTimestamp": "2026-10-30T01:25:05Z"
             }
           }
         ],
@@ -904,7 +1083,7 @@ window.SWEEPSTAKE = {
     },
     "8": {
       "date": "2026-10-23",
-      "status": "partial",
+      "status": "complete",
       "notes": "Automatically verified structured events. Unsupported or unpublished information remains in the workflow report.",
       "sources": [
         {
@@ -916,7 +1095,24 @@ window.SWEEPSTAKE = {
         }
       ],
       "approvedAt": "2026-10-25T10:19:09.593Z",
-      "automationPayloadHash": "0b80b980d76173ab791ddd93b0dd68d41e0db0d8aa2edbd136c94a3cdbeec79d",
+      "automationPayloadHash": "707c70f3bd0eb8e6f3793bd88c31cf990ad1139377cc7f2d220da112870f7528",
+      "automationLocked": false
+    },
+    "9": {
+      "date": "2026-10-29",
+      "status": "partial",
+      "notes": "Automatically verified structured events. Unsupported or unpublished information remains in the workflow report.",
+      "sources": [
+        {
+          "title": "Wikipedia: Celebrity Traitors UK Series 2",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+          "retrievedAt": "2026-10-30T12:31:58.396Z",
+          "revision": 1382740076,
+          "revisionTimestamp": "2026-10-30T01:25:05Z"
+        }
+      ],
+      "approvedAt": "2026-10-30T12:31:58.981Z",
+      "automationPayloadHash": "5060369bc01023884112801d945648327c491fd66986e04c9cd6d444bd62ec0d",
       "automationLocked": false
     }
   },
@@ -1941,348 +2137,716 @@ window.SWEEPSTAKE = {
           "revisionTimestamp": "2026-10-25T02:38:36Z"
         }
       ]
+    },
+    {
+      "episode": 9,
+      "startedEpisode": 8,
+      "approvedAt": "2026-10-30T12:31:58.981Z",
+      "method": "Verified cross-episode Round Table continuation",
+      "previousEvents": [
+        {
+          "ep": 8,
+          "type": "roundtable",
+          "tableId": "ep8-table-1",
+          "votes": {
+            "James Acaster": "Joanne McNally",
+            "James Blunt": "Sharon Rooney",
+            "Joanne McNally": "Leigh-Anne Pinnock",
+            "King Kenny": "Sharon Rooney",
+            "Leigh-Anne Pinnock": "Joanne McNally",
+            "Maya Jama": "Sebastian Croft",
+            "Michael Sheen": "Sharon Rooney",
+            "Romesh Ranganathan": "Michael Sheen",
+            "Sebastian Croft": "Joanne McNally",
+            "Sharon Rooney": "Joanne McNally"
+          },
+          "revotes": [],
+          "absent": [],
+          "banished": null,
+          "votingComplete": false,
+          "ballotPowers": [
+            {
+              "kind": "double-vote",
+              "holder": "King Kenny"
+            }
+          ],
+          "extraBallots": [
+            {
+              "round": 0,
+              "voter": "King Kenny",
+              "target": "Sharon Rooney"
+            }
+          ],
+          "outcome": {
+            "status": "pending",
+            "tied": [
+              "Joanne McNally",
+              "Sharon Rooney"
+            ]
+          },
+          "id": "ep8-auto-8f2871d0ef2b",
+          "automation": {
+            "owner": "github-actions",
+            "verification": "structured-verified",
+            "verifiedAt": "2026-10-25T10:19:09.593Z",
+            "payloadHash": "d55559498bbefcdcaf0eda8b5678ce18b5036af88cdd18f943be837c9081df91",
+            "sources": [
+              {
+                "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1381835994",
+                "retrievedAt": "2026-10-25T10:19:08.797Z",
+                "revision": 1381835994,
+                "revisionTimestamp": "2026-10-25T02:38:36Z"
+              }
+            ],
+            "evidence": [
+              "The weighted tally and episode narrative agree on the tied contestants; continuation ballots outside this episode remain unassociated.",
+              "Referenced Dagger footnote explicitly doubles the holder’s vote.",
+              "Episode description independently explains the double vote at the Round Table."
+            ],
+            "chronology": [
+              {
+                "before": "murder:Miranda Hart",
+                "after": "roundtable:ep8-table-1",
+                "reason": "eliminated-before-voting",
+                "evidence": "Miranda Hart explicitly out in every voting round",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1381835994",
+                  "retrievedAt": "2026-10-25T10:19:08.797Z",
+                  "revision": 1381835994,
+                  "revisionTimestamp": "2026-10-25T02:38:36Z"
+                }
+              },
+              {
+                "before": "murder:Miranda Hart",
+                "after": "roundtable:ep8-table-1",
+                "reason": "published-history",
+                "evidence": "Previously validated local event order",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1381835994",
+                  "retrievedAt": "2026-10-25T10:19:08.797Z",
+                  "revision": 1381835994,
+                  "revisionTimestamp": "2026-10-25T02:38:36Z"
+                }
+              }
+            ],
+            "locked": false
+          }
+        }
+      ],
+      "previousRecord": {
+        "date": "2026-10-23",
+        "status": "partial",
+        "notes": "Automatically verified structured events. Unsupported or unpublished information remains in the workflow report.",
+        "sources": [
+          {
+            "title": "Wikipedia: Celebrity Traitors UK Series 2",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1381835994",
+            "retrievedAt": "2026-10-25T10:19:08.797Z",
+            "revision": 1381835994,
+            "revisionTimestamp": "2026-10-25T02:38:36Z"
+          }
+        ],
+        "approvedAt": "2026-10-25T10:19:09.593Z",
+        "automationPayloadHash": "0b80b980d76173ab791ddd93b0dd68d41e0db0d8aa2edbd136c94a3cdbeec79d",
+        "automationLocked": false
+      },
+      "newEvents": [
+        {
+          "ep": 9,
+          "type": "roundtable",
+          "tableId": "ep8-table-1",
+          "votes": {
+            "James Blunt": "Sharon Rooney",
+            "King Kenny": "Sharon Rooney",
+            "Leigh-Anne Pinnock": "Joanne McNally",
+            "Maya Jama": "Sebastian Croft",
+            "Michael Sheen": "Sharon Rooney",
+            "Romesh Ranganathan": "Michael Sheen",
+            "Sebastian Croft": "Joanne McNally",
+            "James Acaster": "Joanne McNally",
+            "Sharon Rooney": "Joanne McNally",
+            "Joanne McNally": "Leigh-Anne Pinnock"
+          },
+          "revotes": [
+            {
+              "James Blunt": "Sharon Rooney",
+              "King Kenny": "Joanne McNally",
+              "Leigh-Anne Pinnock": "Sharon Rooney",
+              "Maya Jama": "Sharon Rooney",
+              "Michael Sheen": "Sharon Rooney",
+              "Romesh Ranganathan": "Joanne McNally",
+              "Sebastian Croft": "Joanne McNally",
+              "James Acaster": "Joanne McNally"
+            }
+          ],
+          "absent": [],
+          "banished": "Joanne McNally",
+          "votingComplete": true,
+          "ballotPowers": [
+            {
+              "kind": "double-vote",
+              "holder": "King Kenny"
+            }
+          ],
+          "extraBallots": [
+            {
+              "round": 0,
+              "voter": "King Kenny",
+              "target": "Sharon Rooney"
+            },
+            {
+              "round": 1,
+              "voter": "King Kenny",
+              "target": "Joanne McNally"
+            }
+          ],
+          "outcome": {
+            "status": "banished",
+            "tied": [
+              "Joanne McNally",
+              "Sharon Rooney"
+            ],
+            "startedEpisode": 8
+          },
+          "id": "ep8-auto-8f2871d0ef2b",
+          "automation": {
+            "owner": "github-actions",
+            "verification": "structured-verified",
+            "verifiedAt": "2026-10-30T12:31:58.981Z",
+            "payloadHash": "93b4cde7d372cce6855d480d5237bc99f3a9339c18496105dd62297559329671",
+            "sources": [
+              {
+                "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                "retrievedAt": "2026-10-30T12:31:58.396Z",
+                "revision": 1382740076,
+                "revisionTimestamp": "2026-10-30T01:25:05Z"
+              }
+            ],
+            "evidence": [
+              "The weighted tally and episode narrative agree on the tied contestants; continuation ballots outside this episode remain unassociated.",
+              "Referenced Dagger footnote explicitly doubles the holder’s vote.",
+              "Episode description independently explains the double vote at the Round Table.",
+              "Linked footnote explicitly identifies this deciding doubled vote as the continuation of the preceding episode.",
+              "Banishment: Joanne McNally",
+              "Contestant finish agrees"
+            ],
+            "chronology": [
+              {
+                "before": "roundtable:ep8-table-1",
+                "after": "murder:Sharon Rooney",
+                "reason": "verified-continuation-attendance",
+                "evidence": "The later murder victim was present for the verified deciding re-vote.",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                  "retrievedAt": "2026-10-30T12:31:58.396Z",
+                  "revision": 1382740076,
+                  "revisionTimestamp": "2026-10-30T01:25:05Z"
+                }
+              },
+              {
+                "before": "roundtable:ep8-table-1",
+                "after": "roundtable:James Acaster",
+                "reason": "eliminated-before-voting",
+                "evidence": "Joanne McNally explicitly out in every voting round",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                  "retrievedAt": "2026-10-30T12:31:58.396Z",
+                  "revision": 1382740076,
+                  "revisionTimestamp": "2026-10-30T01:25:05Z"
+                }
+              },
+              {
+                "before": "roundtable:ep8-table-1",
+                "after": "roundtable:James Acaster",
+                "reason": "voting-round-columns",
+                "evidence": "Separate banishments in ordered episode voting columns",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                  "retrievedAt": "2026-10-30T12:31:58.396Z",
+                  "revision": 1382740076,
+                  "revisionTimestamp": "2026-10-30T01:25:05Z"
+                }
+              },
+              {
+                "before": "murder:Sharon Rooney",
+                "after": "roundtable:James Acaster",
+                "reason": "eliminated-before-voting",
+                "evidence": "Sharon Rooney explicitly out in every voting round",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                  "retrievedAt": "2026-10-30T12:31:58.396Z",
+                  "revision": 1382740076,
+                  "revisionTimestamp": "2026-10-30T01:25:05Z"
+                }
+              }
+            ],
+            "locked": false
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Wikipedia: Celebrity Traitors UK Series 2",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+          "retrievedAt": "2026-10-30T12:31:58.396Z",
+          "revision": 1382740076,
+          "revisionTimestamp": "2026-10-30T01:25:05Z"
+        }
+      ]
+    },
+    {
+      "episode": 9,
+      "approvedAt": "2026-10-30T12:31:58.981Z",
+      "method": "GitHub Actions verified update",
+      "previousEvents": [
+        {
+          "ep": 9,
+          "type": "roundtable",
+          "tableId": "ep8-table-1",
+          "votes": {
+            "James Blunt": "Sharon Rooney",
+            "King Kenny": "Sharon Rooney",
+            "Leigh-Anne Pinnock": "Joanne McNally",
+            "Maya Jama": "Sebastian Croft",
+            "Michael Sheen": "Sharon Rooney",
+            "Romesh Ranganathan": "Michael Sheen",
+            "Sebastian Croft": "Joanne McNally",
+            "James Acaster": "Joanne McNally",
+            "Sharon Rooney": "Joanne McNally",
+            "Joanne McNally": "Leigh-Anne Pinnock"
+          },
+          "revotes": [
+            {
+              "James Blunt": "Sharon Rooney",
+              "King Kenny": "Joanne McNally",
+              "Leigh-Anne Pinnock": "Sharon Rooney",
+              "Maya Jama": "Sharon Rooney",
+              "Michael Sheen": "Sharon Rooney",
+              "Romesh Ranganathan": "Joanne McNally",
+              "Sebastian Croft": "Joanne McNally",
+              "James Acaster": "Joanne McNally"
+            }
+          ],
+          "absent": [],
+          "banished": "Joanne McNally",
+          "votingComplete": true,
+          "ballotPowers": [
+            {
+              "kind": "double-vote",
+              "holder": "King Kenny"
+            }
+          ],
+          "extraBallots": [
+            {
+              "round": 0,
+              "voter": "King Kenny",
+              "target": "Sharon Rooney"
+            },
+            {
+              "round": 1,
+              "voter": "King Kenny",
+              "target": "Joanne McNally"
+            }
+          ],
+          "outcome": {
+            "status": "banished",
+            "tied": [
+              "Joanne McNally",
+              "Sharon Rooney"
+            ],
+            "startedEpisode": 8
+          },
+          "id": "ep8-auto-8f2871d0ef2b",
+          "automation": {
+            "owner": "github-actions",
+            "verification": "structured-verified",
+            "verifiedAt": "2026-10-30T12:31:58.981Z",
+            "payloadHash": "93b4cde7d372cce6855d480d5237bc99f3a9339c18496105dd62297559329671",
+            "sources": [
+              {
+                "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                "retrievedAt": "2026-10-30T12:31:58.396Z",
+                "revision": 1382740076,
+                "revisionTimestamp": "2026-10-30T01:25:05Z"
+              }
+            ],
+            "evidence": [
+              "The weighted tally and episode narrative agree on the tied contestants; continuation ballots outside this episode remain unassociated.",
+              "Referenced Dagger footnote explicitly doubles the holder’s vote.",
+              "Episode description independently explains the double vote at the Round Table.",
+              "Linked footnote explicitly identifies this deciding doubled vote as the continuation of the preceding episode.",
+              "Banishment: Joanne McNally",
+              "Contestant finish agrees"
+            ],
+            "chronology": [
+              {
+                "before": "roundtable:ep8-table-1",
+                "after": "murder:Sharon Rooney",
+                "reason": "verified-continuation-attendance",
+                "evidence": "The later murder victim was present for the verified deciding re-vote.",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                  "retrievedAt": "2026-10-30T12:31:58.396Z",
+                  "revision": 1382740076,
+                  "revisionTimestamp": "2026-10-30T01:25:05Z"
+                }
+              },
+              {
+                "before": "roundtable:ep8-table-1",
+                "after": "roundtable:James Acaster",
+                "reason": "eliminated-before-voting",
+                "evidence": "Joanne McNally explicitly out in every voting round",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                  "retrievedAt": "2026-10-30T12:31:58.396Z",
+                  "revision": 1382740076,
+                  "revisionTimestamp": "2026-10-30T01:25:05Z"
+                }
+              },
+              {
+                "before": "roundtable:ep8-table-1",
+                "after": "roundtable:James Acaster",
+                "reason": "voting-round-columns",
+                "evidence": "Separate banishments in ordered episode voting columns",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                  "retrievedAt": "2026-10-30T12:31:58.396Z",
+                  "revision": 1382740076,
+                  "revisionTimestamp": "2026-10-30T01:25:05Z"
+                }
+              },
+              {
+                "before": "murder:Sharon Rooney",
+                "after": "roundtable:James Acaster",
+                "reason": "eliminated-before-voting",
+                "evidence": "Sharon Rooney explicitly out in every voting round",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                  "retrievedAt": "2026-10-30T12:31:58.396Z",
+                  "revision": 1382740076,
+                  "revisionTimestamp": "2026-10-30T01:25:05Z"
+                }
+              }
+            ],
+            "locked": false
+          }
+        }
+      ],
+      "previousRecord": null,
+      "newEvents": [
+        {
+          "ep": 9,
+          "type": "roundtable",
+          "tableId": "ep8-table-1",
+          "votes": {
+            "James Blunt": "Sharon Rooney",
+            "King Kenny": "Sharon Rooney",
+            "Leigh-Anne Pinnock": "Joanne McNally",
+            "Maya Jama": "Sebastian Croft",
+            "Michael Sheen": "Sharon Rooney",
+            "Romesh Ranganathan": "Michael Sheen",
+            "Sebastian Croft": "Joanne McNally",
+            "James Acaster": "Joanne McNally",
+            "Sharon Rooney": "Joanne McNally",
+            "Joanne McNally": "Leigh-Anne Pinnock"
+          },
+          "revotes": [
+            {
+              "James Blunt": "Sharon Rooney",
+              "King Kenny": "Joanne McNally",
+              "Leigh-Anne Pinnock": "Sharon Rooney",
+              "Maya Jama": "Sharon Rooney",
+              "Michael Sheen": "Sharon Rooney",
+              "Romesh Ranganathan": "Joanne McNally",
+              "Sebastian Croft": "Joanne McNally",
+              "James Acaster": "Joanne McNally"
+            }
+          ],
+          "absent": [],
+          "banished": "Joanne McNally",
+          "votingComplete": true,
+          "ballotPowers": [
+            {
+              "kind": "double-vote",
+              "holder": "King Kenny"
+            }
+          ],
+          "extraBallots": [
+            {
+              "round": 0,
+              "voter": "King Kenny",
+              "target": "Sharon Rooney"
+            },
+            {
+              "round": 1,
+              "voter": "King Kenny",
+              "target": "Joanne McNally"
+            }
+          ],
+          "outcome": {
+            "status": "banished",
+            "tied": [
+              "Joanne McNally",
+              "Sharon Rooney"
+            ],
+            "startedEpisode": 8
+          },
+          "id": "ep8-auto-8f2871d0ef2b",
+          "automation": {
+            "owner": "github-actions",
+            "verification": "structured-verified",
+            "verifiedAt": "2026-10-30T12:31:58.981Z",
+            "payloadHash": "93b4cde7d372cce6855d480d5237bc99f3a9339c18496105dd62297559329671",
+            "sources": [
+              {
+                "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                "retrievedAt": "2026-10-30T12:31:58.396Z",
+                "revision": 1382740076,
+                "revisionTimestamp": "2026-10-30T01:25:05Z"
+              }
+            ],
+            "evidence": [
+              "The weighted tally and episode narrative agree on the tied contestants; continuation ballots outside this episode remain unassociated.",
+              "Referenced Dagger footnote explicitly doubles the holder’s vote.",
+              "Episode description independently explains the double vote at the Round Table.",
+              "Linked footnote explicitly identifies this deciding doubled vote as the continuation of the preceding episode.",
+              "Banishment: Joanne McNally",
+              "Contestant finish agrees"
+            ],
+            "chronology": [
+              {
+                "before": "roundtable:ep8-table-1",
+                "after": "murder:Sharon Rooney",
+                "reason": "verified-continuation-attendance",
+                "evidence": "The later murder victim was present for the verified deciding re-vote.",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                  "retrievedAt": "2026-10-30T12:31:58.396Z",
+                  "revision": 1382740076,
+                  "revisionTimestamp": "2026-10-30T01:25:05Z"
+                }
+              },
+              {
+                "before": "roundtable:ep8-table-1",
+                "after": "roundtable:James Acaster",
+                "reason": "eliminated-before-voting",
+                "evidence": "Joanne McNally explicitly out in every voting round",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                  "retrievedAt": "2026-10-30T12:31:58.396Z",
+                  "revision": 1382740076,
+                  "revisionTimestamp": "2026-10-30T01:25:05Z"
+                }
+              },
+              {
+                "before": "roundtable:ep8-table-1",
+                "after": "roundtable:James Acaster",
+                "reason": "voting-round-columns",
+                "evidence": "Separate banishments in ordered episode voting columns",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                  "retrievedAt": "2026-10-30T12:31:58.396Z",
+                  "revision": 1382740076,
+                  "revisionTimestamp": "2026-10-30T01:25:05Z"
+                }
+              },
+              {
+                "before": "murder:Sharon Rooney",
+                "after": "roundtable:James Acaster",
+                "reason": "eliminated-before-voting",
+                "evidence": "Sharon Rooney explicitly out in every voting round",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                  "retrievedAt": "2026-10-30T12:31:58.396Z",
+                  "revision": 1382740076,
+                  "revisionTimestamp": "2026-10-30T01:25:05Z"
+                }
+              }
+            ],
+            "locked": false
+          }
+        },
+        {
+          "ep": 9,
+          "type": "murder",
+          "victim": "Sharon Rooney",
+          "id": "ep9-auto-215ffa98acd5",
+          "automation": {
+            "owner": "github-actions",
+            "verification": "structured-verified",
+            "verifiedAt": "2026-10-30T12:31:58.981Z",
+            "payloadHash": "89a11b8df8fc67e99d150fb20975fcf77e17609c931f5a4ed1fe393f8f825a8b",
+            "sources": [
+              {
+                "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                "retrievedAt": "2026-10-30T12:31:58.396Z",
+                "revision": 1382740076,
+                "revisionTimestamp": "2026-10-30T01:25:05Z"
+              }
+            ],
+            "evidence": [
+              "Murder: Sharon",
+              "Second structured section agrees"
+            ],
+            "chronology": [
+              {
+                "before": "roundtable:ep8-table-1",
+                "after": "murder:Sharon Rooney",
+                "reason": "verified-continuation-attendance",
+                "evidence": "The later murder victim was present for the verified deciding re-vote.",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                  "retrievedAt": "2026-10-30T12:31:58.396Z",
+                  "revision": 1382740076,
+                  "revisionTimestamp": "2026-10-30T01:25:05Z"
+                }
+              },
+              {
+                "before": "murder:Sharon Rooney",
+                "after": "roundtable:James Acaster",
+                "reason": "eliminated-before-voting",
+                "evidence": "Sharon Rooney explicitly out in every voting round",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                  "retrievedAt": "2026-10-30T12:31:58.396Z",
+                  "revision": 1382740076,
+                  "revisionTimestamp": "2026-10-30T01:25:05Z"
+                }
+              }
+            ],
+            "locked": false
+          }
+        },
+        {
+          "ep": 9,
+          "type": "roundtable",
+          "votes": {
+            "James Blunt": "James Acaster",
+            "King Kenny": "James Acaster",
+            "Leigh-Anne Pinnock": "James Acaster",
+            "Maya Jama": "James Acaster",
+            "Michael Sheen": "James Acaster",
+            "Romesh Ranganathan": "James Acaster",
+            "Sebastian Croft": "James Acaster"
+          },
+          "revotes": [],
+          "absent": [],
+          "banished": "James Acaster",
+          "votingComplete": false,
+          "id": "ep9-auto-18477b93fda7",
+          "automation": {
+            "owner": "github-actions",
+            "verification": "structured-verified",
+            "verifiedAt": "2026-10-30T12:31:58.981Z",
+            "payloadHash": "8df852156d97e5899666bf9224be08478112fa450fb9d15658258a0ec4d8340e",
+            "sources": [
+              {
+                "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                "retrievedAt": "2026-10-30T12:31:58.396Z",
+                "revision": 1382740076,
+                "revisionTimestamp": "2026-10-30T01:25:05Z"
+              }
+            ],
+            "evidence": [
+              "Banishment: James Acaster",
+              "Contestant finish agrees"
+            ],
+            "chronology": [
+              {
+                "before": "roundtable:ep8-table-1",
+                "after": "roundtable:James Acaster",
+                "reason": "eliminated-before-voting",
+                "evidence": "Joanne McNally explicitly out in every voting round",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                  "retrievedAt": "2026-10-30T12:31:58.396Z",
+                  "revision": 1382740076,
+                  "revisionTimestamp": "2026-10-30T01:25:05Z"
+                }
+              },
+              {
+                "before": "roundtable:ep8-table-1",
+                "after": "roundtable:James Acaster",
+                "reason": "voting-round-columns",
+                "evidence": "Separate banishments in ordered episode voting columns",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                  "retrievedAt": "2026-10-30T12:31:58.396Z",
+                  "revision": 1382740076,
+                  "revisionTimestamp": "2026-10-30T01:25:05Z"
+                }
+              },
+              {
+                "before": "murder:Sharon Rooney",
+                "after": "roundtable:James Acaster",
+                "reason": "eliminated-before-voting",
+                "evidence": "Sharon Rooney explicitly out in every voting round",
+                "source": {
+                  "title": "Wikipedia: Celebrity Traitors UK Series 2",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+                  "retrievedAt": "2026-10-30T12:31:58.396Z",
+                  "revision": 1382740076,
+                  "revisionTimestamp": "2026-10-30T01:25:05Z"
+                }
+              }
+            ],
+            "locked": false
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Wikipedia: Celebrity Traitors UK Series 2",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
+          "retrievedAt": "2026-10-30T12:31:58.396Z",
+          "revision": 1382740076,
+          "revisionTimestamp": "2026-10-30T01:25:05Z"
+        }
+      ]
     }
   ],
   "automation": {
     "version": 2,
-    "lastVerifiedUpdate": "2026-10-25T10:19:09.593Z",
-    "latestConfirmedEpisode": 8,
+    "lastVerifiedUpdate": "2026-10-30T12:31:58.981Z",
+    "latestConfirmedEpisode": 9,
     "votingData": "Partial",
     "scheduleDescription": "Daily 10:00, plus Thursday and Friday 23:00 (Europe/London). Checks revisit pending and historical results. GitHub may delay or skip runs.",
     "verification": "structured-source validation",
     "pendingEpisodes": [
-      8,
-      9,
-      10
+      10,
+      9
     ],
-    "runUrl": "https://github.com/yosayssmoe/-F-F-Celeb-Traitors/actions/runs/41042265890",
+    "runUrl": "https://github.com/yosayssmoe/-F-F-Celeb-Traitors/actions/runs/41055901371",
     "latestEpisodeChecked": 10,
-    "latestEpisodeFullyScored": 7,
+    "latestEpisodeFullyScored": 8,
     "partiallyScoredEpisodes": [
-      8
+      9
     ],
     "pendingEvents": [
-      {
-        "episode": 8,
-        "status": "incomplete",
-        "reason": "Voting power/tie outcome lacks consistent structured supporting evidence.",
-        "id": "f05d1913f1aeccc2"
-      },
-      {
-        "episode": 8,
-        "event": "roundtable:ep8-table-1",
-        "status": "event-pending",
-        "reason": "Event lacks consistent supporting evidence: roundtable:ep8-table-1",
-        "dependencies": [],
-        "candidate": {
-          "event": {
-            "ep": 8,
-            "type": "roundtable",
-            "tableId": "ep8-table-1",
-            "votes": {},
-            "revotes": [],
-            "absent": [],
-            "banished": null,
-            "votingComplete": false,
-            "ballotPowers": [
-              {
-                "kind": "double-vote",
-                "holder": "King Kenny"
-              }
-            ],
-            "extraBallots": [],
-            "outcome": {
-              "status": "pending",
-              "tied": [
-                "Joanne McNally",
-                "Sharon Rooney"
-              ]
-            }
-          },
-          "key": "roundtable:ep8-table-1",
-          "column": 15,
-          "kind": "table",
-          "verified": false,
-          "rounds": [
-            {
-              "votes": {
-                "James Blunt": "Sharon Rooney",
-                "King Kenny": "Sharon Rooney",
-                "Leigh-Anne Pinnock": "Joanne McNally",
-                "Maya Jama": "Sebastian Croft",
-                "Michael Sheen": "Sharon Rooney",
-                "Romesh Ranganathan": "Michael Sheen",
-                "Sebastian Croft": "Joanne McNally",
-                "James Acaster": "Joanne McNally",
-                "Sharon Rooney": "Joanne McNally",
-                "Joanne McNally": "Leigh-Anne Pinnock"
-              },
-              "raw": {
-                "James Blunt": "Sharon",
-                "King Kenny": "Sharon",
-                "Leigh-Anne Pinnock": "Joanne",
-                "Maya Jama": "Sebastian",
-                "Michael Sheen": "Sharon",
-                "Romesh Ranganathan": "Michael",
-                "Sebastian Croft": "Joanne",
-                "James Acaster": "Joanne",
-                "Sharon Rooney": "Joanne",
-                "Joanne McNally": "Leigh-Anne",
-                "Miranda Hart": "Murdered (Episode 8)",
-                "Jerry Hall": "Banished (Episode 7)",
-                "Ross Kemp": "Murdered (Episode 7)",
-                "Joe Lycett": "Banished (Episode 6)",
-                "Hannah Fry": "Banished (Episode 5)",
-                "Rob Beckett": "Murdered (Episode 5)",
-                "Julie Hesmondhalgh": "Banished (Episode 4)",
-                "Bella Ramsey": "Murdered (Episode 4)",
-                "Myha'la": "Banished (Episode 3)",
-                "Richard E. Grant": "Banished (Episode 3)",
-                "Amol Rajan": "Murdered (Episode 2)"
-              },
-              "tally": "4–4–1–1–1"
-            }
-          ],
-          "evidence": [
-            "The weighted tally and episode narrative agree on the tied contestants; continuation ballots outside this episode remain unassociated.",
-            "Referenced Dagger footnote explicitly doubles the holder’s vote.",
-            "Episode description independently explains the double vote at the Round Table."
-          ],
-          "aliases": []
-        },
-        "sources": [
-          {
-            "title": "Wikipedia: Celebrity Traitors UK Series 2",
-            "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
-            "revision": 1382740076,
-            "revisionTimestamp": "2026-10-30T01:25:05Z"
-          }
-        ],
-        "evidence": [
-          "The weighted tally and episode narrative agree on the tied contestants; continuation ballots outside this episode remain unassociated.",
-          "Referenced Dagger footnote explicitly doubles the holder’s vote.",
-          "Episode description independently explains the double vote at the Round Table."
-        ],
-        "id": "a5c5724b0939bda5"
-      },
-      {
-        "episode": 9,
-        "status": "ambiguous",
-        "reason": "Chronology is partially ordered; only events with resolved scoring dependencies can be imported.",
-        "id": "609cecf3bc95b961"
-      },
-      {
-        "episode": 9,
-        "event": "murder:Sharon Rooney",
-        "status": "chronology-pending",
-        "reason": "No verified order relative to scoring-dependent events.",
-        "dependencies": [
-          "ep9:roundtable:Joanne McNally"
-        ],
-        "candidate": {
-          "event": {
-            "ep": 9,
-            "type": "murder",
-            "victim": "Sharon Rooney"
-          },
-          "key": "murder:Sharon Rooney",
-          "column": 17,
-          "kind": "decision",
-          "verified": true,
-          "evidence": [
-            "Murder: Sharon",
-            "Second structured section agrees"
-          ],
-          "observedRole": "Faithful",
-          "aliases": [
-            "Sharon Rooney",
-            "Sharon",
-            "Sharon R."
-          ]
-        },
-        "sources": [
-          {
-            "title": "Wikipedia: Celebrity Traitors UK Series 2",
-            "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
-            "revision": 1382740076,
-            "revisionTimestamp": "2026-10-30T01:25:05Z"
-          }
-        ],
-        "evidence": [
-          "Murder: Sharon",
-          "Second structured section agrees"
-        ],
-        "id": "613401f9c07bb1d0"
-      },
-      {
-        "episode": 9,
-        "event": "roundtable:Joanne McNally",
-        "status": "chronology-pending",
-        "reason": "No verified order relative to scoring-dependent events.",
-        "dependencies": [
-          "ep9:murder:Sharon Rooney"
-        ],
-        "candidate": {
-          "event": {
-            "ep": 9,
-            "type": "roundtable",
-            "votes": {},
-            "revotes": [],
-            "absent": [],
-            "banished": "Joanne McNally",
-            "votingComplete": false
-          },
-          "key": "roundtable:Joanne McNally",
-          "column": 17,
-          "kind": "table",
-          "verified": true,
-          "rounds": [
-            {
-              "votes": {
-                "James Blunt": "Sharon Rooney",
-                "King Kenny": "Joanne McNally",
-                "Leigh-Anne Pinnock": "Sharon Rooney",
-                "Maya Jama": "Sharon Rooney",
-                "Michael Sheen": "Sharon Rooney",
-                "Romesh Ranganathan": "Joanne McNally",
-                "Sebastian Croft": "Joanne McNally",
-                "James Acaster": "Joanne McNally"
-              },
-              "raw": {
-                "James Blunt": "Sharon",
-                "King Kenny": "Joanne",
-                "Leigh-Anne Pinnock": "Sharon",
-                "Maya Jama": "Sharon",
-                "Michael Sheen": "Sharon",
-                "Romesh Ranganathan": "Joanne",
-                "Sebastian Croft": "Joanne",
-                "James Acaster": "Joanne",
-                "Sharon Rooney": "Novote",
-                "Joanne McNally": "Novote",
-                "Miranda Hart": "Murdered (Episode 8)",
-                "Jerry Hall": "Banished (Episode 7)",
-                "Ross Kemp": "Murdered (Episode 7)",
-                "Joe Lycett": "Banished (Episode 6)",
-                "Hannah Fry": "Banished (Episode 5)",
-                "Rob Beckett": "Murdered (Episode 5)",
-                "Julie Hesmondhalgh": "Banished (Episode 4)",
-                "Bella Ramsey": "Murdered (Episode 4)",
-                "Myha'la": "Banished (Episode 3)",
-                "Richard E. Grant": "Banished (Episode 3)",
-                "Amol Rajan": "Murdered (Episode 2)"
-              },
-              "tally": "5–4"
-            }
-          ],
-          "evidence": [
-            "Banishment: Joanne McNally",
-            "Contestant finish agrees"
-          ],
-          "observedRole": "Faithful",
-          "aliases": [
-            "Joanne McNally",
-            "Joanne",
-            "Joanne M."
-          ]
-        },
-        "sources": [
-          {
-            "title": "Wikipedia: Celebrity Traitors UK Series 2",
-            "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
-            "revision": 1382740076,
-            "revisionTimestamp": "2026-10-30T01:25:05Z"
-          }
-        ],
-        "evidence": [
-          "Banishment: Joanne McNally",
-          "Contestant finish agrees"
-        ],
-        "id": "9e53db47f2dfbce8"
-      },
-      {
-        "episode": 9,
-        "event": "roundtable:James Acaster",
-        "status": "chronology-pending",
-        "reason": "No verified order relative to scoring-dependent events.",
-        "dependencies": [
-          "ep9:murder:Sharon Rooney",
-          "ep9:roundtable:Joanne McNally"
-        ],
-        "candidate": {
-          "event": {
-            "ep": 9,
-            "type": "roundtable",
-            "votes": {},
-            "revotes": [],
-            "absent": [],
-            "banished": "James Acaster",
-            "votingComplete": false
-          },
-          "key": "roundtable:James Acaster",
-          "column": 18,
-          "kind": "table",
-          "verified": true,
-          "rounds": [
-            {
-              "votes": {
-                "James Blunt": "James Acaster",
-                "King Kenny": "James Acaster",
-                "Leigh-Anne Pinnock": "James Acaster",
-                "Maya Jama": "James Acaster",
-                "Michael Sheen": "James Acaster",
-                "Romesh Ranganathan": "James Acaster",
-                "Sebastian Croft": "James Acaster"
-              },
-              "raw": {
-                "James Blunt": "James A.",
-                "King Kenny": "James A.",
-                "Leigh-Anne Pinnock": "James A.",
-                "Maya Jama": "James A.",
-                "Michael Sheen": "James A.",
-                "Romesh Ranganathan": "James A.",
-                "Sebastian Croft": "James A.",
-                "James Acaster": "Novote",
-                "Sharon Rooney": "Murdered (Episode 9)",
-                "Joanne McNally": "Banished (Episode 9)",
-                "Miranda Hart": "Murdered (Episode 8)",
-                "Jerry Hall": "Banished (Episode 7)",
-                "Ross Kemp": "Murdered (Episode 7)",
-                "Joe Lycett": "Banished (Episode 6)",
-                "Hannah Fry": "Banished (Episode 5)",
-                "Rob Beckett": "Murdered (Episode 5)",
-                "Julie Hesmondhalgh": "Banished (Episode 4)",
-                "Bella Ramsey": "Murdered (Episode 4)",
-                "Myha'la": "Banished (Episode 3)",
-                "Richard E. Grant": "Banished (Episode 3)",
-                "Amol Rajan": "Murdered (Episode 2)"
-              },
-              "tally": "7–0"
-            }
-          ],
-          "evidence": [
-            "Banishment: James Acaster",
-            "Contestant finish agrees"
-          ],
-          "observedRole": "Traitor",
-          "aliases": [
-            "James Acaster",
-            "James A."
-          ]
-        },
-        "sources": [
-          {
-            "title": "Wikipedia: Celebrity Traitors UK Series 2",
-            "url": "https://en.wikipedia.org/w/index.php?oldid=1382740076",
-            "revision": 1382740076,
-            "revisionTimestamp": "2026-10-30T01:25:05Z"
-          }
-        ],
-        "evidence": [
-          "Banishment: James Acaster",
-          "Contestant finish agrees"
-        ],
-        "id": "6b903a30d80f00d7"
-      },
       {
         "episode": 10,
         "status": "not-published",
@@ -2290,29 +2854,13 @@ window.SWEEPSTAKE = {
         "id": "21fb0287fbfcef40"
       },
       {
-        "episode": 8,
-        "event": "roundtable:ep8-table-1",
-        "status": "outcome-pending",
-        "reason": "Tied Round Table has no verified final banishment. Await the remaining ballot(s), their extra votes and the announced outcome.",
-        "dependencies": [
-          "ep8:roundtable:ep8-table-1:final-ballots",
-          "ep8:roundtable:ep8-table-1:announced-outcome"
-        ],
-        "id": "4ede98becd2f4b8a"
-      },
-      {
-        "episode": 8,
-        "event": "roundtable:ep8-table-1",
-        "voters": [],
-        "rounds": [
-          {
-            "round": 1,
-            "voters": [],
-            "extraBallotVoters": []
-          }
+        "episode": 9,
+        "event": "roundtable:James Acaster",
+        "voters": [
+          "James Acaster"
         ],
         "reason": "Full voting rounds, attendance and tally must be verified before zero-vote bonuses.",
-        "id": "bce00b1b2ace41cf",
+        "id": "8b73db86386f40a6",
         "status": "missing-votes"
       }
     ]
